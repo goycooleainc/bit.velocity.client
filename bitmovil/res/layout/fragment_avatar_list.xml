@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v4.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/swipe_container"
+    android:background="@drawable/bkg"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    
+<LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:windowSoftInputMode="stateHidden"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical" >
+
+    <ProgressBar
+        android:id="@+id/pBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:visibility="invisible" />
+
+    <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/btnNew" android:src="@drawable/ic_add_circle" android:scaleType="fitCenter"
+            android:background="@android:color/transparent" android:layout_marginLeft="15dp" android:onClick="OnNew"/>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center"
+        android:layout_marginTop="80dp">
+
+        <TextView
+            android:id="@+id/tv_titulo_paso_uno"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="MIS AVATARES Y MIMOS"
+            android:textAppearance="@style/texto_titulo_principal"
+            android:textColor="@color/White"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@id/tx_nombre"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="JOHN DOE"
+            android:textAppearance="@style/texto_subtitulo"
+            android:textColor="@color/Black"
+            android:textStyle="bold" android:gravity="center"/>
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/texto_titulo_principal"
+                android:text="INSTRUCCIONES"
+                android:id="@+id/textView9" android:gravity="center" android:textColor="@color/Gray"
+                android:layout_marginTop="5dp"/>
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Un Mimo es una impersonificacion tuya por lo que en sí, no sos vos quien hace las transacciones sino tu mimo. Un mimo tiene cuantos avatares quieras, simplemente agregalos, activalos, para ver opciones, solo haz click sobre uno de ellos. (RECUERDA SOLO PUEDES TENER UNO ACTIVO A LA VEZ)"
+                android:id="@+id/textView10" android:textColor="@color/Gray"
+                android:textAppearance="?android:attr/textAppearanceMedium" android:layout_margin="3dp"/>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_back_title_splitter" android:paddingTop="6dp"/>
+
+    <ListView
+        android:id="@+id/current_purchase_list"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="3dp"
+            >
+    </ListView>
+
+</LinearLayout>
+</android.support.v4.widget.SwipeRefreshLayout>

@@ -1,0 +1,48 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.bit.vending.AuditActivity" >
+    
+    <item android:id="@+id/action_exit"
+         android:icon="@drawable/ic_login"
+         android:showAsAction="never"
+           android:title="Salir" />
+    
+    <item
+        android:id="@+id/action_new"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_support_new"
+        android:showAsAction="never"
+        android:title="Nuevo Reporte"/>
+
+    
+     <item
+        android:id="@+id/action_commit"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_send_action"
+        android:showAsAction="never"
+        android:title="Enviar a Nube"/>
+
+     <item
+        android:id="@+id/action_sync"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_sync_now"
+        android:showAsAction="never"
+        android:title="Sincronizar"/>
+    
+     <item
+        android:id="@+id/action_delete"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_trash"
+        android:showAsAction="never"
+        android:title="Eliminar Reporte"/>
+     
+     <item android:id="@+id/action_save"
+         android:icon="@drawable/ic_support_save"
+         android:showAsAction="never"
+           android:title="Guardar" />
+     
+
+     
+      
+
+</menu>

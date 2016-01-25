@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.bit.client" android:versionCode="2" android:versionName="2.0">
+
+    <uses-sdk android:minSdkVersion="19" android:targetSdkVersion="22" />
+    <uses-feature android:name="android.hardware.camera"  android:required="true"/>
+    <uses-feature android:name="android.hardware.nfc" android:required="true" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.LOCATION_HARDWARE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_VIDEO" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.NFC" />
+    <uses-permission android:name="com.android.vending.BILLING" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:uiOptions="splitActionBarWhenNarrow" >
+
+        <activity
+            android:name="com.bit.vending.StartActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="userPortrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" >
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="android.nfc.action.NDEF_DISCOVERED" />
+                <action android:name="android.nfc.action.TECH_DISCOVERED"/>
+                <category android:name="android.intent.category.LAUNCHER" />
+
+            </intent-filter>
+            <meta-data android:name="android.nfc.action.TECH_DISCOVERED" android:resource="@xml/nfc_tech_filter" />
+        </activity>
+
+        <activity
+            android:name="com.bit.vending.EmailActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" >
+        </activity>
+
+        <activity
+            android:name="com.bit.vending.LoadingToMainActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" >
+        </activity>
+
+        <activity
+            android:name="com.bit.audit.fragments.VendingMachineActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/title_activity_audit">
+        </activity>
+
+        <activity
+                android:name="com.bit.vending.SettingsActivity"
+                android:screenOrientation="portrait"
+                android:label="@string/title_activity_audit">
+        </activity>
+
+        <activity
+                android:name="com.bit.utils.StoreManager"
+                android:screenOrientation="portrait"
+                android:label="@string/title_activity_audit">
+        </activity>
+
+    </application>
+
+</manifest>

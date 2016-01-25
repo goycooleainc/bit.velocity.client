@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="390dp" android:background="@color/White" android:alpha="0.8"
+        >
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/texto_subtitulo"
+            android:text="Abajo se encuentra el detalle de la transaccion. "
+            android:id="@+id/textView6" android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp" android:layout_marginLeft="5dp" android:layout_marginRight="5dp"/>
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent"
+                  android:layout_height="wrap_content" android:gravity="center_vertical|center_horizontal"
+                  android:layout_marginTop="10dp">
+        <EditText android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/txProducto"
+                  android:hint="PRODUCTO" android:textColor="@color/Black"/>
+        <EditText android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/txMercante"
+                  android:hint="MERCANTE" android:textColor="@color/Black"/>
+        <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txCode" android:hint="AVATAR USADO" android:textColor="@color/Black"/>
+        <EditText android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/txFecha"
+                  android:hint="FECHA" android:textColor="@color/Black"/>
+        <EditText android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/txTotal"
+                  android:hint="TOTAL" android:textColor="@color/Black"/>
+    </LinearLayout>
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                  android:orientation="horizontal" android:gravity="center" android:layout_marginTop="15dp"
+                  android:layout_below="@+id/spinner_state" android:layout_alignParentLeft="true">
+        <Button android:id="@+id/dialogButtonCancel" android:layout_width="70dp" android:layout_height="70dp"
+                android:background="@drawable/cancel_style_buttons"/>
+    </LinearLayout>
+</LinearLayout>
