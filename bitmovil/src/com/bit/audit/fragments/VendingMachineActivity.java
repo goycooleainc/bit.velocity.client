@@ -169,9 +169,45 @@ public class VendingMachineActivity extends FragmentActivity implements ActionBa
 
 
     public void OnNew(View v) {
-        Intent intent = new Intent(this, SettingsActivity.class);
-        finish();
-        startActivity(intent);
+        final Intent intentForActivitySettings = new Intent(this, SettingsActivity.class);
+
+		final Dialog dialog = new Dialog(v.getContext());
+		dialog.setContentView(R.layout.modal_avatar_method_select_type);
+
+		VendingMachineActivity.btn_close = (Button) dialog.findViewById(R.id.dialogButtonCancel);
+		VendingMachineActivity.btn_ok = (Button) dialog.findViewById(R.id.dialogButtonOK);
+
+		final Spinner s = (Spinner) dialog.findViewById(R.id.spinner_state);
+		s.setAdapter(new ArrayAdapter(dialog.getContext(), R.layout.spinner_item, new String[]{"NFC", "QR", "CODIGO DE BARRAS"}));
+
+		btn_close.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				dialog.dismiss();
+			}
+		});
+
+		btn_ok.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+
+				int position = s.getSelectedItemPosition();
+				finish();
+				switch(position) {
+					case 0:
+						startActivity(intentForActivitySettings);
+					case 1:
+						//QR
+					case 2:
+						//CODIGO DE BARRAS
+				}
+				dialog.dismiss();
+			}
+		});
+
+		dialog.setTitle("AVATAR - BITMOVIL");
+		dialog.show();
+
     }
 
 
