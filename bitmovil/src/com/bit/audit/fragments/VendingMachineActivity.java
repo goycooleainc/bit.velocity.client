@@ -3,6 +3,7 @@ package com.bit.audit.fragments;
 import android.app.*;
 import android.app.ActionBar.Tab;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.*;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
@@ -40,6 +41,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import org.apache.james.mime4j.util.CharsetUtil;
 
+import java.awt.font.NumericShaper;
 import java.lang.reflect.Type;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
@@ -167,7 +169,7 @@ public class VendingMachineActivity extends FragmentActivity implements ActionBa
 
 	}
 
-
+	//Boton new en ventana avatares
     public void OnNew(View v) {
         final Intent intentForActivitySettings = new Intent(this, SettingsActivity.class);
 
@@ -430,6 +432,12 @@ public class VendingMachineActivity extends FragmentActivity implements ActionBa
 			public void onItemClick(AdapterView<?> adapterView, View v, int position, long id) {
 				final Dialog dialog = new Dialog(v.getContext());
 				dialog.setContentView(R.layout.modal_eventos_method);
+
+				final NumberPicker numberPicker = (NumberPicker) dialog.findViewById(R.id.numberPicker);
+				numberPicker.setMinValue(1);
+				numberPicker.setMaxValue(100);
+				numberPicker.setWrapSelectorWheel(true);
+
 				VendingMachineActivity.btn_close = (Button) dialog.findViewById(R.id.dialogButtonCancel);
                 VendingMachineActivity.btn_ok = (Button) dialog.findViewById(R.id.dialogButtonOK);
 
@@ -438,7 +446,7 @@ public class VendingMachineActivity extends FragmentActivity implements ActionBa
 				((TextView) dialog.findViewById(R.id.txDetalleEvento)).setText("$" + obj.getPrecio() + CharsetUtil.CRLF + obj.getNombre() + CharsetUtil.CRLF + obj.getDetalle().toString() + CharsetUtil.CRLF + obj.getFechaInicio());
 				GetImageTask it = new GetImageTask();
 				try {
-					it.setUrl("http://bit.goycooleainc.com/dmz/multimedia/" + obj.getId() + "/type/1/" + obj.getId() + "-0");
+					it.setUrl(Resources.getSystem().getString(R.string.server) + "/dmz/multimedia/" + obj.getId() + "/type/1/" + obj.getId() + "-0");
 					imagen.setImageDrawable((Drawable) it.execute(new Void[0]).get());
 				} catch (InterruptedException e) {
 					e.printStackTrace();
@@ -454,7 +462,7 @@ public class VendingMachineActivity extends FragmentActivity implements ActionBa
                         Transaccion tx = new Transaccion();
                         String avatar = VentaHashmapCollectionSingleton.avatar.getCodigo();
                         tx.setAvatar(avatar);
-                        tx.setCantidad("1");
+                        tx.setCantidad(String.valueOf(numberPicker.getValue()));
                         tx.setFecha("");
                         tx.setGps("0.0,0.0");
                         tx.setIdProducto(obj.getId());

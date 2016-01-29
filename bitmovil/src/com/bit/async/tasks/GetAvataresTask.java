@@ -1,7 +1,10 @@
 package com.bit.async.tasks;
 
 import android.app.ProgressDialog;
+import android.content.res.Resources;
 import android.os.AsyncTask;
+
+import com.bit.client.R;
 import com.bit.entities.Avatar;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -45,6 +48,7 @@ public class GetAvataresTask extends AsyncTask<Void, Void, ArrayList<Avatar>> {
     final String GetExecution() {
         BufferedReader bufferedReader;
         try {
+//            BufferedReader inStream = new BufferedReader(new InputStreamReader(new DefaultHttpClient().execute(new HttpGet("http://192.168.4.100:8080/mobile/avatares/" + this.idUsuario)).getEntity().getContent(), HTTP.UTF_8));
             BufferedReader inStream = new BufferedReader(new InputStreamReader(new DefaultHttpClient().execute(new HttpGet("http://bit.goycooleainc.com/mobile/avatares/" + this.idUsuario)).getEntity().getContent(), HTTP.UTF_8));
             try {
                 this.result = inStream.readLine();

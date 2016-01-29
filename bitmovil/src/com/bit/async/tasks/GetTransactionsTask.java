@@ -1,7 +1,10 @@
 package com.bit.async.tasks;
 
 import android.app.ProgressDialog;
+import android.content.res.Resources;
 import android.os.AsyncTask;
+
+import com.bit.client.R;
 import com.bit.entities.Venta;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -45,6 +48,7 @@ public class GetTransactionsTask extends AsyncTask<Void, Void, ArrayList<Venta>>
     final String GetReports() {
         BufferedReader bufferedReader;
         try {
+//            BufferedReader inStream = new BufferedReader(new InputStreamReader(new DefaultHttpClient().execute(new HttpGet("http://192.168.4.100:8080/mobile/ventas/usuario/" + this.idUsuario)).getEntity().getContent(), HTTP.UTF_8));
             BufferedReader inStream = new BufferedReader(new InputStreamReader(new DefaultHttpClient().execute(new HttpGet("http://bit.goycooleainc.com/mobile/ventas/usuario/" + this.idUsuario)).getEntity().getContent(), HTTP.UTF_8));
             try {
                 this.result = inStream.readLine();

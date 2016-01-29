@@ -1,6 +1,10 @@
 package com.bit.async.tasks;
 
+import android.content.res.Resources;
 import android.os.AsyncTask;
+
+import com.bit.client.R;
+
 import org.apache.http.HttpHeaders;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -36,7 +40,7 @@ public class UpdateAvatarTask extends AsyncTask<String, Void, String> {
 
     protected String doInBackground(String... params) {
         String result = "NACK";
-        String url = "http://bit.goycooleainc.com/mobile/avatares/request/update";
+        String url = Resources.getSystem().getString(R.string.server) + "/mobile/avatares/request/update";
         try {
             DefaultHttpClient httpclient = new DefaultHttpClient();
             HttpPost httpRequest = new HttpPost(url);
