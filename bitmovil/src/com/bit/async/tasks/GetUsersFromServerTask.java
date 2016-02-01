@@ -1,7 +1,11 @@
 package com.bit.async.tasks;
 
+import android.content.Context;
+import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.util.Log;
+
+import com.bit.client.R;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.bit.entities.User;
@@ -25,14 +29,19 @@ public class GetUsersFromServerTask extends AsyncTask<Void, Void, ArrayList<User
 	String ip = "78.41.206.33";
 	String usuario = "1-1";
 	String password = "password";
+	private Context context;
 
-	
+	public GetUsersFromServerTask(Context context){
+		this.context = context;
+	}
+
 	final String GetUsers()
 	{
 		try
 		{
 			HttpClient httpClient = new DefaultHttpClient();
-			HttpGet httpGet = new HttpGet("http://bit.goycooleainc.com/mobile/users");
+			String url = context.getString(R.string.server);
+			HttpGet httpGet = new HttpGet(url + "/mobile/users");
 			httpGet.addHeader(BasicScheme.authenticate(new UsernamePasswordCredentials("1-1", "password"),"UTF-8", false));
 			HttpResponse httpResponse = httpClient.execute(httpGet);
 			HttpEntity responseEntity = httpResponse.getEntity();

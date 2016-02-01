@@ -1,7 +1,7 @@
 package com.bit.async.tasks;
 
 import android.app.ProgressDialog;
-import android.content.res.Resources;
+import android.content.Context;
 import android.os.AsyncTask;
 
 import com.bit.client.R;
@@ -22,6 +22,7 @@ public class GetEventosTask extends AsyncTask<Void, Void, ArrayList<Eventos>> {
     ProgressDialog progressDialog;
     String result;
     String usuario;
+    private Context context;
 
     /* renamed from: com.bit.async.tasks.GetEventosTask.1 */
     class C01711 extends TypeToken<ArrayList<Eventos>> {
@@ -29,17 +30,18 @@ public class GetEventosTask extends AsyncTask<Void, Void, ArrayList<Eventos>> {
         }
     }
 
-    public GetEventosTask() {
+    public GetEventosTask(Context context) {
         this.result = null;
         this.ip = "78.41.206.33";
         this.usuario = "1-1";
         this.password = "password";
+        this.context = context;
     }
 
     final String GetExecution() {
         try {
-//            BufferedReader inStream = new BufferedReader(new InputStreamReader(new DefaultHttpClient().execute(new HttpGet("http://192.168.4.100:8080/mobile/open/eventos")).getEntity().getContent(), HTTP.UTF_8));
-            BufferedReader inStream = new BufferedReader(new InputStreamReader(new DefaultHttpClient().execute(new HttpGet("http://bit.goycooleainc.com/mobile/open/eventos")).getEntity().getContent(), HTTP.UTF_8));
+            String url = context.getString(R.string.server);
+            BufferedReader inStream = new BufferedReader(new InputStreamReader(new DefaultHttpClient().execute(new HttpGet(url + "/mobile/open/eventos")).getEntity().getContent(), HTTP.UTF_8));
             BufferedReader bufferedReader;
             try {
                 this.result = inStream.readLine();

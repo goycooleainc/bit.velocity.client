@@ -1,6 +1,10 @@
 package com.bit.async.tasks;
 
+import android.content.Context;
 import android.os.AsyncTask;
+
+import com.bit.client.R;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
@@ -20,6 +24,11 @@ public class DirectNewTransaction extends AsyncTask<String, Void, String> {
     String ip = "78.41.206.33";
     String usuario = "1-1";
     String password = "password";
+    private Context context;
+
+    public DirectNewTransaction(Context context) {
+        this.context = context;
+    }
 
     public String getDATA() {
         return DATA;
@@ -50,7 +59,8 @@ public class DirectNewTransaction extends AsyncTask<String, Void, String> {
     public String directSend(String DATA){
 
         String result = "";
-        String url = "http://bit.goycooleainc.com/mobile/transaction/send";
+        String server = context.getString(R.string.server);
+        String url = server + "/mobile/transaction/send";
         try
         {
 

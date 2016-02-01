@@ -1,7 +1,7 @@
 package com.bit.async.tasks;
 
 import android.app.ProgressDialog;
-import android.content.res.Resources;
+import android.content.Context;
 import android.os.AsyncTask;
 
 import com.bit.client.R;
@@ -23,6 +23,7 @@ public class GetAvataresTask extends AsyncTask<Void, Void, ArrayList<Avatar>> {
     ProgressDialog progressDialog;
     String result;
     String usuario;
+    private Context context;
 
     /* renamed from: com.bit.async.tasks.GetAvataresTask.1 */
     class C01691 extends TypeToken<ArrayList<Avatar>> {
@@ -30,11 +31,12 @@ public class GetAvataresTask extends AsyncTask<Void, Void, ArrayList<Avatar>> {
         }
     }
 
-    public GetAvataresTask() {
+    public GetAvataresTask(Context context) {
         this.result = null;
         this.ip = "78.41.206.33";
         this.usuario = "1-1";
         this.password = "password";
+        this.context = context;
     }
 
     public String getIdUsuario() {
@@ -48,8 +50,8 @@ public class GetAvataresTask extends AsyncTask<Void, Void, ArrayList<Avatar>> {
     final String GetExecution() {
         BufferedReader bufferedReader;
         try {
-//            BufferedReader inStream = new BufferedReader(new InputStreamReader(new DefaultHttpClient().execute(new HttpGet("http://192.168.4.100:8080/mobile/avatares/" + this.idUsuario)).getEntity().getContent(), HTTP.UTF_8));
-            BufferedReader inStream = new BufferedReader(new InputStreamReader(new DefaultHttpClient().execute(new HttpGet("http://bit.goycooleainc.com/mobile/avatares/" + this.idUsuario)).getEntity().getContent(), HTTP.UTF_8));
+            String server = context.getString(R.string.server);
+            BufferedReader inStream = new BufferedReader(new InputStreamReader(new DefaultHttpClient().execute(new HttpGet(server + "/mobile/avatares/" + this.idUsuario)).getEntity().getContent(), HTTP.UTF_8));
             try {
                 this.result = inStream.readLine();
                 bufferedReader = inStream;

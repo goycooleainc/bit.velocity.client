@@ -72,10 +72,10 @@ public class StartActivity extends Activity implements LoaderManager.LoaderCallb
 
 			VentaHashmapCollectionSingleton.getInstance().user = user;
 
-			GetEstadoCuentaTask task_1 = new GetEstadoCuentaTask();
-			GetAvataresTask task_2 = new GetAvataresTask();
-			GetTransactionsTask task_3 = new GetTransactionsTask();
-			GetProductosFromServerTask task_4 = new GetProductosFromServerTask();
+			GetEstadoCuentaTask task_1 = new GetEstadoCuentaTask(getApplicationContext());
+			GetAvataresTask task_2 = new GetAvataresTask(getApplicationContext());
+			GetTransactionsTask task_3 = new GetTransactionsTask(getApplicationContext());
+			GetProductosFromServerTask task_4 = new GetProductosFromServerTask(getApplicationContext());
 
 			task_1.setIdUsuario(user.getIdUsuario());
 			task_2.setIdUsuario(user.getIdUsuario());

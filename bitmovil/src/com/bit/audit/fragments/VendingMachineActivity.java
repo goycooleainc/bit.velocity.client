@@ -1,10 +1,19 @@
 package com.bit.audit.fragments;
 
-import android.app.*;
+import android.app.ActionBar;
 import android.app.ActionBar.Tab;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.FragmentTransaction;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.*;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -21,15 +30,37 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.*;
+import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.NumberPicker;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import com.bit.adapters.AvataresItemListAdapter;
 import com.bit.adapters.EventosItemListAdapter;
 import com.bit.adapters.ProductosBitItemListAdapter;
 import com.bit.adapters.VentasItemListAdapter;
-import com.bit.async.tasks.*;
+import com.bit.async.tasks.DirectNewTransaction;
+import com.bit.async.tasks.GetEvaluatorImageHelper;
+import com.bit.async.tasks.GetImageTask;
+import com.bit.async.tasks.GetTransactionsTask;
+import com.bit.async.tasks.UpdateAvatarTask;
 import com.bit.client.R;
-import com.bit.entities.*;
+import com.bit.entities.Avatar;
+import com.bit.entities.ClientesList;
+import com.bit.entities.Eventos;
+import com.bit.entities.HitosAuditorias;
+import com.bit.entities.Productos;
+import com.bit.entities.Transaccion;
+import com.bit.entities.Venta;
 import com.bit.singletons.CacheCollectionSingleton;
 import com.bit.singletons.ProductHashmapCollectionSingleton;
 import com.bit.singletons.VentaHashmapCollectionSingleton;
@@ -39,9 +70,9 @@ import com.bit.vending.StartActivity;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+
 import org.apache.james.mime4j.util.CharsetUtil;
 
-import java.awt.font.NumericShaper;
 import java.lang.reflect.Type;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
@@ -315,7 +346,7 @@ public class VendingMachineActivity extends FragmentActivity implements ActionBa
                         obj.setEstado(s.getSelectedItemPosition());
                         obj.setIdUser(Integer.parseInt(VentaHashmapCollectionSingleton.getInstance().user.getIdUsuario()));
 
-                        UpdateAvatarTask task = new UpdateAvatarTask();
+                        UpdateAvatarTask task = new UpdateAvatarTask(getActivity().getApplicationContext());
                         task.setDATA(new Gson().toJson(obj));
                         task.execute();
 
@@ -446,7 +477,7 @@ public class VendingMachineActivity extends FragmentActivity implements ActionBa
 				((TextView) dialog.findViewById(R.id.txDetalleEvento)).setText("$" + obj.getPrecio() + CharsetUtil.CRLF + obj.getNombre() + CharsetUtil.CRLF + obj.getDetalle().toString() + CharsetUtil.CRLF + obj.getFechaInicio());
 				GetImageTask it = new GetImageTask();
 				try {
-					it.setUrl(Resources.getSystem().getString(R.string.server) + "/dmz/multimedia/" + obj.getId() + "/type/1/" + obj.getId() + "-0");
+					it.setUrl(v.getContext().getString(R.string.server) + "/dmz/multimedia/" + obj.getId() + "/type/1/" + obj.getId() + "-0");
 					imagen.setImageDrawable((Drawable) it.execute(new Void[0]).get());
 				} catch (InterruptedException e) {
 					e.printStackTrace();
@@ -459,6 +490,13 @@ public class VendingMachineActivity extends FragmentActivity implements ActionBa
 
                     @Override
                     public void onClick(View v) {
+                        DecimalFormat df = new DecimalFormat("#,##0.00");
+                        df.setDecimalFormatSymbols(new DecimalFormatSymbols(Locale.ITALY));
+                        df.format(new BigDecimal(VentaHashmapCollectionSingleton.estadoCuenta.getSaldo()));
+
+                        Double total = Double.valueOf(obj.getPrecio()) * numberPicker.getValue();
+                        Double resto = Double.valueOf(VentaHashmapCollectionSingleton.estadoCuenta.getSaldo()) - total;
+
                         Transaccion tx = new Transaccion();
                         String avatar = VentaHashmapCollectionSingleton.avatar.getCodigo();
                         tx.setAvatar(avatar);
@@ -470,15 +508,23 @@ public class VendingMachineActivity extends FragmentActivity implements ActionBa
                         tx.setMetodoPago(0);
                         tx.setMoneda(0);
                         tx.setPublicKey("");
-                        tx.setTotal(obj.getPrecio());
+                        tx.setTotal(String.valueOf(total));
 
-                        DirectNewTransaction task = new DirectNewTransaction();
+                        DirectNewTransaction task = new DirectNewTransaction(getActivity().getApplicationContext());
                         task.setDATA(new Gson().toJson(tx));
                         //task.directSend(new Gson().toJson(obj));
                         task.execute();
 
                         AlertDialog.Builder bld = new AlertDialog.Builder(getActivity());
-                        bld.setMessage("Compra Hecha Con Exito !!");
+                        //Refrescar fragment principal para actualizar salgo
+
+                        if(resto >= 0) {
+                            VentaHashmapCollectionSingleton.estadoCuenta.setSaldo(String.valueOf(resto).toString());
+                            bld.setMessage("Compra Hecha Con Exito !!");
+                        }else{
+                            bld.setMessage("Saldo insuficiente !!");
+                        }
+
                         bld.setNeutralButton("OK", null);
                         Log.d("compra evento", "Showing alert dialog: " + obj.getNombre());
                         bld.create().show();
@@ -568,7 +614,7 @@ public class VendingMachineActivity extends FragmentActivity implements ActionBa
         @Override
         public void onRefresh() {
             List<Venta> final_list;
-            GetTransactionsTask task_3 = new GetTransactionsTask();
+            GetTransactionsTask task_3 = new GetTransactionsTask(getActivity().getBaseContext());
             task_3.setIdUsuario(VentaHashmapCollectionSingleton.getInstance().user.getIdUsuario());
 
             try {
@@ -732,26 +778,26 @@ public class VendingMachineActivity extends FragmentActivity implements ActionBa
 
 
 	/**
-	 * 
+	 *
 	 * @author goycolea
 	 *
 	 */
 	public class SectionsPagerAdapter extends FragmentStatePagerAdapter
 	{
 		private int count;
-		
+
 	    public SectionsPagerAdapter(FragmentManager arg2)
 	    {
 	      super(arg2);
 	    }
-	    
+
 	    @Override
 		public int getCount()
 	    {
            return count;
 	    }
-	    
-	    
+
+
 	    @Override
 		public Fragment getItem(int paramInt)
 	    {
@@ -775,10 +821,10 @@ public class VendingMachineActivity extends FragmentActivity implements ActionBa
 
 			this.count = count;
 		}
-	    
+
 	  }
 	/**
-	 * 
+	 *
 	 */
 	@Override
 	public void onTabSelected(Tab tab, FragmentTransaction ft) {
@@ -786,20 +832,20 @@ public class VendingMachineActivity extends FragmentActivity implements ActionBa
 		mViewPager.setCurrentItem(tab.getPosition());
 	}
 	/**
-	 * 
+	 *
 	 */
 	@Override
 	public void onTabUnselected(Tab tab, FragmentTransaction ft) {
 		// TODO Auto-generated method stub
-		
+
 	}
 	/**
-	 * 
+	 *
 	 */
 	@Override
 	public void onTabReselected(Tab tab, FragmentTransaction ft) {
 		// TODO Auto-generated method stub
-		
+
 	}
     /**
      * METODO PARA REDONDEAR IMAGENES

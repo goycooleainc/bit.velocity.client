@@ -1,7 +1,10 @@
 package com.bit.async.tasks;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.AsyncTask;
+
+import com.bit.client.R;
 import com.bit.entities.Venta;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -25,6 +28,11 @@ public class GetVentasFromServerTask extends AsyncTask<Void, Void, ArrayList<Ven
 	String password = "password";
 	ProgressDialog progressDialog;
 	public String productora;
+	private Context context;
+
+	public GetVentasFromServerTask(Context context){
+		this.context = context;
+	}
 
 	public String getProductora() {
 		return productora;
@@ -40,7 +48,8 @@ public class GetVentasFromServerTask extends AsyncTask<Void, Void, ArrayList<Ven
 		try 
 		{
 			HttpClient httpClient = new DefaultHttpClient();
-			HttpGet httpGet = new HttpGet("http://bit.goycooleainc.com/mobile/ventas/"+productora);
+			String server = context.getString(R.string.server);
+			HttpGet httpGet = new HttpGet(server + "/mobile/ventas/"+productora);
 			HttpResponse httpResponse = httpClient.execute(httpGet);
 			HttpEntity responseEntity = httpResponse.getEntity();
 			inStream = new BufferedReader(new InputStreamReader(responseEntity.getContent(), "UTF-8"));

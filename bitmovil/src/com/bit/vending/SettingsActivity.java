@@ -222,7 +222,7 @@ public class SettingsActivity extends Activity implements LoyaltyCardReader.Acco
                 //this.tx_nuevo_avatar.setText("[Listening]");
                 return;
             }else {
-                NewAvatarTask task = new NewAvatarTask();
+                NewAvatarTask task = new NewAvatarTask(getApplicationContext());
                 task.setDATA(new Gson().toJson(new_avatar));
                 task.execute(new String[0]);
                 Toast.makeText(getBaseContext(), "Avatar Guardado ............. [OK]", Toast.LENGTH_LONG).show();

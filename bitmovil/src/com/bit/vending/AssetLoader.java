@@ -34,8 +34,8 @@ public class AssetLoader extends AsyncTaskLoader<List<User>> {
         if (activeNetworkInfo == null || !activeNetworkInfo.isConnected()) {
             return null;
         }
-        GetUsersFromServerTask users_mediator = new GetUsersFromServerTask();
-        GetEventosTask events_mediator = new GetEventosTask();
+        GetUsersFromServerTask users_mediator = new GetUsersFromServerTask(getContext());
+        GetEventosTask events_mediator = new GetEventosTask(getContext());
         List<User> list = null;
         try {
             list = (List) users_mediator.execute(new Void[0]).get();

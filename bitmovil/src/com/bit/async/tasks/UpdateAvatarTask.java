@@ -1,6 +1,6 @@
 package com.bit.async.tasks;
 
-import android.content.res.Resources;
+import android.content.Context;
 import android.os.AsyncTask;
 
 import com.bit.client.R;
@@ -23,11 +23,13 @@ public class UpdateAvatarTask extends AsyncTask<String, Void, String> {
     String ip;
     String password;
     String usuario;
+    private Context context;
 
-    public UpdateAvatarTask() {
+    public UpdateAvatarTask(Context context) {
         this.ip = "78.41.206.33";
         this.usuario = "1-1";
         this.password = "password";
+        this.context = context;
     }
 
     public String getDATA() {
@@ -40,7 +42,8 @@ public class UpdateAvatarTask extends AsyncTask<String, Void, String> {
 
     protected String doInBackground(String... params) {
         String result = "NACK";
-        String url = Resources.getSystem().getString(R.string.server) + "/mobile/avatares/request/update";
+        String server = context.getString(R.string.server);
+        String url = server + "/mobile/avatares/request/update";
         try {
             DefaultHttpClient httpclient = new DefaultHttpClient();
             HttpPost httpRequest = new HttpPost(url);
