@@ -50,11 +50,13 @@ import com.bit.adapters.AvataresItemListAdapter;
 import com.bit.adapters.EventosItemListAdapter;
 import com.bit.adapters.ProductosBitItemListAdapter;
 import com.bit.adapters.TransactionsItemListAdapter;
+import com.bit.adapters.VentasItemListAdapter;
 import com.bit.async.tasks.DirectNewTransaction;
 import com.bit.async.tasks.GetEvaluatorImageHelper;
 import com.bit.async.tasks.GetImageTask;
 import com.bit.async.tasks.GetTransactionsTask;
 import com.bit.async.tasks.GetUsersFromServerTask;
+import com.bit.async.tasks.GetVentasTask;
 import com.bit.async.tasks.UpdateAvatarTask;
 import com.bit.client.R;
 import com.bit.entities.Avatar;
@@ -180,11 +182,11 @@ public class VendingMachineActivity extends FragmentActivity implements ActionBa
 		mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
 		if (obj != null) {
-			mSectionsPagerAdapter.setCount(5);
+			mSectionsPagerAdapter.setCount(6);
 			mSectionsPagerAdapter.notifyDataSetChanged();
 			// auditoria = obj;
 		} else {
-			mSectionsPagerAdapter.setCount(5);
+			mSectionsPagerAdapter.setCount(6);
 			mSectionsPagerAdapter.notifyDataSetChanged();
 		}
 
@@ -838,6 +840,84 @@ public class VendingMachineActivity extends FragmentActivity implements ActionBa
 		}
 	}
 
+	public static class MiEspacioFragment extends Fragment implements OnRefreshListener{
+		static int _position;
+		private VentasItemListAdapter adapter;
+		private int id;
+
+		class ShowListVenta implements OnItemClickListener {
+			final List final_list;
+
+			class ShowModalVenta implements View.OnClickListener {
+				final Dialog val$dialog;
+
+				ShowModalVenta(Dialog dialog) {
+					this.val$dialog = dialog;
+				}
+
+				public void onClick(View v) {
+					this.val$dialog.dismiss();
+				}
+			}
+
+			public ShowListVenta(List list) {
+				this.final_list = list;
+			}
+
+			public void onItemClick(AdapterView<?> adapterView, View v, int position, long id) {
+			}
+		}
+
+		@Override
+		public void onRefresh() {
+			List<Venta> final_list;
+			GetVentasTask task_3 = new GetVentasTask(getActivity().getBaseContext());
+			task_3.setIdUsuario(VentaHashmapCollectionSingleton.getInstance().user.getIdUsuario());
+
+			try {
+				VentaHashmapCollectionSingleton.getInstance().ventas = (List) task_3.execute(new Void[0]).get();
+				VentaHashmapCollectionSingleton.getInstance();
+				if (VentaHashmapCollectionSingleton.ventas != null) {
+					VentaHashmapCollectionSingleton.getInstance();
+					final_list = VentaHashmapCollectionSingleton.ventas;
+				} else {
+					final_list = new ArrayList();
+				}
+				this.adapter = new VentasItemListAdapter(getActivity().getBaseContext(), final_list);
+				VendingMachineActivity.lv3.setAdapter(this.adapter);
+				this.adapter.notifyDataSetChanged();
+				VendingMachineActivity.lv3.setOnItemClickListener(new ShowListVenta(final_list));
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			} catch (ExecutionException e) {
+				e.printStackTrace();
+			}
+		}
+
+		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+			View rootView = inflater.inflate(R.layout.fragment_ventas_list, container, false);
+			((TextView) rootView.findViewById(R.id.venta_nombre)).setText(VendingMachineActivity.nombre_usuario != null ? VendingMachineActivity.nombre_usuario.toString() : "");
+			VendingMachineActivity.lv3 = (ListView) rootView.findViewById(R.id.venta_list);
+			try {
+				List<Venta> final_list;
+				VentaHashmapCollectionSingleton.getInstance();
+				if (VentaHashmapCollectionSingleton.ventas != null) {
+					VentaHashmapCollectionSingleton.getInstance();
+					final_list = VentaHashmapCollectionSingleton.ventas;
+				} else {
+					final_list = new ArrayList();
+				}
+				this.adapter = new VentasItemListAdapter(getActivity().getBaseContext(), final_list);
+				VendingMachineActivity.lv3.setAdapter(this.adapter);
+				this.adapter.notifyDataSetChanged();
+				VendingMachineActivity.lv3.setOnItemClickListener(new ShowListVenta(final_list));
+			} catch (Exception ex) {
+				ex.toString();
+			}
+			return rootView;
+		}
+	}
+
 
 	/**
 	 *
@@ -874,6 +954,8 @@ public class VendingMachineActivity extends FragmentActivity implements ActionBa
                    return new VendingMachineActivity.EventosFragment();
 	    	  case 4:
 	    		   return new VendingMachineActivity.VendingFragment();
+	    	  case 5:
+	    		   return new VendingMachineActivity.MiEspacioFragment();
 	    	  default:
 				   return new VendingMachineActivity.MenuFragment();
 	    	}

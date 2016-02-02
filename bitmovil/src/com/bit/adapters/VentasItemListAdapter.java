@@ -52,39 +52,34 @@ public class VentasItemListAdapter extends BaseAdapter
     public View getView(int position, View convertView, ViewGroup parent) {
         /// ViewHolder
     	ViewHolder holder;
-    	//// convertView
-//        if (convertView == null) {
-//        	/// convertView
-//            convertView = layoutInflater.inflate(R.layout.transacciones_report_item, null);
-//            /// view Holder
-//            holder = new ViewHolder();
-//            holder.txtLinea = (TextView) convertView.findViewById(R.id.txLinea);
-//            holder.txtFecha = (TextView) convertView.findViewById(R.id.txFecha);
-//            holder.txtNumeroSerie = (TextView) convertView.findViewById(R.id.txNumeroSerie);
-//
-//            convertView.setTag(holder);
-//        } else {
-//            holder = (ViewHolder) convertView.getTag();
-//        }
-//
-//        //String modelo = EventosHashmapCollectionSingleton.getInstance().hmEquipos.get(listData.get(position).getModelo());
-//        String cliente = listData.get(position).getTotal();
-//        holder.txtLinea.setText("$ " + cliente);
-//        holder.txtFecha.setText(listData.get(position).getFecha());
-//        holder.txtNumeroSerie.setText(listData.get(position).getAvatar()!= null ? listData.get(position).getAvatar() : "[OK]");
+    	// convertView
+        if (convertView == null) {
+        	/// convertView
+            convertView = layoutInflater.inflate(R.layout.ventas_report_item, null);
+            /// view Holder
+            holder = new ViewHolder();
+            holder.txtLinea = (TextView) convertView.findViewById(R.id.txLinea);
+            holder.txtFecha = (TextView) convertView.findViewById(R.id.txFecha);
+            holder.txtNumeroSerie = (TextView) convertView.findViewById(R.id.txNumeroSerie);
+
+            convertView.setTag(holder);
+        } else {
+            holder = (ViewHolder) convertView.getTag();
+        }
+
+        //String modelo = EventosHashmapCollectionSingleton.getInstance().hmEquipos.get(listData.get(position).getModelo());
+        String cliente = listData.get(position).getTotal();
+        holder.txtLinea.setText("$ " + cliente);
+        holder.txtFecha.setText(listData.get(position).getFecha());
+        holder.txtNumeroSerie.setText(listData.get(position).getAvatar()!= null ? listData.get(position).getAvatar() : "[OK]");
 
         
         return convertView;
     }
 
     static class ViewHolder {
-
-        
         TextView txtLinea;
-
         TextView txtFecha;
-
-
         TextView txtNumeroSerie;
     }
  

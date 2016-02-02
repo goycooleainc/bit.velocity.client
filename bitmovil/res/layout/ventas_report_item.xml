@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="100dp"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp" >
+
+        <TextView
+            android:id="@+id/txLinea"
+            android:layout_width="0dp"
+            android:layout_weight=".25"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:lines="2"
+            android:textAppearance="@style/texto_normal_label"
+            android:textSize="16sp" android:textStyle="bold" android:textColor="#50505A"/>
+
+        <TextView
+            android:id="@+id/txFecha"
+            android:layout_width="0dp"
+            android:layout_weight=".25"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:gravity="center"
+            android:lines="2"
+            android:textAppearance="@style/texto_normal_label"
+            android:textSize="16sp"  android:textStyle="bold" android:textColor="#50505A" />
+
+        <TextView
+            android:id="@+id/txNumeroSerie"
+            android:layout_width="0dp"
+            android:layout_weight=".25"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:lines="2"
+            android:textAppearance="@style/texto_normal_label"
+            android:textSize="16sp"
+            android:textStyle="bold" android:textColor="#000000"/>
+
+    </LinearLayout>
+
+</LinearLayout>

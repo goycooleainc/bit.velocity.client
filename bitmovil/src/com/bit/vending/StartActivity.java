@@ -16,12 +16,14 @@ import com.bit.async.tasks.GetAvataresTask;
 import com.bit.async.tasks.GetEstadoCuentaTask;
 import com.bit.async.tasks.GetProductosFromServerTask;
 import com.bit.async.tasks.GetTransactionsTask;
+import com.bit.async.tasks.GetVentasTask;
 import com.bit.audit.fragments.VendingMachineActivity;
 import com.bit.client.R;
 import com.bit.entities.EstadoCuenta;
 import com.bit.entities.User;
 import com.bit.singletons.UsersHashmapCollection;
 import com.bit.singletons.TransactionHashmapCollectionSingleton;
+import com.bit.singletons.VentaHashmapCollectionSingleton;
 import com.bit.utils.OfflineUserManager;
 
 import java.util.Date;
@@ -76,16 +78,19 @@ public class StartActivity extends Activity implements LoaderManager.LoaderCallb
 			GetAvataresTask task_2 = new GetAvataresTask(getApplicationContext());
 			GetTransactionsTask task_3 = new GetTransactionsTask(getApplicationContext());
 			GetProductosFromServerTask task_4 = new GetProductosFromServerTask(getApplicationContext());
+			GetVentasTask task_5 = new GetVentasTask(getApplicationContext());
 
 			task_1.setIdUsuario(user.getIdUsuario());
 			task_2.setIdUsuario(user.getIdUsuario());
 			task_3.setIdUsuario(user.getIdUsuario());
+			task_5.setIdUsuario(user.getIdUsuario());
 
 			try {
 				TransactionHashmapCollectionSingleton.getInstance().estadoCuenta = (EstadoCuenta) task_1.execute(new Void[0]).get();
 				TransactionHashmapCollectionSingleton.getInstance().avatares = (List) task_2.execute(new Void[0]).get();
 				TransactionHashmapCollectionSingleton.getInstance().transacciones = (List) task_3.execute(new Void[0]).get();
 				TransactionHashmapCollectionSingleton.getInstance().productos = (List) task_4.execute(new Void[0]).get();
+				VentaHashmapCollectionSingleton.getInstance().ventas = (List) task_5.execute(new Void[0]).get();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			} catch (ExecutionException e2) {
