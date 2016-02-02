@@ -21,7 +21,7 @@ import com.bit.client.R;
 import com.bit.entities.EstadoCuenta;
 import com.bit.entities.User;
 import com.bit.singletons.UsersHashmapCollection;
-import com.bit.singletons.VentaHashmapCollectionSingleton;
+import com.bit.singletons.TransactionHashmapCollectionSingleton;
 import com.bit.utils.OfflineUserManager;
 
 import java.util.Date;
@@ -70,7 +70,7 @@ public class StartActivity extends Activity implements LoaderManager.LoaderCallb
 			error();
 		} else if (user.getState() == 1) {
 
-			VentaHashmapCollectionSingleton.getInstance().user = user;
+			TransactionHashmapCollectionSingleton.getInstance().user = user;
 
 			GetEstadoCuentaTask task_1 = new GetEstadoCuentaTask(getApplicationContext());
 			GetAvataresTask task_2 = new GetAvataresTask(getApplicationContext());
@@ -82,10 +82,10 @@ public class StartActivity extends Activity implements LoaderManager.LoaderCallb
 			task_3.setIdUsuario(user.getIdUsuario());
 
 			try {
-				VentaHashmapCollectionSingleton.getInstance().estadoCuenta = (EstadoCuenta) task_1.execute(new Void[0]).get();
-				VentaHashmapCollectionSingleton.getInstance().avatares = (List) task_2.execute(new Void[0]).get();
-				VentaHashmapCollectionSingleton.getInstance().ventas = (List) task_3.execute(new Void[0]).get();
-				VentaHashmapCollectionSingleton.getInstance().productos = (List) task_4.execute(new Void[0]).get();
+				TransactionHashmapCollectionSingleton.getInstance().estadoCuenta = (EstadoCuenta) task_1.execute(new Void[0]).get();
+				TransactionHashmapCollectionSingleton.getInstance().avatares = (List) task_2.execute(new Void[0]).get();
+				TransactionHashmapCollectionSingleton.getInstance().transacciones = (List) task_3.execute(new Void[0]).get();
+				TransactionHashmapCollectionSingleton.getInstance().productos = (List) task_4.execute(new Void[0]).get();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			} catch (ExecutionException e2) {

@@ -5,9 +5,10 @@ import android.content.Context;
 import android.os.AsyncTask;
 
 import com.bit.client.R;
-import com.bit.entities.Venta;
+import com.bit.entities.Transaccion;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.lang.reflect.Type;
@@ -16,7 +17,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.protocol.HTTP;
 
-public class GetTransactionsTask extends AsyncTask<Void, Void, ArrayList<Venta>> {
+public class GetTransactionsTask extends AsyncTask<Void, Void, ArrayList<Transaccion>> {
     public String idUsuario;
     String ip;
     String password;
@@ -26,7 +27,7 @@ public class GetTransactionsTask extends AsyncTask<Void, Void, ArrayList<Venta>>
     private Context context;
 
     /* renamed from: com.bit.async.tasks.GetTransactionsTask.1 */
-    class C01741 extends TypeToken<ArrayList<Venta>> {
+    class C01741 extends TypeToken<ArrayList<Transaccion>> {
         C01741() {
         }
     }
@@ -51,7 +52,7 @@ public class GetTransactionsTask extends AsyncTask<Void, Void, ArrayList<Venta>>
         BufferedReader bufferedReader;
         try {
             String url = context.getString(R.string.server);
-            BufferedReader inStream = new BufferedReader(new InputStreamReader(new DefaultHttpClient().execute(new HttpGet(url + "/mobile/ventas/usuario/" + this.idUsuario)).getEntity().getContent(), HTTP.UTF_8));
+            BufferedReader inStream = new BufferedReader(new InputStreamReader(new DefaultHttpClient().execute(new HttpGet(url + "/mobile/transacciones/usuario/" + this.idUsuario)).getEntity().getContent(), HTTP.UTF_8));
             try {
                 this.result = inStream.readLine();
                 bufferedReader = inStream;
@@ -65,7 +66,7 @@ public class GetTransactionsTask extends AsyncTask<Void, Void, ArrayList<Venta>>
         }
     }
 
-    protected ArrayList<Venta> doInBackground(Void... params) {
+    protected ArrayList<Transaccion> doInBackground(Void... params) {
         Type listType = new C01741().getType();
         if (GetReports() != null) {
             return (ArrayList) new Gson().fromJson(GetReports(), listType);

@@ -8,7 +8,7 @@ import com.bit.async.tasks.GetUsersFromServerTask;
 import com.bit.entities.Eventos;
 import com.bit.entities.User;
 import com.bit.singletons.CacheCollectionSingleton;
-import com.bit.singletons.VentaHashmapCollectionSingleton;
+import com.bit.singletons.TransactionHashmapCollectionSingleton;
 import com.google.gson.Gson;
 
 import java.util.List;
@@ -41,8 +41,8 @@ public class AssetLoader extends AsyncTaskLoader<List<User>> {
             list = (List) users_mediator.execute(new Void[0]).get();
             List<Eventos> eventos = (List) events_mediator.execute(new Void[0]).get();
             CacheCollectionSingleton.getInstance(getContext()).setInMemmoryUsers(new Gson().toJson((Object) list));
-            VentaHashmapCollectionSingleton.getInstance();
-            VentaHashmapCollectionSingleton.eventos = eventos;
+            TransactionHashmapCollectionSingleton.getInstance();
+            TransactionHashmapCollectionSingleton.eventos = eventos;
             return list;
         } catch (InterruptedException e) {
             e.printStackTrace();

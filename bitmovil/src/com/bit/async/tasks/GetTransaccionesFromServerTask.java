@@ -5,7 +5,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 
 import com.bit.client.R;
-import com.bit.entities.Venta;
+import com.bit.entities.Transaccion;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import org.apache.http.HttpEntity;
@@ -20,7 +20,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 //
-public class GetVentasFromServerTask extends AsyncTask<Void, Void, ArrayList<Venta>> {
+public class GetTransaccionesFromServerTask extends AsyncTask<Void, Void, ArrayList<Transaccion>> {
 
 	String result = null;
 	String ip = "78.41.206.33";
@@ -30,7 +30,7 @@ public class GetVentasFromServerTask extends AsyncTask<Void, Void, ArrayList<Ven
 	public String productora;
 	private Context context;
 
-	public GetVentasFromServerTask(Context context){
+	public GetTransaccionesFromServerTask(Context context){
 		this.context = context;
 	}
 
@@ -49,7 +49,7 @@ public class GetVentasFromServerTask extends AsyncTask<Void, Void, ArrayList<Ven
 		{
 			HttpClient httpClient = new DefaultHttpClient();
 			String server = context.getString(R.string.server);
-			HttpGet httpGet = new HttpGet(server + "/mobile/ventas/"+productora);
+			HttpGet httpGet = new HttpGet(server + "/mobile/transacciones/"+productora);
 			HttpResponse httpResponse = httpClient.execute(httpGet);
 			HttpEntity responseEntity = httpResponse.getEntity();
 			inStream = new BufferedReader(new InputStreamReader(responseEntity.getContent(), "UTF-8"));
@@ -62,9 +62,9 @@ public class GetVentasFromServerTask extends AsyncTask<Void, Void, ArrayList<Ven
 	}
 
 	@Override
-	protected ArrayList<Venta> doInBackground(Void... params) {
+	protected ArrayList<Transaccion> doInBackground(Void... params) {
 		// TODO Auto-generated method stub
-		Type listType = new TypeToken<ArrayList<Venta>>() {
+		Type listType = new TypeToken<ArrayList<Transaccion>>() {
 	     }.getType();
 	     if(GetReports()!=null){
 			 return new Gson().fromJson(GetReports(), listType);

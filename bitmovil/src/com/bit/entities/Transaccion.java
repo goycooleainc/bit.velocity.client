@@ -14,6 +14,24 @@ public class Transaccion {
     public String gps;
     public String avatar;
     public String fecha;
+    public int idEvento;
+    public int idTransaccion;
+
+    public int getIdTransaccion() {
+        return idTransaccion;
+    }
+
+    public void setIdTransaccion(int idTransaccion) {
+        this.idTransaccion = idTransaccion;
+    }
+
+    public int getIdEvento() {
+        return idEvento;
+    }
+
+    public void setIdEvento(int idEvento) {
+        this.idEvento = idEvento;
+    }
 
     public String getAvatar() {
         return avatar;
