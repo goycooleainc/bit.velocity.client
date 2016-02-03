@@ -52,6 +52,7 @@ import com.bit.adapters.ProductosBitItemListAdapter;
 import com.bit.adapters.TransactionsItemListAdapter;
 import com.bit.adapters.VentasItemListAdapter;
 import com.bit.async.tasks.DirectNewTransaction;
+import com.bit.async.tasks.DirectSendEmail;
 import com.bit.async.tasks.GetEvaluatorImageHelper;
 import com.bit.async.tasks.GetImageTask;
 import com.bit.async.tasks.GetTransactionsTask;
@@ -61,6 +62,7 @@ import com.bit.async.tasks.UpdateAvatarTask;
 import com.bit.client.R;
 import com.bit.entities.Avatar;
 import com.bit.entities.ClientesList;
+import com.bit.entities.Email;
 import com.bit.entities.Eventos;
 import com.bit.entities.HitosAuditorias;
 import com.bit.entities.Productos;
@@ -71,6 +73,7 @@ import com.bit.singletons.CacheCollectionSingleton;
 import com.bit.singletons.ProductHashmapCollectionSingleton;
 import com.bit.singletons.TransactionHashmapCollectionSingleton;
 import com.bit.singletons.VentaHashmapCollectionSingleton;
+import com.bit.utils.CheckEmail;
 import com.bit.utils.StoreManager;
 import com.bit.vending.SettingsActivity;
 import com.bit.vending.StartActivity;
@@ -568,6 +571,7 @@ public class VendingMachineActivity extends FragmentActivity implements ActionBa
                         tx.setMoneda(0);
                         tx.setPublicKey("");
                         tx.setTotal(String.valueOf(total));
+						tx.setIdEvento(obj.getId());
 
                         DirectNewTransaction task = new DirectNewTransaction(getActivity().getApplicationContext());
                         task.setDATA(new Gson().toJson(tx));
@@ -844,6 +848,7 @@ public class VendingMachineActivity extends FragmentActivity implements ActionBa
 		static int _position;
 		private VentasItemListAdapter adapter;
 		private int id;
+		private Venta obj;
 
 		class ShowListVenta implements OnItemClickListener {
 			final List final_list;
@@ -865,6 +870,57 @@ public class VendingMachineActivity extends FragmentActivity implements ActionBa
 			}
 
 			public void onItemClick(AdapterView<?> adapterView, View v, int position, long id) {
+				final Dialog dialog = new Dialog(v.getContext());
+				dialog.setContentView(R.layout.modal_compartir_evento_method);
+
+				VendingMachineActivity.btn_close = (Button) dialog.findViewById(R.id.dialogButtonCancel);
+				VendingMachineActivity.btn_ok = (Button) dialog.findViewById(R.id.dialogButtonOK);
+
+				obj = (Venta) this.final_list.get(_position);
+				final int idVenta = obj.getId();
+				final int cantidadParaEnviar = obj.getCantidadParaEnviar();
+
+				VendingMachineActivity.btn_close.setOnClickListener(new ShowModalVenta(dialog));
+
+				btn_ok.setOnClickListener(new View.OnClickListener(){
+
+					@Override
+					public void onClick(View v) {
+						AlertDialog.Builder bld = new AlertDialog.Builder(getActivity());
+						if (cantidadParaEnviar > 0){
+							TextView email = (TextView) dialog.findViewById(R.id.emailText);
+							TextView descripcion = (TextView) dialog.findViewById(R.id.descrText);
+
+							if (!email.getText().toString().matches("") && CheckEmail.isEmailValid(email.getText().toString())) {
+								Email em = new Email();
+								em.setDescripcion(descripcion.getText().toString());
+								em.setEmail(email.getText().toString());
+								em.setIdVenta(idVenta);
+
+								DirectSendEmail task = new DirectSendEmail(getActivity().getApplicationContext());
+								task.setDATA(new Gson().toJson(em));
+								task.execute();
+
+								bld.setMessage("E-Mail Enviado Con Exito !!");
+								obj.setCantidadParaEnviar(cantidadParaEnviar - 1);
+								//refresh list
+	//							refresTransacciones();
+
+								Log.d("Evento enviado por mail", "Showing alert dialog: " + "");
+							} else {
+								bld.setMessage("E-Mail es vacio o tiene un formato incorrecto!!");
+							}
+						}else{
+							bld.setMessage("Usted no puede enviar este evento, ya que la cantidad no se lo permite !!");
+						}
+						bld.setNeutralButton("OK", null);
+						bld.create().show();
+						dialog.dismiss();
+					}
+				});
+
+				dialog.setTitle("EVENTO - BITMOVIL");
+				dialog.show();
 			}
 		}
 
