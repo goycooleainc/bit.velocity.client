@@ -5,10 +5,11 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.util.Log;
-import android.view.View;
 import com.android.vending.billing.IInAppBillingService;
 import com.android.vending.billing.util.*;
-import com.bit.client.R;
+
+import java.math.BigInteger;
+import java.security.SecureRandom;
 
 /**
  * Created by goycolea on 22/1/16.
@@ -156,22 +157,26 @@ public class StoreManager extends Activity  implements IabBroadcastReceiver.IabB
             setWaitScreen(true);
 
             Log.d(TAG, "Launching purchase flow for coupons.");
-        /* TODO: for security, generate your payload here for verification. See the comments on
-         *        verifyDeveloperPayload() for more info. Since this is a SAMPLE, we just use
-         *        an empty string, but on a production app you should carefully generate this.
-         *        */
-            String payload = "";
+            /* TODO: for security, generate your payload here for verification. See the comments on
+             *        verifyDeveloperPayload() for more info. Since this is a SAMPLE, we just use
+             *        an empty string, but on a production app you should carefully generate this.
+             * */
+            SecureRandom random = new SecureRandom();
+            String payload = new BigInteger(130,random).toString(32);
+
             switch(sku) {
                 case SKU_MIL:
                     /**
                      *
                      */
+
                     mHelper.launchPurchaseFlow(mActivity, SKU_MIL, RC_REQUEST, mPurchaseFinishedListener, payload);
                     break;
                 case SKU_DOSMIL:
                     /**
                      *
                      */
+
                     mHelper.launchPurchaseFlow(mActivity, SKU_DOSMIL, RC_REQUEST, mPurchaseFinishedListener, payload);
                     break;
                 case SKU_CINCOMIL:
@@ -195,7 +200,8 @@ public class StoreManager extends Activity  implements IabBroadcastReceiver.IabB
             }
 
         }catch(Exception exc){
-            Log.d(TAG, exc.getLocalizedMessage());
+            String error = exc.getLocalizedMessage();
+            Log.d(TAG, error);
         }
     }
     // Callback for when a purchase is finished
@@ -298,7 +304,7 @@ public class StoreManager extends Activity  implements IabBroadcastReceiver.IabB
     // Enables or disables the "please wait" screen.
     void setWaitScreen(boolean set) {
         //mActivity.findViewById(R.id.pager).setVisibility(set ? View.GONE : View.VISIBLE);
-        mActivity.findViewById(R.id.screen_wait).setVisibility(set ? View.VISIBLE : View.GONE);
+        //mActivity.findViewById(R.id.screen_wait).setVisibility(set ? View.VISIBLE : View.GONE);
     }
 
     void complain(String message) {

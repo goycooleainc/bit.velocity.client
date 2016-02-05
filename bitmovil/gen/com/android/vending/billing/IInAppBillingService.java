@@ -2,7 +2,7 @@
 
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Original file: /Users/goycolea/Documents/Developer/Android/bit.velocity.client/bitmovil/src/com/android/vending/billing/IInAppBillingService.aidl
+ * Original file: /Users/goycolea/Documents/Developer/Git/bit.velocity.client/bitmovil/src/com/android/vending/billing/IInAppBillingService.aidl
  */
 package com.android.vending.billing;
 /**

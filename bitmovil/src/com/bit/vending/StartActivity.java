@@ -90,7 +90,9 @@ public class StartActivity extends Activity implements LoaderManager.LoaderCallb
 				TransactionHashmapCollectionSingleton.getInstance().avatares = (List) task_2.execute(new Void[0]).get();
 				TransactionHashmapCollectionSingleton.getInstance().transacciones = (List) task_3.execute(new Void[0]).get();
 				TransactionHashmapCollectionSingleton.getInstance().productos = (List) task_4.execute(new Void[0]).get();
+				TransactionHashmapCollectionSingleton.getInstance().mainActivity = this;
 				VentaHashmapCollectionSingleton.getInstance().ventas = (List) task_5.execute(new Void[0]).get();
+
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			} catch (ExecutionException e2) {

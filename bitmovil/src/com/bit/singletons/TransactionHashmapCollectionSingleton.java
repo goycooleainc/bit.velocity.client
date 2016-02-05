@@ -1,12 +1,7 @@
 package com.bit.singletons;
 
-import com.bit.entities.Avatar;
-import com.bit.entities.EstadoCuenta;
-import com.bit.entities.Eventos;
-import com.bit.entities.Productos;
-import com.bit.entities.Transaccion;
-import com.bit.entities.User;
-import com.bit.entities.Venta;
+import android.app.Activity;
+import com.bit.entities.*;
 
 import java.util.List;
 
@@ -20,6 +15,7 @@ public class TransactionHashmapCollectionSingleton {
 	public static User user;
 	public static List<Transaccion> transacciones;
 	public static List<Venta> ventas;
+	public static Activity mainActivity;
 	   /// constructor
 	   protected TransactionHashmapCollectionSingleton() {
 	      // Exists only to defeat instantiation.

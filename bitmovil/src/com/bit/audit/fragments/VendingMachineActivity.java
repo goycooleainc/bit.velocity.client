@@ -2,19 +2,12 @@ package com.bit.audit.fragments;
 
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.Rect;
-import android.graphics.RectF;
+import android.graphics.*;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -23,7 +16,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
@@ -32,43 +24,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.AdapterView;
+import android.widget.*;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.NumberPicker;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.bit.adapters.AvataresItemListAdapter;
-import com.bit.adapters.EventosItemListAdapter;
-import com.bit.adapters.ProductosBitItemListAdapter;
-import com.bit.adapters.TransactionsItemListAdapter;
-import com.bit.adapters.VentasItemListAdapter;
-import com.bit.async.tasks.DirectNewTransaction;
-import com.bit.async.tasks.DirectSendEmail;
-import com.bit.async.tasks.GetEvaluatorImageHelper;
-import com.bit.async.tasks.GetImageTask;
-import com.bit.async.tasks.GetTransactionsTask;
-import com.bit.async.tasks.GetUsersFromServerTask;
-import com.bit.async.tasks.GetVentasTask;
-import com.bit.async.tasks.UpdateAvatarTask;
+import com.bit.adapters.*;
+import com.bit.async.tasks.*;
 import com.bit.client.R;
-import com.bit.entities.Avatar;
-import com.bit.entities.ClientesList;
-import com.bit.entities.Email;
-import com.bit.entities.Eventos;
-import com.bit.entities.HitosAuditorias;
-import com.bit.entities.Productos;
-import com.bit.entities.Transaccion;
-import com.bit.entities.User;
-import com.bit.entities.Venta;
+import com.bit.entities.*;
 import com.bit.singletons.CacheCollectionSingleton;
 import com.bit.singletons.ProductHashmapCollectionSingleton;
 import com.bit.singletons.TransactionHashmapCollectionSingleton;
@@ -80,7 +41,6 @@ import com.bit.vending.StartActivity;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-
 import org.apache.james.mime4j.util.CharsetUtil;
 
 import java.lang.reflect.Type;
@@ -91,9 +51,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.ExecutionException;
-import java.util.zip.Inflater;
-
-import static com.bit.audit.fragments.VendingMachineActivity.TransactionsFragment.*;
 
 
 public class VendingMachineActivity extends FragmentActivity implements ActionBar.TabListener {
@@ -830,8 +787,8 @@ public class VendingMachineActivity extends FragmentActivity implements ActionBa
 			((TextView) rootView.findViewById(R.id.tx_nombre)).setText(VendingMachineActivity.nombre_usuario != null ? VendingMachineActivity.nombre_usuario.toString() : "");
 			VendingMachineActivity.lv2 = (ListView) rootView.findViewById(R.id.product_list);
 
-            Activity au = getActivity();
-            activity = new StoreManager(au);
+            //Activity au = getActivity();
+            activity = new StoreManager(TransactionHashmapCollectionSingleton.getInstance().mainActivity);
 			try {
 				List<Productos> list = TransactionHashmapCollectionSingleton.getInstance().productos;
 				VendingMachineActivity.lv2.setAdapter(new ProductosBitItemListAdapter(rootView.getContext(), list));
