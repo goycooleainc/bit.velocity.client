@@ -62,7 +62,7 @@ public class StoreManager extends Activity  implements IabBroadcastReceiver.IabB
         mHelper = new IabHelper(mActivity, base64EncodedPublicKey);
 
         // enable debug logging (for a production application, you should set this to false).
-        mHelper.enableDebugLogging(true);
+        mHelper.enableDebugLogging(false);
 
         // Start setup. This is asynchronous and the specified listener
         // will be called once setup completes.
@@ -155,49 +155,10 @@ public class StoreManager extends Activity  implements IabBroadcastReceiver.IabB
             // launch the gas purchase UI flow.
             // We will be notified of completion via mPurchaseFinishedListener
             setWaitScreen(true);
-
             Log.d(TAG, "Launching purchase flow for coupons.");
-            /* TODO: for security, generate your payload here for verification. See the comments on
-             *        verifyDeveloperPayload() for more info. Since this is a SAMPLE, we just use
-             *        an empty string, but on a production app you should carefully generate this.
-             * */
             SecureRandom random = new SecureRandom();
             String payload = new BigInteger(130,random).toString(32);
-
-            switch(sku) {
-                case SKU_MIL:
-                    /**
-                     *
-                     */
-
-                    mHelper.launchPurchaseFlow(mActivity, SKU_MIL, RC_REQUEST, mPurchaseFinishedListener, payload);
-                    break;
-                case SKU_DOSMIL:
-                    /**
-                     *
-                     */
-
-                    mHelper.launchPurchaseFlow(mActivity, SKU_DOSMIL, RC_REQUEST, mPurchaseFinishedListener, payload);
-                    break;
-                case SKU_CINCOMIL:
-                    /**
-                     *
-                     */
-                    mHelper.launchPurchaseFlow(mActivity, SKU_CINCOMIL, RC_REQUEST, mPurchaseFinishedListener, payload);
-                    break;
-                case SKU_DIEZMIL:
-                    /**
-                     *
-                     */
-                    mHelper.launchPurchaseFlow(mActivity, SKU_DIEZMIL, RC_REQUEST, mPurchaseFinishedListener, payload);
-                    break;
-                default:
-                    /**
-                     *
-                     */
-                    mHelper.launchPurchaseFlow(mActivity, SKU_MIL, RC_REQUEST, mPurchaseFinishedListener, payload);
-                    break;
-            }
+            mHelper.launchPurchaseFlow(mActivity, sku, RC_REQUEST, mPurchaseFinishedListener, payload);
 
         }catch(Exception exc){
             String error = exc.getLocalizedMessage();
