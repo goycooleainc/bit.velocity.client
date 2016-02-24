@@ -53,6 +53,25 @@
             android:src="@drawable/start_button_enter" android:contentDescription="enter the app"
             android:scaleType="centerCrop"/>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:layout_marginTop="35dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/texto_subtitulo"
+                android:text="Nuevo Usuario"
+                android:id="@+id/new_user"
+                android:gravity="center|center_vertical"
+                android:textColor="@color/Gray"
+                android:onClick="new_user"
+                android:layout_gravity="center_horizontal" />
+        </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>

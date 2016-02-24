@@ -617,7 +617,11 @@ public class VendingMachineActivity extends FragmentActivity implements ActionBa
 			DecimalFormat df = new DecimalFormat("#,##0.00");
 			df.setDecimalFormatSymbols(new DecimalFormatSymbols(Locale.ITALY));
             TransactionHashmapCollectionSingleton.getInstance();
-			VendingMachineActivity.txBalance.setText("$" + df.format(new BigDecimal(TransactionHashmapCollectionSingleton.estadoCuenta.getSaldo().toString())));
+			if(TransactionHashmapCollectionSingleton.estadoCuenta != null) {
+				VendingMachineActivity.txBalance.setText("$" + df.format(new BigDecimal(TransactionHashmapCollectionSingleton.estadoCuenta.getSaldo().toString())));
+			}else{
+				VendingMachineActivity.txBalance.setText("$" + df.format(new BigDecimal("0")));
+			}
 			VendingMachineActivity.btnVending = (ImageButton) rootView.findViewById(R.id.btnVendingMachine);
 			try {
 				VendingMachineActivity.btnAccessControl.setOnClickListener(new C01001());
