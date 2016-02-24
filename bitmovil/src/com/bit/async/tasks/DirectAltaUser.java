@@ -1,15 +1,17 @@
 package com.bit.async.tasks;
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.ConnectivityManager;
 import android.os.AsyncTask;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 
 import com.bit.client.R;
 import com.bit.entities.User;
-import com.bit.singletons.CacheCollectionSingleton;
-import com.bit.vending.AssetLoader;
-import com.google.gson.Gson;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPost;
@@ -21,8 +23,6 @@ import org.apache.http.protocol.HTTP;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 /**
  * Created by gfurlano.
@@ -31,10 +31,22 @@ import java.util.concurrent.ExecutionException;
 public class DirectAltaUser extends AsyncTask<String, Void, String> {
 
     private Context context;
+    private Activity activity;
     public User user;
+    ProgressBar linlaHeaderProgress;
+    LinearLayout lenearLogin;
+    AlertDialog.Builder bld;
+    Intent intent;
+    View view;
 
-    public DirectAltaUser(Context context) {
-        this.context = context;
+    public DirectAltaUser(Activity activity, AlertDialog.Builder bld, Intent intent, View view) {
+        this.context = activity.getApplicationContext();
+        this.bld = bld;
+        this.activity = activity;
+        linlaHeaderProgress = (ProgressBar) activity.findViewById(R.id.pbHeaderProgress);
+        lenearLogin = (LinearLayout) activity.findViewById(R.id.login_view);
+        this.intent = intent;
+        this.view = view;
     }
 
     public String getDATA() {
@@ -55,11 +67,23 @@ public class DirectAltaUser extends AsyncTask<String, Void, String> {
 
     @Override
     protected void onPostExecute(String result) {
-
+        bld.setMessage(result);
+        bld.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                linlaHeaderProgress.setVisibility(View.GONE);
+                lenearLogin.setVisibility(View.VISIBLE);
+                activity.finish();
+                context.startActivity(intent);
+            }
+        });
+        bld.create().show();
     }
 
     @Override
-    protected void onPreExecute() {}
+    protected void onPreExecute() {
+        linlaHeaderProgress.setVisibility(View.VISIBLE);
+        lenearLogin.setVisibility(View.GONE);
+    }
 
     @Override
     protected void onProgressUpdate(Void... values) {}

@@ -5,12 +5,10 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.LoaderManager;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Loader;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -27,8 +25,8 @@ import com.bit.audit.fragments.VendingMachineActivity;
 import com.bit.client.R;
 import com.bit.entities.EstadoCuenta;
 import com.bit.entities.User;
-import com.bit.singletons.UsersHashmapCollection;
 import com.bit.singletons.TransactionHashmapCollectionSingleton;
+import com.bit.singletons.UsersHashmapCollection;
 import com.bit.singletons.VentaHashmapCollectionSingleton;
 import com.bit.utils.CheckEmail;
 import com.bit.utils.OfflineUserManager;
@@ -48,6 +46,7 @@ public class StartActivity extends Activity implements LoaderManager.LoaderCallb
     static Button btn_ok;
     static Button btn_close;
     public Activity activity;
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -63,7 +62,9 @@ public class StartActivity extends Activity implements LoaderManager.LoaderCallb
         password = "password";
         privateInternalID = new Date().getTime() + "";
 
+        intent = getIntent();
         activity = this;
+
 		final ActionBar localActionBar = getActionBar();
 		localActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		localActionBar.setDisplayOptions(0, ActionBar.DISPLAY_SHOW_TITLE);
@@ -163,22 +164,18 @@ public class StartActivity extends Activity implements LoaderManager.LoaderCallb
                     user.setPassword(password.getText().toString());
                     user.setEmail(email.getText().toString());
 
-                    DirectAltaUser task = new DirectAltaUser(activity);
+                    DirectAltaUser task = new DirectAltaUser(activity, bld, intent, v);
                     task.setDATA(new Gson().toJson(user), user);
                     task.execute();
 
-                    bld.setMessage("User Creado Con Exito !!");
-
                 } else {
                     bld.setMessage("Todos los campos son requeridos o e-mail tiene un formato incorrecto!!");
+                    bld.setNeutralButton("OK", null);
+                    bld.create().show();
                 }
 
-                bld.setNeutralButton("OK", null);
-                bld.create().show();
                 dialog.dismiss();
-                Intent intent = getIntent();
-                finish();
-                startActivity(intent);
+
             }
         });
 

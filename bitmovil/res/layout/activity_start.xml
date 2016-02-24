@@ -7,17 +7,18 @@
 
     android:orientation="vertical" >
 
-    <ProgressBar
-        android:id="@+id/pbHeaderProgress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:indeterminate="true"
-            style="@android:style/Widget.Holo.ProgressBar.Horizontal"/>
+        <ProgressBar
+            android:id="@+id/pbHeaderProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:gravity="center_horizontal"
-        android:orientation="vertical" android:id="@+id/login_view">
+        android:orientation="vertical"
+        android:id="@+id/login_view">
 
         <EditText
             android:id="@+id/tx_user"
