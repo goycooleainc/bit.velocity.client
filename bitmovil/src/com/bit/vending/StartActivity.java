@@ -16,13 +16,13 @@ import com.bit.async.tasks.GetAvataresTask;
 import com.bit.async.tasks.GetEstadoCuentaTask;
 import com.bit.async.tasks.GetProductosFromServerTask;
 import com.bit.async.tasks.GetTransactionsTask;
-import com.bit.audit.fragments.VendingMachineActivity;
 import com.bit.client.R;
 import com.bit.entities.EstadoCuenta;
 import com.bit.entities.User;
 import com.bit.singletons.UsersHashmapCollection;
 import com.bit.singletons.VentaHashmapCollectionSingleton;
 import com.bit.utils.OfflineUserManager;
+import com.bit.audit.fragments.MainActivity;
 
 import java.util.Date;
 import java.util.List;
@@ -91,7 +91,7 @@ public class StartActivity extends Activity implements LoaderManager.LoaderCallb
 			} catch (ExecutionException e2) {
 				e2.printStackTrace();
 			}
-			Intent intent = new Intent(this, VendingMachineActivity.class);
+			Intent intent = new Intent(this, MainActivity.class);
 			intent.putExtra("nombre", user.getNombre());
 			intent.putExtra("rol", user.getNombreRol());
 			intent.putExtra("id_rol", user.getIdRol());

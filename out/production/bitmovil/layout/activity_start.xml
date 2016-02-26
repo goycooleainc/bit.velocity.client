@@ -52,6 +52,13 @@
             android:onClick="start_app_clicked"
             android:src="@drawable/start_button_enter" android:contentDescription="enter the app"
             android:scaleType="centerCrop"/>
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Crea una Cuenta Nueva"
+                android:id="@+id/button" android:background="@android:color/transparent"
+                android:textColor="@color/White" android:singleLine="false" android:paddingTop="30dp"
+                android:textSize="20dp" android:textStyle="bold"/>
 
     </LinearLayout>
 

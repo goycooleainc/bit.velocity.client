@@ -14,6 +14,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.bit.async.tasks.NewAvatarTask;
+import com.bit.audit.fragments.MainActivity;
 import com.bit.audit.fragments.VendingMachineActivity;
 import com.bit.client.R;
 import com.bit.entities.Avatar;
@@ -50,6 +51,9 @@ public class SettingsActivity extends Activity implements LoyaltyCardReader.Acco
     TextView tx_avatar;
     TextView tx_nuevo_avatar;
     public String usuario;
+    Button btn_close;
+
+    public void SettingsActivity(){}
 
     /* renamed from: com.bit.vending.SettingsActivity.1 */
     class C01171 implements OnClickListener {
@@ -104,6 +108,17 @@ public class SettingsActivity extends Activity implements LoyaltyCardReader.Acco
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
+        btn_close = (Button) findViewById(R.id.btnCloseSettings);
+        btn_close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
         ActionBar localActionBar = getActionBar();
         localActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         localActionBar.setDisplayOptions(0, ActionBar.DISPLAY_SHOW_TITLE);

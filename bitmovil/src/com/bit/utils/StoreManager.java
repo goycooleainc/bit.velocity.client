@@ -5,10 +5,8 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.util.Log;
-import android.view.View;
 import com.android.vending.billing.IInAppBillingService;
 import com.android.vending.billing.util.*;
-import com.bit.client.R;
 
 /**
  * Created by goycolea on 22/1/16.
@@ -23,7 +21,7 @@ public class StoreManager extends Activity  implements IabBroadcastReceiver.IabB
     static final String SKU_DIEZMIL = "sku_diezmil";
     // (arbitrary) request code for the purchase flow
     static final int RC_REQUEST = 10001;
-    // Debug tag, for logging
+    // Debug tag, for logg
     static final String TAG = "BITMOVIL";
     // The helper object
     IabHelper mHelper;
@@ -61,7 +59,7 @@ public class StoreManager extends Activity  implements IabBroadcastReceiver.IabB
         mHelper = new IabHelper(mActivity, base64EncodedPublicKey);
 
         // enable debug logging (for a production application, you should set this to false).
-        mHelper.enableDebugLogging(true);
+        mHelper.enableDebugLogging(false);
 
         // Start setup. This is asynchronous and the specified listener
         // will be called once setup completes.
@@ -91,7 +89,7 @@ public class StoreManager extends Activity  implements IabBroadcastReceiver.IabB
                 mActivity.registerReceiver(mBroadcastReceiver, broadcastFilter);
                 // IAB is fully set up. Now, let's get an inventory of stuff we own.
                 Log.d(TAG, "Setup successful. Querying inventory.");
-                //mHelper.queryInventoryAsync(mGotInventoryListener);
+                mHelper.queryInventoryAsync(mGotInventoryListener);
             }
         });
     }
@@ -298,7 +296,7 @@ public class StoreManager extends Activity  implements IabBroadcastReceiver.IabB
     // Enables or disables the "please wait" screen.
     void setWaitScreen(boolean set) {
         //mActivity.findViewById(R.id.pager).setVisibility(set ? View.GONE : View.VISIBLE);
-        mActivity.findViewById(R.id.screen_wait).setVisibility(set ? View.VISIBLE : View.GONE);
+        //mActivity.findViewById(R.id.screen_wait).setVisibility(set ? View.VISIBLE : View.GONE);
     }
 
     void complain(String message) {

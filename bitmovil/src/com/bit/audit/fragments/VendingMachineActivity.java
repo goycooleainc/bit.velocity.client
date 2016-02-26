@@ -1,7 +1,10 @@
 package com.bit.audit.fragments;
 
-import android.app.*;
+import android.app.ActionBar;
 import android.app.ActionBar.Tab;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.graphics.*;
 import android.graphics.drawable.Drawable;
@@ -24,7 +27,6 @@ import android.widget.*;
 import android.widget.AdapterView.OnItemClickListener;
 import com.bit.adapters.AvataresItemListAdapter;
 import com.bit.adapters.EventosItemListAdapter;
-import com.bit.adapters.ProductosBitItemListAdapter;
 import com.bit.adapters.VentasItemListAdapter;
 import com.bit.async.tasks.*;
 import com.bit.client.R;
@@ -32,12 +34,12 @@ import com.bit.entities.*;
 import com.bit.singletons.CacheCollectionSingleton;
 import com.bit.singletons.ProductHashmapCollectionSingleton;
 import com.bit.singletons.VentaHashmapCollectionSingleton;
-import com.bit.utils.StoreManager;
 import com.bit.vending.SettingsActivity;
 import com.bit.vending.StartActivity;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import com.goycooleainc.ui.MainActivity;
 import org.apache.james.mime4j.util.CharsetUtil;
 
 import java.lang.reflect.Type;
@@ -147,14 +149,14 @@ public class VendingMachineActivity extends FragmentActivity implements ActionBa
 			mSectionsPagerAdapter.notifyDataSetChanged();
 		}
 
-		mViewPager = ((ViewPager) findViewById(R.id.pager));
+		/*mViewPager = ((ViewPager) findViewById(R.id.pager));
 		mViewPager.setAdapter(mSectionsPagerAdapter);
 		mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
 			@Override
 			public void onPageSelected(int paramAnonymousInt) {
 				localActionBar.setSelectedNavigationItem(paramAnonymousInt);
 			}
-		});
+		});*/
 
 		for (int i = 0; ; i++) {
 			if (i >= mSectionsPagerAdapter.getCount())
@@ -174,6 +176,11 @@ public class VendingMachineActivity extends FragmentActivity implements ActionBa
         startActivity(intent);
     }
 
+	public void OnStore(View v) {
+		Intent intent = new Intent(this, MainActivity.class);
+		finish();
+		startActivity(intent);
+	}
 
 	/**
 	 * Logout
@@ -365,11 +372,39 @@ public class VendingMachineActivity extends FragmentActivity implements ActionBa
 		}
 	}
 
-	public static class EventosFragment extends Fragment {
+	public static class EventosFragment extends Fragment implements OnRefreshListener{
 		static int _position;
 		private EventosItemListAdapter adapter;
 		private int id;
 
+		@Override
+		public void onRefresh() {
+			refreshEvents();
+		}
+
+		private void refreshEvents()
+		{
+			GetEventosTask events_mediator = new GetEventosTask();
+			List<User> list = null;
+			try {
+
+				List<Eventos> eventos = (List) events_mediator.execute(new Void[0]).get();
+				CacheCollectionSingleton.getInstance(getActivity()).setInMemmoryUsers(new Gson().toJson((Object) list));
+				VentaHashmapCollectionSingleton.getInstance();
+				VentaHashmapCollectionSingleton.eventos = eventos;
+
+				List<Eventos> final_list = eventos;
+				this.adapter = new EventosItemListAdapter(getActivity().getBaseContext(), final_list);
+				VendingMachineActivity.lv2.setAdapter(this.adapter);
+				this.adapter.notifyDataSetChanged();
+				VendingMachineActivity.lv2.setOnItemClickListener(new C00991(final_list));
+
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			} catch (ExecutionException e2) {
+				e2.printStackTrace();
+			}
+		}
 		/* renamed from: com.bit.audit.fragments.VendingMachineActivity.EventosFragment.1 */
 		class C00991 implements OnItemClickListener {
 			final /* synthetic */ List val$final_list;
@@ -619,69 +654,18 @@ public class VendingMachineActivity extends FragmentActivity implements ActionBa
 		}
 	}
 
-	public static class VendingFragment extends Fragment  implements OnRefreshListener{
-		static int _position;
-		private int id;
-        StoreManager activity;
-
-        @Override
-        public void onRefresh() {
-            try {
-                List<Productos> list = VentaHashmapCollectionSingleton.getInstance().productos;
-                ProductosBitItemListAdapter adapter = new ProductosBitItemListAdapter(getActivity().getBaseContext(), list);
-                VendingMachineActivity.lv2.setAdapter(adapter);
-                VendingMachineActivity.lv2.setOnItemClickListener(new C01042(list));
-                adapter.notifyDataSetChanged();
-
-
-            } catch (Exception ex) {
-                ex.toString();
-            }
-        }
-
-        /* renamed from: com.bit.audit.fragments.VendingMachineActivity.VendingFragment.2 */
-		class C01042 implements OnItemClickListener {
-			final /* synthetic */ List val$list;
-
-			C01042(List list) {
-				this.val$list = list;
-			}
-
-			public void onItemClick(AdapterView<?> adapterView, View v, int position, long id) {
-
-				Productos obj = (Productos) this.val$list.get(position);
-				VentaHashmapCollectionSingleton.getInstance();
-				List<Productos> productos = VentaHashmapCollectionSingleton.productos;
-
-				if (productos != null) {
-                    activity.purchase(obj.getCodigo());
-				} else {
-                    Toast.makeText(VendingFragment.this.getActivity(), "Producto No Reconocido, Intenta de Nuevo!! =)", Toast.LENGTH_LONG).show();
-				}
-			}
-		}
-
-		/* renamed from: com.bit.audit.fragments.VendingMachineActivity.VendingFragment.1 */
-		class C01781 extends TypeToken<ArrayList<Productos>> {
-			C01781() {
-			}
-		}
-
+	public static class VendingFragment extends Fragment {
+		/**
+		 *
+		 * @param inflater
+		 * @param container
+		 * @param savedInstanceState
+         * @return
+         */
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_product_list, container, false);
-			((TextView) rootView.findViewById(R.id.tx_nombre)).setText(VendingMachineActivity.nombre_usuario != null ? VendingMachineActivity.nombre_usuario.toString() : "");
-			VendingMachineActivity.lv2 = (ListView) rootView.findViewById(R.id.product_list);
 
-            Activity au = getActivity();
-            activity = new StoreManager(au);
-			try {
-				List<Productos> list = VentaHashmapCollectionSingleton.getInstance().productos;
-				VendingMachineActivity.lv2.setAdapter(new ProductosBitItemListAdapter(rootView.getContext(), list));
-				VendingMachineActivity.lv2.setOnItemClickListener(new C01042(list));
+			View rootView = inflater.inflate(R.layout.activity_vending, container, false);
 
-			} catch (Exception ex) {
-				ex.toString();
-			}
 			return rootView;
 		}
 	}

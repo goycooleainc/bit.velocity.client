@@ -16,12 +16,13 @@
         android:layout_height="wrap_content"
         android:src="@drawable/ic_back_title_splitter" />
 
-    ]]>
+
+        ]]>
         <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginTop="100dp">
+        android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginTop="50dp">
 
-        <TextView
+            <TextView
             android:id="@+id/tv_titulo_paso_uno"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -42,7 +43,7 @@
             android:textColor="@color/Gray"
             android:textStyle="bold" android:gravity="center"/>
 
-    </LinearLayout>
+        </LinearLayout>
 
 
     <ImageView android:id="@+id/imageView4" android:layout_width="wrap_content" android:layout_height="wrap_content"
@@ -50,10 +51,16 @@
     <ListView
         android:id="@+id/product_list"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
             >
     </ListView>
+        <ImageButton android:layout_width="50dp" android:layout_height="50dp"
+                     android:id="@+id/btnClose" android:src="@drawable/btn_ok"
+                     android:background="@android:color/transparent" android:adjustViewBounds="false"
+                     android:cropToPadding="false" android:scaleType="fitCenter"
+                     android:layout_gravity="center_horizontal" android:layout_marginBottom="60dp"
+                     android:layout_marginTop="5dp"/>
 
-</LinearLayout>
+    </LinearLayout>
 </android.support.v4.widget.SwipeRefreshLayout>

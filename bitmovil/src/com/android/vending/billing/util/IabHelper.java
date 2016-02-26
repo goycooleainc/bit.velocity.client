@@ -381,7 +381,7 @@ public class IabHelper {
      * @param sku The sku of the item to purchase.
      * @param itemType indicates if it's a product or a subscription (ITEM_TYPE_INAPP or
      *      ITEM_TYPE_SUBS)
-     * @param oldSkus A list of SKUs which the new SKU is replacing or null if there are none
+     * @param oldSkus A list of SKUs which the new SKU_M is replacing or null if there are none
      * @param requestCode A request code (to differentiate from other responses -- as in
      *      {@link Activity#startActivityForResult}).
      * @param listener The listener to notify when the purchase process finishes
@@ -565,7 +565,7 @@ public class IabHelper {
      * information on additional skus, if specified. This method may block or take long to execute.
      * Do not call from a UI thread. For that, use the non-blocking version {@link #queryInventoryAsync}.
      *
-     * @param querySkuDetails if true, SKU details (price, description, etc) will be queried as well
+     * @param querySkuDetails if true, SKU_M details (price, description, etc) will be queried as well
      *     as purchase information.
      * @param moreItemSkus additional PRODUCT skus to query information on, regardless of ownership.
      *     Ignored if null or if querySkuDetails is false.
@@ -932,7 +932,7 @@ public class IabHelper {
 
     int querySkuDetails(String itemType, Inventory inv, List<String> moreSkus)
             throws RemoteException, JSONException {
-        logDebug("Querying SKU details.");
+        logDebug("Querying SKU_M details.");
         ArrayList<String> skuList = new ArrayList<String>();
         skuList.addAll(inv.getAllOwnedSkus(itemType));
         if (moreSkus != null) {

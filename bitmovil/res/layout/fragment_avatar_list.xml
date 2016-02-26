@@ -27,7 +27,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:id="@+id/btnNew" android:src="@drawable/ic_add_circle" android:scaleType="fitCenter"
-            android:background="@android:color/transparent" android:layout_marginLeft="15dp" android:onClick="OnNew"/>
+            android:background="@android:color/transparent" android:layout_marginLeft="15dp"/>
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center"

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.bit.client" android:versionCode="2" android:versionName="2.0">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.bit.client" android:versionCode="6" android:versionName="2.4">
 
     <uses-sdk android:minSdkVersion="19" android:targetSdkVersion="22" />
     <uses-feature android:name="android.hardware.camera"  android:required="true"/>
@@ -37,7 +37,6 @@
                 <action android:name="android.nfc.action.NDEF_DISCOVERED" />
                 <action android:name="android.nfc.action.TECH_DISCOVERED"/>
                 <category android:name="android.intent.category.LAUNCHER" />
-
             </intent-filter>
             <meta-data android:name="android.nfc.action.TECH_DISCOVERED" android:resource="@xml/nfc_tech_filter" />
         </activity>
@@ -68,6 +67,30 @@
 
         <activity
                 android:name="com.bit.utils.StoreManager"
+                android:screenOrientation="portrait"
+                android:label="@string/title_activity_audit">
+        </activity>
+
+        <activity
+                android:name="com.goycooleainc.ui.MainActivity"
+                android:screenOrientation="portrait"
+                android:label="@string/title_activity_audit">
+        </activity>
+
+        <activity
+                android:name="com.bit.audit.fragments.MainActivity"
+                android:screenOrientation="portrait"
+                android:label="@string/title_activity_audit">
+        </activity>
+
+        <activity
+                android:name="com.goycooleainc.ui.PurchasePassportActivity"
+                android:screenOrientation="portrait"
+                android:label="@string/title_activity_audit">
+        </activity>
+
+        <activity
+                android:name="com.goycooleainc.ui.StartUpActivity"
                 android:screenOrientation="portrait"
                 android:label="@string/title_activity_audit">
         </activity>
