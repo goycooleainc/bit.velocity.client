@@ -35,7 +35,7 @@ public class CommunityFragment extends Fragment implements SwipeRefreshLayout.On
     @Override
     public void onRefresh() {
         List<Venta> final_list;
-        GetTransactionsTask task_3 = new GetTransactionsTask();
+        GetTransactionsTask task_3 = new GetTransactionsTask(getActivity());
         task_3.setIdUsuario(VentaHashmapCollectionSingleton.getInstance().user.getIdUsuario());
 
         try {

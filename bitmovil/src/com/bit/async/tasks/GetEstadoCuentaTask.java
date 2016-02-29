@@ -1,7 +1,10 @@
 package com.bit.async.tasks;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.AsyncTask;
+
+import com.bit.client.R;
 import com.bit.entities.EstadoCuenta;
 import com.bit.entities.Venta;
 import com.google.gson.Gson;
@@ -21,6 +24,7 @@ public class GetEstadoCuentaTask extends AsyncTask<Void, Void, EstadoCuenta> {
     ProgressDialog progressDialog;
     String result;
     String usuario;
+    private Context context;
 
     /* renamed from: com.bit.async.tasks.GetEstadoCuentaTask.1 */
     class C01701 extends TypeToken<ArrayList<Venta>> {
@@ -28,11 +32,12 @@ public class GetEstadoCuentaTask extends AsyncTask<Void, Void, EstadoCuenta> {
         }
     }
 
-    public GetEstadoCuentaTask() {
+    public GetEstadoCuentaTask(Context context) {
         this.result = null;
         this.ip = "78.41.206.33";
         this.usuario = "1-1";
         this.password = "password";
+        this.context = context;
     }
 
     public String getIdUsuario() {
@@ -45,7 +50,8 @@ public class GetEstadoCuentaTask extends AsyncTask<Void, Void, EstadoCuenta> {
 
     final String GetExecution() {
         try {
-            BufferedReader inStream = new BufferedReader(new InputStreamReader(new DefaultHttpClient().execute(new HttpGet("http://bit.goycooleainc.com/mobile/cuenta/estado/" + this.idUsuario)).getEntity().getContent(), HTTP.UTF_8));
+            String server = context.getString(R.string.server);
+            BufferedReader inStream = new BufferedReader(new InputStreamReader(new DefaultHttpClient().execute(new HttpGet(server + "/mobile/cuenta/estado/" + this.idUsuario)).getEntity().getContent(), HTTP.UTF_8));
             BufferedReader bufferedReader;
             try {
                 this.result = inStream.readLine();

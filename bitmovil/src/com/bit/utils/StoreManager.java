@@ -8,6 +8,9 @@ import android.util.Log;
 import com.android.vending.billing.IInAppBillingService;
 import com.android.vending.billing.util.*;
 
+import java.math.BigInteger;
+import java.security.SecureRandom;
+
 /**
  * Created by goycolea on 22/1/16.
  */
@@ -152,48 +155,14 @@ public class StoreManager extends Activity  implements IabBroadcastReceiver.IabB
             // launch the gas purchase UI flow.
             // We will be notified of completion via mPurchaseFinishedListener
             setWaitScreen(true);
-
             Log.d(TAG, "Launching purchase flow for coupons.");
-        /* TODO: for security, generate your payload here for verification. See the comments on
-         *        verifyDeveloperPayload() for more info. Since this is a SAMPLE, we just use
-         *        an empty string, but on a production app you should carefully generate this.
-         *        */
-            String payload = "";
-            switch(sku) {
-                case SKU_MIL:
-                    /**
-                     *
-                     */
-                    mHelper.launchPurchaseFlow(mActivity, SKU_MIL, RC_REQUEST, mPurchaseFinishedListener, payload);
-                    break;
-                case SKU_DOSMIL:
-                    /**
-                     *
-                     */
-                    mHelper.launchPurchaseFlow(mActivity, SKU_DOSMIL, RC_REQUEST, mPurchaseFinishedListener, payload);
-                    break;
-                case SKU_CINCOMIL:
-                    /**
-                     *
-                     */
-                    mHelper.launchPurchaseFlow(mActivity, SKU_CINCOMIL, RC_REQUEST, mPurchaseFinishedListener, payload);
-                    break;
-                case SKU_DIEZMIL:
-                    /**
-                     *
-                     */
-                    mHelper.launchPurchaseFlow(mActivity, SKU_DIEZMIL, RC_REQUEST, mPurchaseFinishedListener, payload);
-                    break;
-                default:
-                    /**
-                     *
-                     */
-                    mHelper.launchPurchaseFlow(mActivity, SKU_MIL, RC_REQUEST, mPurchaseFinishedListener, payload);
-                    break;
-            }
+            SecureRandom random = new SecureRandom();
+            String payload = new BigInteger(130,random).toString(32);
+            mHelper.launchPurchaseFlow(mActivity, sku, RC_REQUEST, mPurchaseFinishedListener, payload);
 
         }catch(Exception exc){
-            Log.d(TAG, exc.getLocalizedMessage());
+            String error = exc.getLocalizedMessage();
+            Log.d(TAG, error);
         }
     }
     // Callback for when a purchase is finished

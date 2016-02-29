@@ -7,17 +7,18 @@
 
     android:orientation="vertical" >
 
-    <ProgressBar
-        android:id="@+id/pbHeaderProgress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:indeterminate="true"
-            style="@android:style/Widget.Holo.ProgressBar.Horizontal"/>
+        <ProgressBar
+            android:id="@+id/pbHeaderProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:orientation="vertical" android:id="@+id/login_view">
+        android:orientation="vertical"
+        android:id="@+id/login_view">
 
         <EditText
             android:id="@+id/tx_user"
@@ -56,9 +57,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Crea una Cuenta Nueva"
-                android:id="@+id/button" android:background="@android:color/transparent"
-                android:textColor="@color/White" android:singleLine="false" android:paddingTop="30dp"
-                android:textSize="20dp" android:textStyle="bold"/>
+                android:onClick="new_user"
+                android:background="@android:color/transparent"
+                android:textColor="@color/White"
+                android:singleLine="false"
+                android:paddingTop="30dp"
+                android:textSize="20dp"
+                android:textStyle="bold"/>
+
+        <LinearLayout
+            android:layout_width="216dp"
+            android:layout_height="92dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:layout_marginTop="2dp"
+            android:weightSum="1">
+
+        </LinearLayout>
 
     </LinearLayout>
 

@@ -14,6 +14,7 @@ import com.bit.adapters.AvataresItemListAdapter;
 import com.bit.async.tasks.UpdateAvatarTask;
 import com.bit.client.R;
 import com.bit.entities.Avatar;
+import com.bit.singletons.TransactionHashmapCollectionSingleton;
 import com.bit.singletons.VentaHashmapCollectionSingleton;
 import com.bit.vending.SettingsActivity;
 import com.google.gson.Gson;
@@ -83,9 +84,10 @@ public class FindPeopleFragment extends Fragment implements SwipeRefreshLayout.O
                     obj.setCodigo(coder.getText().toString());
                     obj.setDescripcion(descr.getText().toString());
                     obj.setEstado(s.getSelectedItemPosition());
-                    obj.setIdUser(Integer.parseInt(VentaHashmapCollectionSingleton.getInstance().user.getIdUsuario()));
+                    obj.setIdUser(Integer.parseInt(TransactionHashmapCollectionSingleton.getInstance().user.getIdUsuario()));
+//                    obj.setIdUser(Integer.parseInt(VentaHashmapCollectionSingleton.getInstance().user.getIdUsuario()));
 
-                    UpdateAvatarTask task = new UpdateAvatarTask();
+                    UpdateAvatarTask task = new UpdateAvatarTask(getActivity());
                     task.setDATA(new Gson().toJson(obj));
                     task.execute();
 
@@ -109,10 +111,14 @@ public class FindPeopleFragment extends Fragment implements SwipeRefreshLayout.O
             swipeLayout.setRefreshing(false);
             try {
                 List<Avatar> final_list;
-                VentaHashmapCollectionSingleton.getInstance();
-                if (VentaHashmapCollectionSingleton.avatares != null) {
-                    VentaHashmapCollectionSingleton.getInstance();
-                    final_list = VentaHashmapCollectionSingleton.avatares;
+                TransactionHashmapCollectionSingleton.getInstance();
+                if (TransactionHashmapCollectionSingleton.avatares != null) {
+                    TransactionHashmapCollectionSingleton.getInstance();
+                    final_list = TransactionHashmapCollectionSingleton.avatares;
+//                VentaHashmapCollectionSingleton.getInstance();
+//                if (VentaHashmapCollectionSingleton.avatares != null) {
+//                    VentaHashmapCollectionSingleton.getInstance();
+//                    final_list = VentaHashmapCollectionSingleton.avatares;
                 } else {
                     final_list = new ArrayList();
                 }
@@ -127,10 +133,14 @@ public class FindPeopleFragment extends Fragment implements SwipeRefreshLayout.O
         List<Avatar> final_list;
         super.onResume();
         lv3 = (ListView) getActivity().findViewById(R.id.current_purchase_list);
-        VentaHashmapCollectionSingleton.getInstance();
-        if (VentaHashmapCollectionSingleton.avatares != null) {
-            VentaHashmapCollectionSingleton.getInstance();
-            final_list = VentaHashmapCollectionSingleton.avatares;
+        TransactionHashmapCollectionSingleton.getInstance();
+        if (TransactionHashmapCollectionSingleton.avatares != null) {
+            TransactionHashmapCollectionSingleton.getInstance();
+            final_list = TransactionHashmapCollectionSingleton.avatares;
+//        VentaHashmapCollectionSingleton.getInstance();
+//        if (VentaHashmapCollectionSingleton.avatares != null) {
+//            VentaHashmapCollectionSingleton.getInstance();
+//            final_list = VentaHashmapCollectionSingleton.avatares;
         } else {
             final_list = new ArrayList();
         }
@@ -174,12 +184,18 @@ public class FindPeopleFragment extends Fragment implements SwipeRefreshLayout.O
 
         try {
             List<Avatar> final_list;
-            VentaHashmapCollectionSingleton.getInstance();
-            if (VentaHashmapCollectionSingleton.avatares != null) {
-                VentaHashmapCollectionSingleton.getInstance();
-                final_list = VentaHashmapCollectionSingleton.avatares;
-                VentaHashmapCollectionSingleton.getInstance();
-                VentaHashmapCollectionSingleton.avatar = (Avatar) final_list.get(0);
+            TransactionHashmapCollectionSingleton.getInstance();
+            if (TransactionHashmapCollectionSingleton.avatares != null) {
+                TransactionHashmapCollectionSingleton.getInstance();
+                final_list = TransactionHashmapCollectionSingleton.avatares;
+                TransactionHashmapCollectionSingleton.getInstance();
+                TransactionHashmapCollectionSingleton.avatar = (Avatar) final_list.get(0);
+//            VentaHashmapCollectionSingleton.getInstance();
+//            if (VentaHashmapCollectionSingleton.avatares != null) {
+//                VentaHashmapCollectionSingleton.getInstance();
+//                final_list = VentaHashmapCollectionSingleton.avatares;
+//                VentaHashmapCollectionSingleton.getInstance();
+//                VentaHashmapCollectionSingleton.avatar = (Avatar) final_list.get(0);
             } else {
                 final_list = new ArrayList();
             }

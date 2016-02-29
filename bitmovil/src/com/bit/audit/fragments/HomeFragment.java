@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import com.bit.client.R;
+import com.bit.singletons.TransactionHashmapCollectionSingleton;
 import com.bit.singletons.VentaHashmapCollectionSingleton;
 
 import java.math.BigDecimal;
@@ -53,8 +54,15 @@ public class HomeFragment extends Fragment {
         VendingMachineActivity.txBalance = (TextView) rootView.findViewById(R.id.txBalance);
         DecimalFormat df = new DecimalFormat("#,##0.00");
         df.setDecimalFormatSymbols(new DecimalFormatSymbols(Locale.ITALY));
-        VentaHashmapCollectionSingleton.getInstance();
-        VendingMachineActivity.txBalance.setText("$" + df.format(new BigDecimal(VentaHashmapCollectionSingleton.estadoCuenta.getSaldo().toString())));
+        TransactionHashmapCollectionSingleton.getInstance();
+        if(TransactionHashmapCollectionSingleton.estadoCuenta == null) {
+//        VentaHashmapCollectionSingleton.getInstance();
+//        if(VentaHashmapCollectionSingleton.estadoCuenta == null) {
+            VendingMachineActivity.txBalance.setText("$ 0");
+        }else{
+            VendingMachineActivity.txBalance.setText("$" + df.format(new BigDecimal(TransactionHashmapCollectionSingleton.estadoCuenta.getSaldo().toString())));
+//            VendingMachineActivity.txBalance.setText("$" + df.format(new BigDecimal(VentaHashmapCollectionSingleton.estadoCuenta.getSaldo().toString())));
+        }
         VendingMachineActivity.btnVending = (ImageButton) rootView.findViewById(R.id.btnVendingMachine);
         try {
             VendingMachineActivity.btnAccessControl.setOnClickListener(new C01001());

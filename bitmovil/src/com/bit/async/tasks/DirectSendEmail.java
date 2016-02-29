@@ -2,6 +2,8 @@ package com.bit.async.tasks;
 
 import android.content.Context;
 import android.os.AsyncTask;
+
+import com.bit.client.R;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
@@ -54,8 +56,8 @@ public class DirectSendEmail extends AsyncTask<String, Void, String> {
     public String directSend(String DATA){
 
         String result = "";
-        //String server = context.getString(R.string.server);
-        String url = "http://atlas.goycooleainc.com" + "/mobile/send/email";
+        String server = context.getString(R.string.server);
+        String url = server + "/mobile/send/email";
         try {
             DefaultHttpClient httpclient = new DefaultHttpClient();
 

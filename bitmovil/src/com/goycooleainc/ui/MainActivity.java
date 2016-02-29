@@ -14,6 +14,7 @@ import com.bit.async.tasks.DirectNewTransaction;
 import com.bit.client.R;
 import com.bit.entities.Productos;
 import com.bit.entities.Transaccion;
+import com.bit.singletons.TransactionHashmapCollectionSingleton;
 import com.bit.singletons.VendingSingleton;
 import com.bit.singletons.VentaHashmapCollectionSingleton;
 import com.google.gson.Gson;
@@ -68,7 +69,8 @@ public class MainActivity extends BlundellActivity implements MainMenu {
         });
 
         try {
-            List<Productos> list = VentaHashmapCollectionSingleton.getInstance().productos;
+            List<Productos> list = TransactionHashmapCollectionSingleton.getInstance().productos;
+//            List<Productos> list = VentaHashmapCollectionSingleton.getInstance().productos;
             lv2.setAdapter(new ProductosBitItemListAdapter(getBaseContext(), list));
             lv2.setOnItemClickListener(new C01042(list));
 
@@ -90,8 +92,10 @@ public class MainActivity extends BlundellActivity implements MainMenu {
         public void onItemClick(AdapterView<?> adapterView, View v, int position, long id) {
 
             Productos obj = (Productos) this.val$list.get(position);
-            VentaHashmapCollectionSingleton.getInstance();
-            List<Productos> productos = VentaHashmapCollectionSingleton.productos;
+            TransactionHashmapCollectionSingleton.getInstance();
+            List<Productos> productos = TransactionHashmapCollectionSingleton.productos;
+//            VentaHashmapCollectionSingleton.getInstance();
+//            List<Productos> productos = VentaHashmapCollectionSingleton.productos;
 
             if (productos != null) {
                 //manager.purchase(obj.getCodigo());
@@ -142,7 +146,8 @@ public class MainActivity extends BlundellActivity implements MainMenu {
 
             Transaccion tx = new Transaccion();
             tx.setFecha(currentDateandTime);
-            tx.setAvatar(VentaHashmapCollectionSingleton.getInstance().avatar.getCodigo());
+            tx.setAvatar(TransactionHashmapCollectionSingleton.getInstance().avatar.getCodigo());
+//            tx.setAvatar(VentaHashmapCollectionSingleton.getInstance().avatar.getCodigo());
             tx.setCantidad("1");
             tx.setGps("");
             tx.setIdProducto(0);
@@ -153,7 +158,7 @@ public class MainActivity extends BlundellActivity implements MainMenu {
             tx.setMoneda(1);
             tx.setPublicKey("");
 
-            DirectNewTransaction task = new DirectNewTransaction();
+            DirectNewTransaction task = new DirectNewTransaction(getApplicationContext());
             task.setDATA(new Gson().toJson(tx));
         }catch (Exception ex){
 

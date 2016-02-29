@@ -19,7 +19,7 @@ import com.bit.audit.fragments.VendingMachineActivity;
 import com.bit.client.R;
 import com.bit.entities.Avatar;
 import com.bit.entities.User;
-import com.bit.singletons.VentaHashmapCollectionSingleton;
+import com.bit.singletons.TransactionHashmapCollectionSingleton;
 import com.bit.utils.LoyaltyCardReader;
 import com.google.gson.Gson;
 
@@ -131,10 +131,10 @@ public class SettingsActivity extends Activity implements LoyaltyCardReader.Acco
         this.avatar = intent.getStringExtra("avatar");
         this.idUser = intent.getStringExtra("id_user");
         this.privateInternalID = intent.getStringExtra("privateInternalID");
-        VentaHashmapCollectionSingleton.getInstance();
-        User user = VentaHashmapCollectionSingleton.user;
-        VentaHashmapCollectionSingleton.getInstance();
-        Avatar avatar = VentaHashmapCollectionSingleton.avatar;
+        TransactionHashmapCollectionSingleton.getInstance();
+        User user = TransactionHashmapCollectionSingleton.user;
+        TransactionHashmapCollectionSingleton.getInstance();
+        Avatar avatar = TransactionHashmapCollectionSingleton.avatar;
         this.tx_avatar = (TextView) findViewById(R.id.txAvatar);
         this.tx_nuevo_avatar = (TextView) findViewById(R.id.txNuevoAvatar);
         if (avatar != null) {
@@ -219,10 +219,10 @@ public class SettingsActivity extends Activity implements LoyaltyCardReader.Acco
 
     public void goSave(View view) {
         try {
-            VentaHashmapCollectionSingleton.getInstance();
-            User user = VentaHashmapCollectionSingleton.user;
-            VentaHashmapCollectionSingleton.getInstance();
-            Avatar avatar = VentaHashmapCollectionSingleton.avatar;
+            TransactionHashmapCollectionSingleton.getInstance();
+            User user = TransactionHashmapCollectionSingleton.user;
+            TransactionHashmapCollectionSingleton.getInstance();
+            Avatar avatar = TransactionHashmapCollectionSingleton.avatar;
             String code = this.tx_nuevo_avatar.getText().toString();
             Avatar new_avatar = new Avatar();
             new_avatar.setCodigo(code);
@@ -237,7 +237,7 @@ public class SettingsActivity extends Activity implements LoyaltyCardReader.Acco
                 //this.tx_nuevo_avatar.setText("[Listening]");
                 return;
             }else {
-                NewAvatarTask task = new NewAvatarTask();
+                NewAvatarTask task = new NewAvatarTask(getApplicationContext());
                 task.setDATA(new Gson().toJson(new_avatar));
                 task.execute(new String[0]);
                 Toast.makeText(getBaseContext(), "Avatar Guardado ............. [OK]", Toast.LENGTH_LONG).show();

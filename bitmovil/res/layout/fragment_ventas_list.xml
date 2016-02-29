@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.SwipeRefreshLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/swipe_container"
+        android:background="@drawable/bkg"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_back_title_splitter" />
+
+        <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginTop="50dp">
+
+            <TextView
+            android:id="@+id/tv_titulo_paso_uno"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:gravity="center"
+            android:text="MIS EVENTOS COMPRADOS"
+            android:textAppearance="@style/texto_titulo_principal"
+            android:textColor="@color/White"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/venta_nombre"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:text="VENTA 1"
+            android:textAppearance="@style/texto_subtitulo"
+            android:textColor="@color/Gray"
+            android:textStyle="bold" android:gravity="center"/>
+
+        </LinearLayout>
+
+
+    <ImageView android:id="@+id/imageView4" android:layout_width="wrap_content" android:layout_height="wrap_content"
+               android:src="@drawable/ic_back_title_splitter" android:paddingTop="6dp"/>
+    <ListView
+        android:id="@+id/venta_list"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+            >
+    </ListView>
+        <ImageButton android:layout_width="50dp" android:layout_height="50dp"
+                     android:id="@+id/btnClose" android:src="@drawable/btn_ok"
+                     android:background="@android:color/transparent" android:adjustViewBounds="false"
+                     android:cropToPadding="false" android:scaleType="fitCenter"
+                     android:layout_gravity="center_horizontal" android:layout_marginBottom="60dp"
+                     android:layout_marginTop="5dp"/>
+
+    </LinearLayout>
+</android.support.v4.widget.SwipeRefreshLayout>

@@ -52,7 +52,7 @@ public class DailyGetLideres extends AsyncTask<String, Void, String> {
 	protected String doInBackground(String... params) {
 		
 		Log.e("checkLogin", "Start DailyGetData");
-		// TODO Auto-generated method stub
+
 		this.usuario = params[0];
 		this.pass = params[1];
 		this.ip = params[2];

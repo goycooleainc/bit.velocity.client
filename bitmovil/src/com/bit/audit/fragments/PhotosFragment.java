@@ -20,6 +20,7 @@ import com.bit.entities.Eventos;
 import com.bit.entities.Transaccion;
 import com.bit.entities.User;
 import com.bit.singletons.CacheCollectionSingleton;
+import com.bit.singletons.TransactionHashmapCollectionSingleton;
 import com.bit.singletons.VentaHashmapCollectionSingleton;
 import com.google.gson.Gson;
 import org.apache.james.mime4j.util.CharsetUtil;
@@ -50,14 +51,16 @@ public class PhotosFragment extends Fragment implements SwipeRefreshLayout.OnRef
 
     private void refreshEvents()
     {
-        GetEventosTask events_mediator = new GetEventosTask();
+        GetEventosTask events_mediator = new GetEventosTask(getActivity());
         List<User> list = null;
         try {
 
             List<Eventos> eventos = (List) events_mediator.execute(new Void[0]).get();
             CacheCollectionSingleton.getInstance(getActivity()).setInMemmoryUsers(new Gson().toJson((Object) list));
-            VentaHashmapCollectionSingleton.getInstance();
-            VentaHashmapCollectionSingleton.eventos = eventos;
+            TransactionHashmapCollectionSingleton.getInstance();
+            TransactionHashmapCollectionSingleton.eventos = eventos;
+//            VentaHashmapCollectionSingleton.getInstance();
+//            VentaHashmapCollectionSingleton.eventos = eventos;
 
             List<Eventos> final_list = eventos;
             this.adapter = new EventosItemListAdapter(getActivity().getBaseContext(), final_list);
@@ -117,7 +120,8 @@ public class PhotosFragment extends Fragment implements SwipeRefreshLayout.OnRef
                 @Override
                 public void onClick(View v) {
                     Transaccion tx = new Transaccion();
-                    String avatar = VentaHashmapCollectionSingleton.avatar.getCodigo();
+                    String avatar = TransactionHashmapCollectionSingleton.avatar.getCodigo();
+//                    String avatar = VentaHashmapCollectionSingleton.avatar.getCodigo();
                     tx.setAvatar(avatar);
                     tx.setCantidad("1");
                     tx.setFecha("");
@@ -129,7 +133,7 @@ public class PhotosFragment extends Fragment implements SwipeRefreshLayout.OnRef
                     tx.setPublicKey("");
                     tx.setTotal(obj.getPrecio());
 
-                    DirectNewTransaction task = new DirectNewTransaction();
+                    DirectNewTransaction task = new DirectNewTransaction(getActivity());
                     task.setDATA(new Gson().toJson(tx));
                     //task.directSend(new Gson().toJson(obj));
                     task.execute();
@@ -155,10 +159,14 @@ public class PhotosFragment extends Fragment implements SwipeRefreshLayout.OnRef
         lv2 = (ListView) rootView.findViewById(R.id.product_list);
         try {
             List<Eventos> final_list;
-            VentaHashmapCollectionSingleton.getInstance();
-            if (VentaHashmapCollectionSingleton.eventos != null) {
-                VentaHashmapCollectionSingleton.getInstance();
-                final_list = VentaHashmapCollectionSingleton.eventos;
+            TransactionHashmapCollectionSingleton.getInstance();
+            if (TransactionHashmapCollectionSingleton.eventos != null) {
+                TransactionHashmapCollectionSingleton.getInstance();
+                final_list = TransactionHashmapCollectionSingleton.eventos;
+//            VentaHashmapCollectionSingleton.getInstance();
+//            if (VentaHashmapCollectionSingleton.eventos != null) {
+//                VentaHashmapCollectionSingleton.getInstance();
+//                final_list = VentaHashmapCollectionSingleton.eventos;
             } else {
                 final_list = new ArrayList();
             }

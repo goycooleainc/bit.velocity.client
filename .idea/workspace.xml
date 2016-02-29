@@ -1,0 +1,1753 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="caa385fd-dc80-412c-a25d-0d6ed0128ca2" name="Default" comment="Merge branch 'development_gino'&#10;&#10;Conflicts:&#10;&#9;bitmovil/bitmovil.apk&#10;&#9;bitmovil/res/layout/fragment_ventas_list.xml&#10;&#9;bitmovil/src/com/bit/async/tasks/DirectSendEmail.java&#10;&#9;bitmovil/src/com/bit/audit/fragments/VendingMachineActivity.java&#10;&#9;bitmovil/src/com/bit/utils/StoreManager.java&#10;&#9;bitmovil/src/com/bit/vending/StartActivity.java&#10;&#9;out/production/bitmovil/bitmovil.apk&#10;&#9;out/production/bitmovil/bitmovil.unaligned.apk&#10;&#9;out/production/bitmovil/com/bit/adapters/HitosItemListAdapter.class&#10;&#9;out/production/bitmovil/com/bit/adapters/ImageTextAdapter.class&#10;&#9;out/production/bitmovil/com/bit/adapters/ObservacionesItemListAdapter.class&#10;&#9;out/production/bitmovil/com/bit/adapters/PotencialesItemListAdapter.class&#10;&#9;out/production/bitmovil/com/bit/adapters/ProblemItemListAdapter.class&#10;&#9;out/production/bitmovil/com/bit/adapters/ProductosBitItemListAdapter.class&#10;&#9;out/production/bitmovil/com/bit/adapters/RegistrosParametrosItemListAdapter.class&#10;&#9;out/production/bitmovil/com/bit/adapters/RepuestosItemListAdapter.class&#10;&#9;out/production/bitmovil/com/bit/adapters/VentasItemListAdapter.class&#10;&#9;out/production/bitmovil/com/bit/async/tasks/DirectSendEmail.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$1.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$2.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$3.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$4.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$AvatarFragment$C00961$1.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$AvatarFragment$C00961$C00951.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$AvatarFragment$C00961.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$AvatarFragment$C00972.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$AvatarFragment.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$EventosFragment$C00991$1.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$EventosFragment$C00991$C00981.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$EventosFragment$C00991.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$EventosFragment.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$MenuFragment$C01001.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$MenuFragment$C01012.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$MenuFragment.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$NoRepeatRandom.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$SectionsPagerAdapter.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$TransactionsFragment$C01031$C01021.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$TransactionsFragment$C01031.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$TransactionsFragment.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$VendingFragment$C01042.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$VendingFragment$C01781.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$VendingFragment.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity.class&#10;&#9;out/production/bitmovil/com/bit/client/R$id.class&#10;&#9;out/production/bitmovil/com/bit/client/R$integer.class&#10;&#9;out/production/bitmovil/com/bit/client/R$layout.class&#10;&#9;out/production/bitmovil/com/bit/client/R$menu.class&#10;&#9;out/production/bitmovil/com/bit/client/R$string.class&#10;&#9;out/production/bitmovil/com/bit/client/R$style.class&#10;&#9;out/production/bitmovil/com/bit/client/R$xml.class&#10;&#9;out/production/bitmovil/com/bit/client/R.class&#10;&#9;out/production/bitmovil/com/bit/mediators/SpinnerMediator.class&#10;&#9;out/production/bitmovil/com/bit/utils/PullToRefreshListView.class&#10;&#9;out/production/bitmovil/com/bit/utils/StoreManager$1.class&#10;&#9;out/production/bitmovil/com/bit/utils/StoreManager$2.class&#10;&#9;out/production/bitmovil/com/bit/utils/StoreManager$3.class&#10;&#9;out/production/bitmovil/com/bit/utils/StoreManager$4.class&#10;&#9;out/production/bitmovil/com/bit/utils/StoreManager.class&#10;&#9;out/production/bitmovil/com/bit/vending/LoadingToMainActivity.class&#10;&#9;out/production/bitmovil/com/bit/vending/SettingsActivity.class&#10;&#9;out/production/bitmovil/com/bit/vending/StartActivity.class&#10;&#9;out/production/bitmovil/layout/activity_main.xml&#10;&#9;out/production/bitmovil/layout/activity_settings.xml&#10;&#9;out/production/bitmovil/layout/activity_start.xml&#10;&#9;out/production/bitmovil/layout/fragment_avatar_list.xml&#10;&#9;out/production/bitmovil/menu/main.xml&#10;&#9;out/production/bitmovil/values/strings.xml&#10;">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/utils/CheckEmail.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/entities/Email.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/GetTransaccionesFromServerTask$1.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/GetTransaccionesFromServerTask.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/GetVentasTask$C01741.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/GetVentasTask.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/singletons/TransactionHashmapCollectionSingleton.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/adapters/TransactionsItemListAdapter$ViewHolder.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/adapters/TransactionsItemListAdapter.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$4.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$5.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$MiEspacioFragment$ShowListVenta$1.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$MiEspacioFragment$ShowListVenta$ShowModalVenta.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$MiEspacioFragment$ShowListVenta.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$MiEspacioFragment.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$ShowModalTransaction$C01021.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$ShowModalTransaction.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$VendingFragment$C01042.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$VendingFragment$C01781.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.name" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitmovil/src/com/bit/utils/CheckEmail.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitmovil/src/com/bit/async/tasks/DirectAltaUser.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitmovil/src/com/bit/entities/Email.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitmovil/src/com/bit/async/tasks/GetTransaccionesFromServerTask.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitmovil/src/com/bit/async/tasks/GetVentasTask.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitmovil/src/com/bit/singletons/TransactionHashmapCollectionSingleton.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitmovil/src/com/bit/adapters/TransactionsItemListAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/android_support_v4.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/bit.velocity.client.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/libs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitmovil/res/layout/modal_avatar_method_select_type.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitmovil/res/layout/modal_compartir_evento_method.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bitmovil/res/layout/modal_nuevo_usuario_method.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bitmovil/src/com/bit/async/tasks/GetVentasFromServerTask.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/GetVentasFromServerTask$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/GetVentasFromServerTask.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$TransactionsFragment$C01031$C01021.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$TransactionsFragment$C01031.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/bkg.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/bkgp.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/bkgp_new.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/bkgp_titulo.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/boton_control_calidad.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/boton_control_calidad_click.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/boton_mas.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/boton_menos.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/btn_cancel.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/btn_ok.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/button_cancel.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/button_cancel_down.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/button_ok.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/button_ok_down.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/button_radio_off.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/button_radio_on.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/button_refresh.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/button_refresh_down.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/campo_firma.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/campodetexto.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/campodetextofoto.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/campodetextoordenes.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/confirmacion_aceptar.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/confirmacion_cancel.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/gray.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic__support_save.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_access.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_add_circle.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_atlas_white.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_attachment.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_avatar.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_back_main.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_back_title_splitter.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_camera_circle.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_camera_mult.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_cancel_circle.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_cart.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_cash.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_circle_refresh.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_cloud.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_comment.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_communities.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_compromisos.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_control_acceso.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_decline.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_done.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_done_circle.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_drawer.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_drill.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_emergency.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_eventos.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_exit.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_face.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_fingerprint.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_firma_atlas.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_firma_cliente.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_fleet.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_future.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_home.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_launcher.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_like.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_login.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_logo.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_logo_2042.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_logo_white.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_logout.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_memmo.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_menu.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_msg.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_mushroom.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_new.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_new_report.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_next.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_next_circle.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_nfc.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_ordenes.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_orders_circle.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_pages.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_pay.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_people.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_photos.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_picture.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_popup.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_prev.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_prev_circle.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_preview.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_qr.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_quality.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_refresh.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_replacement.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_robot_nfc.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_save.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_save_item.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_seal.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_send_action.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_settings.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_shop.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_shopping.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_start.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_start_audit_words.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_stop_audit_words.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_support_b.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_support_b4.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_support_new.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_support_save.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_sync.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_sync_now.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_task_circle.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_termino_proceso.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_trash.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_trash_report.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_upload.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_vending_machine.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_ventas.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_video.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_video_mult.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_wallet.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_watch.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ic_whats_hot.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/icono_borde_rojo.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/icono_camara.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/icono_camara_gris.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/icono_camara_new.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/icono_camara_new2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/icono_camara_rojo.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/icono_camion.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/icono_firma.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/icono_firma_atlas.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/icono_fondo_paso_2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/icono_paso_uno.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/icono_s.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/list_activated_holo.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/list_focused_holo.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/list_longpressed_holo.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/list_pressed_holo_light.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/list_selector_disabled_holo_light.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/no.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/photo.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ptr_pulltorefresh_arrow.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/ralla_horizontal.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/raya_fina_horizontal.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/separador_new.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/separador_vertical.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/separador_vertical_larger.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/signature.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/spinner_default_holo_light.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/spinner_disabled_holo_light.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/spinner_focused_holo_light.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/spinner_pressed_holo_light.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/start_button_enter.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/wait.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/warning.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-hdpi/yes.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-ldpi/ic_start.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-ldpi/ptr_pulltorefresh_arrow.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-ldpi/start_button_enter.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-mdpi/ic_start.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-mdpi/list_activated_holo.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-mdpi/list_focused_holo.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-mdpi/list_longpressed_holo.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-mdpi/list_pressed_holo_light.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-mdpi/list_selector_disabled_holo_light.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-mdpi/ptr_pulltorefresh_arrow.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-mdpi/spinner_default_holo_light.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-mdpi/spinner_disabled_holo_light.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-mdpi/spinner_focused_holo_light.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-mdpi/spinner_pressed_holo_light.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-mdpi/start_button_enter.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-xhdpi/ic_start.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-xhdpi/list_activated_holo.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-xhdpi/list_focused_holo.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-xhdpi/list_longpressed_holo.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-xhdpi/list_pressed_holo_light.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-xhdpi/list_selector_disabled_holo_light.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-xhdpi/spinner_default_holo_light.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-xhdpi/spinner_disabled_holo_light.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-xhdpi/spinner_focused_holo_light.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-xhdpi/spinner_pressed_holo_light.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-xhdpi/start_button_enter.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-xxhdpi/ic_start.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable-xxhdpi/start_button_enter.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable/btn_radio_holo_light.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable/cancel_style_buttons.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable/counter_bg.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable/ic_info.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable/ic_launcher.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable/list_item_bg_normal.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable/list_item_bg_pressed.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable/list_selector.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable/ok_style_buttons.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable/refresh_style_buttons.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable/rounded_back_dos.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable/rounded_back_white.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable/rounded_background.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable/rounded_edittext.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/drawable/rounded_edittext_highlighted.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/layout/activity_email.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/layout/activity_main.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/layout/activity_purchase.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/layout/activity_settings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/layout/activity_start.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/layout/activity_swipe_refresh.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/layout/activity_vending.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/layout/audit_report_item.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/layout/dialog_new_action.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/layout/dialog_progress.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/layout/drawer_list_item.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/layout/fragment_acess_control.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/layout/fragment_avatar_list.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/layout/fragment_community.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/layout/fragment_events_list.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/layout/fragment_find_people.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/layout/fragment_home.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/layout/fragment_menu.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/layout/fragment_pages.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/layout/fragment_payment_listener.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/layout/fragment_photos.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/layout/fragment_product_list.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/layout/fragment_stats.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/layout/fragment_transactions_list.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/layout/fragment_whats_hot.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/layout/list_row.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/layout/list_section_item.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/layout/loading_screen.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/layout/modal_avatar_method.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/layout/modal_eventos_method.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/layout/modal_payment_method.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/layout/modal_transaction_method.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/layout/order_section_item.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/layout/ptr_header.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/layout/pull_to_refresh.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/layout/recharge_item.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/layout/simple_dropdown_item_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/layout/spinner_dropdown.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/layout/spinner_item.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/menu/audit.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/menu/main.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/menu/main_activity_actions.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/menu/main_auxiliary.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/values/color.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/values/dimens.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/values/integers.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/values/online.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/values/ptr_default_style.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/values/strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/values/strings_activity_settings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/values/styles.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/values/styles_apptheme.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/values/themes_apptheme.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/xml/nfc_tech_filter.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/xml/pref_data_sync.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/xml/pref_general.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/xml/pref_headers.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/bitmovil/xml/pref_notification.xml" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/out/production/bitmovil/layout/ventas_report_item.xml" afterPath="$PROJECT_DIR$/bitmovil/res/layout/transacciones_report_item.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/vending/AssetLoader.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/vending/AssetLoader.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/adapters/AvataresItemListAdapter.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/adapters/AvataresItemListAdapter.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/CommunityFragment$C01031.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/CommunityFragment$C01031.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/CommunityFragment.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/CommunityFragment.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/CreateAdsAuditoryTask.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/CreateAdsAuditoryTask.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/CreateAuditoryItemTask.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/CreateAuditoryItemTask.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/CreateAuditoryNoteTask.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/CreateAuditoryNoteTask.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/CreateAuditoryObservationTask.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/CreateAuditoryObservationTask.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/CreateAuditoryPotentialsTask.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/CreateAuditoryPotentialsTask.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/CreateAuditoryProblem.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/CreateAuditoryProblem.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/CreateLhdAuditoryTask.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/CreateLhdAuditoryTask.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/CreateSdeAuditoryTask.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/CreateSdeAuditoryTask.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/CreateTmeAuditoryTask.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/CreateTmeAuditoryTask.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/DailyGetLideres.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/DailyGetLideres.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/DailyGetOrders.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/DailyGetOrders.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/DailyGetServicios.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/DailyGetServicios.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/DailyModifyData.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/DailyModifyData.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/DailyPostData.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/DailyPostData.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/DailyPostEvaluatorImage.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/DailyPostEvaluatorImage.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/DailyUpdateOrderStatusData.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/DailyUpdateOrderStatusData.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/DirectCommentOrderUpdate.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/DirectCommentOrderUpdate.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/DirectImageDelivery.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/DirectImageDelivery.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/DirectNewTransaction.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/DirectNewTransaction.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/DirectOrder.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/DirectOrder.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/DirectOrderUpdate.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/DirectOrderUpdate.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/DirectSendEmail.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/DirectSendEmail.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/adapters/EventosItemListAdapter.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/adapters/EventosItemListAdapter.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/FindPeopleFragment$1.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/FindPeopleFragment$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/FindPeopleFragment$C00961$1.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/FindPeopleFragment$C00961$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/FindPeopleFragment$C00961$C00951.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/FindPeopleFragment$C00961$C00951.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/FindPeopleFragment$C00961.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/FindPeopleFragment$C00961.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/FindPeopleFragment$C00972.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/FindPeopleFragment$C00972.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/FindPeopleFragment.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/FindPeopleFragment.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/GetAvataresTask$C01691.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/GetAvataresTask$C01691.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/GetAvataresTask.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/GetAvataresTask.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/GetEstadoCuentaTask$C01701.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/GetEstadoCuentaTask$C01701.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/GetEstadoCuentaTask.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/GetEstadoCuentaTask.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/GetEvaluatorImageHelper.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/GetEvaluatorImageHelper.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/GetEventosTask$C01711.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/GetEventosTask$C01711.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/GetEventosTask.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/GetEventosTask.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/GetImageTask.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/GetImageTask.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/GetNextOrderCandidate.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/GetNextOrderCandidate.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/GetProductosFromServerTask$1.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/GetProductosFromServerTask$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/GetProductosFromServerTask.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/GetProductosFromServerTask.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/GetTransactionsTask$C01741.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/GetTransactionsTask$C01741.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/GetTransactionsTask.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/GetTransactionsTask.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/GetUsersFromServerTask$1.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/GetUsersFromServerTask$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/GetUsersFromServerTask.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/GetUsersFromServerTask.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/adapters/HitosItemListAdapter.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/adapters/HitosItemListAdapter.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/HomeFragment$C01001.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/HomeFragment$C01001.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/HomeFragment$C01012.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/HomeFragment$C01012.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/HomeFragment.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/HomeFragment.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/android/vending/billing/IInAppBillingService$Stub$Proxy.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/android/vending/billing/IInAppBillingService$Stub$Proxy.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/android/vending/billing/util/IabHelper.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/android/vending/billing/util/IabHelper.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/mediators/ImageMediator$1OneShotTask.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/mediators/ImageMediator$1OneShotTask.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/mediators/ImageMediator$3OneShotTask.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/mediators/ImageMediator$3OneShotTask.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/adapters/ImageTextAdapter.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/adapters/ImageTextAdapter.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/LicenseCheck.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/LicenseCheck.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/ListAuditoryItemTask.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/ListAuditoryItemTask.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/ListAuditoryNoteTask.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/ListAuditoryNoteTask.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/ListAuditoryObservationTask.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/ListAuditoryObservationTask.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/ListAuditoryPotencials.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/ListAuditoryPotencials.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/ListAuditoryProblemTask.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/ListAuditoryProblemTask.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/ListAuditoryTask.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/ListAuditoryTask.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/vending/LoadingToMainActivity.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/vending/LoadingToMainActivity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/goycooleainc/ui/MainActivity$1.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/goycooleainc/ui/MainActivity$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/goycooleainc/ui/MainActivity$C01042.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/goycooleainc/ui/MainActivity$C01042.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/goycooleainc/ui/MainActivity$C01781.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/goycooleainc/ui/MainActivity$C01781.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/MainActivity.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/MainActivity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/goycooleainc/ui/MainActivity.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/goycooleainc/ui/MainActivity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/adapters/NavDrawerListAdapter.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/adapters/NavDrawerListAdapter.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/utils/NdefReaderTask.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/utils/NdefReaderTask.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/NewAvatarTask.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/NewAvatarTask.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/adapters/ObservacionesItemListAdapter.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/adapters/ObservacionesItemListAdapter.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/PhotosFragment$C00991$1.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/PhotosFragment$C00991$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/PhotosFragment$C00991$C00981.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/PhotosFragment$C00991$C00981.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/PhotosFragment$C00991.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/PhotosFragment$C00991.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/PhotosFragment.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/PhotosFragment.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/adapters/PotencialesItemListAdapter.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/adapters/PotencialesItemListAdapter.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/adapters/ProblemItemListAdapter.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/adapters/ProblemItemListAdapter.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/adapters/ProductosBitItemListAdapter.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/adapters/ProductosBitItemListAdapter.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/adapters/ProductosItemListAdapter.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/adapters/ProductosItemListAdapter.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/utils/PullToRefreshListView$1.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/utils/PullToRefreshListView$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/utils/PullToRefreshListView.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/utils/PullToRefreshListView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/client/R$id.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/client/R$id.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/client/R$integer.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/client/R$integer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/client/R$layout.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/client/R$layout.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/client/R$menu.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/client/R$menu.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/client/R$string.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/client/R$string.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/client/R$style.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/client/R$style.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/client/R$xml.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/client/R$xml.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/client/R.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/client/R.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/adapters/RegistrosParametrosItemListAdapter.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/adapters/RegistrosParametrosItemListAdapter.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/adapters/RepuestosItemListAdapter.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/adapters/RepuestosItemListAdapter.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/android/vending/billing/util/Security.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/android/vending/billing/util/Security.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/SendAsyncSingleImageWithNote.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/SendAsyncSingleImageWithNote.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/vending/SettingsActivity.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/vending/SettingsActivity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/SingleDirectImageDelivery.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/SingleDirectImageDelivery.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/SingleDirectVideoDelivery.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/SingleDirectVideoDelivery.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/mediators/SpinnerMediator.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/mediators/SpinnerMediator.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/vending/StartActivity$1.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/vending/StartActivity$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/vending/StartActivity$2.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/vending/StartActivity$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/vending/StartActivity.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/vending/StartActivity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/utils/StoreManager$1.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/utils/StoreManager$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/utils/StoreManager$2.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/utils/StoreManager$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/utils/StoreManager$3.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/utils/StoreManager$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/utils/StoreManager$4.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/utils/StoreManager$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/utils/StoreManager.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/utils/StoreManager.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/utils/SwipeListViewTouchListener$PendingSwipeData.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/utils/SwipeListViewTouchListener$PendingSwipeData.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/entities/Transaccion.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/entities/Transaccion.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/UpdateAuditoryItemTask.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/UpdateAuditoryItemTask.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/UpdateAuditoryNotesTask.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/UpdateAuditoryNotesTask.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/UpdateAuditoryObservationTask.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/UpdateAuditoryObservationTask.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/UpdateAuditoryPotentialsTask.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/UpdateAuditoryPotentialsTask.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/UpdateAuditoryTask.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/UpdateAuditoryTask.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/UpdateAvatarTask.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/async/tasks/UpdateAvatarTask.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$1.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$2.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$3.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$AvatarFragment$C00961$1.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$AvatarFragment$C00961$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$AvatarFragment$C00961$C00951.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$AvatarFragment$C00961$C00951.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$AvatarFragment$C00961.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$AvatarFragment$C00961.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$AvatarFragment$C00972.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$AvatarFragment$C00972.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$AvatarFragment.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$AvatarFragment.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$EventosFragment$C00991$1.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$EventosFragment$C00991$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$EventosFragment$C00991$C00981.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$EventosFragment$C00991$C00981.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$EventosFragment$C00991.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$EventosFragment$C00991.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$EventosFragment.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$EventosFragment.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$MenuFragment$C01001.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$MenuFragment$C01001.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$MenuFragment$C01012.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$MenuFragment$C01012.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$MenuFragment.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$MenuFragment.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$NoRepeatRandom.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$NoRepeatRandom.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$SectionsPagerAdapter.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$SectionsPagerAdapter.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$TransactionsFragment.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$TransactionsFragment.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$VendingFragment.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$VendingFragment.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/entities/Venta.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/entities/Venta.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/adapters/VentasItemListAdapter.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/adapters/VentasItemListAdapter.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/WhatsHotFragment.class" afterPath="$PROJECT_DIR$/out/production/bitmovil/com/bit/audit/fragments/WhatsHotFragment.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/bitmovil.apk" afterPath="$PROJECT_DIR$/out/production/bitmovil/bitmovil.apk" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/bitmovil/bitmovil.unaligned.apk" afterPath="$PROJECT_DIR$/out/production/bitmovil/bitmovil.unaligned.apk" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bitmovil/src/com/bit/vending/AssetLoader.java" afterPath="$PROJECT_DIR$/bitmovil/src/com/bit/vending/AssetLoader.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/CommunityFragment.java" afterPath="$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/CommunityFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bitmovil/src/com/bit/async/tasks/DailyGetLideres.java" afterPath="$PROJECT_DIR$/bitmovil/src/com/bit/async/tasks/DailyGetLideres.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bitmovil/src/com/bit/async/tasks/DailyGetOrders.java" afterPath="$PROJECT_DIR$/bitmovil/src/com/bit/async/tasks/DailyGetOrders.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bitmovil/src/com/bit/async/tasks/DirectNewTransaction.java" afterPath="$PROJECT_DIR$/bitmovil/src/com/bit/async/tasks/DirectNewTransaction.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bitmovil/src/com/bit/async/tasks/DirectSendEmail.java" afterPath="$PROJECT_DIR$/bitmovil/src/com/bit/async/tasks/DirectSendEmail.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/FindPeopleFragment.java" afterPath="$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/FindPeopleFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bitmovil/src/com/bit/async/tasks/GetAvataresTask.java" afterPath="$PROJECT_DIR$/bitmovil/src/com/bit/async/tasks/GetAvataresTask.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bitmovil/src/com/bit/async/tasks/GetEstadoCuentaTask.java" afterPath="$PROJECT_DIR$/bitmovil/src/com/bit/async/tasks/GetEstadoCuentaTask.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bitmovil/src/com/bit/async/tasks/GetEventosTask.java" afterPath="$PROJECT_DIR$/bitmovil/src/com/bit/async/tasks/GetEventosTask.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bitmovil/src/com/bit/async/tasks/GetProductosFromServerTask.java" afterPath="$PROJECT_DIR$/bitmovil/src/com/bit/async/tasks/GetProductosFromServerTask.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bitmovil/src/com/bit/async/tasks/GetTransactionsTask.java" afterPath="$PROJECT_DIR$/bitmovil/src/com/bit/async/tasks/GetTransactionsTask.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bitmovil/src/com/bit/async/tasks/GetUsersFromServerTask.java" afterPath="$PROJECT_DIR$/bitmovil/src/com/bit/async/tasks/GetUsersFromServerTask.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/HomeFragment.java" afterPath="$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/HomeFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bitmovil/src/com/android/vending/billing/IInAppBillingService.aidl" afterPath="$PROJECT_DIR$/bitmovil/src/com/android/vending/billing/IInAppBillingService.aidl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bitmovil/gen/com/android/vending/billing/IInAppBillingService.java" afterPath="$PROJECT_DIR$/bitmovil/gen/com/android/vending/billing/IInAppBillingService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bitmovil/src/com/bit/adapters/ImageTextAdapter.java" afterPath="$PROJECT_DIR$/bitmovil/src/com/bit/adapters/ImageTextAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bitmovil/src/com/goycooleainc/ui/MainActivity.java" afterPath="$PROJECT_DIR$/bitmovil/src/com/goycooleainc/ui/MainActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bitmovil/src/com/bit/async/tasks/NewAvatarTask.java" afterPath="$PROJECT_DIR$/bitmovil/src/com/bit/async/tasks/NewAvatarTask.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/PhotosFragment.java" afterPath="$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/PhotosFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bitmovil/src/com/bit/vending/SettingsActivity.java" afterPath="$PROJECT_DIR$/bitmovil/src/com/bit/vending/SettingsActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bitmovil/src/com/bit/vending/StartActivity.java" afterPath="$PROJECT_DIR$/bitmovil/src/com/bit/vending/StartActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bitmovil/src/com/bit/utils/StoreManager.java" afterPath="$PROJECT_DIR$/bitmovil/src/com/bit/utils/StoreManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bitmovil/src/com/bit/entities/Transaccion.java" afterPath="$PROJECT_DIR$/bitmovil/src/com/bit/entities/Transaccion.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bitmovil/src/com/bit/async/tasks/UpdateAvatarTask.java" afterPath="$PROJECT_DIR$/bitmovil/src/com/bit/async/tasks/UpdateAvatarTask.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/VendingMachineActivity.java" afterPath="$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/VendingMachineActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bitmovil/src/com/bit/entities/Venta.java" afterPath="$PROJECT_DIR$/bitmovil/src/com/bit/entities/Venta.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bitmovil/src/com/bit/adapters/VentasItemListAdapter.java" afterPath="$PROJECT_DIR$/bitmovil/src/com/bit/adapters/VentasItemListAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bitmovil/res/layout/activity_start.xml" afterPath="$PROJECT_DIR$/bitmovil/res/layout/activity_start.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bitmovil/bitmovil.iml" afterPath="$PROJECT_DIR$/bitmovil/bitmovil.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bitmovil/res/layout/fragment_ventas_list.xml" afterPath="$PROJECT_DIR$/bitmovil/res/layout/fragment_ventas_list.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bitmovil/res/layout/modal_eventos_method.xml" afterPath="$PROJECT_DIR$/bitmovil/res/layout/modal_eventos_method.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bitmovil/project.properties" afterPath="$PROJECT_DIR$/bitmovil/project.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bitmovil/res/values/strings.xml" afterPath="$PROJECT_DIR$/bitmovil/res/values/strings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bitmovil/res/layout/ventas_report_item.xml" afterPath="$PROJECT_DIR$/bitmovil/res/layout/ventas_report_item.xml" />
+    </list>
+    <ignored path="bit.velocity.client.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <ignored path="$PROJECT_DIR$/out/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="bit.velocity.client" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="VendingMachineActivity.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/VendingMachineActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-16.834225">
+              <caret line="443" column="0" selection-start-line="443" selection-start-column="0" selection-end-line="443" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fragment_ventas_list.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bitmovil/res/layout/fragment_ventas_list.xml">
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="1.6129032">
+              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GetTransaccionesFromServerTask.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bitmovil/src/com/bit/async/tasks/GetTransaccionesFromServerTask.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GradleLocalSettings">
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/bitmovil/res/layout/fragment_ventas_list.xml" />
+        <option value="$PROJECT_DIR$/bitmovil/src/com/bit/async/tasks/DirectSendEmail.java" />
+        <option value="$PROJECT_DIR$/bitmovil/src/com/bit/utils/StoreManager.java" />
+        <option value="$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/CommunityFragment.java" />
+        <option value="$PROJECT_DIR$/bitmovil/src/com/bit/vending/StartActivity.java" />
+        <option value="$PROJECT_DIR$/bitmovil/res/layout/activity_start.xml" />
+        <option value="$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/HomeFragment.java" />
+        <option value="$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/FindPeopleFragment.java" />
+        <option value="$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/PhotosFragment.java" />
+        <option value="$PROJECT_DIR$/bitmovil/src/com/bit/singletons/VentaHashmapCollectionSingleton.java" />
+        <option value="$PROJECT_DIR$/bitmovil/src/com/goycooleainc/ui/MainActivity.java" />
+        <option value="$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/VendingMachineActivity.java" />
+        <option value="$PROJECT_DIR$/bitmovil/src/com/bit/async/tasks/GetTransaccionesFromServerTask.java" />
+        <option value="$PROJECT_DIR$/bitmovil/gen/com/android/vending/billing/IInAppBillingService.java" />
+        <option value="$PROJECT_DIR$/bitmovil/src/com/android/vending/billing/IInAppBillingService.aidl" />
+        <option value="$PROJECT_DIR$/bitmovil/src/com/bit/adapters/ImageTextAdapter.java" />
+        <option value="$PROJECT_DIR$/bitmovil/src/com/bit/async/tasks/DailyGetLideres.java" />
+        <option value="$PROJECT_DIR$/bitmovil/src/com/bit/async/tasks/DailyGetOrders.java" />
+        <option value="$PROJECT_DIR$/bitmovil/src/com/bit/async/tasks/DailyGetServicios.java" />
+      </list>
+    </option>
+  </component>
+  <component name="NamedScopeManager">
+    <order />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-1" />
+    <option name="y" value="24" />
+    <option name="width" value="1922" />
+    <option name="height" value="1033" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="AndroidView">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bit.velocity.client" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bitmovil" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.NonAndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.NonAndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bit.velocity.client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bit.velocity.client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bitmovil" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bit.velocity.client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bitmovil" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bit.velocity.client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bitmovil" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vending" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bit.velocity.client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bitmovil" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bit.velocity.client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bitmovil" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fragments" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bit.velocity.client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bitmovil" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bit.velocity.client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bitmovil" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="values" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bit.velocity.client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bitmovil" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layout" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bit.velocity.client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bitmovil" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gen" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bit.velocity.client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bitmovil" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gen" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="billing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/bitmovil/libs/android-support-v4.jar!/" />
+    <property name="settings.editor.selected.configurable" value="android.sdk-updates" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="recentsLimit" value="5" />
+    <property name="restartRequiresConfirmation" value="true" />
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RunManager" selected="Android Application.bitmovil">
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
+      <module name="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="DEPLOY" value="true" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="0" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="SELECTED_CLOUD_DEVICE_CONFIGURATION_ID" value="0" />
+      <option name="SELECTED_CLOUD_DEVICE_PROJECT_ID" value="" />
+      <option name="IS_VALID_CLOUD_MATRIX_SELECTION" value="false" />
+      <option name="INVALID_CLOUD_MATRIX_SELECTION_ERROR" value="" />
+      <option name="IS_VALID_CLOUD_DEVICE_SELECTION" value="false" />
+      <option name="INVALID_CLOUD_DEVICE_SELECTION_ERROR" value="" />
+      <option name="CLOUD_DEVICE_SERIAL_NUMBER" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="0" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="SELECTED_CLOUD_DEVICE_CONFIGURATION_ID" value="0" />
+      <option name="SELECTED_CLOUD_DEVICE_PROJECT_ID" value="" />
+      <option name="IS_VALID_CLOUD_MATRIX_SELECTION" value="false" />
+      <option name="INVALID_CLOUD_MATRIX_SELECTION_ERROR" value="" />
+      <option name="IS_VALID_CLOUD_DEVICE_SELECTION" value="false" />
+      <option name="INVALID_CLOUD_DEVICE_SELECTION_ERROR" value="" />
+      <option name="CLOUD_DEVICE_SERIAL_NUMBER" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <method />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="JarApplication" factoryName="JAR Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="false" name="bitmovil" type="AndroidRunConfigurationType" factoryName="Android Application">
+      <module name="bitmovil" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="DEPLOY" value="true" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="USB_DEVICE" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="Please select a project..." />
+      <option name="SELECTED_CLOUD_DEVICE_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_DEVICE_PROJECT_ID" value="Please select a project..." />
+      <option name="IS_VALID_CLOUD_MATRIX_SELECTION" value="false" />
+      <option name="INVALID_CLOUD_MATRIX_SELECTION_ERROR" value="Cloud configuration not specified" />
+      <option name="IS_VALID_CLOUD_DEVICE_SELECTION" value="false" />
+      <option name="INVALID_CLOUD_DEVICE_SELECTION_ERROR" value="Cloud configuration not specified" />
+      <option name="CLOUD_DEVICE_SERIAL_NUMBER" value="" />
+      <method />
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="Android Application.bitmovil" />
+    </list>
+    <configuration name="&lt;template&gt;" type="Applet" default="true" selected="false">
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+    </configuration>
+    <configuration name="&lt;template&gt;" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" default="true" selected="false">
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="caa385fd-dc80-412c-a25d-0d6ed0128ca2" name="Default" comment="" />
+      <created>1456753008669</created>
+      <option name="number" value="Default" />
+      <updated>1456753008669</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TodoView" selected-index="4">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-1" y="24" width="1922" height="1033" extended-state="6" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3291714" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24744609" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3291714" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3291714" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3291714" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2497332" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3291714" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2497332" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
+    </layout-to-restore>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Merge branch 'development_gino'&#10;&#10;Conflicts:&#10;&#9;bitmovil/bitmovil.apk&#10;&#9;bitmovil/res/layout/fragment_ventas_list.xml&#10;&#9;bitmovil/src/com/bit/async/tasks/DirectSendEmail.java&#10;&#9;bitmovil/src/com/bit/audit/fragments/VendingMachineActivity.java&#10;&#9;bitmovil/src/com/bit/utils/StoreManager.java&#10;&#9;bitmovil/src/com/bit/vending/StartActivity.java&#10;&#9;out/production/bitmovil/bitmovil.apk&#10;&#9;out/production/bitmovil/bitmovil.unaligned.apk&#10;&#9;out/production/bitmovil/com/bit/adapters/HitosItemListAdapter.class&#10;&#9;out/production/bitmovil/com/bit/adapters/ImageTextAdapter.class&#10;&#9;out/production/bitmovil/com/bit/adapters/ObservacionesItemListAdapter.class&#10;&#9;out/production/bitmovil/com/bit/adapters/PotencialesItemListAdapter.class&#10;&#9;out/production/bitmovil/com/bit/adapters/ProblemItemListAdapter.class&#10;&#9;out/production/bitmovil/com/bit/adapters/ProductosBitItemListAdapter.class&#10;&#9;out/production/bitmovil/com/bit/adapters/RegistrosParametrosItemListAdapter.class&#10;&#9;out/production/bitmovil/com/bit/adapters/RepuestosItemListAdapter.class&#10;&#9;out/production/bitmovil/com/bit/adapters/VentasItemListAdapter.class&#10;&#9;out/production/bitmovil/com/bit/async/tasks/DirectSendEmail.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$1.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$2.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$3.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$4.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$AvatarFragment$C00961$1.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$AvatarFragment$C00961$C00951.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$AvatarFragment$C00961.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$AvatarFragment$C00972.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$AvatarFragment.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$EventosFragment$C00991$1.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$EventosFragment$C00991$C00981.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$EventosFragment$C00991.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$EventosFragment.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$MenuFragment$C01001.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$MenuFragment$C01012.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$MenuFragment.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$NoRepeatRandom.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$SectionsPagerAdapter.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$TransactionsFragment$C01031$C01021.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$TransactionsFragment$C01031.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$TransactionsFragment.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$VendingFragment$C01042.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$VendingFragment$C01781.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$VendingFragment.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity.class&#10;&#9;out/production/bitmovil/com/bit/client/R$id.class&#10;&#9;out/production/bitmovil/com/bit/client/R$integer.class&#10;&#9;out/production/bitmovil/com/bit/client/R$layout.class&#10;&#9;out/production/bitmovil/com/bit/client/R$menu.class&#10;&#9;out/production/bitmovil/com/bit/client/R$string.class&#10;&#9;out/production/bitmovil/com/bit/client/R$style.class&#10;&#9;out/production/bitmovil/com/bit/client/R$xml.class&#10;&#9;out/production/bitmovil/com/bit/client/R.class&#10;&#9;out/production/bitmovil/com/bit/mediators/SpinnerMediator.class&#10;&#9;out/production/bitmovil/com/bit/utils/PullToRefreshListView.class&#10;&#9;out/production/bitmovil/com/bit/utils/StoreManager$1.class&#10;&#9;out/production/bitmovil/com/bit/utils/StoreManager$2.class&#10;&#9;out/production/bitmovil/com/bit/utils/StoreManager$3.class&#10;&#9;out/production/bitmovil/com/bit/utils/StoreManager$4.class&#10;&#9;out/production/bitmovil/com/bit/utils/StoreManager.class&#10;&#9;out/production/bitmovil/com/bit/vending/LoadingToMainActivity.class&#10;&#9;out/production/bitmovil/com/bit/vending/SettingsActivity.class&#10;&#9;out/production/bitmovil/com/bit/vending/StartActivity.class&#10;&#9;out/production/bitmovil/layout/activity_main.xml&#10;&#9;out/production/bitmovil/layout/activity_settings.xml&#10;&#9;out/production/bitmovil/layout/activity_start.xml&#10;&#9;out/production/bitmovil/layout/fragment_avatar_list.xml&#10;&#9;out/production/bitmovil/menu/main.xml&#10;&#9;out/production/bitmovil/values/strings.xml&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'development_gino'&#10;&#10;Conflicts:&#10;&#9;bitmovil/bitmovil.apk&#10;&#9;bitmovil/res/layout/fragment_ventas_list.xml&#10;&#9;bitmovil/src/com/bit/async/tasks/DirectSendEmail.java&#10;&#9;bitmovil/src/com/bit/audit/fragments/VendingMachineActivity.java&#10;&#9;bitmovil/src/com/bit/utils/StoreManager.java&#10;&#9;bitmovil/src/com/bit/vending/StartActivity.java&#10;&#9;out/production/bitmovil/bitmovil.apk&#10;&#9;out/production/bitmovil/bitmovil.unaligned.apk&#10;&#9;out/production/bitmovil/com/bit/adapters/HitosItemListAdapter.class&#10;&#9;out/production/bitmovil/com/bit/adapters/ImageTextAdapter.class&#10;&#9;out/production/bitmovil/com/bit/adapters/ObservacionesItemListAdapter.class&#10;&#9;out/production/bitmovil/com/bit/adapters/PotencialesItemListAdapter.class&#10;&#9;out/production/bitmovil/com/bit/adapters/ProblemItemListAdapter.class&#10;&#9;out/production/bitmovil/com/bit/adapters/ProductosBitItemListAdapter.class&#10;&#9;out/production/bitmovil/com/bit/adapters/RegistrosParametrosItemListAdapter.class&#10;&#9;out/production/bitmovil/com/bit/adapters/RepuestosItemListAdapter.class&#10;&#9;out/production/bitmovil/com/bit/adapters/VentasItemListAdapter.class&#10;&#9;out/production/bitmovil/com/bit/async/tasks/DirectSendEmail.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$1.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$2.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$3.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$4.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$AvatarFragment$C00961$1.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$AvatarFragment$C00961$C00951.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$AvatarFragment$C00961.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$AvatarFragment$C00972.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$AvatarFragment.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$EventosFragment$C00991$1.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$EventosFragment$C00991$C00981.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$EventosFragment$C00991.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$EventosFragment.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$MenuFragment$C01001.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$MenuFragment$C01012.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$MenuFragment.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$NoRepeatRandom.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$SectionsPagerAdapter.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$TransactionsFragment$C01031$C01021.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$TransactionsFragment$C01031.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$TransactionsFragment.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$VendingFragment$C01042.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$VendingFragment$C01781.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity$VendingFragment.class&#10;&#9;out/production/bitmovil/com/bit/audit/fragments/VendingMachineActivity.class&#10;&#9;out/production/bitmovil/com/bit/client/R$id.class&#10;&#9;out/production/bitmovil/com/bit/client/R$integer.class&#10;&#9;out/production/bitmovil/com/bit/client/R$layout.class&#10;&#9;out/production/bitmovil/com/bit/client/R$menu.class&#10;&#9;out/production/bitmovil/com/bit/client/R$string.class&#10;&#9;out/production/bitmovil/com/bit/client/R$style.class&#10;&#9;out/production/bitmovil/com/bit/client/R$xml.class&#10;&#9;out/production/bitmovil/com/bit/client/R.class&#10;&#9;out/production/bitmovil/com/bit/mediators/SpinnerMediator.class&#10;&#9;out/production/bitmovil/com/bit/utils/PullToRefreshListView.class&#10;&#9;out/production/bitmovil/com/bit/utils/StoreManager$1.class&#10;&#9;out/production/bitmovil/com/bit/utils/StoreManager$2.class&#10;&#9;out/production/bitmovil/com/bit/utils/StoreManager$3.class&#10;&#9;out/production/bitmovil/com/bit/utils/StoreManager$4.class&#10;&#9;out/production/bitmovil/com/bit/utils/StoreManager.class&#10;&#9;out/production/bitmovil/com/bit/vending/LoadingToMainActivity.class&#10;&#9;out/production/bitmovil/com/bit/vending/SettingsActivity.class&#10;&#9;out/production/bitmovil/com/bit/vending/StartActivity.class&#10;&#9;out/production/bitmovil/layout/activity_main.xml&#10;&#9;out/production/bitmovil/layout/activity_settings.xml&#10;&#9;out/production/bitmovil/layout/activity_start.xml&#10;&#9;out/production/bitmovil/layout/fragment_avatar_list.xml&#10;&#9;out/production/bitmovil/menu/main.xml&#10;&#9;out/production/bitmovil/values/strings.xml&#10;" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/VendingMachineActivity.java</url>
+          <line>180</line>
+          <properties />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/VendingMachineActivity.java</url>
+          <line>118</line>
+          <properties />
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/VendingMachineActivity.java</url>
+          <line>129</line>
+          <properties />
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/MainActivity.java</url>
+          <line>127</line>
+          <properties />
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/MainActivity.java</url>
+          <line>170</line>
+          <properties />
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/HomeFragment.java</url>
+          <line>31</line>
+          <properties />
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/HomeFragment.java</url>
+          <line>41</line>
+          <properties />
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/HomeFragment.java</url>
+          <line>51</line>
+          <properties />
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/FindPeopleFragment.java</url>
+          <line>47</line>
+          <properties />
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/FindPeopleFragment.java</url>
+          <line>51</line>
+          <properties />
+          <option name="timeStamp" value="41" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/FindPeopleFragment.java</url>
+          <line>156</line>
+          <properties />
+          <option name="timeStamp" value="42" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/MainActivity.java</url>
+          <line>174</line>
+          <properties />
+          <option name="timeStamp" value="43" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/MainActivity.java</url>
+          <line>171</line>
+          <properties />
+          <option name="timeStamp" value="44" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/MainActivity.java</url>
+          <line>177</line>
+          <properties />
+          <option name="timeStamp" value="45" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/MainActivity.java</url>
+          <line>180</line>
+          <properties />
+          <option name="timeStamp" value="46" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/MainActivity.java</url>
+          <line>183</line>
+          <properties />
+          <option name="timeStamp" value="47" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/MainActivity.java</url>
+          <line>186</line>
+          <properties />
+          <option name="timeStamp" value="48" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/PhotosFragment.java</url>
+          <line>101</line>
+          <properties />
+          <option name="timeStamp" value="49" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/PhotosFragment.java</url>
+          <line>59</line>
+          <properties />
+          <option name="timeStamp" value="50" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/PhotosFragment.java</url>
+          <line>98</line>
+          <properties />
+          <option name="timeStamp" value="51" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/PhotosFragment.java</url>
+          <line>156</line>
+          <properties />
+          <option name="timeStamp" value="52" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/PhotosFragment.java</url>
+          <line>157</line>
+          <properties />
+          <option name="timeStamp" value="53" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/PhotosFragment.java</url>
+          <line>179</line>
+          <properties />
+          <option name="timeStamp" value="54" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/PhotosFragment.java</url>
+          <line>174</line>
+          <properties />
+          <option name="timeStamp" value="55" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/PhotosFragment.java</url>
+          <line>172</line>
+          <properties />
+          <option name="timeStamp" value="56" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/PhotosFragment.java</url>
+          <line>158</line>
+          <properties />
+          <option name="timeStamp" value="57" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/PhotosFragment.java</url>
+          <line>160</line>
+          <properties />
+          <option name="timeStamp" value="58" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/PhotosFragment.java</url>
+          <line>161</line>
+          <properties />
+          <option name="timeStamp" value="59" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/PhotosFragment.java</url>
+          <line>162</line>
+          <properties />
+          <option name="timeStamp" value="60" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/PhotosFragment.java</url>
+          <line>163</line>
+          <properties />
+          <option name="timeStamp" value="61" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/PhotosFragment.java</url>
+          <line>164</line>
+          <properties />
+          <option name="timeStamp" value="62" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/PhotosFragment.java</url>
+          <line>170</line>
+          <properties />
+          <option name="timeStamp" value="63" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/CommunityFragment.java</url>
+          <line>109</line>
+          <properties />
+          <option name="timeStamp" value="64" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/CommunityFragment.java</url>
+          <line>128</line>
+          <properties />
+          <option name="timeStamp" value="65" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="66" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/bitmovil/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bitmovil/src/com/bit/async/tasks/DirectSendEmail.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.16042781">
+          <caret line="59" column="51" selection-start-line="59" selection-start-column="51" selection-end-line="59" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bitmovil/res/layout/modal_nuevo_usuario_method.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.6037736">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bitmovil/src/com/bit/utils/StoreManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="34" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bitmovil/src/com/bit/async/tasks/GetEstadoCuentaTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3747495">
+          <caret line="19" column="63" selection-start-line="19" selection-start-column="63" selection-end-line="19" selection-end-column="63" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bitmovil/res/layout/activity_start.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="59" column="38" selection-start-line="59" selection-start-column="38" selection-end-line="59" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bitmovil/res/layout/fragment_menu.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bitmovil/res/layout/fragment_home.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bitmovil/res/layout/fragment_pages.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bitmovil/res/layout/activity_main.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="4.354839">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bitmovil/res/layout/fragment_events_list.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bitmovil/src/com/bit/vending/SettingsActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bitmovil/src/com/bit/vending/LoadingToMainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/PagesFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16042781">
+          <caret line="12" column="11" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/WhatsHotFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.72">
+          <caret line="36" column="37" selection-start-line="36" selection-start-column="37" selection-end-line="36" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bitmovil/src/com/bit/singletons/VentaHashmapCollectionSingleton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bitmovil/src/com/bit/vending/StartActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.7213116">
+          <caret line="111" column="16" selection-start-line="111" selection-start-column="16" selection-end-line="111" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bitmovil/src/com/goycooleainc/ui/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="26" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/HomeFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.1147542">
+          <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+          <folding>
+            <element signature="e#905#906#0" expanded="true" />
+            <element signature="e#986#987#0" expanded="true" />
+            <element signature="e#1198#1199#0" expanded="true" />
+            <element signature="e#1279#1280#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/FindPeopleFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.1147542">
+          <caret line="156" column="0" selection-start-line="156" selection-start-column="0" selection-end-line="156" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1633#1634#0" expanded="true" />
+            <element signature="e#1689#1690#0" expanded="true" />
+            <element signature="e#1732#1733#0" expanded="true" />
+            <element signature="e#1789#1790#0" expanded="true" />
+            <element signature="e#6889#7673#0" expanded="true" />
+            <element signature="e#7672#7673#0" expanded="true" />
+            <element signature="e#9102#9103#0" expanded="true" />
+            <element signature="e#9163#9164#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/PhotosFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="179" column="0" selection-start-line="179" selection-start-column="0" selection-end-line="179" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/CommunityFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="128" column="0" selection-start-line="128" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="183" column="0" selection-start-line="183" selection-start-column="0" selection-end-line="183" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bitmovil/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bitmovil/res/layout/fragment_ventas_list.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.6129032">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bitmovil/src/com/bit/async/tasks/DailyGetServicios.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.0962567">
+          <caret line="47" column="4" selection-start-line="47" selection-start-column="4" selection-end-line="47" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bitmovil/src/com/bit/async/tasks/DailyGetOrders.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bitmovil/src/com/bit/async/tasks/DailyGetLideres.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bitmovil/src/com/bit/adapters/ImageTextAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.11942959">
+          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bitmovil/src/com/android/vending/billing/IInAppBillingService.aidl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="102" column="0" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bitmovil/gen/com/android/vending/billing/IInAppBillingService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.09022556">
+          <caret line="294" column="0" selection-start-line="294" selection-start-column="0" selection-end-line="294" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bitmovil/src/com/bit/async/tasks/GetTransaccionesFromServerTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bitmovil/src/com/bit/audit/fragments/VendingMachineActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.834225">
+          <caret line="443" column="0" selection-start-line="443" selection-start-column="0" selection-end-line="443" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>Android</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.7</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>bitmovil</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>Android API 22 Platform</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>libs</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

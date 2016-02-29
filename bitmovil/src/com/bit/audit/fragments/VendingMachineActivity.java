@@ -5,6 +5,7 @@ import android.app.ActionBar.Tab;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.*;
 import android.graphics.drawable.Drawable;
@@ -28,12 +29,18 @@ import android.widget.AdapterView.OnItemClickListener;
 import com.bit.adapters.AvataresItemListAdapter;
 import com.bit.adapters.EventosItemListAdapter;
 import com.bit.adapters.VentasItemListAdapter;
+import com.bit.adapters.*;
+
 import com.bit.async.tasks.*;
 import com.bit.client.R;
 import com.bit.entities.*;
 import com.bit.singletons.CacheCollectionSingleton;
 import com.bit.singletons.ProductHashmapCollectionSingleton;
+import com.bit.singletons.TransactionHashmapCollectionSingleton;
 import com.bit.singletons.VentaHashmapCollectionSingleton;
+
+import com.bit.utils.CheckEmail;
+import com.bit.utils.StoreManager;
 import com.bit.vending.SettingsActivity;
 import com.bit.vending.StartActivity;
 import com.google.gson.Gson;
@@ -141,11 +148,11 @@ public class VendingMachineActivity extends FragmentActivity implements ActionBa
 		mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
 		if (obj != null) {
-			mSectionsPagerAdapter.setCount(5);
+			mSectionsPagerAdapter.setCount(6);
 			mSectionsPagerAdapter.notifyDataSetChanged();
 			// auditoria = obj;
 		} else {
-			mSectionsPagerAdapter.setCount(5);
+			mSectionsPagerAdapter.setCount(6);
 			mSectionsPagerAdapter.notifyDataSetChanged();
 		}
 
@@ -169,11 +176,47 @@ public class VendingMachineActivity extends FragmentActivity implements ActionBa
 
 	}
 
-
+	//Boton new en ventana avatares
     public void OnNew(View v) {
-        Intent intent = new Intent(this, SettingsActivity.class);
-        finish();
-        startActivity(intent);
+        final Intent intentForActivitySettings = new Intent(this, SettingsActivity.class);
+
+		final Dialog dialog = new Dialog(v.getContext());
+		dialog.setContentView(R.layout.modal_avatar_method_select_type);
+
+		VendingMachineActivity.btn_close = (Button) dialog.findViewById(R.id.dialogButtonCancel);
+		VendingMachineActivity.btn_ok = (Button) dialog.findViewById(R.id.dialogButtonOK);
+
+		final Spinner s = (Spinner) dialog.findViewById(R.id.spinner_state);
+		s.setAdapter(new ArrayAdapter(dialog.getContext(), R.layout.spinner_item, new String[]{"NFC", "QR", "CODIGO DE BARRAS"}));
+
+		btn_close.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				dialog.dismiss();
+			}
+		});
+
+		btn_ok.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+
+				int position = s.getSelectedItemPosition();
+				finish();
+				switch(position) {
+					case 0:
+						startActivity(intentForActivitySettings);
+					case 1:
+						//QR
+					case 2:
+						//CODIGO DE BARRAS
+				}
+				dialog.dismiss();
+			}
+		});
+
+		dialog.setTitle("AVATAR - BITMOVIL");
+		dialog.show();
+
     }
 
 	public void OnStore(View v) {
@@ -282,9 +325,9 @@ public class VendingMachineActivity extends FragmentActivity implements ActionBa
                         obj.setCodigo(coder.getText().toString());
                         obj.setDescripcion(descr.getText().toString());
                         obj.setEstado(s.getSelectedItemPosition());
-                        obj.setIdUser(Integer.parseInt(VentaHashmapCollectionSingleton.getInstance().user.getIdUsuario()));
+                        obj.setIdUser(Integer.parseInt(TransactionHashmapCollectionSingleton.getInstance().user.getIdUsuario()));
 
-                        UpdateAvatarTask task = new UpdateAvatarTask();
+                        UpdateAvatarTask task = new UpdateAvatarTask(getActivity().getApplicationContext());
                         task.setDATA(new Gson().toJson(obj));
                         task.execute();
 
@@ -308,10 +351,10 @@ public class VendingMachineActivity extends FragmentActivity implements ActionBa
 				AvatarFragment.this.swipeLayout.setRefreshing(false);
 				try {
 					List<Avatar> final_list;
-					VentaHashmapCollectionSingleton.getInstance();
-					if (VentaHashmapCollectionSingleton.avatares != null) {
-						VentaHashmapCollectionSingleton.getInstance();
-						final_list = VentaHashmapCollectionSingleton.avatares;
+                    TransactionHashmapCollectionSingleton.getInstance();
+					if (TransactionHashmapCollectionSingleton.avatares != null) {
+                        TransactionHashmapCollectionSingleton.getInstance();
+						final_list = TransactionHashmapCollectionSingleton.avatares;
 					} else {
 						final_list = new ArrayList();
 					}
@@ -326,10 +369,10 @@ public class VendingMachineActivity extends FragmentActivity implements ActionBa
 			List<Avatar> final_list;
 			super.onResume();
 			VendingMachineActivity.lv3 = (ListView) getActivity().findViewById(R.id.current_purchase_list);
-			VentaHashmapCollectionSingleton.getInstance();
-			if (VentaHashmapCollectionSingleton.avatares != null) {
-				VentaHashmapCollectionSingleton.getInstance();
-				final_list = VentaHashmapCollectionSingleton.avatares;
+            TransactionHashmapCollectionSingleton.getInstance();
+			if (TransactionHashmapCollectionSingleton.avatares != null) {
+                TransactionHashmapCollectionSingleton.getInstance();
+				final_list = TransactionHashmapCollectionSingleton.avatares;
 			} else {
 				final_list = new ArrayList();
 			}
@@ -347,12 +390,12 @@ public class VendingMachineActivity extends FragmentActivity implements ActionBa
 			VendingMachineActivity.lv3 = (ListView) rootView.findViewById(R.id.current_purchase_list);
 			try {
 				List<Avatar> final_list;
-				VentaHashmapCollectionSingleton.getInstance();
-				if (VentaHashmapCollectionSingleton.avatares != null) {
-					VentaHashmapCollectionSingleton.getInstance();
-					final_list = VentaHashmapCollectionSingleton.avatares;
-					VentaHashmapCollectionSingleton.getInstance();
-					VentaHashmapCollectionSingleton.avatar = (Avatar) final_list.get(0);
+                TransactionHashmapCollectionSingleton.getInstance();
+				if (TransactionHashmapCollectionSingleton.avatares != null) {
+                    TransactionHashmapCollectionSingleton.getInstance();
+					final_list = TransactionHashmapCollectionSingleton.avatares;
+                    TransactionHashmapCollectionSingleton.getInstance();
+                    TransactionHashmapCollectionSingleton.avatar = (Avatar) final_list.get(0);
 				} else {
 					final_list = new ArrayList();
 				}
@@ -375,6 +418,7 @@ public class VendingMachineActivity extends FragmentActivity implements ActionBa
 	public static class EventosFragment extends Fragment implements OnRefreshListener{
 		static int _position;
 		private EventosItemListAdapter adapter;
+		private TransactionsItemListAdapter transaction_adapter;
 		private int id;
 
 		@Override
@@ -384,20 +428,38 @@ public class VendingMachineActivity extends FragmentActivity implements ActionBa
 
 		private void refreshEvents()
 		{
-			GetEventosTask events_mediator = new GetEventosTask();
+			GetEventosTask events_mediator = new GetEventosTask(getActivity());
 			List<User> list = null;
 			try {
 
 				List<Eventos> eventos = (List) events_mediator.execute(new Void[0]).get();
 				CacheCollectionSingleton.getInstance(getActivity()).setInMemmoryUsers(new Gson().toJson((Object) list));
-				VentaHashmapCollectionSingleton.getInstance();
-				VentaHashmapCollectionSingleton.eventos = eventos;
+                TransactionHashmapCollectionSingleton.getInstance();
+                TransactionHashmapCollectionSingleton.eventos = eventos;
+//				VentaHashmapCollectionSingleton.getInstance();
+//				VentaHashmapCollectionSingleton.eventos = eventos;
 
 				List<Eventos> final_list = eventos;
+
+//        @Override
+//        public void onRefresh() {
+//            List<Eventos> final_list;
+//			GetTransactionsTask task_3 = new GetTransactionsTask(getActivity().getBaseContext());
+//			task_3.setIdUsuario(TransactionHashmapCollectionSingleton.getInstance().user.getIdUsuario());
+//
+//			try {
+//				TransactionHashmapCollectionSingleton.getInstance().eventos = (List) task_3.execute(new Void[0]).get();
+//				if (TransactionHashmapCollectionSingleton.eventos != null) {
+//					TransactionHashmapCollectionSingleton.getInstance();
+//					final_list = TransactionHashmapCollectionSingleton.eventos;
+//				} else {
+//					final_list = new ArrayList();
+//				}
 				this.adapter = new EventosItemListAdapter(getActivity().getBaseContext(), final_list);
 				VendingMachineActivity.lv2.setAdapter(this.adapter);
 				this.adapter.notifyDataSetChanged();
 				VendingMachineActivity.lv2.setOnItemClickListener(new C00991(final_list));
+
 
 			} catch (InterruptedException e) {
 				e.printStackTrace();
@@ -406,6 +468,38 @@ public class VendingMachineActivity extends FragmentActivity implements ActionBa
 			}
 		}
 		/* renamed from: com.bit.audit.fragments.VendingMachineActivity.EventosFragment.1 */
+
+//			} catch (Exception ex) {
+//				ex.toString();
+//			}
+//        }
+
+        public void refresTransacciones(){
+			List<Transaccion> final_list;
+			GetTransactionsTask task_3 = new GetTransactionsTask(getActivity().getBaseContext());
+			task_3.setIdUsuario(TransactionHashmapCollectionSingleton.getInstance().user.getIdUsuario());
+
+			try {
+				TransactionHashmapCollectionSingleton.getInstance().transacciones = (List) task_3.execute(new Void[0]).get();
+				TransactionHashmapCollectionSingleton.getInstance();
+				if (TransactionHashmapCollectionSingleton.transacciones != null) {
+					TransactionHashmapCollectionSingleton.getInstance();
+					final_list = TransactionHashmapCollectionSingleton.transacciones;
+				} else {
+					final_list = new ArrayList();
+				}
+				this.transaction_adapter = new TransactionsItemListAdapter(getActivity().getBaseContext(), final_list);
+				VendingMachineActivity.lv3.setAdapter(this.transaction_adapter);
+				this.transaction_adapter.notifyDataSetChanged();
+				VendingMachineActivity.lv3.setOnItemClickListener(new ShowModalTransaction(final_list, getActivity().getBaseContext()));
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			} catch (ExecutionException e) {
+				e.printStackTrace();
+			}
+        }
+
+        /* renamed from: com.bit.audit.fragments.VendingMachineActivity.EventosFragment.1 */
 		class C00991 implements OnItemClickListener {
 			final /* synthetic */ List val$final_list;
 
@@ -429,6 +523,12 @@ public class VendingMachineActivity extends FragmentActivity implements ActionBa
 			public void onItemClick(AdapterView<?> adapterView, View v, int position, long id) {
 				final Dialog dialog = new Dialog(v.getContext());
 				dialog.setContentView(R.layout.modal_eventos_method);
+
+				final NumberPicker numberPicker = (NumberPicker) dialog.findViewById(R.id.numberPicker);
+				numberPicker.setMinValue(1);
+				numberPicker.setMaxValue(100);
+				numberPicker.setWrapSelectorWheel(true);
+
 				VendingMachineActivity.btn_close = (Button) dialog.findViewById(R.id.dialogButtonCancel);
                 VendingMachineActivity.btn_ok = (Button) dialog.findViewById(R.id.dialogButtonOK);
 
@@ -437,7 +537,7 @@ public class VendingMachineActivity extends FragmentActivity implements ActionBa
 				((TextView) dialog.findViewById(R.id.txDetalleEvento)).setText("$" + obj.getPrecio() + CharsetUtil.CRLF + obj.getNombre() + CharsetUtil.CRLF + obj.getDetalle().toString() + CharsetUtil.CRLF + obj.getFechaInicio());
 				GetImageTask it = new GetImageTask();
 				try {
-					it.setUrl("http://bit.goycooleainc.com/dmz/multimedia/" + obj.getId() + "/type/1/" + obj.getId() + "-0");
+					it.setUrl(v.getContext().getString(R.string.server) + "/dmz/multimedia/" + obj.getId() + "/type/1/" + obj.getId() + "-0");
 					imagen.setImageDrawable((Drawable) it.execute(new Void[0]).get());
 				} catch (InterruptedException e) {
 					e.printStackTrace();
@@ -450,10 +550,17 @@ public class VendingMachineActivity extends FragmentActivity implements ActionBa
 
                     @Override
                     public void onClick(View v) {
+                        DecimalFormat df = new DecimalFormat("#,##0.00");
+                        df.setDecimalFormatSymbols(new DecimalFormatSymbols(Locale.ITALY));
+                        df.format(new BigDecimal(TransactionHashmapCollectionSingleton.estadoCuenta.getSaldo()));
+
+                        Double total = Double.valueOf(obj.getPrecio()) * numberPicker.getValue();
+                        Double resto = Double.valueOf(TransactionHashmapCollectionSingleton.estadoCuenta.getSaldo()) - total;
+
                         Transaccion tx = new Transaccion();
-                        String avatar = VentaHashmapCollectionSingleton.avatar.getCodigo();
+                        String avatar = TransactionHashmapCollectionSingleton.avatar.getCodigo();
                         tx.setAvatar(avatar);
-                        tx.setCantidad("1");
+                        tx.setCantidad(String.valueOf(numberPicker.getValue()));
                         tx.setFecha("");
                         tx.setGps("0.0,0.0");
                         tx.setIdProducto(obj.getId());
@@ -461,15 +568,27 @@ public class VendingMachineActivity extends FragmentActivity implements ActionBa
                         tx.setMetodoPago(0);
                         tx.setMoneda(0);
                         tx.setPublicKey("");
-                        tx.setTotal(obj.getPrecio());
+                        tx.setTotal(String.valueOf(total));
+						tx.setIdEvento(obj.getId());
 
-                        DirectNewTransaction task = new DirectNewTransaction();
+                        DirectNewTransaction task = new DirectNewTransaction(getActivity().getApplicationContext());
                         task.setDATA(new Gson().toJson(tx));
                         //task.directSend(new Gson().toJson(obj));
                         task.execute();
 
                         AlertDialog.Builder bld = new AlertDialog.Builder(getActivity());
-                        bld.setMessage("Compra Hecha Con Exito !!");
+
+                        //Refrescar fragment principal para actualizar salgo
+                        if(resto >= 0) {
+                            TransactionHashmapCollectionSingleton.estadoCuenta.setSaldo(String.valueOf(resto).toString());
+                            bld.setMessage("Compra Hecha Con Exito !!");
+                            //refresh list
+							refresTransacciones();
+
+                        }else{
+                            bld.setMessage("Saldo insuficiente !!");
+                        }
+
                         bld.setNeutralButton("OK", null);
                         Log.d("compra evento", "Showing alert dialog: " + obj.getNombre());
                         bld.create().show();
@@ -489,10 +608,10 @@ public class VendingMachineActivity extends FragmentActivity implements ActionBa
 			VendingMachineActivity.lv2 = (ListView) rootView.findViewById(R.id.product_list);
 			try {
 				List<Eventos> final_list;
-				VentaHashmapCollectionSingleton.getInstance();
-				if (VentaHashmapCollectionSingleton.eventos != null) {
-					VentaHashmapCollectionSingleton.getInstance();
-					final_list = VentaHashmapCollectionSingleton.eventos;
+                TransactionHashmapCollectionSingleton.getInstance();
+				if (TransactionHashmapCollectionSingleton.eventos != null) {
+                    TransactionHashmapCollectionSingleton.getInstance();
+					final_list = TransactionHashmapCollectionSingleton.eventos;
 				} else {
 					final_list = new ArrayList();
 				}
@@ -538,8 +657,12 @@ public class VendingMachineActivity extends FragmentActivity implements ActionBa
 			VendingMachineActivity.txBalance = (TextView) rootView.findViewById(R.id.txBalance);
 			DecimalFormat df = new DecimalFormat("#,##0.00");
 			df.setDecimalFormatSymbols(new DecimalFormatSymbols(Locale.ITALY));
-			VentaHashmapCollectionSingleton.getInstance();
-			VendingMachineActivity.txBalance.setText("$" + df.format(new BigDecimal(VentaHashmapCollectionSingleton.estadoCuenta.getSaldo().toString())));
+            TransactionHashmapCollectionSingleton.getInstance();
+			if(TransactionHashmapCollectionSingleton.estadoCuenta != null) {
+				VendingMachineActivity.txBalance.setText("$" + df.format(new BigDecimal(TransactionHashmapCollectionSingleton.estadoCuenta.getSaldo().toString())));
+			}else{
+				VendingMachineActivity.txBalance.setText("$" + df.format(new BigDecimal("0")));
+			}
 			VendingMachineActivity.btnVending = (ImageButton) rootView.findViewById(R.id.btnVendingMachine);
 			try {
 				VendingMachineActivity.btnAccessControl.setOnClickListener(new C01001());
@@ -551,30 +674,80 @@ public class VendingMachineActivity extends FragmentActivity implements ActionBa
 		}
 	}
 
+	/* renamed from: com.bit.audit.fragments.VendingMachineActivity.TransactionsFragment.1 */
+	public static class ShowModalTransaction implements OnItemClickListener {
+		final List final_list;
+		final Context context;
+
+		/* renamed from: com.bit.audit.fragments.VendingMachineActivity.TransactionsFragment.1.1 */
+		class C01021 implements View.OnClickListener {
+			final Dialog val$dialog;
+
+			C01021(Dialog dialog) {
+				this.val$dialog = dialog;
+			}
+
+			public void onClick(View v) {
+				this.val$dialog.dismiss();
+			}
+		}
+
+		public ShowModalTransaction(List list, Context context) {
+			this.final_list = list;
+			this.context = context;
+		}
+
+		public void onItemClick(AdapterView<?> adapterView, View v, int position, long id) {
+			Dialog dialog = new Dialog(v.getContext());
+			dialog.setContentView(R.layout.modal_transaction_method);
+			VendingMachineActivity.btn_close = (Button) dialog.findViewById(R.id.dialogButtonCancel);
+			TextView total = (TextView) dialog.findViewById(R.id.txTotal);
+			TextView producto = (TextView) dialog.findViewById(R.id.txProducto);
+			TextView mercante = (TextView) dialog.findViewById(R.id.txMercante);
+			TextView fecha = (TextView) dialog.findViewById(R.id.txFecha);
+			Transaccion obj = (Transaccion) this.final_list.get(position);
+			((TextView) dialog.findViewById(R.id.txCode)).setText("Avatar [" + obj.getAvatar().toString() + "]");
+			total.setText("Total $" + obj.getTotal().toString());
+			producto.setText("ID Transaccion [" + String.valueOf(obj.getIdTransaccion()) + "]");
+			String evento = "ERROR";
+			TransactionHashmapCollectionSingleton.getInstance();
+			for (Eventos parent : TransactionHashmapCollectionSingleton.eventos) {
+				if (parent.getId() == obj.getIdEvento()) {
+					evento = parent.getNombre();
+				}
+			}
+			mercante.setText("[" + evento + "]");
+			fecha.setText("Fecha " + obj.getFecha().toString());
+			VendingMachineActivity.btn_close.setOnClickListener(new C01021(dialog));
+			dialog.setTitle("TRANSACCION COMPRA");
+			dialog.show();
+		}
+	}
+
 	public static class TransactionsFragment extends Fragment implements OnRefreshListener{
 		static int _position;
-		private VentasItemListAdapter adapter;
+		private TransactionsItemListAdapter adapter;
 		private int id;
 
         @Override
         public void onRefresh() {
-            List<Venta> final_list;
-            GetTransactionsTask task_3 = new GetTransactionsTask();
-            task_3.setIdUsuario(VentaHashmapCollectionSingleton.getInstance().user.getIdUsuario());
+            List<Transaccion> final_list;
+            GetTransactionsTask task_3 = new GetTransactionsTask(getActivity().getBaseContext());
+            task_3.setIdUsuario(TransactionHashmapCollectionSingleton.getInstance().user.getIdUsuario());
 
             try {
-                VentaHashmapCollectionSingleton.getInstance().ventas = (List) task_3.execute(new Void[0]).get();
-                VentaHashmapCollectionSingleton.getInstance();
-                if (VentaHashmapCollectionSingleton.ventas != null) {
-                    VentaHashmapCollectionSingleton.getInstance();
-                    final_list = VentaHashmapCollectionSingleton.ventas;
+                TransactionHashmapCollectionSingleton.getInstance().transacciones = (List) task_3.execute(new Void[0]).get();
+                TransactionHashmapCollectionSingleton.getInstance();
+                if (TransactionHashmapCollectionSingleton.transacciones != null) {
+                    TransactionHashmapCollectionSingleton.getInstance();
+                    final_list = TransactionHashmapCollectionSingleton.transacciones;
                 } else {
                     final_list = new ArrayList();
                 }
-                this.adapter = new VentasItemListAdapter(getActivity().getBaseContext(), final_list);
+                this.adapter = new TransactionsItemListAdapter(getActivity().getBaseContext(), final_list);
                 VendingMachineActivity.lv3.setAdapter(this.adapter);
                 this.adapter.notifyDataSetChanged();
-                VendingMachineActivity.lv3.setOnItemClickListener(new C01031(final_list));
+                VendingMachineActivity.lv3.setOnItemClickListener(new ShowModalTransaction(final_list, getActivity().getBaseContext()));
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } catch (ExecutionException e) {
@@ -582,15 +755,109 @@ public class VendingMachineActivity extends FragmentActivity implements ActionBa
             }
         }
 
-        /* renamed from: com.bit.audit.fragments.VendingMachineActivity.TransactionsFragment.1 */
-		class C01031 implements OnItemClickListener {
-			final /* synthetic */ List val$final_list;
+		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+			View rootView = inflater.inflate(R.layout.fragment_transactions_list, container, false);
+			((TextView) rootView.findViewById(R.id.tx_nombre)).setText(VendingMachineActivity.nombre_usuario != null ? VendingMachineActivity.nombre_usuario.toString() : "");
+			VendingMachineActivity.lv3 = (ListView) rootView.findViewById(R.id.product_list);
+			try {
+				List<Transaccion> final_list;
+                TransactionHashmapCollectionSingleton.getInstance();
+				if (TransactionHashmapCollectionSingleton.transacciones != null) {
+                    TransactionHashmapCollectionSingleton.getInstance();
+					final_list = TransactionHashmapCollectionSingleton.transacciones;
+				} else {
+					final_list = new ArrayList();
+				}
+				this.adapter = new TransactionsItemListAdapter(getActivity().getBaseContext(), final_list);
+				VendingMachineActivity.lv3.setAdapter(this.adapter);
+				this.adapter.notifyDataSetChanged();
+				VendingMachineActivity.lv3.setOnItemClickListener(new ShowModalTransaction(final_list, getActivity().getBaseContext()));
+			} catch (Exception ex) {
+				ex.toString();
+			}
+			return rootView;
+		}
+	}
 
-			/* renamed from: com.bit.audit.fragments.VendingMachineActivity.TransactionsFragment.1.1 */
-			class C01021 implements View.OnClickListener {
-				final /* synthetic */ Dialog val$dialog;
+	public static class VendingFragment extends Fragment  implements OnRefreshListener{
+		static int _position;
+		private int id;
+        StoreManager activity;
 
-				C01021(Dialog dialog) {
+        @Override
+        public void onRefresh() {
+            try {
+                List<Productos> list = TransactionHashmapCollectionSingleton.getInstance().productos;
+                ProductosBitItemListAdapter adapter = new ProductosBitItemListAdapter(getActivity().getBaseContext(), list);
+                VendingMachineActivity.lv2.setAdapter(adapter);
+                VendingMachineActivity.lv2.setOnItemClickListener(new C01042(list));
+                adapter.notifyDataSetChanged();
+
+
+            } catch (Exception ex) {
+                ex.toString();
+            }
+        }
+
+        /* renamed from: com.bit.audit.fragments.VendingMachineActivity.VendingFragment.2 */
+		class C01042 implements OnItemClickListener {
+			final /* synthetic */ List val$list;
+
+			C01042(List list) {
+				this.val$list = list;
+			}
+
+			public void onItemClick(AdapterView<?> adapterView, View v, int position, long id) {
+
+				Productos obj = (Productos) this.val$list.get(position);
+                TransactionHashmapCollectionSingleton.getInstance();
+				List<Productos> productos = TransactionHashmapCollectionSingleton.productos;
+
+				if (productos != null) {
+                    activity.purchase(obj.getCodigo());
+				} else {
+                    Toast.makeText(VendingFragment.this.getActivity(), "Producto No Reconocido, Intenta de Nuevo!! =)", Toast.LENGTH_LONG).show();
+				}
+			}
+		}
+
+		/* renamed from: com.bit.audit.fragments.VendingMachineActivity.VendingFragment.1 */
+		class C01781 extends TypeToken<ArrayList<Productos>> {
+			C01781() {
+			}
+		}
+
+		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+            View rootView = inflater.inflate(R.layout.fragment_product_list, container, false);
+            ((TextView) rootView.findViewById(R.id.tx_nombre)).setText(VendingMachineActivity.nombre_usuario != null ? VendingMachineActivity.nombre_usuario.toString() : "");
+            VendingMachineActivity.lv2 = (ListView) rootView.findViewById(R.id.product_list);
+
+            //Activity au = getActivity();
+            activity = new StoreManager(TransactionHashmapCollectionSingleton.getInstance().mainActivity);
+            try {
+                List<Productos> list = TransactionHashmapCollectionSingleton.getInstance().productos;
+                VendingMachineActivity.lv2.setAdapter(new ProductosBitItemListAdapter(rootView.getContext(), list));
+                VendingMachineActivity.lv2.setOnItemClickListener(new C01042(list));
+            } catch (Exception ex) {
+                ex.toString();
+            }
+            return rootView;
+        }
+	}
+
+	public static class MiEspacioFragment extends Fragment implements OnRefreshListener{
+		static int _position;
+		private VentasItemListAdapter adapter;
+		private int id;
+		private Venta obj;
+
+		class ShowListVenta implements OnItemClickListener {
+			final List final_list;
+
+			class ShowModalVenta implements View.OnClickListener {
+				final Dialog val$dialog;
+
+				ShowModalVenta(Dialog dialog) {
 					this.val$dialog = dialog;
 				}
 
@@ -599,41 +866,96 @@ public class VendingMachineActivity extends FragmentActivity implements ActionBa
 				}
 			}
 
-			C01031(List list) {
-				this.val$final_list = list;
+			public ShowListVenta(List list) {
+				this.final_list = list;
 			}
 
 			public void onItemClick(AdapterView<?> adapterView, View v, int position, long id) {
-				Dialog dialog = new Dialog(v.getContext());
-				dialog.setContentView(R.layout.modal_transaction_method);
+				final Dialog dialog = new Dialog(v.getContext());
+				dialog.setContentView(R.layout.modal_compartir_evento_method);
+
 				VendingMachineActivity.btn_close = (Button) dialog.findViewById(R.id.dialogButtonCancel);
-				TextView total = (TextView) dialog.findViewById(R.id.txTotal);
-				TextView producto = (TextView) dialog.findViewById(R.id.txProducto);
-				TextView mercante = (TextView) dialog.findViewById(R.id.txMercante);
-				TextView fecha = (TextView) dialog.findViewById(R.id.txFecha);
-				Venta obj = (Venta) this.val$final_list.get(position);
-				((TextView) dialog.findViewById(R.id.txCode)).setText("Avatar [" + obj.getAvatar().toString() + "]");
-				total.setText("Total $" + obj.getTotal().toString());
-				producto.setText("ID Transaccion [" + String.valueOf(obj.getIdTransaccion()) + "]");
-				String evento = "ERROR";
-				VentaHashmapCollectionSingleton.getInstance();
-				for (Eventos parent : VentaHashmapCollectionSingleton.eventos) {
-					if (parent.getId() == obj.getIdEvento()) {
-						evento = parent.getNombre();
+				VendingMachineActivity.btn_ok = (Button) dialog.findViewById(R.id.dialogButtonOK);
+
+				obj = (Venta) this.final_list.get(_position);
+				final int idVenta = obj.getId();
+				final int cantidadParaEnviar = obj.getCantidadParaEnviar();
+
+				VendingMachineActivity.btn_close.setOnClickListener(new ShowModalVenta(dialog));
+
+				btn_ok.setOnClickListener(new View.OnClickListener(){
+
+					@Override
+					public void onClick(View v) {
+						AlertDialog.Builder bld = new AlertDialog.Builder(getActivity());
+						if (cantidadParaEnviar > 0){
+							TextView email = (TextView) dialog.findViewById(R.id.emailText);
+							TextView descripcion = (TextView) dialog.findViewById(R.id.descrText);
+
+							if (!email.getText().toString().matches("") && CheckEmail.isEmailValid(email.getText().toString())) {
+								Email em = new Email();
+								em.setDescripcion(descripcion.getText().toString());
+								em.setEmail(email.getText().toString());
+								em.setIdVenta(idVenta);
+
+								DirectSendEmail task = new DirectSendEmail(getActivity().getApplicationContext());
+								task.setDATA(new Gson().toJson(em));
+								task.execute();
+
+								bld.setMessage("E-Mail Enviado Con Exito !!");
+								obj.setCantidadParaEnviar(cantidadParaEnviar - 1);
+								//refresh list
+	//							refresTransacciones();
+
+								Log.d("Evento enviado por mail", "Showing alert dialog: " + "");
+							} else {
+								bld.setMessage("E-Mail es vacio o tiene un formato incorrecto!!");
+							}
+						}else{
+							bld.setMessage("Usted no puede enviar este evento, ya que la cantidad no se lo permite !!");
+						}
+						bld.setNeutralButton("OK", null);
+						bld.create().show();
+						dialog.dismiss();
 					}
-				}
-				mercante.setText("[" + evento + "]");
-				fecha.setText("Fecha " + obj.getFecha().toString());
-				VendingMachineActivity.btn_close.setOnClickListener(new C01021(dialog));
-				dialog.setTitle("TRANSACCION COMPRA");
+				});
+
+				dialog.setTitle("EVENTO - BITMOVIL");
 				dialog.show();
 			}
 		}
 
+		@Override
+		public void onRefresh() {
+			List<Venta> final_list;
+			GetVentasTask task_3 = new GetVentasTask(getActivity().getBaseContext());
+			task_3.setIdUsuario(TransactionHashmapCollectionSingleton.getInstance().user.getIdUsuario());
+//			task_3.setIdUsuario(VentaHashmapCollectionSingleton.getInstance().user.getIdUsuario());
+
+			try {
+				VentaHashmapCollectionSingleton.getInstance().ventas = (List) task_3.execute(new Void[0]).get();
+				VentaHashmapCollectionSingleton.getInstance();
+				if (VentaHashmapCollectionSingleton.ventas != null) {
+					VentaHashmapCollectionSingleton.getInstance();
+					final_list = VentaHashmapCollectionSingleton.ventas;
+				} else {
+					final_list = new ArrayList();
+				}
+				this.adapter = new VentasItemListAdapter(getActivity().getBaseContext(), final_list);
+				VendingMachineActivity.lv3.setAdapter(this.adapter);
+				this.adapter.notifyDataSetChanged();
+				VendingMachineActivity.lv3.setOnItemClickListener(new ShowListVenta(final_list));
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			} catch (ExecutionException e) {
+				e.printStackTrace();
+			}
+		}
+
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_transactions_list, container, false);
-			((TextView) rootView.findViewById(R.id.tx_nombre)).setText(VendingMachineActivity.nombre_usuario != null ? VendingMachineActivity.nombre_usuario.toString() : "");
-			VendingMachineActivity.lv3 = (ListView) rootView.findViewById(R.id.product_list);
+			View rootView = inflater.inflate(R.layout.fragment_ventas_list, container, false);
+			((TextView) rootView.findViewById(R.id.venta_nombre)).setText(VendingMachineActivity.nombre_usuario != null ? VendingMachineActivity.nombre_usuario.toString() : "");
+			VendingMachineActivity.lv3 = (ListView) rootView.findViewById(R.id.venta_list);
 			try {
 				List<Venta> final_list;
 				VentaHashmapCollectionSingleton.getInstance();
@@ -646,7 +968,7 @@ public class VendingMachineActivity extends FragmentActivity implements ActionBa
 				this.adapter = new VentasItemListAdapter(getActivity().getBaseContext(), final_list);
 				VendingMachineActivity.lv3.setAdapter(this.adapter);
 				this.adapter.notifyDataSetChanged();
-				VendingMachineActivity.lv3.setOnItemClickListener(new C01031(final_list));
+				VendingMachineActivity.lv3.setOnItemClickListener(new ShowListVenta(final_list));
 			} catch (Exception ex) {
 				ex.toString();
 			}
@@ -654,44 +976,28 @@ public class VendingMachineActivity extends FragmentActivity implements ActionBa
 		}
 	}
 
-	public static class VendingFragment extends Fragment {
-		/**
-		 *
-		 * @param inflater
-		 * @param container
-		 * @param savedInstanceState
-         * @return
-         */
-		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-			View rootView = inflater.inflate(R.layout.activity_vending, container, false);
-
-			return rootView;
-		}
-	}
-
 
 	/**
-	 * 
+	 *
 	 * @author goycolea
 	 *
 	 */
 	public class SectionsPagerAdapter extends FragmentStatePagerAdapter
 	{
 		private int count;
-		
+
 	    public SectionsPagerAdapter(FragmentManager arg2)
 	    {
 	      super(arg2);
 	    }
-	    
+
 	    @Override
 		public int getCount()
 	    {
            return count;
 	    }
-	    
-	    
+
+
 	    @Override
 		public Fragment getItem(int paramInt)
 	    {
@@ -706,6 +1012,8 @@ public class VendingMachineActivity extends FragmentActivity implements ActionBa
                    return new VendingMachineActivity.EventosFragment();
 	    	  case 4:
 	    		   return new VendingMachineActivity.VendingFragment();
+	    	  case 5:
+                  return new VendingMachineActivity.MiEspacioFragment();
 	    	  default:
 				   return new VendingMachineActivity.MenuFragment();
 	    	}
@@ -715,10 +1023,10 @@ public class VendingMachineActivity extends FragmentActivity implements ActionBa
 
 			this.count = count;
 		}
-	    
+
 	  }
 	/**
-	 * 
+	 *
 	 */
 	@Override
 	public void onTabSelected(Tab tab, FragmentTransaction ft) {
@@ -726,20 +1034,20 @@ public class VendingMachineActivity extends FragmentActivity implements ActionBa
 		mViewPager.setCurrentItem(tab.getPosition());
 	}
 	/**
-	 * 
+	 *
 	 */
 	@Override
 	public void onTabUnselected(Tab tab, FragmentTransaction ft) {
 		// TODO Auto-generated method stub
-		
+
 	}
 	/**
-	 * 
+	 *
 	 */
 	@Override
 	public void onTabReselected(Tab tab, FragmentTransaction ft) {
 		// TODO Auto-generated method stub
-		
+
 	}
     /**
      * METODO PARA REDONDEAR IMAGENES

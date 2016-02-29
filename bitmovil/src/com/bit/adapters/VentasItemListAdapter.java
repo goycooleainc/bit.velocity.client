@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-import com.bit.entities.Productos;
+
 import com.bit.entities.Venta;
 import com.bit.client.R;
 
@@ -52,7 +52,7 @@ public class VentasItemListAdapter extends BaseAdapter
     public View getView(int position, View convertView, ViewGroup parent) {
         /// ViewHolder
     	ViewHolder holder;
-    	//// convertView
+    	// convertView
         if (convertView == null) {
         	/// convertView
             convertView = layoutInflater.inflate(R.layout.ventas_report_item, null);
@@ -61,7 +61,7 @@ public class VentasItemListAdapter extends BaseAdapter
             holder.txtLinea = (TextView) convertView.findViewById(R.id.txLinea);
             holder.txtFecha = (TextView) convertView.findViewById(R.id.txFecha);
             holder.txtNumeroSerie = (TextView) convertView.findViewById(R.id.txNumeroSerie);
-            
+
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -78,13 +78,8 @@ public class VentasItemListAdapter extends BaseAdapter
     }
 
     static class ViewHolder {
-
-        
         TextView txtLinea;
-
         TextView txtFecha;
-
-
         TextView txtNumeroSerie;
     }
  

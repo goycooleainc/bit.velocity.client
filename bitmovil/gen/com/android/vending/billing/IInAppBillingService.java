@@ -2,7 +2,7 @@
 
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Original file: /Users/goycolea/Documents/Developer/Android/bit.velocity.client/bitmovil/src/com/android/vending/billing/IInAppBillingService.aidl
+ * Original file: /Users/goycolea/Documents/Developer/Git/bit.velocity.client/bitmovil/src/com/android/vending/billing/IInAppBillingService.aidl
  */
 package com.android.vending.billing;
 /**
@@ -292,7 +292,7 @@ return _result;
      *                "developerPayload":"example developer payload" }'
      *         "INAPP_DATA_SIGNATURE" - String containing the signature of the purchase data that
      *                                  was signed with the private key of the developer
-     *                                  TODO: change this to app-specific keys.
+
      */
 @Override public android.os.Bundle getBuyIntent(int apiVersion, java.lang.String packageName, java.lang.String sku, java.lang.String type, java.lang.String developerPayload) throws android.os.RemoteException
 {
@@ -462,7 +462,7 @@ public android.os.Bundle getSkuDetails(int apiVersion, java.lang.String packageN
      *                "developerPayload":"example developer payload" }'
      *         "INAPP_DATA_SIGNATURE" - String containing the signature of the purchase data that
      *                                  was signed with the private key of the developer
-     *                                  TODO: change this to app-specific keys.
+
      */
 public android.os.Bundle getBuyIntent(int apiVersion, java.lang.String packageName, java.lang.String sku, java.lang.String type, java.lang.String developerPayload) throws android.os.RemoteException;
 /**

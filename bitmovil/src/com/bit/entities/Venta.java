@@ -18,6 +18,24 @@ public class Venta {
     public String codigoPsp;
     public String puntosRiesgo;
     public String avatar;
+    public int cantidad;
+    public int cantidadParaEnviar;
+
+    public int getCantidadParaEnviar() {
+        return cantidadParaEnviar;
+    }
+
+    public void setCantidadParaEnviar(int cantidadParaEnviar) {
+        this.cantidadParaEnviar = cantidadParaEnviar;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
 
     public int getIdEvento() {
         return idEvento;

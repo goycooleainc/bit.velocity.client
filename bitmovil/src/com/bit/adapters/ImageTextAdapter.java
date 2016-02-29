@@ -24,7 +24,7 @@ public class ImageTextAdapter extends ArrayAdapter<String>{
  
 	 public ImageTextAdapter(Activity context,String[] image_id, String[] text){
 		 super(context, R.layout.list_row, text);
-		 // TODO Auto-generated constructor stub
+
 		 this.color_names = text;
 		 this.image_id = image_id;
 		 this.context = context;
@@ -32,7 +32,7 @@ public class ImageTextAdapter extends ArrayAdapter<String>{
  
  	@Override
  	public View getView(int position, View convertView, ViewGroup parent) {
-		 // TODO Auto-generated method stub
+
 		 
 		String root = Environment.getExternalStorageDirectory().toString();
 		String dirImagen = root + "/com.octopuschile.atlas_copco_app";
