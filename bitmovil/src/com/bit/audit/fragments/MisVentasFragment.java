@@ -69,7 +69,7 @@ public class MisVentasFragment extends Fragment {
             final int idVenta = obj.getId();
             final int cantidadParaEnviar = obj.getCantidadParaEnviar();
 
-            VendingMachineActivity.btn_close.setOnClickListener(new ShowModalVenta(dialog));
+            btn_close.setOnClickListener(new ShowModalVenta(dialog));
 
             btn_ok.setOnClickListener(new View.OnClickListener(){
 

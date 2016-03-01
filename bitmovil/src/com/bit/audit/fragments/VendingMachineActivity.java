@@ -7,47 +7,64 @@ import android.app.Dialog;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.*;
-import android.graphics.drawable.Drawable;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.*;
+import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import com.bit.adapters.AvataresItemListAdapter;
-import com.bit.adapters.EventosItemListAdapter;
-import com.bit.adapters.VentasItemListAdapter;
-import com.bit.adapters.*;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ListView;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
-import com.bit.async.tasks.*;
+import com.bit.adapters.ProductosBitItemListAdapter;
+import com.bit.adapters.TransactionsItemListAdapter;
+import com.bit.adapters.VentasItemListAdapter;
+import com.bit.async.tasks.DirectSendEmail;
+import com.bit.async.tasks.GetEvaluatorImageHelper;
+import com.bit.async.tasks.GetTransactionsTask;
+import com.bit.async.tasks.GetVentasTask;
 import com.bit.client.R;
-import com.bit.entities.*;
+import com.bit.entities.ClientesList;
+import com.bit.entities.Email;
+import com.bit.entities.Eventos;
+import com.bit.entities.HitosAuditorias;
+import com.bit.entities.Productos;
+import com.bit.entities.Transaccion;
+import com.bit.entities.Venta;
 import com.bit.singletons.CacheCollectionSingleton;
 import com.bit.singletons.ProductHashmapCollectionSingleton;
 import com.bit.singletons.TransactionHashmapCollectionSingleton;
 import com.bit.singletons.VentaHashmapCollectionSingleton;
-
 import com.bit.utils.CheckEmail;
 import com.bit.utils.StoreManager;
-import com.bit.vending.SettingsActivity;
 import com.bit.vending.StartActivity;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.goycooleainc.ui.MainActivity;
-import org.apache.james.mime4j.util.CharsetUtil;
 
 import java.lang.reflect.Type;
 import java.math.BigDecimal;
@@ -416,216 +433,216 @@ public class VendingMachineActivity extends FragmentActivity implements ActionBa
 //		}
 //	}
 
-	public static class EventosFragment extends Fragment implements OnRefreshListener{
-		static int _position;
-		private EventosItemListAdapter adapter;
-		private TransactionsItemListAdapter transaction_adapter;
-		private int id;
-
-		@Override
-		public void onRefresh() {
-			refreshEvents();
-		}
-
-		private void refreshEvents()
-		{
-			GetEventosTask events_mediator = new GetEventosTask(getActivity());
-			List<User> list = null;
-			try {
-
-				List<Eventos> eventos = (List) events_mediator.execute(new Void[0]).get();
-				CacheCollectionSingleton.getInstance(getActivity()).setInMemmoryUsers(new Gson().toJson((Object) list));
-                TransactionHashmapCollectionSingleton.getInstance();
-                TransactionHashmapCollectionSingleton.eventos = eventos;
-//				VentaHashmapCollectionSingleton.getInstance();
-//				VentaHashmapCollectionSingleton.eventos = eventos;
-
-				List<Eventos> final_list = eventos;
-
-//        @Override
-//        public void onRefresh() {
-//            List<Eventos> final_list;
+//	public static class EventosFragment extends Fragment implements OnRefreshListener{
+//		static int _position;
+//		private EventosItemListAdapter adapter;
+//		private TransactionsItemListAdapter transaction_adapter;
+//		private int id;
+//
+//		@Override
+//		public void onRefresh() {
+//			refreshEvents();
+//		}
+//
+//		private void refreshEvents()
+//		{
+//			GetEventosTask events_mediator = new GetEventosTask(getActivity());
+//			List<User> list = null;
+//			try {
+//
+//				List<Eventos> eventos = (List) events_mediator.execute(new Void[0]).get();
+//				CacheCollectionSingleton.getInstance(getActivity()).setInMemmoryUsers(new Gson().toJson((Object) list));
+//                TransactionHashmapCollectionSingleton.getInstance();
+//                TransactionHashmapCollectionSingleton.eventos = eventos;
+////				VentaHashmapCollectionSingleton.getInstance();
+////				VentaHashmapCollectionSingleton.eventos = eventos;
+//
+//				List<Eventos> final_list = eventos;
+//
+////        @Override
+////        public void onRefresh() {
+////            List<Eventos> final_list;
+////			GetTransactionsTask task_3 = new GetTransactionsTask(getActivity().getBaseContext());
+////			task_3.setIdUsuario(TransactionHashmapCollectionSingleton.getInstance().user.getIdUsuario());
+////
+////			try {
+////				TransactionHashmapCollectionSingleton.getInstance().eventos = (List) task_3.execute(new Void[0]).get();
+////				if (TransactionHashmapCollectionSingleton.eventos != null) {
+////					TransactionHashmapCollectionSingleton.getInstance();
+////					final_list = TransactionHashmapCollectionSingleton.eventos;
+////				} else {
+////					final_list = new ArrayList();
+////				}
+//				this.adapter = new EventosItemListAdapter(getActivity().getBaseContext(), final_list);
+//				VendingMachineActivity.lv2.setAdapter(this.adapter);
+//				this.adapter.notifyDataSetChanged();
+//				VendingMachineActivity.lv2.setOnItemClickListener(new C00991(final_list));
+//
+//
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			} catch (ExecutionException e2) {
+//				e2.printStackTrace();
+//			}
+//		}
+//		/* renamed from: com.bit.audit.fragments.VendingMachineActivity.EventosFragment.1 */
+//
+////			} catch (Exception ex) {
+////				ex.toString();
+////			}
+////        }
+//
+//        public void refresTransacciones(){
+//			List<Transaccion> final_list;
 //			GetTransactionsTask task_3 = new GetTransactionsTask(getActivity().getBaseContext());
 //			task_3.setIdUsuario(TransactionHashmapCollectionSingleton.getInstance().user.getIdUsuario());
 //
 //			try {
-//				TransactionHashmapCollectionSingleton.getInstance().eventos = (List) task_3.execute(new Void[0]).get();
-//				if (TransactionHashmapCollectionSingleton.eventos != null) {
+//				TransactionHashmapCollectionSingleton.getInstance().transacciones = (List) task_3.execute(new Void[0]).get();
+//				TransactionHashmapCollectionSingleton.getInstance();
+//				if (TransactionHashmapCollectionSingleton.transacciones != null) {
 //					TransactionHashmapCollectionSingleton.getInstance();
+//					final_list = TransactionHashmapCollectionSingleton.transacciones;
+//				} else {
+//					final_list = new ArrayList();
+//				}
+//				this.transaction_adapter = new TransactionsItemListAdapter(getActivity().getBaseContext(), final_list);
+//				VendingMachineActivity.lv3.setAdapter(this.transaction_adapter);
+//				this.transaction_adapter.notifyDataSetChanged();
+//				VendingMachineActivity.lv3.setOnItemClickListener(new ShowModalTransaction(final_list, getActivity().getBaseContext()));
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			} catch (ExecutionException e) {
+//				e.printStackTrace();
+//			}
+//        }
+//
+//        /* renamed from: com.bit.audit.fragments.VendingMachineActivity.EventosFragment.1 */
+//		class C00991 implements OnItemClickListener {
+//			final /* synthetic */ List val$final_list;
+//
+//			/* renamed from: com.bit.audit.fragments.VendingMachineActivity.EventosFragment.1.1 */
+//			class C00981 implements View.OnClickListener {
+//				final /* synthetic */ Dialog val$dialog;
+//
+//				C00981(Dialog dialog) {
+//					this.val$dialog = dialog;
+//				}
+//
+//				public void onClick(View v) {
+//					this.val$dialog.dismiss();
+//				}
+//			}
+//
+//			C00991(List list) {
+//				this.val$final_list = list;
+//			}
+//
+//			public void onItemClick(AdapterView<?> adapterView, View v, int position, long id) {
+//				final Dialog dialog = new Dialog(v.getContext());
+//				dialog.setContentView(R.layout.modal_eventos_method);
+//
+//				final NumberPicker numberPicker = (NumberPicker) dialog.findViewById(R.id.numberPicker);
+//				numberPicker.setMinValue(1);
+//				numberPicker.setMaxValue(100);
+//				numberPicker.setWrapSelectorWheel(true);
+//
+//				VendingMachineActivity.btn_close = (Button) dialog.findViewById(R.id.dialogButtonCancel);
+//                VendingMachineActivity.btn_ok = (Button) dialog.findViewById(R.id.dialogButtonOK);
+//
+//				ImageView imagen = (ImageView) dialog.findViewById(R.id.imageViewEvent);
+//				final Eventos obj = (Eventos) this.val$final_list.get(position);
+//				((TextView) dialog.findViewById(R.id.txDetalleEvento)).setText("$" + obj.getPrecio() + CharsetUtil.CRLF + obj.getNombre() + CharsetUtil.CRLF + obj.getDetalle().toString() + CharsetUtil.CRLF + obj.getFechaInicio());
+//				GetImageTask it = new GetImageTask();
+//				try {
+//					it.setUrl(v.getContext().getString(R.string.server) + "/dmz/multimedia/" + obj.getId() + "/type/1/" + obj.getId() + "-0");
+//					imagen.setImageDrawable((Drawable) it.execute(new Void[0]).get());
+//				} catch (InterruptedException e) {
+//					e.printStackTrace();
+//				} catch (ExecutionException e2) {
+//					e2.printStackTrace();
+//				}
+//				VendingMachineActivity.btn_close.setOnClickListener(new C00981(dialog));
+//
+//                btn_ok.setOnClickListener(new View.OnClickListener(){
+//
+//                    @Override
+//                    public void onClick(View v) {
+//                        DecimalFormat df = new DecimalFormat("#,##0.00");
+//                        df.setDecimalFormatSymbols(new DecimalFormatSymbols(Locale.ITALY));
+//                        df.format(new BigDecimal(TransactionHashmapCollectionSingleton.estadoCuenta.getSaldo()));
+//
+//                        Double total = Double.valueOf(obj.getPrecio()) * numberPicker.getValue();
+//                        Double resto = Double.valueOf(TransactionHashmapCollectionSingleton.estadoCuenta.getSaldo()) - total;
+//
+//                        Transaccion tx = new Transaccion();
+//                        String avatar = TransactionHashmapCollectionSingleton.avatar.getCodigo();
+//                        tx.setAvatar(avatar);
+//                        tx.setCantidad(String.valueOf(numberPicker.getValue()));
+//                        tx.setFecha("");
+//                        tx.setGps("0.0,0.0");
+//                        tx.setIdProducto(obj.getId());
+//                        tx.setIdProductora(obj.getIdProductora());
+//                        tx.setMetodoPago(0);
+//                        tx.setMoneda(0);
+//                        tx.setPublicKey("");
+//                        tx.setTotal(String.valueOf(total));
+//						tx.setIdEvento(obj.getId());
+//
+//                        DirectNewTransaction task = new DirectNewTransaction(getActivity().getApplicationContext());
+//                        task.setDATA(new Gson().toJson(tx));
+//                        //task.directSend(new Gson().toJson(obj));
+//                        task.execute();
+//
+//                        AlertDialog.Builder bld = new AlertDialog.Builder(getActivity());
+//
+//                        //Refrescar fragment principal para actualizar salgo
+//                        if(resto >= 0) {
+//                            TransactionHashmapCollectionSingleton.estadoCuenta.setSaldo(String.valueOf(resto).toString());
+//                            bld.setMessage("Compra Hecha Con Exito !!");
+//                            //refresh list
+//							refresTransacciones();
+//
+//                        }else{
+//                            bld.setMessage("Saldo insuficiente !!");
+//                        }
+//
+//                        bld.setNeutralButton("OK", null);
+//                        Log.d("compra evento", "Showing alert dialog: " + obj.getNombre());
+//                        bld.create().show();
+//
+//                        dialog.dismiss();
+//                    }
+//                });
+//
+//				dialog.setTitle("EVENTO - BITMOVIL");
+//				dialog.show();
+//			}
+//		}
+//
+//		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+//			View rootView = inflater.inflate(R.layout.fragment_events_list, container, false);
+//			((TextView) rootView.findViewById(R.id.tx_nombre)).setText(VendingMachineActivity.nombre_usuario != null ? VendingMachineActivity.nombre_usuario.toString() : "");
+//			VendingMachineActivity.lv2 = (ListView) rootView.findViewById(R.id.product_list);
+//			try {
+//				List<Eventos> final_list;
+//                TransactionHashmapCollectionSingleton.getInstance();
+//				if (TransactionHashmapCollectionSingleton.eventos != null) {
+//                    TransactionHashmapCollectionSingleton.getInstance();
 //					final_list = TransactionHashmapCollectionSingleton.eventos;
 //				} else {
 //					final_list = new ArrayList();
 //				}
-				this.adapter = new EventosItemListAdapter(getActivity().getBaseContext(), final_list);
-				VendingMachineActivity.lv2.setAdapter(this.adapter);
-				this.adapter.notifyDataSetChanged();
-				VendingMachineActivity.lv2.setOnItemClickListener(new C00991(final_list));
-
-
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			} catch (ExecutionException e2) {
-				e2.printStackTrace();
-			}
-		}
-		/* renamed from: com.bit.audit.fragments.VendingMachineActivity.EventosFragment.1 */
-
+//				this.adapter = new EventosItemListAdapter(getActivity().getBaseContext(), final_list);
+//				VendingMachineActivity.lv2.setAdapter(this.adapter);
+//				this.adapter.notifyDataSetChanged();
+//				VendingMachineActivity.lv2.setOnItemClickListener(new C00991(final_list));
 //			} catch (Exception ex) {
 //				ex.toString();
 //			}
-//        }
-
-        public void refresTransacciones(){
-			List<Transaccion> final_list;
-			GetTransactionsTask task_3 = new GetTransactionsTask(getActivity().getBaseContext());
-			task_3.setIdUsuario(TransactionHashmapCollectionSingleton.getInstance().user.getIdUsuario());
-
-			try {
-				TransactionHashmapCollectionSingleton.getInstance().transacciones = (List) task_3.execute(new Void[0]).get();
-				TransactionHashmapCollectionSingleton.getInstance();
-				if (TransactionHashmapCollectionSingleton.transacciones != null) {
-					TransactionHashmapCollectionSingleton.getInstance();
-					final_list = TransactionHashmapCollectionSingleton.transacciones;
-				} else {
-					final_list = new ArrayList();
-				}
-				this.transaction_adapter = new TransactionsItemListAdapter(getActivity().getBaseContext(), final_list);
-				VendingMachineActivity.lv3.setAdapter(this.transaction_adapter);
-				this.transaction_adapter.notifyDataSetChanged();
-				VendingMachineActivity.lv3.setOnItemClickListener(new ShowModalTransaction(final_list, getActivity().getBaseContext()));
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			} catch (ExecutionException e) {
-				e.printStackTrace();
-			}
-        }
-
-        /* renamed from: com.bit.audit.fragments.VendingMachineActivity.EventosFragment.1 */
-		class C00991 implements OnItemClickListener {
-			final /* synthetic */ List val$final_list;
-
-			/* renamed from: com.bit.audit.fragments.VendingMachineActivity.EventosFragment.1.1 */
-			class C00981 implements View.OnClickListener {
-				final /* synthetic */ Dialog val$dialog;
-
-				C00981(Dialog dialog) {
-					this.val$dialog = dialog;
-				}
-
-				public void onClick(View v) {
-					this.val$dialog.dismiss();
-				}
-			}
-
-			C00991(List list) {
-				this.val$final_list = list;
-			}
-
-			public void onItemClick(AdapterView<?> adapterView, View v, int position, long id) {
-				final Dialog dialog = new Dialog(v.getContext());
-				dialog.setContentView(R.layout.modal_eventos_method);
-
-				final NumberPicker numberPicker = (NumberPicker) dialog.findViewById(R.id.numberPicker);
-				numberPicker.setMinValue(1);
-				numberPicker.setMaxValue(100);
-				numberPicker.setWrapSelectorWheel(true);
-
-				VendingMachineActivity.btn_close = (Button) dialog.findViewById(R.id.dialogButtonCancel);
-                VendingMachineActivity.btn_ok = (Button) dialog.findViewById(R.id.dialogButtonOK);
-
-				ImageView imagen = (ImageView) dialog.findViewById(R.id.imageViewEvent);
-				final Eventos obj = (Eventos) this.val$final_list.get(position);
-				((TextView) dialog.findViewById(R.id.txDetalleEvento)).setText("$" + obj.getPrecio() + CharsetUtil.CRLF + obj.getNombre() + CharsetUtil.CRLF + obj.getDetalle().toString() + CharsetUtil.CRLF + obj.getFechaInicio());
-				GetImageTask it = new GetImageTask();
-				try {
-					it.setUrl(v.getContext().getString(R.string.server) + "/dmz/multimedia/" + obj.getId() + "/type/1/" + obj.getId() + "-0");
-					imagen.setImageDrawable((Drawable) it.execute(new Void[0]).get());
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				} catch (ExecutionException e2) {
-					e2.printStackTrace();
-				}
-				VendingMachineActivity.btn_close.setOnClickListener(new C00981(dialog));
-
-                btn_ok.setOnClickListener(new View.OnClickListener(){
-
-                    @Override
-                    public void onClick(View v) {
-                        DecimalFormat df = new DecimalFormat("#,##0.00");
-                        df.setDecimalFormatSymbols(new DecimalFormatSymbols(Locale.ITALY));
-                        df.format(new BigDecimal(TransactionHashmapCollectionSingleton.estadoCuenta.getSaldo()));
-
-                        Double total = Double.valueOf(obj.getPrecio()) * numberPicker.getValue();
-                        Double resto = Double.valueOf(TransactionHashmapCollectionSingleton.estadoCuenta.getSaldo()) - total;
-
-                        Transaccion tx = new Transaccion();
-                        String avatar = TransactionHashmapCollectionSingleton.avatar.getCodigo();
-                        tx.setAvatar(avatar);
-                        tx.setCantidad(String.valueOf(numberPicker.getValue()));
-                        tx.setFecha("");
-                        tx.setGps("0.0,0.0");
-                        tx.setIdProducto(obj.getId());
-                        tx.setIdProductora(obj.getIdProductora());
-                        tx.setMetodoPago(0);
-                        tx.setMoneda(0);
-                        tx.setPublicKey("");
-                        tx.setTotal(String.valueOf(total));
-						tx.setIdEvento(obj.getId());
-
-                        DirectNewTransaction task = new DirectNewTransaction(getActivity().getApplicationContext());
-                        task.setDATA(new Gson().toJson(tx));
-                        //task.directSend(new Gson().toJson(obj));
-                        task.execute();
-
-                        AlertDialog.Builder bld = new AlertDialog.Builder(getActivity());
-
-                        //Refrescar fragment principal para actualizar salgo
-                        if(resto >= 0) {
-                            TransactionHashmapCollectionSingleton.estadoCuenta.setSaldo(String.valueOf(resto).toString());
-                            bld.setMessage("Compra Hecha Con Exito !!");
-                            //refresh list
-							refresTransacciones();
-
-                        }else{
-                            bld.setMessage("Saldo insuficiente !!");
-                        }
-
-                        bld.setNeutralButton("OK", null);
-                        Log.d("compra evento", "Showing alert dialog: " + obj.getNombre());
-                        bld.create().show();
-
-                        dialog.dismiss();
-                    }
-                });
-
-				dialog.setTitle("EVENTO - BITMOVIL");
-				dialog.show();
-			}
-		}
-
-		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_events_list, container, false);
-			((TextView) rootView.findViewById(R.id.tx_nombre)).setText(VendingMachineActivity.nombre_usuario != null ? VendingMachineActivity.nombre_usuario.toString() : "");
-			VendingMachineActivity.lv2 = (ListView) rootView.findViewById(R.id.product_list);
-			try {
-				List<Eventos> final_list;
-                TransactionHashmapCollectionSingleton.getInstance();
-				if (TransactionHashmapCollectionSingleton.eventos != null) {
-                    TransactionHashmapCollectionSingleton.getInstance();
-					final_list = TransactionHashmapCollectionSingleton.eventos;
-				} else {
-					final_list = new ArrayList();
-				}
-				this.adapter = new EventosItemListAdapter(getActivity().getBaseContext(), final_list);
-				VendingMachineActivity.lv2.setAdapter(this.adapter);
-				this.adapter.notifyDataSetChanged();
-				VendingMachineActivity.lv2.setOnItemClickListener(new C00991(final_list));
-			} catch (Exception ex) {
-				ex.toString();
-			}
-			return rootView;
-		}
-	}
+//			return rootView;
+//		}
+//	}
 
 	public static class MenuFragment extends Fragment {
 		static int _position;
@@ -725,60 +742,60 @@ public class VendingMachineActivity extends FragmentActivity implements ActionBa
 		}
 	}
 
-	public static class TransactionsFragment extends Fragment implements OnRefreshListener{
-		static int _position;
-		private TransactionsItemListAdapter adapter;
-		private int id;
-
-        @Override
-        public void onRefresh() {
-            List<Transaccion> final_list;
-            GetTransactionsTask task_3 = new GetTransactionsTask(getActivity().getBaseContext());
-            task_3.setIdUsuario(TransactionHashmapCollectionSingleton.getInstance().user.getIdUsuario());
-
-            try {
-                TransactionHashmapCollectionSingleton.getInstance().transacciones = (List) task_3.execute(new Void[0]).get();
-                TransactionHashmapCollectionSingleton.getInstance();
-                if (TransactionHashmapCollectionSingleton.transacciones != null) {
-                    TransactionHashmapCollectionSingleton.getInstance();
-                    final_list = TransactionHashmapCollectionSingleton.transacciones;
-                } else {
-                    final_list = new ArrayList();
-                }
-                this.adapter = new TransactionsItemListAdapter(getActivity().getBaseContext(), final_list);
-                VendingMachineActivity.lv3.setAdapter(this.adapter);
-                this.adapter.notifyDataSetChanged();
-                VendingMachineActivity.lv3.setOnItemClickListener(new ShowModalTransaction(final_list, getActivity().getBaseContext()));
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            } catch (ExecutionException e) {
-                e.printStackTrace();
-            }
-        }
-
-		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_transactions_list, container, false);
-			((TextView) rootView.findViewById(R.id.tx_nombre)).setText(VendingMachineActivity.nombre_usuario != null ? VendingMachineActivity.nombre_usuario.toString() : "");
-			VendingMachineActivity.lv3 = (ListView) rootView.findViewById(R.id.product_list);
-			try {
-				List<Transaccion> final_list;
-                TransactionHashmapCollectionSingleton.getInstance();
-				if (TransactionHashmapCollectionSingleton.transacciones != null) {
-                    TransactionHashmapCollectionSingleton.getInstance();
-					final_list = TransactionHashmapCollectionSingleton.transacciones;
-				} else {
-					final_list = new ArrayList();
-				}
-				this.adapter = new TransactionsItemListAdapter(getActivity().getBaseContext(), final_list);
-				VendingMachineActivity.lv3.setAdapter(this.adapter);
-				this.adapter.notifyDataSetChanged();
-				VendingMachineActivity.lv3.setOnItemClickListener(new ShowModalTransaction(final_list, getActivity().getBaseContext()));
-			} catch (Exception ex) {
-				ex.toString();
-			}
-			return rootView;
-		}
-	}
+//	public static class TransactionsFragment extends Fragment implements OnRefreshListener{
+//		static int _position;
+//		private TransactionsItemListAdapter adapter;
+//		private int id;
+//
+//        @Override
+//        public void onRefresh() {
+//            List<Transaccion> final_list;
+//            GetTransactionsTask task_3 = new GetTransactionsTask(getActivity().getBaseContext());
+//            task_3.setIdUsuario(TransactionHashmapCollectionSingleton.getInstance().user.getIdUsuario());
+//
+//            try {
+//                TransactionHashmapCollectionSingleton.getInstance().transacciones = (List) task_3.execute(new Void[0]).get();
+//                TransactionHashmapCollectionSingleton.getInstance();
+//                if (TransactionHashmapCollectionSingleton.transacciones != null) {
+//                    TransactionHashmapCollectionSingleton.getInstance();
+//                    final_list = TransactionHashmapCollectionSingleton.transacciones;
+//                } else {
+//                    final_list = new ArrayList();
+//                }
+//                this.adapter = new TransactionsItemListAdapter(getActivity().getBaseContext(), final_list);
+//                VendingMachineActivity.lv3.setAdapter(this.adapter);
+//                this.adapter.notifyDataSetChanged();
+//                VendingMachineActivity.lv3.setOnItemClickListener(new ShowModalTransaction(final_list, getActivity().getBaseContext()));
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            } catch (ExecutionException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//
+//		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+//			View rootView = inflater.inflate(R.layout.fragment_transactions_list, container, false);
+//			((TextView) rootView.findViewById(R.id.tx_nombre)).setText(VendingMachineActivity.nombre_usuario != null ? VendingMachineActivity.nombre_usuario.toString() : "");
+//			VendingMachineActivity.lv3 = (ListView) rootView.findViewById(R.id.product_list);
+//			try {
+//				List<Transaccion> final_list;
+//                TransactionHashmapCollectionSingleton.getInstance();
+//				if (TransactionHashmapCollectionSingleton.transacciones != null) {
+//                    TransactionHashmapCollectionSingleton.getInstance();
+//					final_list = TransactionHashmapCollectionSingleton.transacciones;
+//				} else {
+//					final_list = new ArrayList();
+//				}
+//				this.adapter = new TransactionsItemListAdapter(getActivity().getBaseContext(), final_list);
+//				VendingMachineActivity.lv3.setAdapter(this.adapter);
+//				this.adapter.notifyDataSetChanged();
+//				VendingMachineActivity.lv3.setOnItemClickListener(new ShowModalTransaction(final_list, getActivity().getBaseContext()));
+//			} catch (Exception ex) {
+//				ex.toString();
+//			}
+//			return rootView;
+//		}
+//	}
 
 	public static class VendingFragment extends Fragment  implements OnRefreshListener{
 		static int _position;
@@ -1008,9 +1025,9 @@ public class VendingMachineActivity extends FragmentActivity implements ActionBa
 	    	  case 1:
 //	    		   return new VendingMachineActivity.AvatarFragment();
 	    	  case 2:
-	    		   return new VendingMachineActivity.TransactionsFragment();
+//	    		   return new VendingMachineActivity.TransactionsFragment();
               case 3:
-                   return new VendingMachineActivity.EventosFragment();
+//                   return new VendingMachineActivity.EventosFragment();
 	    	  case 4:
 	    		   return new VendingMachineActivity.VendingFragment();
 	    	  case 5:

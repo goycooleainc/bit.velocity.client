@@ -174,16 +174,16 @@ public class MainActivity extends Activity {
 			fragment = new HomeFragment();
 			break;
 		case 1:
-			fragment = new FindPeopleFragment();
+			fragment = new AvatarFragment();
 			break;
 		case 2:
-			fragment = new PhotosFragment();
+			fragment = new EventoFragment();
 			break;
 		case 3:
-			fragment = new CommunityFragment();
+			fragment = new TransaccionFragment();
 			break;
 		case 4:
-			fragment = new PagesFragment();
+			fragment = new TiendaVirtualFragment();
 			break;
 		case 5:
 			fragment = new MisVentasFragment();

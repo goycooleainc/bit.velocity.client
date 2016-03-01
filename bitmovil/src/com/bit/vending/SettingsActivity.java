@@ -114,8 +114,9 @@ public class SettingsActivity extends Activity implements LoyaltyCardReader.Acco
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
