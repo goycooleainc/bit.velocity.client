@@ -8,9 +8,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
 import com.bit.client.R;
 import com.bit.singletons.TransactionHashmapCollectionSingleton;
-import com.bit.singletons.VentaHashmapCollectionSingleton;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
@@ -56,12 +56,9 @@ public class HomeFragment extends Fragment {
         df.setDecimalFormatSymbols(new DecimalFormatSymbols(Locale.ITALY));
         TransactionHashmapCollectionSingleton.getInstance();
         if(TransactionHashmapCollectionSingleton.estadoCuenta == null) {
-//        VentaHashmapCollectionSingleton.getInstance();
-//        if(VentaHashmapCollectionSingleton.estadoCuenta == null) {
             VendingMachineActivity.txBalance.setText("$ 0");
         }else{
             VendingMachineActivity.txBalance.setText("$" + df.format(new BigDecimal(TransactionHashmapCollectionSingleton.estadoCuenta.getSaldo().toString())));
-//            VendingMachineActivity.txBalance.setText("$" + df.format(new BigDecimal(VentaHashmapCollectionSingleton.estadoCuenta.getSaldo().toString())));
         }
         VendingMachineActivity.btnVending = (ImageButton) rootView.findViewById(R.id.btnVendingMachine);
         try {

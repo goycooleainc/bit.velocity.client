@@ -73,8 +73,10 @@ public class MainActivity extends Activity {
 		// navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1), true, "22"));
 		// Pages
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
-		// What's hot, We  will add a counter here
+
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1)));
+		// What's hot, We  will add a counter here
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[6], navMenuIcons.getResourceId(6, -1)));
 		
 
 		// Recycle the typed array
@@ -184,9 +186,11 @@ public class MainActivity extends Activity {
 			fragment = new PagesFragment();
 			break;
 		case 5:
+			fragment = new MisVentasFragment();
+			break;
+		case 6:
 			fragment = new WhatsHotFragment();
 			break;
-
 		default:
 			break;
 		}

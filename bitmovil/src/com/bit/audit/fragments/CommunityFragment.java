@@ -8,11 +8,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
+
+import com.bit.adapters.TransactionsItemListAdapter;
 import com.bit.adapters.VentasItemListAdapter;
 import com.bit.async.tasks.GetTransactionsTask;
 import com.bit.client.R;
 import com.bit.entities.Eventos;
+import com.bit.entities.Transaccion;
 import com.bit.entities.Venta;
+import com.bit.singletons.TransactionHashmapCollectionSingleton;
 import com.bit.singletons.VentaHashmapCollectionSingleton;
 
 import java.util.ArrayList;
@@ -21,7 +25,7 @@ import java.util.concurrent.ExecutionException;
 
 public class CommunityFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
     static int _position;
-    private VentasItemListAdapter adapter;
+    private TransactionsItemListAdapter adapter;
     private int id;
     private static Button btn_ok;
     static ImageButton btnOk;
@@ -34,20 +38,26 @@ public class CommunityFragment extends Fragment implements SwipeRefreshLayout.On
 
     @Override
     public void onRefresh() {
-        List<Venta> final_list;
+        List<Transaccion> final_list;
         GetTransactionsTask task_3 = new GetTransactionsTask(getActivity());
-        task_3.setIdUsuario(VentaHashmapCollectionSingleton.getInstance().user.getIdUsuario());
+        task_3.setIdUsuario(TransactionHashmapCollectionSingleton.getInstance().user.getIdUsuario());
+//        task_3.setIdUsuario(VentaHashmapCollectionSingleton.getInstance().user.getIdUsuario());
 
         try {
-            VentaHashmapCollectionSingleton.getInstance().ventas = (List) task_3.execute(new Void[0]).get();
-            VentaHashmapCollectionSingleton.getInstance();
-            if (VentaHashmapCollectionSingleton.ventas != null) {
-                VentaHashmapCollectionSingleton.getInstance();
-                final_list = VentaHashmapCollectionSingleton.ventas;
+            TransactionHashmapCollectionSingleton.getInstance().transacciones = (List) task_3.execute(new Void[0]).get();
+            TransactionHashmapCollectionSingleton.getInstance();
+            if (TransactionHashmapCollectionSingleton.transacciones != null) {
+                TransactionHashmapCollectionSingleton.getInstance();
+                final_list = TransactionHashmapCollectionSingleton.transacciones;
+//            VentaHashmapCollectionSingleton.getInstance().ventas = (List) task_3.execute(new Void[0]).get();
+//            VentaHashmapCollectionSingleton.getInstance();
+//            if (VentaHashmapCollectionSingleton.ventas != null) {
+//                VentaHashmapCollectionSingleton.getInstance();
+//                final_list = VentaHashmapCollectionSingleton.ventas;
             } else {
                 final_list = new ArrayList();
             }
-            this.adapter = new VentasItemListAdapter(getActivity().getBaseContext(), final_list);
+            this.adapter = new TransactionsItemListAdapter(getActivity().getBaseContext(), final_list);
             lv3.setAdapter(this.adapter);
             this.adapter.notifyDataSetChanged();
             lv3.setOnItemClickListener(new C01031(final_list));
@@ -92,10 +102,12 @@ public class CommunityFragment extends Fragment implements SwipeRefreshLayout.On
             total.setText("Total $" + obj.getTotal().toString());
             producto.setText("ID Transaccion [" + String.valueOf(obj.getIdTransaccion()) + "]");
             String evento = "ERROR";
-            VentaHashmapCollectionSingleton.getInstance();
-            for (Eventos parent : VentaHashmapCollectionSingleton.eventos) {
-                if (parent.getId() == obj.getIdEvento()) {
-                    evento = parent.getNombre();
+            TransactionHashmapCollectionSingleton.getInstance();
+            for (Transaccion parent : TransactionHashmapCollectionSingleton.transacciones) {
+//            VentaHashmapCollectionSingleton.getInstance();
+//            for (Eventos parent : VentaHashmapCollectionSingleton.eventos) {
+                if (parent.getId() == obj.getIdTransaccion()) {
+//                    evento = parent.getNombre();
                 }
             }
             mercante.setText("[" + evento + "]");
@@ -111,15 +123,19 @@ public class CommunityFragment extends Fragment implements SwipeRefreshLayout.On
         ((TextView) rootView.findViewById(R.id.tx_nombre)).setText(nombre_usuario != null ? nombre_usuario.toString() : "");
         lv3 = (ListView) rootView.findViewById(R.id.product_list);
         try {
-            List<Venta> final_list;
-            VentaHashmapCollectionSingleton.getInstance();
-            if (VentaHashmapCollectionSingleton.ventas != null) {
-                VentaHashmapCollectionSingleton.getInstance();
-                final_list = VentaHashmapCollectionSingleton.ventas;
+            List<Transaccion> final_list;
+            TransactionHashmapCollectionSingleton.getInstance();
+            if (TransactionHashmapCollectionSingleton.transacciones != null) {
+                TransactionHashmapCollectionSingleton.getInstance();
+                final_list = TransactionHashmapCollectionSingleton.transacciones;
+//            VentaHashmapCollectionSingleton.getInstance();
+//            if (VentaHashmapCollectionSingleton.ventas != null) {
+//                VentaHashmapCollectionSingleton.getInstance();
+//                final_list = VentaHashmapCollectionSingleton.ventas;
             } else {
                 final_list = new ArrayList();
             }
-            this.adapter = new VentasItemListAdapter(getActivity().getBaseContext(), final_list);
+            this.adapter = new TransactionsItemListAdapter(getActivity().getBaseContext(), final_list);
             lv3.setAdapter(this.adapter);
             this.adapter.notifyDataSetChanged();
             lv3.setOnItemClickListener(new C01031(final_list));

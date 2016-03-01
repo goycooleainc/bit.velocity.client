@@ -2,10 +2,12 @@ package com.bit.audit.fragments;
 
 import android.app.Dialog;
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +17,6 @@ import com.bit.async.tasks.UpdateAvatarTask;
 import com.bit.client.R;
 import com.bit.entities.Avatar;
 import com.bit.singletons.TransactionHashmapCollectionSingleton;
-import com.bit.singletons.VentaHashmapCollectionSingleton;
 import com.bit.vending.SettingsActivity;
 import com.google.gson.Gson;
 
@@ -26,11 +27,9 @@ public class FindPeopleFragment extends Fragment implements SwipeRefreshLayout.O
 
     private AvataresItemListAdapter adapter;
     private SwipeRefreshLayout swipeLayout;
-    private static Button btn_ok;
-    static ImageButton btnOk;
+    static ImageButton onNew;
+    static Button btn_ok;
     static Button btn_close;
-    static ImageButton btn_discard, btnNew;
-    static ImageButton btn_save;
     static ListView lv3;
     static String nombre_usuario;
 
@@ -115,10 +114,6 @@ public class FindPeopleFragment extends Fragment implements SwipeRefreshLayout.O
                 if (TransactionHashmapCollectionSingleton.avatares != null) {
                     TransactionHashmapCollectionSingleton.getInstance();
                     final_list = TransactionHashmapCollectionSingleton.avatares;
-//                VentaHashmapCollectionSingleton.getInstance();
-//                if (VentaHashmapCollectionSingleton.avatares != null) {
-//                    VentaHashmapCollectionSingleton.getInstance();
-//                    final_list = VentaHashmapCollectionSingleton.avatares;
                 } else {
                     final_list = new ArrayList();
                 }
@@ -137,10 +132,6 @@ public class FindPeopleFragment extends Fragment implements SwipeRefreshLayout.O
         if (TransactionHashmapCollectionSingleton.avatares != null) {
             TransactionHashmapCollectionSingleton.getInstance();
             final_list = TransactionHashmapCollectionSingleton.avatares;
-//        VentaHashmapCollectionSingleton.getInstance();
-//        if (VentaHashmapCollectionSingleton.avatares != null) {
-//            VentaHashmapCollectionSingleton.getInstance();
-//            final_list = VentaHashmapCollectionSingleton.avatares;
         } else {
             final_list = new ArrayList();
         }
@@ -156,29 +147,64 @@ public class FindPeopleFragment extends Fragment implements SwipeRefreshLayout.O
         this.swipeLayout.setOnRefreshListener(this);
         this.swipeLayout.setColorScheme(17170459, 17170452, 17170456, 17170454);
         lv3 = (ListView) rootView.findViewById(R.id.current_purchase_list);
-        btnNew = (ImageButton) rootView.findViewById(R.id.btnNew);
 
-        btnNew.setOnClickListener(new View.OnClickListener() {
+        onNew = (ImageButton) rootView.findViewById(R.id.onNew);
+        onNew.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//                final Intent intent = new Intent(getActivity(), SettingsActivity.class);
 
-                Intent intent = new Intent(getActivity(), SettingsActivity.class);
-                startActivity(intent);
+                final Dialog dialog = new Dialog(v.getContext());
+                dialog.setContentView(R.layout.modal_avatar_method_select_type);
 
-               /* final Dialog dialog = new Dialog(v.getContext());
-                dialog.setContentView(R.layout.activity_settings);
+                btn_close = (Button) dialog.findViewById(R.id.dialogButtonCancel);
+                btn_ok = (Button) dialog.findViewById(R.id.dialogButtonOK);
 
-                btn_close = (Button) dialog.findViewById(R.id.btnCloseSettings);
+                final Spinner s = (Spinner) dialog.findViewById(R.id.spinner_state);
+                s.setAdapter(new ArrayAdapter(dialog.getContext(), R.layout.spinner_item, new String[]{"NFC", "QR", "CODIGO DE BARRAS"}));
+
                 btn_close.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
 
+                btn_ok.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        int position = s.getSelectedItemPosition();
+                        getActivity().finish();
+                        Fragment fragment = null;
+                        switch(position) {
+                            case 0:
+                                fragment = new PhotosFragment();
+//                                startActivity(intent);
+                            case 1:
+                                //QR
+                            case 2:
+                                //CODIGO DE BARRAS
+                        }
+                        if (fragment != null) {
+                            FragmentManager fragmentManager = getFragmentManager();
+                            fragmentManager.beginTransaction().replace(R.id.frame_container, fragment).commit();
+
+//                            // update selected item and title, then close the drawer
+//                            mDrawerList.setItemChecked(position, true);
+//                            mDrawerList.setSelection(position);
+//                            setTitle(navMenuTitles[position]);
+//                            mDrawerLayout.closeDrawer(mDrawerList);
+                        } else {
+                            // error in creating fragment
+                            Log.e("MainActivity", "Error in creating fragment");
+                        }
                         dialog.dismiss();
                     }
                 });
 
                 dialog.setTitle("AVATAR - BITMOVIL");
-                dialog.show();*/
+                dialog.show();
             }
         });
 
@@ -190,12 +216,6 @@ public class FindPeopleFragment extends Fragment implements SwipeRefreshLayout.O
                 final_list = TransactionHashmapCollectionSingleton.avatares;
                 TransactionHashmapCollectionSingleton.getInstance();
                 TransactionHashmapCollectionSingleton.avatar = (Avatar) final_list.get(0);
-//            VentaHashmapCollectionSingleton.getInstance();
-//            if (VentaHashmapCollectionSingleton.avatares != null) {
-//                VentaHashmapCollectionSingleton.getInstance();
-//                final_list = VentaHashmapCollectionSingleton.avatares;
-//                VentaHashmapCollectionSingleton.getInstance();
-//                VentaHashmapCollectionSingleton.avatar = (Avatar) final_list.get(0);
             } else {
                 final_list = new ArrayList();
             }
@@ -220,4 +240,5 @@ public class FindPeopleFragment extends Fragment implements SwipeRefreshLayout.O
          
         return rootView;
     }*/
+
 }
