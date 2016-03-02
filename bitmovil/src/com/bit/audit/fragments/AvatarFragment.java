@@ -3,6 +3,8 @@ package com.bit.audit.fragments;
 import android.app.Dialog;
 import android.app.Fragment;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -13,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -25,7 +28,13 @@ import com.bit.entities.Avatar;
 import com.bit.singletons.TransactionHashmapCollectionSingleton;
 import com.bit.vending.SettingsActivity;
 import com.google.gson.Gson;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.oned.Code39Writer;
+import com.google.zxing.qrcode.QRCodeWriter;
 
+import java.security.cert.Certificate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +44,7 @@ public class AvatarFragment extends Fragment implements SwipeRefreshLayout.OnRef
     private SwipeRefreshLayout swipeLayout;
     static ImageButton onNew;
     static Button btn_ok;
-    static Button btn_close;
+    static Button btn_close, btn_close2;
     static ListView lv3;
     static String nombre_usuario;
 
@@ -178,19 +187,23 @@ public class AvatarFragment extends Fragment implements SwipeRefreshLayout.OnRef
 
                 btn_ok.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View v) {
+                    public void onClick(View v2) {
 
                         int position = s.getSelectedItemPosition();
-                        getActivity().finish();
+
                         switch (position) {
                             case 0:
+                                getActivity().finish();
                                 startActivity(intent);
-//                            case 1:
-                                //TODO CHANGE FOR NEW
-                                //QR
+                                break;
+                            case 1:
+                                BarcodeFormat format = BarcodeFormat.QR_CODE;
+                                generateCode(format, v2, true);
+                                break;
                             case 2:
-                                //TODO CHANGE FOR NEW
-                                //CODIGO DE BARRAS
+                                BarcodeFormat format2 = BarcodeFormat.CODE_39;
+                                generateCode(format2, v2, false);
+                                break;
                         }
                         dialog.dismiss();
                     }
@@ -221,6 +234,53 @@ public class AvatarFragment extends Fragment implements SwipeRefreshLayout.OnRef
             ex.toString();
         }
         return rootView;
+    }
+
+    public void generateCode(BarcodeFormat format, View v2, boolean isQR){
+        final Dialog dialog2 = new Dialog(v2.getContext());
+        dialog2.setContentView(R.layout.modal_avatar_by_qr);
+
+        btn_close2 = (Button) dialog2.findViewById(R.id.dialogButtonCancel);
+        ImageView img = (ImageView) dialog2.findViewById(R.id.img_result_qr);
+
+        btn_close2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog2.dismiss();
+            }
+        });
+
+        String codigo = null;
+        if (TransactionHashmapCollectionSingleton.avatares != null) {
+            TransactionHashmapCollectionSingleton.getInstance();
+            List<Avatar> final_list = TransactionHashmapCollectionSingleton.avatares;
+            codigo = final_list.get(0).getCodigo() + "-A";
+        }
+        QRCodeWriter writer = new QRCodeWriter();
+        Code39Writer writer2 = new Code39Writer();
+        BitMatrix bitMatrix;
+        try{
+            if(isQR) {
+                bitMatrix = writer.encode(codigo, format, 512, 512);
+            }else {
+                bitMatrix = writer2.encode(codigo, format, 512, 256);
+            }
+
+            int width = bitMatrix.getWidth();
+            int height = bitMatrix.getHeight();
+            Bitmap bmp = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);
+            for (int x = 0; x < width; x++) {
+                for (int y = 0; y < height; y++) {
+                    bmp.setPixel(x, y, bitMatrix.get(x, y) ? Color.BLACK : Color.WHITE);
+                }
+            }
+
+            img.setImageBitmap(bmp);
+
+        } catch (WriterException e) {
+            e.printStackTrace();
+        }
+        dialog2.show();
     }
 
     public void onRefresh() {
