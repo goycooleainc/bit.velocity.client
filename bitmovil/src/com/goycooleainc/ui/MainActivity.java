@@ -10,6 +10,7 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 import com.bit.adapters.ProductosBitItemListAdapter;
+import com.bit.async.tasks.DirectFailTransaction;
 import com.bit.async.tasks.DirectNewTransaction;
 import com.bit.client.R;
 import com.bit.entities.Productos;
@@ -23,6 +24,9 @@ import com.goycooleainc.ui.base.BlundellActivity;
 import com.goycooleainc.ui.utils.Navigator;
 import com.goycooleainc.ui.xml.MainMenu;
 import com.goycooleainc.util.Log;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -94,8 +98,6 @@ public class MainActivity extends BlundellActivity implements MainMenu {
             Productos obj = (Productos) this.val$list.get(position);
             TransactionHashmapCollectionSingleton.getInstance();
             List<Productos> productos = TransactionHashmapCollectionSingleton.productos;
-//            VentaHashmapCollectionSingleton.getInstance();
-//            List<Productos> productos = VentaHashmapCollectionSingleton.productos;
 
             if (productos != null) {
                 //manager.purchase(obj.getCodigo());
@@ -122,8 +124,8 @@ public class MainActivity extends BlundellActivity implements MainMenu {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if (Navigator.REQUEST_PASSPORT_PURCHASE == requestCode) {
+
             if (RESULT_OK == resultCode) {
                 dealWithSuccessfulPurchase();
             } else {
@@ -169,7 +171,17 @@ public class MainActivity extends BlundellActivity implements MainMenu {
      *
      */
     private void dealWithFailedPurchase() {
+        try {
 
+            Transaccion tx = new Transaccion();
+            tx.setAvatar(TransactionHashmapCollectionSingleton.getInstance().avatar.getCodigo());
+            tx.setTotal(VendingSingleton.getInstance().producto.getPrecio());
+
+            DirectFailTransaction task = new DirectFailTransaction(getApplicationContext());
+            task.setDATA(new Gson().toJson(tx));
+        }catch (Exception ex){
+
+        }
         Log.d("Passport purchase failed");
         popToast("Paff, no tenes credito o tu tarjeta hizo boing boing !!");
 
