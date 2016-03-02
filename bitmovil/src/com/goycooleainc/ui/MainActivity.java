@@ -10,23 +10,19 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 import com.bit.adapters.ProductosBitItemListAdapter;
-import com.bit.async.tasks.DirectFailTransaction;
+import com.bit.async.tasks.DirectTransactionSendEmail;
 import com.bit.async.tasks.DirectNewTransaction;
 import com.bit.client.R;
 import com.bit.entities.Productos;
 import com.bit.entities.Transaccion;
 import com.bit.singletons.TransactionHashmapCollectionSingleton;
 import com.bit.singletons.VendingSingleton;
-import com.bit.singletons.VentaHashmapCollectionSingleton;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.goycooleainc.ui.base.BlundellActivity;
 import com.goycooleainc.ui.utils.Navigator;
 import com.goycooleainc.ui.xml.MainMenu;
 import com.goycooleainc.util.Log;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -162,6 +158,10 @@ public class MainActivity extends BlundellActivity implements MainMenu {
 
             DirectNewTransaction task = new DirectNewTransaction(getApplicationContext());
             task.setDATA(new Gson().toJson(tx));
+
+            tx.setMetodoPago(1);
+            DirectTransactionSendEmail task2 = new DirectTransactionSendEmail(getApplicationContext());
+            task2.setDATA(new Gson().toJson(tx));
         }catch (Exception ex){
 
         }
@@ -176,8 +176,9 @@ public class MainActivity extends BlundellActivity implements MainMenu {
             Transaccion tx = new Transaccion();
             tx.setAvatar(TransactionHashmapCollectionSingleton.getInstance().avatar.getCodigo());
             tx.setTotal(VendingSingleton.getInstance().producto.getPrecio());
+            tx.setMetodoPago(-1);
 
-            DirectFailTransaction task = new DirectFailTransaction(getApplicationContext());
+            DirectTransactionSendEmail task = new DirectTransactionSendEmail(getApplicationContext());
             task.setDATA(new Gson().toJson(tx));
         }catch (Exception ex){
 

@@ -19,14 +19,14 @@ import java.io.InputStreamReader;
 /**
  * Created by goycolea on 15-12-14.
  */
-public class DirectFailTransaction extends AsyncTask<String, Void, String> {
+public class DirectTransactionSendEmail extends AsyncTask<String, Void, String> {
 
     String ip = "78.41.206.33";
     String usuario = "1-1";
     String password = "password";
     private Context context;
 
-    public DirectFailTransaction(Context context) {
+    public DirectTransactionSendEmail(Context context) {
         this.context = context;
     }
 
@@ -58,9 +58,10 @@ public class DirectFailTransaction extends AsyncTask<String, Void, String> {
 
     public String directSend(String DATA){
 
+        //ATENCION: SI METODO DE PAGO ES -1 SE ENVIARA EMAIL DE PAGO RECHAZADO, EN OTRO CASO SERA UN EMAIL DE EXITO
         String result = "";
         String server = context.getString(R.string.server);
-        String url = server + "/mobile/transaction/fail";
+        String url = server + "/mobile/transaction/send/email";
         try
         {
 
