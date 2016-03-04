@@ -38,10 +38,9 @@ import java.security.cert.Certificate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AvatarFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
+public class AvatarFragment extends Fragment {
 
     private AvataresItemListAdapter adapter;
-    private SwipeRefreshLayout swipeLayout;
     static ImageButton onNew;
     static Button btn_ok;
     static Button btn_close, btn_close2;
@@ -49,6 +48,7 @@ public class AvatarFragment extends Fragment implements SwipeRefreshLayout.OnRef
     static String nombre_usuario;
 
 	public AvatarFragment(){}
+
 
     /* renamed from: com.bit.audit.fragments.VendingMachineActivity.AvatarFragment.1 */
     class C00961 implements AdapterView.OnItemClickListener {
@@ -99,7 +99,6 @@ public class AvatarFragment extends Fragment implements SwipeRefreshLayout.OnRef
                     obj.setDescripcion(descr.getText().toString());
                     obj.setEstado(s.getSelectedItemPosition());
                     obj.setIdUser(Integer.parseInt(TransactionHashmapCollectionSingleton.getInstance().user.getIdUsuario()));
-//                    obj.setIdUser(Integer.parseInt(VentaHashmapCollectionSingleton.getInstance().user.getIdUsuario()));
 
                     UpdateAvatarTask task = new UpdateAvatarTask(getActivity());
                     task.setDATA(new Gson().toJson(obj));
@@ -113,29 +112,6 @@ public class AvatarFragment extends Fragment implements SwipeRefreshLayout.OnRef
 
             dialog.setTitle("AVATAR - BITMOVIL");
             dialog.show();
-        }
-    }
-
-    /* renamed from: com.bit.audit.fragments.VendingMachineActivity.AvatarFragment.2 */
-    class C00972 implements Runnable {
-        C00972() {
-        }
-
-        public void run() {
-            swipeLayout.setRefreshing(false);
-            try {
-                List<Avatar> final_list;
-                TransactionHashmapCollectionSingleton.getInstance();
-                if (TransactionHashmapCollectionSingleton.avatares != null) {
-                    TransactionHashmapCollectionSingleton.getInstance();
-                    final_list = TransactionHashmapCollectionSingleton.avatares;
-                } else {
-                    final_list = new ArrayList();
-                }
-                lv3.setAdapter(new AvataresItemListAdapter(getActivity().getBaseContext(), final_list));
-                ((AvataresItemListAdapter) lv3.getAdapter()).notifyDataSetChanged();
-            } catch (Exception e) {
-            }
         }
     }
 
@@ -156,18 +132,16 @@ public class AvatarFragment extends Fragment implements SwipeRefreshLayout.OnRef
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        Intent intent = getActivity().getIntent();
         View rootView = inflater.inflate(R.layout.fragment_avatar_list, container, false);
-        ((TextView) rootView.findViewById(R.id.tx_nombre)).setText(nombre_usuario != null ? nombre_usuario.toString() : "");
-        this.swipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_container);
-        this.swipeLayout.setOnRefreshListener(this);
-        this.swipeLayout.setColorScheme(17170459, 17170452, 17170456, 17170454);
+        ((TextView) rootView.findViewById(R.id.tx_nombre)).setText(intent.getStringExtra("nombre") != null ? intent.getStringExtra("nombre").toString() : "");
         lv3 = (ListView) rootView.findViewById(R.id.current_purchase_list);
 
         onNew = (ImageButton) rootView.findViewById(R.id.onNew);
         onNew.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final Intent intent = new Intent(getActivity(), SettingsActivity.class);
 
                 final Dialog dialog = new Dialog(v.getContext());
                 dialog.setContentView(R.layout.modal_avatar_method_select_type);
@@ -193,6 +167,7 @@ public class AvatarFragment extends Fragment implements SwipeRefreshLayout.OnRef
 
                         switch (position) {
                             case 0:
+                                final Intent intent = new Intent(getActivity(), SettingsActivity.class);
                                 getActivity().finish();
                                 startActivity(intent);
                                 break;
@@ -226,7 +201,6 @@ public class AvatarFragment extends Fragment implements SwipeRefreshLayout.OnRef
                 final_list = new ArrayList();
             }
             this.adapter = new AvataresItemListAdapter(getActivity().getBaseContext(), final_list);
-            lv3.setAdapter(this.adapter);
             lv3.setAdapter(this.adapter);
             this.adapter.notifyDataSetChanged();
             lv3.setOnItemClickListener(new C00961(final_list));
@@ -283,9 +257,9 @@ public class AvatarFragment extends Fragment implements SwipeRefreshLayout.OnRef
         dialog2.show();
     }
 
-    public void onRefresh() {
-        new Handler().postDelayed(new C00972(), 5000);
-    }
+//    public void onRefresh() {
+//        new Handler().postDelayed(new C00972(), 5000);
+//    }
 	/*@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
  

@@ -3,6 +3,7 @@ package com.bit.audit.fragments;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -35,9 +36,9 @@ public class MisVentasFragment extends Fragment {
 
     static int _position;
     private VentasItemListAdapter adapter;
-    private int id;
     private Venta obj;
     static Button btn_close, btn_ok;
+    static ListView lv1;
 
     class ShowListVenta implements AdapterView.OnItemClickListener {
         final List final_list;
@@ -126,9 +127,9 @@ public class MisVentasFragment extends Fragment {
                 final_list = new ArrayList();
             }
             this.adapter = new VentasItemListAdapter(getActivity().getBaseContext(), final_list);
-            VendingMachineActivity.lv3.setAdapter(this.adapter);
+            lv1.setAdapter(this.adapter);
             this.adapter.notifyDataSetChanged();
-            VendingMachineActivity.lv3.setOnItemClickListener(new ShowListVenta(final_list));
+            lv1.setOnItemClickListener(new ShowListVenta(final_list));
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
@@ -137,9 +138,11 @@ public class MisVentasFragment extends Fragment {
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         View rootView = inflater.inflate(R.layout.fragment_ventas_list, container, false);
-        ((TextView) rootView.findViewById(R.id.venta_nombre)).setText(VendingMachineActivity.nombre_usuario != null ? VendingMachineActivity.nombre_usuario.toString() : "");
-        VendingMachineActivity.lv3 = (ListView) rootView.findViewById(R.id.venta_list);
+        Intent intent = getActivity().getIntent();
+        ((TextView) rootView.findViewById(R.id.venta_nombre)).setText(intent.getStringExtra("nombre") != null ? intent.getStringExtra("nombre").toString() : "");
+        lv1 = (ListView) rootView.findViewById(R.id.venta_list);
         try {
             List<Venta> final_list;
             VentaHashmapCollectionSingleton.getInstance();
@@ -150,9 +153,9 @@ public class MisVentasFragment extends Fragment {
                 final_list = new ArrayList();
             }
             this.adapter = new VentasItemListAdapter(getActivity().getBaseContext(), final_list);
-            VendingMachineActivity.lv3.setAdapter(this.adapter);
+            lv1.setAdapter(this.adapter);
             this.adapter.notifyDataSetChanged();
-            VendingMachineActivity.lv3.setOnItemClickListener(new ShowListVenta(final_list));
+            lv1.setOnItemClickListener(new ShowListVenta(final_list));
         } catch (Exception ex) {
             ex.toString();
         }

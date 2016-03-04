@@ -15,7 +15,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.bit.async.tasks.NewAvatarTask;
 import com.bit.audit.fragments.MainActivity;
-import com.bit.audit.fragments.VendingMachineActivity;
 import com.bit.client.R;
 import com.bit.entities.Avatar;
 import com.bit.entities.User;
@@ -52,6 +51,7 @@ public class SettingsActivity extends Activity implements LoyaltyCardReader.Acco
     TextView tx_nuevo_avatar;
     public String usuario;
     Button btn_close;
+    public static String nombre_usuario;
 
     public void SettingsActivity(){}
 
@@ -115,8 +115,8 @@ public class SettingsActivity extends Activity implements LoyaltyCardReader.Acco
             public void onClick(View v) {
 
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
                 finish();
+                startActivity(intent);
             }
         });
 
@@ -125,6 +125,7 @@ public class SettingsActivity extends Activity implements LoyaltyCardReader.Acco
         localActionBar.setDisplayOptions(0, ActionBar.DISPLAY_SHOW_TITLE);
         localActionBar.hide();
         Intent intent = getIntent();
+        nombre_usuario = intent.getStringExtra("nombre");
         this.role = intent.getStringExtra("role");
         this.usuario = intent.getStringExtra("usuario");
         this.nombre = intent.getStringExtra("nombre");
@@ -192,18 +193,18 @@ public class SettingsActivity extends Activity implements LoyaltyCardReader.Acco
         }
     }
 
-    public void goHome(View view) {
-        Intent k = new Intent(this, VendingMachineActivity.class);
-        finish();
-        k.putExtra("usuario", "1-1");
-        k.putExtra("nombre", this.nombre);
-        k.putExtra("password", "password");
-        k.putExtra("ip", this.ip);
-        k.putExtra("id_user", this.idUser);
-        k.putExtra("privateInternalID", this.privateInternalID);
-        k.putExtra("avatar", this.avatar);
-        startActivity(k);
-    }
+//    public void goHome(View view) {
+//        Intent k = new Intent(this, VendingMachineActivity.class);
+//        finish();
+//        k.putExtra("usuario", "1-1");
+//        k.putExtra("nombre", this.nombre);
+//        k.putExtra("password", "password");
+//        k.putExtra("ip", this.ip);
+//        k.putExtra("id_user", this.idUser);
+//        k.putExtra("privateInternalID", this.privateInternalID);
+//        k.putExtra("avatar", this.avatar);
+//        startActivity(k);
+//    }
 
     public void goSettings(View view) {
         Intent k = new Intent(this, SettingsActivity.class);
