@@ -21,7 +21,7 @@ import com.bit.async.tasks.GetEstadoCuentaTask;
 import com.bit.async.tasks.GetProductosFromServerTask;
 import com.bit.async.tasks.GetTransactionsTask;
 import com.bit.async.tasks.GetVentasTask;
-import com.bit.audit.fragments.VendingMachineActivity;
+import com.bit.audit.fragments.MisVentasFragment;
 
 import com.bit.client.R;
 import com.bit.entities.EstadoCuenta;
@@ -198,7 +198,7 @@ public class StartActivity extends Activity implements LoaderManager.LoaderCallb
 		ad.setButton("OK", new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
-				dialog.dismiss();                    
+				dialog.dismiss();
 			}
 		});
 		ad.show();

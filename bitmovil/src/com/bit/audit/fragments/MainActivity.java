@@ -247,21 +247,21 @@ public class MainActivity extends Activity {
         Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
         // if button is clicked, close the custom dialog
         dialogButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    dialog.dismiss();
-                    Intent mainIntent = new Intent(getBaseContext(), StartActivity.class);
-                    mainIntent.putExtra("usuario", "");
-                    mainIntent.putExtra("password", "");
-                    mainIntent.putExtra("ip", "");
-                    startActivity(mainIntent);
-                    finish();
-                } catch (Exception ex) {
-                    ex.toString();
-                }
-            }
-        });
+			@Override
+			public void onClick(View v) {
+				try {
+					dialog.dismiss();
+					Intent mainIntent = new Intent(getBaseContext(), StartActivity.class);
+					mainIntent.putExtra("usuario", "");
+					mainIntent.putExtra("password", "");
+					mainIntent.putExtra("ip", "");
+					startActivity(mainIntent);
+					finish();
+				} catch (Exception ex) {
+					ex.toString();
+				}
+			}
+		});
 
         Button dialogCancelButton = (Button) dialog.findViewById(R.id.dialogButtonCancel);
         // if button is clicked, close the custom dialog

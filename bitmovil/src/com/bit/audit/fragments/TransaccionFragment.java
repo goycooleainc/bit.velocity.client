@@ -42,7 +42,6 @@ public class TransaccionFragment extends Fragment implements SwipeRefreshLayout.
         List<Transaccion> final_list;
         GetTransactionsTask task_3 = new GetTransactionsTask(getActivity());
         task_3.setIdUsuario(TransactionHashmapCollectionSingleton.getInstance().user.getIdUsuario());
-//        task_3.setIdUsuario(VentaHashmapCollectionSingleton.getInstance().user.getIdUsuario());
 
         try {
             TransactionHashmapCollectionSingleton.getInstance().transacciones = (List) task_3.execute(new Void[0]).get();
@@ -50,11 +49,6 @@ public class TransaccionFragment extends Fragment implements SwipeRefreshLayout.
             if (TransactionHashmapCollectionSingleton.transacciones != null) {
                 TransactionHashmapCollectionSingleton.getInstance();
                 final_list = TransactionHashmapCollectionSingleton.transacciones;
-//            VentaHashmapCollectionSingleton.getInstance().ventas = (List) task_3.execute(new Void[0]).get();
-//            VentaHashmapCollectionSingleton.getInstance();
-//            if (VentaHashmapCollectionSingleton.ventas != null) {
-//                VentaHashmapCollectionSingleton.getInstance();
-//                final_list = VentaHashmapCollectionSingleton.ventas;
             } else {
                 final_list = new ArrayList();
             }

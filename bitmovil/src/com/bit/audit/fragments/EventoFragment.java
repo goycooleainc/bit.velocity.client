@@ -20,15 +20,19 @@ import android.widget.TextView;
 
 import com.bit.adapters.EventosItemListAdapter;
 import com.bit.adapters.TransactionsItemListAdapter;
+import com.bit.adapters.VentasItemListAdapter;
 import com.bit.async.tasks.DirectNewTransaction;
 import com.bit.async.tasks.GetEventosTask;
 import com.bit.async.tasks.GetImageTask;
+import com.bit.async.tasks.GetVentasTask;
 import com.bit.client.R;
 import com.bit.entities.Eventos;
 import com.bit.entities.Transaccion;
 import com.bit.entities.User;
+import com.bit.entities.Venta;
 import com.bit.singletons.CacheCollectionSingleton;
 import com.bit.singletons.TransactionHashmapCollectionSingleton;
+import com.bit.singletons.VentaHashmapCollectionSingleton;
 import com.google.gson.Gson;
 
 import org.apache.james.mime4j.util.CharsetUtil;
@@ -63,12 +67,35 @@ public class EventoFragment extends Fragment implements SwipeRefreshLayout.OnRef
         refreshEvents();
     }
 
+    public void  refreshVenta(){
+        List<Venta> final_list;
+        GetVentasTask task_3 = new GetVentasTask(getActivity().getBaseContext());
+        task_3.setIdUsuario(TransactionHashmapCollectionSingleton.getInstance().user.getIdUsuario());
+
+        try {
+            VentaHashmapCollectionSingleton.getInstance().ventas = (List) task_3.execute(new Void[0]).get();
+            VentaHashmapCollectionSingleton.getInstance();
+            if (VentaHashmapCollectionSingleton.ventas != null) {
+                VentaHashmapCollectionSingleton.getInstance();
+                final_list = VentaHashmapCollectionSingleton.ventas;
+            } else {
+                final_list = new ArrayList();
+            }
+            VentasItemListAdapter ventasItemListAdapter = new VentasItemListAdapter(getActivity().getBaseContext(), final_list);
+            lv3.setAdapter(ventasItemListAdapter);
+            ventasItemListAdapter.notifyDataSetChanged();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void refreshEvents()
     {
         GetEventosTask events_mediator = new GetEventosTask(getActivity());
         List<User> list = null;
         try {
-
             List<Eventos> eventos = (List) events_mediator.execute(new Void[0]).get();
             CacheCollectionSingleton.getInstance(getActivity()).setInMemmoryUsers(new Gson().toJson((Object) list));
             TransactionHashmapCollectionSingleton.getInstance();
@@ -175,9 +202,9 @@ public class EventoFragment extends Fragment implements SwipeRefreshLayout.OnRef
                     if(resto >= 0) {
                         TransactionHashmapCollectionSingleton.estadoCuenta.setSaldo(String.valueOf(resto).toString());
                         bld.setMessage("Compra Hecha Con Exito !!");
-                        //refresh list
-//                        refreshEvents();
 
+                        //refresh list
+                        refreshVenta();
                     }else{
                         bld.setMessage("Saldo insuficiente !!");
                     }
@@ -196,9 +223,14 @@ public class EventoFragment extends Fragment implements SwipeRefreshLayout.OnRef
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         View rootView = inflater.inflate(R.layout.fragment_events_list, container, false);
         ((TextView) rootView.findViewById(R.id.tx_nombre)).setText(nombre_usuario != null ? nombre_usuario.toString() : "");
         lv2 = (ListView) rootView.findViewById(R.id.product_list);
+
+        View rootView2 = inflater.inflate(R.layout.fragment_ventas_list, container, false);
+        lv3 = (ListView) rootView2.findViewById(R.id.venta_list);
+
         try {
             List<Eventos> final_list;
             TransactionHashmapCollectionSingleton.getInstance();
@@ -217,5 +249,4 @@ public class EventoFragment extends Fragment implements SwipeRefreshLayout.OnRef
         }
         return rootView;
     }
-
 }
