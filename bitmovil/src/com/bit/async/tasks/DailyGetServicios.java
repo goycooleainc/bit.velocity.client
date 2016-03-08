@@ -25,15 +25,14 @@ public class DailyGetServicios extends AsyncTask<String, Void, String> {
 	String pass;
 	String ip;
 	String result = null;
-	
+	LinearLayout linlaHeaderProgress;
 	private Activity activity;
-	// CAST THE LINEARLAYOUT HOLDING THE MAIN PROGRESS (SPINNER)
-	LinearLayout linlaHeaderProgress = (LinearLayout) activity.findViewById(R.id.pbHeaderProgress);
 		 	
-	 	public DailyGetServicios(Activity activity)
-	 	{
-	 		this.activity = activity;
-	 	}
+	public DailyGetServicios(Activity activity)	{
+		this.activity = activity;
+		this.linlaHeaderProgress = (LinearLayout) activity.findViewById(R.id.linlaHeaderProgress);
+
+	}
 	 	
 	@Override
 	protected String doInBackground(String... params) {

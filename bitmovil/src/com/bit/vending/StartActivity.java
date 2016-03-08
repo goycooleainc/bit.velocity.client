@@ -8,6 +8,7 @@ import android.app.LoaderManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Loader;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,14 +16,13 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.bit.async.tasks.DirectAltaUser;
+import com.bit.async.tasks.GetAsynkTasks;
 import com.bit.async.tasks.GetAvataresTask;
 import com.bit.async.tasks.GetEstadoCuentaTask;
 import com.bit.async.tasks.GetProductosFromServerTask;
 import com.bit.async.tasks.GetTransactionsTask;
 import com.bit.async.tasks.GetVentasTask;
-import com.bit.audit.fragments.MisVentasFragment;
-
+import com.bit.audit.fragments.MainActivity;
 import com.bit.client.R;
 import com.bit.entities.EstadoCuenta;
 import com.bit.entities.User;
@@ -31,10 +31,6 @@ import com.bit.singletons.UsersHashmapCollection;
 import com.bit.singletons.VentaHashmapCollectionSingleton;
 import com.bit.utils.CheckEmail;
 import com.bit.utils.OfflineUserManager;
-
-import com.bit.audit.fragments.MainActivity;
-
-import com.google.gson.Gson;
 
 import java.util.Date;
 import java.util.List;
@@ -169,9 +165,18 @@ public class StartActivity extends Activity implements LoaderManager.LoaderCallb
                     user.setPassword(password.getText().toString());
                     user.setEmail(email.getText().toString());
 
-                    DirectAltaUser task = new DirectAltaUser(activity, bld, intent, v);
-                    task.setDATA(new Gson().toJson(user), user);
-                    task.execute();
+					String remoteURL = activity.getApplicationContext().getString(R.string.newUser);
+					AsyncTask<String, Void, String> task = new GetAsynkTasks(v, activity, remoteURL).execute("1-1", "password", "78.41.206.33");
+					try {
+						String dailyTests = task.get();
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					} catch (ExecutionException e) {
+						e.printStackTrace();
+					}
+//                    DirectAltaUser task = new DirectAltaUser(activity, bld, intent, v);
+//                    task.setDATA(new Gson().toJson(user), user);
+//                    task.execute();
 
                 } else {
                     bld.setMessage("Todos los campos son requeridos o e-mail tiene un formato incorrecto!!");

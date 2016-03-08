@@ -2,6 +2,13 @@
 <resources>
     <!--<string name="server">http://192.168.4.100:8080</string>-->
     <string name="server">http://bit.goycooleainc.com</string>
+
+    <!--URL GENERICAS PARA PODER REUTILIZAR-->
+    <string name="newUser">/mobile/new/user</string>
+    <string name="sendTransaction">/mobile/transaction/send</string>
+    <string name="sendEmail">/mobile/send/email</string>
+    <string name="sendEmailAfterTransaction">/mobile/transaction/send/email</string>
+
     <string name="app_name">Bitmovil</string>
     <string name="action_settings">Settings</string>
     <string name="drawer_open">Slider Menu Opened</string>

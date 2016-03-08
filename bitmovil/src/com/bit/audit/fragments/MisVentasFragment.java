@@ -1,5 +1,6 @@
 package com.bit.audit.fragments;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.Fragment;
@@ -11,12 +12,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.bit.adapters.VentasItemListAdapter;
-import com.bit.async.tasks.DirectSendEmail;
 import com.bit.async.tasks.GetVentasTask;
+import com.bit.async.tasks.PostAsynkTasks;
 import com.bit.client.R;
 import com.bit.entities.Email;
 import com.bit.entities.Venta;
@@ -34,11 +36,13 @@ import java.util.concurrent.ExecutionException;
  */
 public class MisVentasFragment extends Fragment {
 
-    static int _position;
     private VentasItemListAdapter adapter;
     private Venta obj;
     static Button btn_close, btn_ok;
     static ListView lv1;
+    private LinearLayout linlaHeaderProgress;
+    private View rootView;
+    private Activity activity;
 
     class ShowListVenta implements AdapterView.OnItemClickListener {
         final List final_list;
@@ -66,7 +70,7 @@ public class MisVentasFragment extends Fragment {
             btn_close = (Button) dialog.findViewById(R.id.dialogButtonCancel);
             btn_ok = (Button) dialog.findViewById(R.id.dialogButtonOK);
 
-            obj = (Venta) this.final_list.get(_position);
+            obj = (Venta) this.final_list.get(position);
             final int idVenta = obj.getId();
             final int cantidadParaEnviar = obj.getCantidadParaEnviar();
 
@@ -76,7 +80,7 @@ public class MisVentasFragment extends Fragment {
 
                 @Override
                 public void onClick(View v) {
-                    AlertDialog.Builder bld = new AlertDialog.Builder(getActivity());
+                    AlertDialog.Builder bld = new AlertDialog.Builder(v.getContext());
                     if (cantidadParaEnviar > 0){
                         TextView email = (TextView) dialog.findViewById(R.id.emailText);
                         TextView descripcion = (TextView) dialog.findViewById(R.id.descrText);
@@ -87,22 +91,25 @@ public class MisVentasFragment extends Fragment {
                             em.setEmail(email.getText().toString());
                             em.setIdVenta(idVenta);
 
-                            DirectSendEmail task = new DirectSendEmail(getActivity().getApplicationContext());
+                            String remoteURL = getActivity().getApplicationContext().getString(R.string.sendEmail);
+                            PostAsynkTasks task = new PostAsynkTasks(rootView, activity, bld, remoteURL);
                             task.setDATA(new Gson().toJson(em));
                             task.execute();
 
-                            bld.setMessage("E-Mail Enviado Con Exito !!");
                             obj.setCantidadParaEnviar(cantidadParaEnviar - 1);
 
                             Log.d("Evento enviado por mail", "Showing alert dialog: " + "");
                         } else {
                             bld.setMessage("E-Mail es vacio o tiene un formato incorrecto!!");
+                            bld.setNeutralButton("OK", null);
+                            bld.create().show();
                         }
                     }else{
                         bld.setMessage("Usted no puede enviar este evento, ya que la cantidad no se lo permite !!");
+                        bld.setNeutralButton("OK", null);
+                        bld.create().show();
                     }
-                    bld.setNeutralButton("OK", null);
-                    bld.create().show();
+
                     dialog.dismiss();
                 }
             });
@@ -139,8 +146,11 @@ public class MisVentasFragment extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_ventas_list, container, false);
+        rootView = inflater.inflate(R.layout.fragment_ventas_list, container, false);
         Intent intent = getActivity().getIntent();
+        activity = getActivity();
+        linlaHeaderProgress = (LinearLayout) rootView.findViewById(R.id.linlaHeaderProgress);
+
         ((TextView) rootView.findViewById(R.id.venta_nombre)).setText(intent.getStringExtra("nombre") != null ? intent.getStringExtra("nombre").toString() : "");
         lv1 = (ListView) rootView.findViewById(R.id.venta_list);
         try {

@@ -34,7 +34,7 @@ public class GetNextOrderCandidate extends AsyncTask<String, Void, String> {
 	  	 public GetNextOrderCandidate(Activity activity)
 	     {
 	     	this.activity = activity;
-	     	linlaHeaderProgress = (LinearLayout) activity.findViewById(R.id.pbHeaderProgress);
+			 this.linlaHeaderProgress = (LinearLayout) activity.findViewById(R.id.linlaHeaderProgress);
 	     }
 	  	 
 	 @Override

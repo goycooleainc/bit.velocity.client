@@ -1,6 +1,7 @@
 package com.goycooleainc.ui;
 
 import android.app.ActionBar;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,9 +10,9 @@ import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
+
 import com.bit.adapters.ProductosBitItemListAdapter;
-import com.bit.async.tasks.DirectTransactionSendEmail;
-import com.bit.async.tasks.DirectNewTransaction;
+import com.bit.async.tasks.PostAsynkTasks;
 import com.bit.client.R;
 import com.bit.entities.Productos;
 import com.bit.entities.Transaccion;
@@ -22,7 +23,6 @@ import com.google.gson.reflect.TypeToken;
 import com.goycooleainc.ui.base.BlundellActivity;
 import com.goycooleainc.ui.utils.Navigator;
 import com.goycooleainc.ui.xml.MainMenu;
-import com.goycooleainc.util.Log;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -41,12 +41,12 @@ public class MainActivity extends BlundellActivity implements MainMenu {
     static ListView lv2;
     static ImageButton btnClose;
     private static final String TAG = "BITCHELIN";
+    public View view;
+    View rootView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
 
         /// require action bar
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
@@ -70,7 +70,6 @@ public class MainActivity extends BlundellActivity implements MainMenu {
 
         try {
             List<Productos> list = TransactionHashmapCollectionSingleton.getInstance().productos;
-//            List<Productos> list = VentaHashmapCollectionSingleton.getInstance().productos;
             lv2.setAdapter(new ProductosBitItemListAdapter(getBaseContext(), list));
             lv2.setOnItemClickListener(new C01042(list));
 
@@ -90,7 +89,7 @@ public class MainActivity extends BlundellActivity implements MainMenu {
         }
 
         public void onItemClick(AdapterView<?> adapterView, View v, int position, long id) {
-
+            view = v;
             Productos obj = (Productos) this.val$list.get(position);
             TransactionHashmapCollectionSingleton.getInstance();
             List<Productos> productos = TransactionHashmapCollectionSingleton.productos;
@@ -133,19 +132,15 @@ public class MainActivity extends BlundellActivity implements MainMenu {
      *
      */
     private void dealWithSuccessfulPurchase() {
-        /// salida al log
-        Log.d("Credit Purchased");
-        /// motrar toast
-        popToast("Vaaamoooos, tenes credito!!");
-        /// ahora decimos uqe fue hecha una carga y la comiteamos
         try {
+            AlertDialog.Builder bld = new AlertDialog.Builder(view.getContext());
+
             SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
             String currentDateandTime = sdf.format(new Date());
 
             Transaccion tx = new Transaccion();
             tx.setFecha(currentDateandTime);
             tx.setAvatar(TransactionHashmapCollectionSingleton.getInstance().avatar.getCodigo());
-//            tx.setAvatar(VentaHashmapCollectionSingleton.getInstance().avatar.getCodigo());
             tx.setCantidad("1");
             tx.setGps("");
             tx.setIdProducto(0);
@@ -156,12 +151,17 @@ public class MainActivity extends BlundellActivity implements MainMenu {
             tx.setMoneda(1);
             tx.setPublicKey("");
 
-            DirectNewTransaction task = new DirectNewTransaction(getApplicationContext());
+            String remoteURL = this.getApplicationContext().getString(R.string.sendTransaction);
+            PostAsynkTasks task = new PostAsynkTasks(view, this, bld, remoteURL);
             task.setDATA(new Gson().toJson(tx));
+            task.execute();
 
             tx.setMetodoPago(1);
-            DirectTransactionSendEmail task2 = new DirectTransactionSendEmail(getApplicationContext());
+            String remoteURL2 = this.getApplicationContext().getString(R.string.sendEmailAfterTransaction);
+            PostAsynkTasks task2 = new PostAsynkTasks(view, this, bld, remoteURL2);
             task2.setDATA(new Gson().toJson(tx));
+            task2.execute();
+
         }catch (Exception ex){
 
         }
@@ -172,19 +172,21 @@ public class MainActivity extends BlundellActivity implements MainMenu {
      */
     private void dealWithFailedPurchase() {
         try {
+            AlertDialog.Builder bld = new AlertDialog.Builder(view.getContext());
 
             Transaccion tx = new Transaccion();
-            tx.setAvatar(TransactionHashmapCollectionSingleton.getInstance().avatar.getCodigo());
+            tx.setAvatar(TransactionHashmapCollectionSingleton.getInstance().avatares.get(0).getCodigo());
+//            tx.setAvatar(TransactionHashmapCollectionSingleton.getInstance().avatar.getCodigo());
             tx.setTotal(VendingSingleton.getInstance().producto.getPrecio());
             tx.setMetodoPago(-1);
 
-            DirectTransactionSendEmail task = new DirectTransactionSendEmail(getApplicationContext());
-            task.setDATA(new Gson().toJson(tx));
+            String remoteURL2 = this.getApplicationContext().getString(R.string.sendEmailAfterTransaction);
+            PostAsynkTasks task2 = new PostAsynkTasks(view, this, bld, remoteURL2);
+            task2.setDATA(new Gson().toJson(tx));
+            task2.execute();
+
         }catch (Exception ex){
 
         }
-        Log.d("Passport purchase failed");
-        popToast("Paff, no tenes credito o tu tarjeta hizo boing boing !!");
-
     }
 }

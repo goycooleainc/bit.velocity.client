@@ -1,12 +1,12 @@
 package com.bit.audit.fragments;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.Fragment;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,10 +21,10 @@ import android.widget.TextView;
 import com.bit.adapters.EventosItemListAdapter;
 import com.bit.adapters.TransactionsItemListAdapter;
 import com.bit.adapters.VentasItemListAdapter;
-import com.bit.async.tasks.DirectNewTransaction;
 import com.bit.async.tasks.GetEventosTask;
 import com.bit.async.tasks.GetImageTask;
 import com.bit.async.tasks.GetVentasTask;
+import com.bit.async.tasks.PostAsynkTasks;
 import com.bit.client.R;
 import com.bit.entities.Eventos;
 import com.bit.entities.Transaccion;
@@ -59,6 +59,8 @@ public class EventoFragment extends Fragment implements SwipeRefreshLayout.OnRef
     static int _position;
     private EventosItemListAdapter adapter;
     private int id;
+    private Activity activity;
+    private View rootView;
 
     public EventoFragment(){}
 
@@ -164,6 +166,8 @@ public class EventoFragment extends Fragment implements SwipeRefreshLayout.OnRef
 
                 @Override
                 public void onClick(View v) {
+                    AlertDialog.Builder bld = new AlertDialog.Builder(v.getContext());
+
                     DecimalFormat df = new DecimalFormat("#,##0.00");
                     df.setDecimalFormatSymbols(new DecimalFormatSymbols(Locale.ITALY));
                     df.format(new BigDecimal(TransactionHashmapCollectionSingleton.estadoCuenta.getSaldo()));
@@ -191,27 +195,21 @@ public class EventoFragment extends Fragment implements SwipeRefreshLayout.OnRef
                     tx.setTotal(String.valueOf(total));
                     tx.setIdEvento(obj.getId());
 
-                    DirectNewTransaction task = new DirectNewTransaction(getActivity().getApplicationContext());
+                    String remoteURL = getActivity().getApplicationContext().getString(R.string.sendTransaction);
+                    PostAsynkTasks task = new PostAsynkTasks(rootView, activity, bld, remoteURL);
                     task.setDATA(new Gson().toJson(tx));
-                    //task.directSend(new Gson().toJson(obj));
                     task.execute();
-
-                    AlertDialog.Builder bld = new AlertDialog.Builder(getActivity());
 
                     //Refrescar fragment principal para actualizar salgo
                     if(resto >= 0) {
                         TransactionHashmapCollectionSingleton.estadoCuenta.setSaldo(String.valueOf(resto).toString());
-                        bld.setMessage("Compra Hecha Con Exito !!");
 
                         //refresh list
                         refreshVenta();
                     }else{
                         bld.setMessage("Saldo insuficiente !!");
+                        bld.create().show();
                     }
-
-                    bld.setNeutralButton("OK", null);
-                    Log.d("compra evento", "Showing alert dialog: " + obj.getNombre());
-                    bld.create().show();
 
                     dialog.dismiss();
                 }
@@ -224,10 +222,10 @@ public class EventoFragment extends Fragment implements SwipeRefreshLayout.OnRef
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        View rootView = inflater.inflate(R.layout.fragment_events_list, container, false);
+        rootView = inflater.inflate(R.layout.fragment_events_list, container, false);
         ((TextView) rootView.findViewById(R.id.tx_nombre)).setText(nombre_usuario != null ? nombre_usuario.toString() : "");
         lv2 = (ListView) rootView.findViewById(R.id.product_list);
-
+        activity = getActivity();
         View rootView2 = inflater.inflate(R.layout.fragment_ventas_list, container, false);
         lv3 = (ListView) rootView2.findViewById(R.id.venta_list);
 
