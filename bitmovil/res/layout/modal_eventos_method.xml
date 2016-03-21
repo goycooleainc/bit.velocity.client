@@ -19,6 +19,32 @@
                 android:layout_height="200dp"
                 android:id="@+id/imageViewEvent"/>
     </LinearLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayoutSector"
+            android:visibility="gone"
+            android:weightSum="1">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Seleccione Sector:"
+            android:id="@+id/sectorText"
+            android:textColor="@color/Gray"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:autoText="true" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/sectores"
+            android:layout_weight="1"
+            android:focusable="false"
+            android:spinnerMode="dialog"
+            android:theme="@style/AppBaseTheme"/>
+    </LinearLayout>
     <LinearLayout android:orientation="horizontal" android:layout_width="match_parent"
                   android:layout_height="wrap_content"
         android:weightSum="1">

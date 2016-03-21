@@ -11,11 +11,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.NumberPicker;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.bit.adapters.EventosItemListAdapter;
@@ -61,6 +64,7 @@ public class EventoFragment extends Fragment implements SwipeRefreshLayout.OnRef
     private int id;
     private Activity activity;
     private View rootView;
+    private Spinner s;
 
     public EventoFragment(){}
 
@@ -160,6 +164,17 @@ public class EventoFragment extends Fragment implements SwipeRefreshLayout.OnRef
             } catch (ExecutionException e2) {
                 e2.printStackTrace();
             }
+
+            LinearLayout linearLayoutSector = (LinearLayout) dialog.findViewById(R.id.linearLayoutSector);
+            s = (Spinner) dialog.findViewById(R.id.sectores);
+            if(obj.getSector1() != null) {
+                linearLayoutSector.setVisibility(View.VISIBLE);
+                List<String> sectores = new ArrayList<>();
+                sectores = checkSector(obj, sectores);
+                sectores.add(obj.getSector1());
+                s.setAdapter(new ArrayAdapter(dialog.getContext(), R.layout.spinner_item, sectores));
+            }
+
             btn_close.setOnClickListener(new C00981(dialog));
 
             btn_ok.setOnClickListener(new View.OnClickListener(){
@@ -194,6 +209,7 @@ public class EventoFragment extends Fragment implements SwipeRefreshLayout.OnRef
                     tx.setPublicKey("");
                     tx.setTotal(String.valueOf(total));
                     tx.setIdEvento(obj.getId());
+                    tx.setSector((String) s.getSelectedItem());
 
                     String remoteURL = getActivity().getApplicationContext().getString(R.string.sendTransaction);
                     PostAsynkTasks task = new PostAsynkTasks(rootView, activity, bld, remoteURL);
@@ -218,6 +234,37 @@ public class EventoFragment extends Fragment implements SwipeRefreshLayout.OnRef
             dialog.setTitle("EVENTO - BITMOVIL");
             dialog.show();
         }
+    }
+
+    public List<String> checkSector(Eventos obj, List<String> sectores){
+        if(obj.getSector2() != null){
+            sectores.add(obj.getSector2());
+        }
+        if(obj.getSector3() != null){
+            sectores.add(obj.getSector3());
+        }
+        if(obj.getSector4() != null){
+            sectores.add(obj.getSector4());
+        }
+        if(obj.getSector5() != null){
+            sectores.add(obj.getSector5());
+        }
+        if(obj.getSector6() != null){
+            sectores.add(obj.getSector6());
+        }
+        if(obj.getSector7() != null){
+            sectores.add(obj.getSector7());
+        }
+        if(obj.getSector8() != null){
+            sectores.add(obj.getSector8());
+        }
+        if(obj.getSector9() != null){
+            sectores.add(obj.getSector9());
+        }
+        if(obj.getSector10() != null){
+            sectores.add(obj.getSector10());
+        }
+        return sectores;
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

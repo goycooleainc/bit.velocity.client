@@ -16,6 +16,15 @@ public class Transaccion {
     public String fecha;
     public int idEvento;
     public int idTransaccion;
+    public String sector;
+
+    public String getSector() {
+        return sector;
+    }
+
+    public void setSector(String sector) {
+        this.sector = sector;
+    }
 
     public int getIdTransaccion() {
         return idTransaccion;

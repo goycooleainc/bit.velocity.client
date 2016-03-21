@@ -29,6 +29,16 @@ public class Eventos {
     private String detalle;
     private List<Beneficios> beneficios;
     private List<Invitados> invitados;
+    private String sector1;
+    private String sector2;
+    private String sector3;
+    private String sector4;
+    private String sector5;
+    private String sector6;
+    private String sector7;
+    private String sector8;
+    private String sector9;
+    private String sector10;
 
     public List<Invitados> getInvitados() {
         return invitados;
@@ -206,5 +216,84 @@ public class Eventos {
         this.telefono = telefono;
     }
 
+    public String getSector1() {
+        return sector1;
+    }
+
+    public void setSector1(String sector1) {
+        this.sector1 = sector1;
+    }
+
+    public String getSector2() {
+        return sector2;
+    }
+
+    public void setSector2(String sector2) {
+        this.sector2 = sector2;
+    }
+
+    public String getSector3() {
+        return sector3;
+    }
+
+    public void setSector3(String sector3) {
+        this.sector3 = sector3;
+    }
+
+    public String getSector4() {
+        return sector4;
+    }
+
+    public void setSector4(String sector4) {
+        this.sector4 = sector4;
+    }
+
+    public String getSector5() {
+        return sector5;
+    }
+
+    public void setSector5(String sector5) {
+        this.sector5 = sector5;
+    }
+
+    public String getSector6() {
+        return sector6;
+    }
+
+    public void setSector6(String sector6) {
+        this.sector6 = sector6;
+    }
+
+    public String getSector7() {
+        return sector7;
+    }
+
+    public void setSector7(String sector7) {
+        this.sector7 = sector7;
+    }
+
+    public String getSector8() {
+        return sector8;
+    }
+
+    public void setSector8(String sector8) {
+        this.sector8 = sector8;
+    }
+
+    public String getSector9() {
+        return sector9;
+    }
+
+    public void setSector9(String sector9) {
+        this.sector9 = sector9;
+    }
+
+    public String getSector10() {
+        return sector10;
+    }
+
+    public void setSector10(String sector10) {
+        this.sector10 = sector10;
+    }
 
 }
