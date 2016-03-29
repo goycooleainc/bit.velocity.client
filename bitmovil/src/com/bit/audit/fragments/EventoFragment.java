@@ -141,10 +141,13 @@ public class EventoFragment extends Fragment implements SwipeRefreshLayout.OnRef
         }
 
         public void onItemClick(AdapterView<?> adapterView, View v, int position, long id) {
+            AlertDialog.Builder bld = new AlertDialog.Builder(v.getContext());
+
             final Dialog dialog = new Dialog(v.getContext());
             dialog.setContentView(R.layout.modal_eventos_method);
 
             final NumberPicker numberPicker = (NumberPicker) dialog.findViewById(R.id.numberPicker);
+            final TextView precio = (TextView) dialog.findViewById(R.id.precioEvento);
             numberPicker.setMinValue(1);
             numberPicker.setMaxValue(100);
             numberPicker.setWrapSelectorWheel(true);
@@ -154,7 +157,7 @@ public class EventoFragment extends Fragment implements SwipeRefreshLayout.OnRef
 
             ImageView imagen = (ImageView) dialog.findViewById(R.id.imageViewEvent);
             final Eventos obj = (Eventos) this.val$final_list.get(position);
-            ((TextView) dialog.findViewById(R.id.txDetalleEvento)).setText("$" + obj.getPrecio() + CharsetUtil.CRLF + obj.getNombre() + CharsetUtil.CRLF + obj.getDetalle().toString() + CharsetUtil.CRLF + obj.getFechaInicio());
+            ((TextView) dialog.findViewById(R.id.txDetalleEvento)).setText(obj.getNombre() + CharsetUtil.CRLF + obj.getDetalle().toString() + CharsetUtil.CRLF + obj.getFechaInicio());
             GetImageTask it = new GetImageTask();
             try {
                 it.setUrl("http://bit.goycooleainc.com/dmz/multimedia/" + obj.getId() + "/type/1/" + obj.getId() + "-0");
@@ -168,16 +171,62 @@ public class EventoFragment extends Fragment implements SwipeRefreshLayout.OnRef
             LinearLayout linearLayoutSector = (LinearLayout) dialog.findViewById(R.id.linearLayoutSector);
             s = (Spinner) dialog.findViewById(R.id.sectores);
             if(obj.getSector1() != null) {
+
                 linearLayoutSector.setVisibility(View.VISIBLE);
                 List<String> sectores = new ArrayList<>();
-                sectores = checkSector(obj, sectores);
                 sectores.add(obj.getSector1());
+                sectores = checkSector(obj, sectores);
                 s.setAdapter(new ArrayAdapter(dialog.getContext(), R.layout.spinner_item, sectores));
             }
 
+            s.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                    precio.setText("");
+                    switch (position){
+                        case 0:
+                            precio.setText(obj.getPrecio1());
+                            break;
+                        case 1:
+                           precio.setText(obj.getPrecio2());
+                            break;
+                        case 2:
+                            precio.setText(obj.getPrecio3());
+                            break;
+                        case 3:
+                            precio.setText(obj.getPrecio4());
+                            break;
+                        case 4:
+                            precio.setText(obj.getPrecio5());
+                            break;
+                        case 5:
+                            precio.setText(obj.getPrecio6());
+                            break;
+                        case 6:
+                            precio.setText(obj.getPrecio7());
+                            break;
+                        case 7:
+                            precio.setText(obj.getPrecio8());
+                            break;
+                        case 8:
+                            precio.setText(obj.getPrecio9());
+                            break;
+                        case 9:
+                            precio.setText(obj.getPrecio10());
+                            break;
+                    }
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parentView) {
+                    // your code here
+                }
+
+            });
+
             btn_close.setOnClickListener(new C00981(dialog));
 
-            btn_ok.setOnClickListener(new View.OnClickListener(){
+            btn_ok.setOnClickListener(new View.OnClickListener() {
 
                 @Override
                 public void onClick(View v) {
@@ -187,15 +236,15 @@ public class EventoFragment extends Fragment implements SwipeRefreshLayout.OnRef
                     df.setDecimalFormatSymbols(new DecimalFormatSymbols(Locale.ITALY));
                     df.format(new BigDecimal(TransactionHashmapCollectionSingleton.estadoCuenta.getSaldo()));
 
-                    Double total = Double.valueOf(obj.getPrecio()) * numberPicker.getValue();
+                    Double total = Double.valueOf(String.valueOf(precio.getText())) * numberPicker.getValue();
                     Double resto = Double.valueOf(TransactionHashmapCollectionSingleton.estadoCuenta.getSaldo()) - total;
 
                     Transaccion tx = new Transaccion();
                     TransactionHashmapCollectionSingleton.getInstance();
                     String avatar;
-                    if(TransactionHashmapCollectionSingleton.avatar != null) {
+                    if (TransactionHashmapCollectionSingleton.avatar != null) {
                         avatar = TransactionHashmapCollectionSingleton.avatar.getCodigo();
-                    }else{
+                    } else {
                         avatar = TransactionHashmapCollectionSingleton.avatares.get(0).getCodigo();
                     }
                     tx.setAvatar(avatar);
@@ -217,12 +266,12 @@ public class EventoFragment extends Fragment implements SwipeRefreshLayout.OnRef
                     task.execute();
 
                     //Refrescar fragment principal para actualizar salgo
-                    if(resto >= 0) {
+                    if (resto >= 0) {
                         TransactionHashmapCollectionSingleton.estadoCuenta.setSaldo(String.valueOf(resto).toString());
 
                         //refresh list
                         refreshVenta();
-                    }else{
+                    } else {
                         bld.setMessage("Saldo insuficiente !!");
                         bld.create().show();
                     }
@@ -233,6 +282,8 @@ public class EventoFragment extends Fragment implements SwipeRefreshLayout.OnRef
 
             dialog.setTitle("EVENTO - BITMOVIL");
             dialog.show();
+            bld.setMessage("Para comprar en diferentes sectores debera realizar una transacción diferente");
+            bld.create().show();
         }
     }
 

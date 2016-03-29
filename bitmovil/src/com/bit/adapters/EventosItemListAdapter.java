@@ -59,7 +59,11 @@ public class EventosItemListAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.txtLinea.setText("$" + ((Eventos) this.listData.get(position)).getPrecio());
+        if(((Eventos) this.listData.get(position)).getPrecio1() != null) {
+            holder.txtLinea.setText("$" + ((Eventos) this.listData.get(position)).getPrecio1());
+        }else{
+            holder.txtLinea.setText("-");
+        }
         holder.txtFecha.setText(((Eventos) this.listData.get(position)).getNombre());
         holder.txtNumeroSerie.setText(((Eventos) this.listData.get(position)).getFechaInicio() != null ? ((Eventos) this.listData.get(position)).getFechaInicio() : "");
         return convertView;
