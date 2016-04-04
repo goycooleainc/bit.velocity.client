@@ -5,8 +5,13 @@
 
     <!--URL GENERICAS PARA PODER REUTILIZAR-->
     <string name="newUser">/mobile/new/user</string>
+    <string name="getCortesiaCombo">/mobile/get/cortesia/combo/</string>
+    <string name="getCortesiaEvento">/mobile/get/cortesia/evento/</string>
+    <string name="getProductos">/mobile/get/productos/</string>
     <string name="sendTransaction">/mobile/transaction/send</string>
     <string name="sendEmail">/mobile/send/email</string>
+    <string name="sendProductosQuemados">/mobile/cargar/productos/usados</string>
+    <string name="sendEventoQuemado">/mobile/cargar/evento/usado</string>
     <string name="sendEmailAfterTransaction">/mobile/transaction/send/email</string>
 
     <string name="app_name">Bitmovil</string>
@@ -40,6 +45,7 @@
         <item >Eventos</item>
         <item >Cartola</item>
         <item >Tienda</item>
+        <item >Cortesias</item>
         <item >Mis Ventas</item>
         <item >Cerrar Session</item>
     </string-array>
@@ -53,6 +59,7 @@
         <item>@drawable/ic_memmo</item>
         <item>@drawable/ic_support_new</item>
         <item>@drawable/ic_compromisos</item>
+        <item>@drawable/ic_fleet</item>
     </array>
 
     <!-- Content Description -->

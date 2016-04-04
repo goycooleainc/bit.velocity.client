@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tvLinearActividad"
+    android:layout_width="fill_parent"
+    android:layout_height="140dp"
+    android:layout_margin="5dp"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <LinearLayout
+        android:id="@+id/cortesia_producto_combo"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/nombreProducto"
+            android:layout_width="257dp"
+            android:layout_height="match_parent"
+            android:text="[folio]"
+            android:textAppearance="@style/texto_normal_label"
+            android:textSize="15sp" />
+
+        <CheckBox
+            android:id="@+id/checkbox"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="right" />
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal" >
+
+        <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="6dp"
+                android:src="@drawable/separador_new" />
+
+    </LinearLayout>
+
+</LinearLayout>

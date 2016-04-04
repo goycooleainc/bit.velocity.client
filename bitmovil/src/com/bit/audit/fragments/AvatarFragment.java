@@ -150,7 +150,8 @@ public class AvatarFragment extends Fragment {
                 btn_ok = (Button) dialog.findViewById(R.id.dialogButtonOK);
 
                 final Spinner s = (Spinner) dialog.findViewById(R.id.spinner_state);
-                s.setAdapter(new ArrayAdapter(dialog.getContext(), R.layout.spinner_item, new String[]{"NFC", "QR", "CODIGO DE BARRAS"}));
+                s.setAdapter(new ArrayAdapter(dialog.getContext(), R.layout.spinner_item, new String[]{"NFC", "QR"}));
+//                s.setAdapter(new ArrayAdapter(dialog.getContext(), R.layout.spinner_item, new String[]{"NFC", "QR", "CODIGO DE BARRAS"}));
 
                 btn_close.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -175,10 +176,10 @@ public class AvatarFragment extends Fragment {
                                 BarcodeFormat format = BarcodeFormat.QR_CODE;
                                 generateCode(format, v2, true);
                                 break;
-                            case 2:
-                                BarcodeFormat format2 = BarcodeFormat.CODE_39;
-                                generateCode(format2, v2, false);
-                                break;
+//                            case 2:
+//                                BarcodeFormat format2 = BarcodeFormat.CODE_39;
+//                                generateCode(format2, v2, false);
+//                                break;
                         }
                         dialog.dismiss();
                     }

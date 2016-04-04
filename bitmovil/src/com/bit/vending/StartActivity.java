@@ -18,7 +18,10 @@ import android.widget.TextView;
 
 import com.bit.async.tasks.GetAsynkTasks;
 import com.bit.async.tasks.GetAvataresTask;
+import com.bit.async.tasks.GetCortesiasComboTask;
+import com.bit.async.tasks.GetCortesiasEventoTask;
 import com.bit.async.tasks.GetEstadoCuentaTask;
+import com.bit.async.tasks.GetProductoTask;
 import com.bit.async.tasks.GetProductosFromServerTask;
 import com.bit.async.tasks.GetTransactionsTask;
 import com.bit.async.tasks.GetVentasTask;
@@ -93,17 +96,27 @@ public class StartActivity extends Activity implements LoaderManager.LoaderCallb
 			GetTransactionsTask task_3 = new GetTransactionsTask(getApplicationContext());
 			GetProductosFromServerTask task_4 = new GetProductosFromServerTask(getApplicationContext());
 			GetVentasTask task_5 = new GetVentasTask(getApplicationContext());
+			GetCortesiasComboTask task_6 = new GetCortesiasComboTask(getApplicationContext());
+			GetProductoTask task_7 = new GetProductoTask(getApplicationContext());
+            GetCortesiasEventoTask task_8 = new GetCortesiasEventoTask(getApplicationContext());
 
 			task_1.setIdUsuario(user.getIdUsuario());
 			task_2.setIdUsuario(user.getIdUsuario());
 			task_3.setIdUsuario(user.getIdUsuario());
 			task_5.setIdUsuario(user.getIdUsuario());
+			task_6.setIdUsuario(user.getIdUsuario());
+			task_7.setIdUsuario(user.getIdUsuario());
+			task_8.setIdUsuario(user.getIdUsuario());
 
 			try {
 				TransactionHashmapCollectionSingleton.getInstance().estadoCuenta = (EstadoCuenta) task_1.execute(new Void[0]).get();
 				TransactionHashmapCollectionSingleton.getInstance().avatares = (List) task_2.execute(new Void[0]).get();
 				TransactionHashmapCollectionSingleton.getInstance().transacciones = (List) task_3.execute(new Void[0]).get();
 				TransactionHashmapCollectionSingleton.getInstance().productos = (List) task_4.execute(new Void[0]).get();
+				TransactionHashmapCollectionSingleton.getInstance().cortesiaCombos = (List) task_6.execute(new Void[0]).get();
+				TransactionHashmapCollectionSingleton.getInstance().cortesiaEvento = (List) task_8.execute(new Void[0]).get();
+                //Son los prodcutos fisicos a vender
+				TransactionHashmapCollectionSingleton.getInstance().producto = (List) task_7.execute(new Void[0]).get();
 				TransactionHashmapCollectionSingleton.getInstance().mainActivity = this;
 				VentaHashmapCollectionSingleton.getInstance().ventas = (List) task_5.execute(new Void[0]).get();
 
@@ -174,9 +187,6 @@ public class StartActivity extends Activity implements LoaderManager.LoaderCallb
 					} catch (ExecutionException e) {
 						e.printStackTrace();
 					}
-//                    DirectAltaUser task = new DirectAltaUser(activity, bld, intent, v);
-//                    task.setDATA(new Gson().toJson(user), user);
-//                    task.execute();
 
                 } else {
                     bld.setMessage("Todos los campos son requeridos o e-mail tiene un formato incorrecto!!");

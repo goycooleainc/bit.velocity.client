@@ -74,9 +74,10 @@ public class MainActivity extends Activity {
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
 
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1)));
-		// What's hot, We  will add a counter here
+
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[6], navMenuIcons.getResourceId(6, -1)));
-		
+
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[7], navMenuIcons.getResourceId(7, -1)));
 
 		// Recycle the typed array
 		navMenuIcons.recycle();
@@ -84,8 +85,8 @@ public class MainActivity extends Activity {
 		mDrawerList.setOnItemClickListener(new SlideMenuClickListener());
 
 		// setting the nav drawer list adapter
-		adapter = new NavDrawerListAdapter(getApplicationContext(),
-				navDrawerItems);
+		adapter = new NavDrawerListAdapter(getApplicationContext(), navDrawerItems);
+
 		mDrawerList.setAdapter(adapter);
 
 		// enabling action bar app icon and behaving it as toggle button
@@ -185,9 +186,12 @@ public class MainActivity extends Activity {
 			fragment = new TiendaVirtualFragment();
 			break;
 		case 5:
-			fragment = new MisVentasFragment();
+			fragment = new MisCortesiasFragment();
 			break;
 		case 6:
+			fragment = new MisVentasFragment();
+			break;
+		case 7:
 			fragment = new WhatsHotFragment();
 			break;
 		default:
