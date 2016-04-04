@@ -22,6 +22,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bit.adapters.CortesiaProductoComboListAdapter;
 import com.bit.adapters.CortesiasComboItemListAdapter;
@@ -136,6 +137,7 @@ public class MisCortesiasComboFragment extends Fragment implements SwipeRefreshL
                     task.setDATA(new Gson().toJson(obj));
                     task.execute();
 
+                    Toast.makeText(activity, "Preparando Transacción", Toast.LENGTH_SHORT).show();
                     //Buscar forma de pago
                     final Dialog dialog2 = new Dialog(v.getContext());
 
@@ -299,7 +301,7 @@ public class MisCortesiasComboFragment extends Fragment implements SwipeRefreshL
         if (TransactionHashmapCollectionSingleton.avatares != null) {
             TransactionHashmapCollectionSingleton.getInstance();
             List<Avatar> final_list = TransactionHashmapCollectionSingleton.avatares;
-            codigo = final_list.get(0).getCodigo() + "-" + obj.getIdProductoCombo() + "-C";
+            codigo = final_list.get(0).getCodigo() + "-" + obj.getId() + "-C";
         }
         QRCodeWriter writer = new QRCodeWriter();
         Code39Writer writer2 = new Code39Writer();

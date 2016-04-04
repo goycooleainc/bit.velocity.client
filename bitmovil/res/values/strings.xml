@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--<string name="server">http://192.168.4.100:8080</string>-->
-    <string name="server">http://bit.goycooleainc.com</string>
+    <string name="server">http://bitmovil.cl</string>
 
     <!--URL GENERICAS PARA PODER REUTILIZAR-->
     <string name="newUser">/mobile/new/user</string>

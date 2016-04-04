@@ -20,6 +20,7 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import com.bit.adapters.CortesiasEventoItemListAdapter;
 import com.bit.async.tasks.GetCortesiasEventoTask;
@@ -98,10 +99,11 @@ public class MisCortesiasEventoFragment extends Fragment implements SwipeRefresh
                     obj.setIdAvatar(avatar);
 
                     String remoteURL = getActivity().getApplicationContext().getString(R.string.sendEventoQuemado);
-                    PostAsynkTasks task = new PostAsynkTasks(rootView, activity, bld, remoteURL);
+                    PostAsynkTasks task = new PostAsynkTasks(v, activity, bld, remoteURL);
                     task.setDATA(new Gson().toJson(obj));
                     task.execute();
 
+                    Toast.makeText(activity, "Preparando Transacción", Toast.LENGTH_SHORT).show();
                     //Buscar forma de pago
 
                     final Dialog dialog2 = new Dialog(v.getContext());
@@ -114,7 +116,7 @@ public class MisCortesiasEventoFragment extends Fragment implements SwipeRefresh
                     final Spinner s = (Spinner) dialog2.findViewById(R.id.spinner_state);
                     s.setAdapter(new ArrayAdapter(dialog2.getContext(), R.layout.spinner_item, new String[]{"NFC", "QR"}));
 
-                    btn_close.setOnClickListener(new ShowModalCortesiaEvento(dialog));
+                    btn_close.setOnClickListener(new ShowModalCortesiaEvento(dialog2));
 
                     btn_ok.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -221,7 +223,7 @@ public class MisCortesiasEventoFragment extends Fragment implements SwipeRefresh
         if (TransactionHashmapCollectionSingleton.avatares != null) {
             TransactionHashmapCollectionSingleton.getInstance();
             List<Avatar> final_list = TransactionHashmapCollectionSingleton.avatares;
-            codigo = final_list.get(0).getCodigo() + "-" + obj.getIdEvento() + "-E";
+            codigo = final_list.get(0).getCodigo() + "-" + obj.getId() + "-E";
         }
         QRCodeWriter writer = new QRCodeWriter();
         Code39Writer writer2 = new Code39Writer();

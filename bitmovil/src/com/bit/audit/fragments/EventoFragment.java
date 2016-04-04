@@ -158,9 +158,11 @@ public class EventoFragment extends Fragment implements SwipeRefreshLayout.OnRef
             ImageView imagen = (ImageView) dialog.findViewById(R.id.imageViewEvent);
             final Eventos obj = (Eventos) this.val$final_list.get(position);
             ((TextView) dialog.findViewById(R.id.txDetalleEvento)).setText(obj.getNombre() + CharsetUtil.CRLF + obj.getDetalle().toString() + CharsetUtil.CRLF + obj.getFechaInicio());
+
+            String remoteURL = getActivity().getApplicationContext().getString(R.string.server);
             GetImageTask it = new GetImageTask();
             try {
-                it.setUrl("http://bit.goycooleainc.com/dmz/multimedia/" + obj.getId() + "/type/1/" + obj.getId() + "-0");
+                it.setUrl(remoteURL + "dmz/multimedia/" + obj.getId() + "/type/1/" + obj.getId() + "-0");
                 imagen.setImageDrawable((Drawable) it.execute(new Void[0]).get());
             } catch (InterruptedException e) {
                 e.printStackTrace();

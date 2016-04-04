@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.bit.adapters.NavDrawerListAdapter;
 import com.bit.client.R;
@@ -29,6 +30,7 @@ public class MainActivity extends Activity {
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerList;
 	private ActionBarDrawerToggle mDrawerToggle;
+	private ProgressBar progressbar;
 
 	// nav drawer title
 	private CharSequence mDrawerTitle;
@@ -49,6 +51,8 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 
 		mTitle = mDrawerTitle = getTitle();
+
+		progressbar= (ProgressBar)findViewById(R.id.pbHeaderProgress);
 
 		// load slide menu items
 		navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);

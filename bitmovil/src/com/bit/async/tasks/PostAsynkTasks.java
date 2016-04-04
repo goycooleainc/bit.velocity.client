@@ -2,6 +2,7 @@ package com.bit.async.tasks;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
@@ -40,10 +41,12 @@ public class PostAsynkTasks extends AsyncTask<String, Void, String> {
     AlertDialog.Builder bld;
     private String remoteUrl;
 
+    private Dialog dialog;
+
     public PostAsynkTasks(View v, Activity activity, AlertDialog.Builder bld, String remoteUrl)
     {
         this.activity = activity;
-        this.linlaHeaderProgress = (LinearLayout) v.findViewById(R.id.linlaHeaderProgress);
+        this.linlaHeaderProgress = (LinearLayout) activity.findViewById(R.id.linlaHeaderProgress);
         this.context = activity.getApplicationContext();
         this.bld = bld;
         this.remoteUrl = remoteUrl;
