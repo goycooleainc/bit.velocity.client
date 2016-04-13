@@ -16,6 +16,7 @@ package com.bit.utils;
  * limitations under the License.*/
 
 import android.annotation.TargetApi;
+import android.app.Fragment;
 import android.nfc.NfcAdapter;
 import android.nfc.Tag;
 import android.nfc.tech.MifareUltralight;
@@ -46,6 +47,8 @@ public class LoyaltyCardReader implements NfcAdapter.ReaderCallback {
     // foreground mode before it becomes invalid (e.g. during onPause() or onStop()).
     private WeakReference<AccountCallback> mAccountCallback;
 
+    public static Fragment instance;
+
     public interface AccountCallback {
         void onAccountReceived(String account);
     }
@@ -54,6 +57,9 @@ public class LoyaltyCardReader implements NfcAdapter.ReaderCallback {
         mAccountCallback = new WeakReference<AccountCallback>(accountCallback);
     }
 
+    public static void setInstance(Fragment instance) {
+        LoyaltyCardReader.instance = instance;
+    }
     /**
      * Callback when a new tag is discovered by the system.
      *

@@ -12,6 +12,7 @@ public class TransactionHashmapCollectionSingleton {
 	public static List<Eventos> eventos;
 	public static List<Cortesia> cortesiaCombos;
 	public static List<Cortesia> cortesiaEvento;
+	public static List<VentaDetalle> ventaDetalle;
 	private static TransactionHashmapCollectionSingleton instance;
 	public static List<Productos> productos;
 	public static List<Productos> producto;

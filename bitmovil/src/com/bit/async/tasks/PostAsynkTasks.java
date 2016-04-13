@@ -40,7 +40,7 @@ public class PostAsynkTasks extends AsyncTask<String, Void, String> {
     LinearLayout linlaHeaderProgress;
     AlertDialog.Builder bld;
     private String remoteUrl;
-
+    private String status;
     private Dialog dialog;
 
     public PostAsynkTasks(View v, Activity activity, AlertDialog.Builder bld, String remoteUrl)
@@ -69,6 +69,7 @@ public class PostAsynkTasks extends AsyncTask<String, Void, String> {
 
     @Override
     protected void onPreExecute() {
+        status = "";
         if(linlaHeaderProgress != null) {
             linlaHeaderProgress.setVisibility(View.VISIBLE);
         }
@@ -83,6 +84,22 @@ public class PostAsynkTasks extends AsyncTask<String, Void, String> {
 //        ((MainActivity) activity).refrescar();
         if(linlaHeaderProgress != null) {
             linlaHeaderProgress.setVisibility(View.GONE);
+        }
+    }
+
+    public String checkStatus(){
+        return status;
+    }
+
+    public void hasError(String result){
+
+        if(!result.equals("")) {
+            String[] a = result.split(" - ");
+            if(a.length > 1 && a[0].equals("ERROR")){
+                status = "ERROR";
+            }else{
+                status = "EXITO";
+            }
         }
     }
 
@@ -105,6 +122,7 @@ public class PostAsynkTasks extends AsyncTask<String, Void, String> {
             HttpEntity responseEntity = httpResponse.getEntity();
             inStream = new BufferedReader(new InputStreamReader(responseEntity.getContent(), "UTF-8"));
             result = inStream.readLine();
+            hasError(result);
             return result;
         }catch(Exception ex){
             return null;

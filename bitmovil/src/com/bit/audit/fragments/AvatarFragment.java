@@ -22,9 +22,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bit.adapters.AvataresItemListAdapter;
+import com.bit.adapters.CortesiasEventoItemListAdapter;
+import com.bit.async.tasks.GetCortesiasEventoTask;
 import com.bit.async.tasks.UpdateAvatarTask;
 import com.bit.client.R;
 import com.bit.entities.Avatar;
+import com.bit.entities.Cortesia;
 import com.bit.singletons.TransactionHashmapCollectionSingleton;
 import com.bit.vending.SettingsActivity;
 import com.google.gson.Gson;
@@ -37,8 +40,9 @@ import com.google.zxing.qrcode.QRCodeWriter;
 import java.security.cert.Certificate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
-public class AvatarFragment extends Fragment {
+public class AvatarFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener{
 
     private AvataresItemListAdapter adapter;
     static ImageButton onNew;
@@ -100,11 +104,15 @@ public class AvatarFragment extends Fragment {
                     obj.setEstado(s.getSelectedItemPosition());
                     obj.setIdUser(Integer.parseInt(TransactionHashmapCollectionSingleton.getInstance().user.getIdUsuario()));
 
+                    TransactionHashmapCollectionSingleton.getInstance().avatar = obj;
+
                     UpdateAvatarTask task = new UpdateAvatarTask(getActivity());
                     task.setDATA(new Gson().toJson(obj));
                     task.execute();
 
                     Toast.makeText(getActivity().getBaseContext(), "Avatar Actualizado............. [IN PROGRESS]", Toast.LENGTH_LONG).show();
+
+                    onRefresh();
 
                     dialog.dismiss();
                 }
@@ -129,6 +137,27 @@ public class AvatarFragment extends Fragment {
         this.adapter = new AvataresItemListAdapter(getActivity().getBaseContext(), final_list);
         lv3.setAdapter(this.adapter);
         this.adapter.notifyDataSetChanged();
+    }
+
+    public void onRefresh() {
+        List<Avatar> final_list;
+        try {
+            TransactionHashmapCollectionSingleton.getInstance();
+            if (TransactionHashmapCollectionSingleton.avatares != null) {
+                TransactionHashmapCollectionSingleton.getInstance();
+                final_list = TransactionHashmapCollectionSingleton.avatares;
+                TransactionHashmapCollectionSingleton.getInstance();
+                TransactionHashmapCollectionSingleton.avatar = (Avatar) final_list.get(0);
+            } else {
+                final_list = new ArrayList();
+            }
+            this.adapter = new AvataresItemListAdapter(getActivity().getBaseContext(), final_list);
+            lv3.setAdapter(this.adapter);
+            this.adapter.notifyDataSetChanged();
+            lv3.setOnItemClickListener(new C00961(final_list));
+        } catch (Exception ex) {
+            ex.toString();
+        }
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -257,16 +286,4 @@ public class AvatarFragment extends Fragment {
         }
         dialog2.show();
     }
-
-//    public void onRefresh() {
-//        new Handler().postDelayed(new C00972(), 5000);
-//    }
-	/*@Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
- 
-        View rootView = inflater.inflate(R.layout.fragment_find_people, container, false);
-         
-        return rootView;
-    }*/
-
 }

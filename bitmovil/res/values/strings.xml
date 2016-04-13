@@ -13,6 +13,7 @@
     <string name="sendProductosQuemados">/mobile/cargar/productos/usados</string>
     <string name="sendEventoQuemado">/mobile/cargar/evento/usado</string>
     <string name="sendEmailAfterTransaction">/mobile/transaction/send/email</string>
+    <string name="asignarAvatarVenta">/mobile/asignar/avatar/venta</string>
 
     <string name="app_name">Bitmovil</string>
     <string name="action_settings">Settings</string>

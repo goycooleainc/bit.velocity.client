@@ -2,71 +2,102 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="320dp"
+            android:layout_height="match_parent"
             android:background="@color/White"
             android:alpha="0.8"
             android:weightSum="1">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|center_horizontal">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/texto_subtitulo"
+                android:text="Puedes asignarle el avatar activo a este evento.."
+                android:id="@+id/text_asignar"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"/>
 
-    <TextView
+        <Button
+            android:id="@+id/dialog_button_asignar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/texto_subtitulo"
-            android:text="Puedes enviarle este evento a un amigo."
-            android:id="@+id/textView6"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"/>
-    <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="70dp"
-            android:gravity="center_vertical|center_horizontal">
-      <EditText
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/emailText"
-            android:hint="E-MAIL de amiga/o"
-            android:inputType="textEmailAddress"
-            android:textColor="@color/Black"
-          android:textColorHint="@color/Black" />
-    </LinearLayout>
-    <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="70dp"
-            android:gravity="center_vertical|center_horizontal">
-        <EditText
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/descrText"
-            android:hint="Nombre Amiga/o"
-            android:textColor="@color/Black"
-            android:textColorHint="@color/Black" />
-    </LinearLayout>
-    <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_marginTop="21dp"
-            android:layout_below="@+id/spinner_state"
-            android:layout_alignParentLeft="true">
-        <Button
-            android:id="@+id/dialogButtonCancel"
-            android:layout_width="70dp"
-            android:layout_height="match_parent"
             android:layout_marginTop="5dp"
-            android:background="@drawable/cancel_style_buttons"
+            android:background="@drawable/ptr_pulltorefresh_arrow"
             android:layout_gravity="center_horizontal" />
-        <Button
-            android:id="@+id/dialogButtonOK"
-            android:layout_width="70dp"
-            android:layout_height="match_parent"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/ok_style_buttons"
-            android:layout_marginLeft="30dp"
-            android:layout_gravity="center_horizontal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|center_horizontal">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/texto_subtitulo"
+                android:text="O puedes enviarle este evento a un amigo."
+                android:id="@+id/textView6"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"/>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="70dp"
+                android:gravity="center_vertical|center_horizontal">
+          <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/emailText"
+                android:hint="E-MAIL de amiga/o"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/Black"
+              android:textColorHint="@color/Black" />
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="70dp"
+                android:gravity="center_vertical|center_horizontal">
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/descrText"
+                android:hint="Nombre Amiga/o"
+                android:textColor="@color/Black"
+                android:textColorHint="@color/Black" />
+        </LinearLayout>
+        <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="70dp"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="21dp"
+                android:layout_below="@+id/spinner_state"
+                android:layout_alignParentLeft="true">
+            <Button
+                android:id="@+id/dialogButtonCancel"
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/cancel_style_buttons"
+                android:layout_gravity="center_horizontal" />
+            <Button
+                android:id="@+id/dialogButtonOK"
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/ok_style_buttons"
+                android:layout_marginLeft="30dp"
+                android:layout_gravity="center_horizontal" />
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

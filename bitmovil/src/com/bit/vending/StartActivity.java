@@ -24,9 +24,11 @@ import com.bit.async.tasks.GetEstadoCuentaTask;
 import com.bit.async.tasks.GetProductoTask;
 import com.bit.async.tasks.GetProductosFromServerTask;
 import com.bit.async.tasks.GetTransactionsTask;
+import com.bit.async.tasks.GetVentaDetalleTask;
 import com.bit.async.tasks.GetVentasTask;
 import com.bit.audit.fragments.MainActivity;
 import com.bit.client.R;
+import com.bit.entities.Avatar;
 import com.bit.entities.EstadoCuenta;
 import com.bit.entities.User;
 import com.bit.singletons.TransactionHashmapCollectionSingleton;
@@ -95,30 +97,39 @@ public class StartActivity extends Activity implements LoaderManager.LoaderCallb
 			GetAvataresTask task_2 = new GetAvataresTask(getApplicationContext());
 			GetTransactionsTask task_3 = new GetTransactionsTask(getApplicationContext());
 			GetProductosFromServerTask task_4 = new GetProductosFromServerTask(getApplicationContext());
-			GetVentasTask task_5 = new GetVentasTask(getApplicationContext());
+//			GetVentasTask task_5 = new GetVentasTask(getApplicationContext());
 			GetCortesiasComboTask task_6 = new GetCortesiasComboTask(getApplicationContext());
 			GetProductoTask task_7 = new GetProductoTask(getApplicationContext());
             GetCortesiasEventoTask task_8 = new GetCortesiasEventoTask(getApplicationContext());
+            GetVentaDetalleTask task_9 = new GetVentaDetalleTask(getApplicationContext());
 
 			task_1.setIdUsuario(user.getIdUsuario());
 			task_2.setIdUsuario(user.getIdUsuario());
 			task_3.setIdUsuario(user.getIdUsuario());
-			task_5.setIdUsuario(user.getIdUsuario());
+//			task_5.setIdUsuario(user.getIdUsuario());
 			task_6.setIdUsuario(user.getIdUsuario());
 			task_7.setIdUsuario(user.getIdUsuario());
 			task_8.setIdUsuario(user.getIdUsuario());
+			task_9.setIdUsuario(user.getIdUsuario());
 
 			try {
 				TransactionHashmapCollectionSingleton.getInstance().estadoCuenta = (EstadoCuenta) task_1.execute(new Void[0]).get();
 				TransactionHashmapCollectionSingleton.getInstance().avatares = (List) task_2.execute(new Void[0]).get();
+				for(Avatar a :TransactionHashmapCollectionSingleton.getInstance().avatares){
+					if(a.getEstado() == 1){
+						TransactionHashmapCollectionSingleton.getInstance().avatar = a;
+						break;
+					}
+				}
 				TransactionHashmapCollectionSingleton.getInstance().transacciones = (List) task_3.execute(new Void[0]).get();
 				TransactionHashmapCollectionSingleton.getInstance().productos = (List) task_4.execute(new Void[0]).get();
 				TransactionHashmapCollectionSingleton.getInstance().cortesiaCombos = (List) task_6.execute(new Void[0]).get();
 				TransactionHashmapCollectionSingleton.getInstance().cortesiaEvento = (List) task_8.execute(new Void[0]).get();
+				TransactionHashmapCollectionSingleton.getInstance().ventaDetalle = (List) task_9.execute(new Void[0]).get();
                 //Son los prodcutos fisicos a vender
 				TransactionHashmapCollectionSingleton.getInstance().producto = (List) task_7.execute(new Void[0]).get();
 				TransactionHashmapCollectionSingleton.getInstance().mainActivity = this;
-				VentaHashmapCollectionSingleton.getInstance().ventas = (List) task_5.execute(new Void[0]).get();
+//				VentaHashmapCollectionSingleton.getInstance().ventas = (List) task_5.execute(new Void[0]).get();
 
 			} catch (InterruptedException e) {
 				e.printStackTrace();

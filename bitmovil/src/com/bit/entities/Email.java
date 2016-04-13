@@ -4,7 +4,7 @@ public class Email {
 
 	private String email;
 	private String descripcion;
-	private int idVenta;
+	private int idVentaDetalle;
 
 
 	public String getDescripcion() {
@@ -23,11 +23,11 @@ public class Email {
 		this.email = email;
 	}
 
-	public int getIdVenta() {
-		return idVenta;
+	public int getIdVentaDetalle() {
+		return idVentaDetalle;
 	}
 
-	public void setIdVenta(int idVenta) {
-		this.idVenta = idVenta;
+	public void setIdVentaDetalle(int idVentaDetalle) {
+		this.idVentaDetalle = idVentaDetalle;
 	}
 }

@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -104,43 +105,58 @@ public class MisCortesiasEventoFragment extends Fragment implements SwipeRefresh
                     task.execute();
 
                     Toast.makeText(activity, "Preparando Transacción", Toast.LENGTH_SHORT).show();
-                    //Buscar forma de pago
 
-                    final Dialog dialog2 = new Dialog(v.getContext());
+                    //Wait for 2 seconds
+                    Handler handler = new Handler();
 
-                    dialog2.setContentView(R.layout.modal_avatar_method_select_type);
+                    while(task.checkStatus().equals("")){
+                        handler.postDelayed(new Runnable() {
+                            public void run() {
 
-                    btn_close = (Button) dialog2.findViewById(R.id.dialogButtonCancel);
-                    btn_ok = (Button) dialog2.findViewById(R.id.dialogButtonOK);
-
-                    final Spinner s = (Spinner) dialog2.findViewById(R.id.spinner_state);
-                    s.setAdapter(new ArrayAdapter(dialog2.getContext(), R.layout.spinner_item, new String[]{"NFC", "QR"}));
-
-                    btn_close.setOnClickListener(new ShowModalCortesiaEvento(dialog2));
-
-                    btn_ok.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v2) {
-
-                            int position = s.getSelectedItemPosition();
-
-                            switch (position) {
-                                case 0:
-                                    final Intent intent = new Intent(getActivity(), SettingsActivity.class);
-                                    getActivity().finish();
-                                    startActivity(intent);
-                                    break;
-                                case 1:
-                                    BarcodeFormat format = BarcodeFormat.QR_CODE;
-                                    generateCode(format, v2, true);
-                                    break;
                             }
-                            dialog2.dismiss();
-                        }
-                    });
+                        }, 2000);
+                    }
 
-                    dialog2.setTitle("AVATAR - BITMOVIL");
-                    dialog2.show();
+                    if(task.checkStatus().equals("EXITO")) {
+
+                        //Buscar forma de pago
+
+                        final Dialog dialog2 = new Dialog(v.getContext());
+
+                        dialog2.setContentView(R.layout.modal_avatar_method_select_type);
+
+                        btn_close = (Button) dialog2.findViewById(R.id.dialogButtonCancel);
+                        btn_ok = (Button) dialog2.findViewById(R.id.dialogButtonOK);
+
+                        final Spinner s = (Spinner) dialog2.findViewById(R.id.spinner_state);
+                        s.setAdapter(new ArrayAdapter(dialog2.getContext(), R.layout.spinner_item, new String[]{"NFC", "QR"}));
+
+                        btn_close.setOnClickListener(new ShowModalCortesiaEvento(dialog2));
+
+                        btn_ok.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v2) {
+
+                                int position = s.getSelectedItemPosition();
+
+                                switch (position) {
+                                    case 0:
+                                        final Intent intent = new Intent(getActivity(), SettingsActivity.class);
+                                        getActivity().finish();
+                                        startActivity(intent);
+                                        break;
+                                    case 1:
+                                        BarcodeFormat format = BarcodeFormat.QR_CODE;
+                                        generateCode(format, v2, true);
+                                        break;
+                                }
+                                dialog2.dismiss();
+                            }
+                        });
+
+                        dialog2.setTitle("AVATAR - BITMOVIL");
+                        dialog2.show();
+                    }
                     dialog.dismiss();
                 }
             });

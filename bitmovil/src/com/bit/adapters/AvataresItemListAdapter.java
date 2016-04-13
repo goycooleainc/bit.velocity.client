@@ -60,7 +60,7 @@ public class AvataresItemListAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
         if( ((Avatar)this.listData.get(position)).getCodigo().contains("[") == false) {
-            holder.txtLinea.setText(((Avatar) this.listData.get(position)).getEstado() == 0 ? "ACTIVO" : "INACTIVO");
+            holder.txtLinea.setText(((Avatar) this.listData.get(position)).getEstado() == 1 ? "ACTIVO" : "INACTIVO");
             holder.txtFecha.setText(((Avatar) this.listData.get(position)).getDescripcion());
             holder.txtNumeroSerie.setText(((Avatar) this.listData.get(position)).getCodigo() != null ? ((Avatar) this.listData.get(position)).getCodigo() : "[NO CODE]");
             return convertView;

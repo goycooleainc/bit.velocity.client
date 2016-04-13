@@ -23,6 +23,7 @@ import android.widget.TextView;
 
 import com.bit.adapters.EventosItemListAdapter;
 import com.bit.adapters.TransactionsItemListAdapter;
+import com.bit.adapters.VentasDetalleItemListAdapter;
 import com.bit.adapters.VentasItemListAdapter;
 import com.bit.async.tasks.GetEventosTask;
 import com.bit.async.tasks.GetImageTask;
@@ -33,6 +34,7 @@ import com.bit.entities.Eventos;
 import com.bit.entities.Transaccion;
 import com.bit.entities.User;
 import com.bit.entities.Venta;
+import com.bit.entities.VentaDetalle;
 import com.bit.singletons.CacheCollectionSingleton;
 import com.bit.singletons.TransactionHashmapCollectionSingleton;
 import com.bit.singletons.VentaHashmapCollectionSingleton;
@@ -74,20 +76,20 @@ public class EventoFragment extends Fragment implements SwipeRefreshLayout.OnRef
     }
 
     public void  refreshVenta(){
-        List<Venta> final_list;
+        List<VentaDetalle> final_list;
         GetVentasTask task_3 = new GetVentasTask(getActivity().getBaseContext());
         task_3.setIdUsuario(TransactionHashmapCollectionSingleton.getInstance().user.getIdUsuario());
 
         try {
-            VentaHashmapCollectionSingleton.getInstance().ventas = (List) task_3.execute(new Void[0]).get();
-            VentaHashmapCollectionSingleton.getInstance();
-            if (VentaHashmapCollectionSingleton.ventas != null) {
-                VentaHashmapCollectionSingleton.getInstance();
-                final_list = VentaHashmapCollectionSingleton.ventas;
+            TransactionHashmapCollectionSingleton.getInstance().ventaDetalle = (List) task_3.execute(new Void[0]).get();
+            TransactionHashmapCollectionSingleton.getInstance();
+            if (TransactionHashmapCollectionSingleton.ventaDetalle != null) {
+                TransactionHashmapCollectionSingleton.getInstance();
+                final_list = TransactionHashmapCollectionSingleton.ventaDetalle;
             } else {
                 final_list = new ArrayList();
             }
-            VentasItemListAdapter ventasItemListAdapter = new VentasItemListAdapter(getActivity().getBaseContext(), final_list);
+            VentasDetalleItemListAdapter ventasItemListAdapter = new VentasDetalleItemListAdapter(getActivity().getBaseContext(), final_list);
             lv3.setAdapter(ventasItemListAdapter);
             ventasItemListAdapter.notifyDataSetChanged();
         } catch (InterruptedException e) {
