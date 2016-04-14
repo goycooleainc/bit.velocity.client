@@ -83,7 +83,6 @@ public class MisVentasFragment extends Fragment {
 
             obj = (VentaDetalle) this.final_list.get(position);
             final int idVentaDetalle = obj.getId();
-//            final int cantidadParaEnviar = obj.getCantidadParaEnviar();
 
             btn_close.setOnClickListener(new ShowModalVenta(dialog));
 
@@ -92,7 +91,7 @@ public class MisVentasFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     AlertDialog.Builder bld = new AlertDialog.Builder(v.getContext());
-                    if (!obj.getAvatar().equals("")) {
+                    if (obj.getAvatar() == null) {
                         TextView email = (TextView) dialog.findViewById(R.id.emailText);
                         TextView descripcion = (TextView) dialog.findViewById(R.id.descrText);
 
@@ -107,9 +106,8 @@ public class MisVentasFragment extends Fragment {
                             task.setDATA(new Gson().toJson(em));
                             task.execute();
 
-//                            obj.setCantidadParaEnviar(cantidadParaEnviar - 1);
-
                             Log.d("Evento enviado por mail", "Showing alert dialog: " + "");
+                            onRefresh();
                         } else {
                             bld.setMessage("E-Mail es vacio o tiene un formato incorrecto!!");
                             bld.setNeutralButton("OK", null);
