@@ -24,20 +24,18 @@ import android.widget.TextView;
 import com.bit.adapters.EventosItemListAdapter;
 import com.bit.adapters.TransactionsItemListAdapter;
 import com.bit.adapters.VentasDetalleItemListAdapter;
-import com.bit.adapters.VentasItemListAdapter;
 import com.bit.async.tasks.GetEventosTask;
 import com.bit.async.tasks.GetImageTask;
+import com.bit.async.tasks.GetVentaDetalleTask;
 import com.bit.async.tasks.GetVentasTask;
 import com.bit.async.tasks.PostAsynkTasks;
 import com.bit.client.R;
 import com.bit.entities.Eventos;
 import com.bit.entities.Transaccion;
 import com.bit.entities.User;
-import com.bit.entities.Venta;
 import com.bit.entities.VentaDetalle;
 import com.bit.singletons.CacheCollectionSingleton;
 import com.bit.singletons.TransactionHashmapCollectionSingleton;
-import com.bit.singletons.VentaHashmapCollectionSingleton;
 import com.google.gson.Gson;
 
 import org.apache.james.mime4j.util.CharsetUtil;
@@ -77,7 +75,7 @@ public class EventoFragment extends Fragment implements SwipeRefreshLayout.OnRef
 
     public void  refreshVenta(){
         List<VentaDetalle> final_list;
-        GetVentasTask task_3 = new GetVentasTask(getActivity().getBaseContext());
+        GetVentaDetalleTask task_3 = new GetVentaDetalleTask(getActivity().getBaseContext());
         task_3.setIdUsuario(TransactionHashmapCollectionSingleton.getInstance().user.getIdUsuario());
 
         try {

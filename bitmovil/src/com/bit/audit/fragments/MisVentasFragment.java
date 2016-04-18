@@ -1,13 +1,10 @@
 package com.bit.audit.fragments;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.Fragment;
 import android.content.Intent;
-import android.nfc.NfcAdapter;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,21 +15,15 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bit.adapters.VentasDetalleItemListAdapter;
-import com.bit.adapters.VentasItemListAdapter;
 import com.bit.async.tasks.GetVentaDetalleTask;
-import com.bit.async.tasks.GetVentasTask;
 import com.bit.async.tasks.PostAsynkTasks;
 import com.bit.client.R;
 import com.bit.entities.Email;
-import com.bit.entities.Venta;
 import com.bit.entities.VentaDetalle;
 import com.bit.singletons.TransactionHashmapCollectionSingleton;
-import com.bit.singletons.VentaHashmapCollectionSingleton;
 import com.bit.utils.CheckEmail;
-import com.bit.utils.LoyaltyCardReader;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -44,7 +35,6 @@ import java.util.concurrent.ExecutionException;
  */
 public class MisVentasFragment extends Fragment {
 
-    private VentasItemListAdapter adapter;
     private VentasDetalleItemListAdapter adapterDetalleVenta;
     private VentaDetalle obj;
     static Button btn_close, btn_ok, btn_asignar;

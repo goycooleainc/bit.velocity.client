@@ -146,8 +146,6 @@ public class AvatarFragment extends Fragment implements SwipeRefreshLayout.OnRef
             if (TransactionHashmapCollectionSingleton.avatares != null) {
                 TransactionHashmapCollectionSingleton.getInstance();
                 final_list = TransactionHashmapCollectionSingleton.avatares;
-                TransactionHashmapCollectionSingleton.getInstance();
-                TransactionHashmapCollectionSingleton.avatar = (Avatar) final_list.get(0);
             } else {
                 final_list = new ArrayList();
             }
@@ -225,8 +223,8 @@ public class AvatarFragment extends Fragment implements SwipeRefreshLayout.OnRef
             if (TransactionHashmapCollectionSingleton.avatares != null) {
                 TransactionHashmapCollectionSingleton.getInstance();
                 final_list = TransactionHashmapCollectionSingleton.avatares;
-                TransactionHashmapCollectionSingleton.getInstance();
-                TransactionHashmapCollectionSingleton.avatar = (Avatar) final_list.get(0);
+//                TransactionHashmapCollectionSingleton.getInstance();
+//                TransactionHashmapCollectionSingleton.avatar = (Avatar) final_list.get(0);
             } else {
                 final_list = new ArrayList();
             }
@@ -255,10 +253,9 @@ public class AvatarFragment extends Fragment implements SwipeRefreshLayout.OnRef
         });
 
         String codigo = null;
-        if (TransactionHashmapCollectionSingleton.avatares != null) {
+        if (TransactionHashmapCollectionSingleton.avatar != null) {
             TransactionHashmapCollectionSingleton.getInstance();
-            List<Avatar> final_list = TransactionHashmapCollectionSingleton.avatares;
-            codigo = final_list.get(0).getCodigo() + "-A";
+            codigo = TransactionHashmapCollectionSingleton.avatar.getCodigo() + "-A";
         }
         QRCodeWriter writer = new QRCodeWriter();
         Code39Writer writer2 = new Code39Writer();
