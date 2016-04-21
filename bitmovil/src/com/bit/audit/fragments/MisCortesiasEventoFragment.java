@@ -32,11 +32,6 @@ import com.bit.entities.Cortesia;
 import com.bit.singletons.TransactionHashmapCollectionSingleton;
 import com.bit.vending.SettingsActivity;
 import com.google.gson.Gson;
-import com.google.zxing.BarcodeFormat;
-import com.google.zxing.WriterException;
-import com.google.zxing.common.BitMatrix;
-import com.google.zxing.oned.Code39Writer;
-import com.google.zxing.qrcode.QRCodeWriter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -84,82 +79,82 @@ public class MisCortesiasEventoFragment extends Fragment implements SwipeRefresh
 
             btn_close.setOnClickListener(new ShowModalCortesiaEvento(dialog));
 
-            btn_ok.setOnClickListener(new View.OnClickListener() {
-
-                @Override
-                public void onClick(View v) {
-                    AlertDialog.Builder bld = new AlertDialog.Builder(v.getContext());
-
-                    //Realizo una transaccion al server para registrar
-                    String avatar;
-                    if (TransactionHashmapCollectionSingleton.avatar != null) {
-                        avatar = TransactionHashmapCollectionSingleton.avatar.getCodigo();
-                    } else {
-                        avatar = TransactionHashmapCollectionSingleton.avatares.get(0).getCodigo();
-                    }
-                    obj.setIdAvatar(avatar);
-
-                    String remoteURL = getActivity().getApplicationContext().getString(R.string.sendEventoQuemado);
-                    PostAsynkTasks task = new PostAsynkTasks(v, activity, bld, remoteURL);
-                    task.setDATA(new Gson().toJson(obj));
-                    task.execute();
-
-                    Toast.makeText(activity, "Preparando Transacción", Toast.LENGTH_SHORT).show();
-
-                    //Wait for 2 seconds
-                    Handler handler = new Handler();
-
-                    while(task.checkStatus().equals("")){
-                        handler.postDelayed(new Runnable() {
-                            public void run() {
-
-                            }
-                        }, 2000);
-                    }
-
-                    if(task.checkStatus().equals("EXITO")) {
-
-                        //Buscar forma de pago
-
-                        final Dialog dialog2 = new Dialog(v.getContext());
-
-                        dialog2.setContentView(R.layout.modal_avatar_method_select_type);
-
-                        btn_close = (Button) dialog2.findViewById(R.id.dialogButtonCancel);
-                        btn_ok = (Button) dialog2.findViewById(R.id.dialogButtonOK);
-
-                        final Spinner s = (Spinner) dialog2.findViewById(R.id.spinner_state);
-                        s.setAdapter(new ArrayAdapter(dialog2.getContext(), R.layout.spinner_item, new String[]{"NFC", "QR"}));
-
-                        btn_close.setOnClickListener(new ShowModalCortesiaEvento(dialog2));
-
-                        btn_ok.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v2) {
-
-                                int position = s.getSelectedItemPosition();
-
-                                switch (position) {
-                                    case 0:
-                                        final Intent intent = new Intent(getActivity(), SettingsActivity.class);
-                                        getActivity().finish();
-                                        startActivity(intent);
-                                        break;
-                                    case 1:
-                                        BarcodeFormat format = BarcodeFormat.QR_CODE;
-                                        generateCode(format, v2, true);
-                                        break;
-                                }
-                                dialog2.dismiss();
-                            }
-                        });
-
-                        dialog2.setTitle("AVATAR - BITMOVIL");
-                        dialog2.show();
-                    }
-                    dialog.dismiss();
-                }
-            });
+//            btn_ok.setOnClickListener(new View.OnClickListener() {
+//
+//                @Override
+//                public void onClick(View v) {
+//                    AlertDialog.Builder bld = new AlertDialog.Builder(v.getContext());
+//
+//                    //Realizo una transaccion al server para registrar
+//                    String avatar;
+//                    if (TransactionHashmapCollectionSingleton.avatar != null) {
+//                        avatar = TransactionHashmapCollectionSingleton.avatar.getCodigo();
+//                    } else {
+//                        avatar = TransactionHashmapCollectionSingleton.avatares.get(0).getCodigo();
+//                    }
+//                    obj.setIdAvatar(avatar);
+//
+//                    String remoteURL = getActivity().getApplicationContext().getString(R.string.sendEventoQuemado);
+//                    PostAsynkTasks task = new PostAsynkTasks(v, activity, bld, remoteURL);
+//                    task.setDATA(new Gson().toJson(obj));
+//                    task.execute();
+//
+//                    Toast.makeText(activity, "Preparando Transacción", Toast.LENGTH_SHORT).show();
+//
+//                    //Wait for 2 seconds
+//                    Handler handler = new Handler();
+//
+//                    while(task.checkStatus().equals("")){
+//                        handler.postDelayed(new Runnable() {
+//                            public void run() {
+//
+//                            }
+//                        }, 2000);
+//                    }
+//
+//                    if(task.checkStatus().equals("EXITO")) {
+//
+//                        //Buscar forma de pago
+//
+//                        final Dialog dialog2 = new Dialog(v.getContext());
+//
+//                        dialog2.setContentView(R.layout.modal_avatar_method_select_type);
+//
+//                        btn_close = (Button) dialog2.findViewById(R.id.dialogButtonCancel);
+//                        btn_ok = (Button) dialog2.findViewById(R.id.dialogButtonOK);
+//
+//                        final Spinner s = (Spinner) dialog2.findViewById(R.id.spinner_state);
+//                        s.setAdapter(new ArrayAdapter(dialog2.getContext(), R.layout.spinner_item, new String[]{"NFC", "QR"}));
+//
+//                        btn_close.setOnClickListener(new ShowModalCortesiaEvento(dialog2));
+//
+//                        btn_ok.setOnClickListener(new View.OnClickListener() {
+//                            @Override
+//                            public void onClick(View v2) {
+//
+//                                int position = s.getSelectedItemPosition();
+//
+//                                switch (position) {
+//                                    case 0:
+//                                        final Intent intent = new Intent(getActivity(), SettingsActivity.class);
+//                                        getActivity().finish();
+//                                        startActivity(intent);
+//                                        break;
+//                                    case 1:
+//                                        BarcodeFormat format = BarcodeFormat.QR_CODE;
+//                                        generateCode(format, v2, true);
+//                                        break;
+//                                }
+//                                dialog2.dismiss();
+//                            }
+//                        });
+//
+//                        dialog2.setTitle("AVATAR - BITMOVIL");
+//                        dialog2.show();
+//                    }
+//                    dialog.dismiss();
+//                }
+//            });
 
             dialog.setTitle("CORTESIAS - BITMOVIL");
             dialog.show();
@@ -214,57 +209,57 @@ public class MisCortesiasEventoFragment extends Fragment implements SwipeRefresh
             this.adapter = new CortesiasEventoItemListAdapter(getActivity().getBaseContext(), final_list);
             lv1.setAdapter(this.adapter);
             this.adapter.notifyDataSetChanged();
-            lv1.setOnItemClickListener(new ShowListCortesiaEvento(final_list));
+//            lv1.setOnItemClickListener(new ShowListCortesiaEvento(final_list));
         } catch (Exception ex) {
             ex.toString();
         }
         return rootView;
     }
 
-    public void generateCode(BarcodeFormat format, View v2, boolean isQR){
-        final Dialog dialog2 = new Dialog(v2.getContext());
-        dialog2.setContentView(R.layout.modal_avatar_by_qr);
-
-        btn_close2 = (Button) dialog2.findViewById(R.id.dialogButtonCancel);
-        ImageView img = (ImageView) dialog2.findViewById(R.id.img_result_qr);
-
-        btn_close2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog2.dismiss();
-            }
-        });
-
-        String codigo = null;
-        if (TransactionHashmapCollectionSingleton.avatares != null) {
-            TransactionHashmapCollectionSingleton.getInstance();
-            List<Avatar> final_list = TransactionHashmapCollectionSingleton.avatares;
-            codigo = final_list.get(0).getCodigo() + "-" + obj.getId() + "-E";
-        }
-        QRCodeWriter writer = new QRCodeWriter();
-        Code39Writer writer2 = new Code39Writer();
-        BitMatrix bitMatrix;
-        try{
-            if(isQR) {
-                bitMatrix = writer.encode(codigo, format, 512, 512);
-            }else {
-                bitMatrix = writer2.encode(codigo, format, 512, 256);
-            }
-
-            int width = bitMatrix.getWidth();
-            int height = bitMatrix.getHeight();
-            Bitmap bmp = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);
-            for (int x = 0; x < width; x++) {
-                for (int y = 0; y < height; y++) {
-                    bmp.setPixel(x, y, bitMatrix.get(x, y) ? Color.BLACK : Color.WHITE);
-                }
-            }
-
-            img.setImageBitmap(bmp);
-
-        } catch (WriterException e) {
-            e.printStackTrace();
-        }
-        dialog2.show();
-    }
+//    public void generateCode(BarcodeFormat format, View v2, boolean isQR){
+//        final Dialog dialog2 = new Dialog(v2.getContext());
+//        dialog2.setContentView(R.layout.modal_avatar_by_qr);
+//
+//        btn_close2 = (Button) dialog2.findViewById(R.id.dialogButtonCancel);
+//        ImageView img = (ImageView) dialog2.findViewById(R.id.img_result_qr);
+//
+//        btn_close2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                dialog2.dismiss();
+//            }
+//        });
+//
+//        String codigo = null;
+//        if (TransactionHashmapCollectionSingleton.avatares != null) {
+//            TransactionHashmapCollectionSingleton.getInstance();
+//            List<Avatar> final_list = TransactionHashmapCollectionSingleton.avatares;
+//            codigo = final_list.get(0).getCodigo() + "-" + obj.getId() + "-E";
+//        }
+//        QRCodeWriter writer = new QRCodeWriter();
+//        Code39Writer writer2 = new Code39Writer();
+//        BitMatrix bitMatrix;
+//        try{
+//            if(isQR) {
+//                bitMatrix = writer.encode(codigo, format, 512, 512);
+//            }else {
+//                bitMatrix = writer2.encode(codigo, format, 512, 256);
+//            }
+//
+//            int width = bitMatrix.getWidth();
+//            int height = bitMatrix.getHeight();
+//            Bitmap bmp = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);
+//            for (int x = 0; x < width; x++) {
+//                for (int y = 0; y < height; y++) {
+//                    bmp.setPixel(x, y, bitMatrix.get(x, y) ? Color.BLACK : Color.WHITE);
+//                }
+//            }
+//
+//            img.setImageBitmap(bmp);
+//
+//        } catch (WriterException e) {
+//            e.printStackTrace();
+//        }
+//        dialog2.show();
+//    }
 }

@@ -19,11 +19,6 @@ import android.widget.LinearLayout;
 import com.bit.client.R;
 import com.bit.entities.Avatar;
 import com.bit.singletons.TransactionHashmapCollectionSingleton;
-import com.google.zxing.BarcodeFormat;
-import com.google.zxing.WriterException;
-import com.google.zxing.common.BitMatrix;
-import com.google.zxing.oned.Code39Writer;
-import com.google.zxing.qrcode.QRCodeWriter;
 
 import java.util.List;
 

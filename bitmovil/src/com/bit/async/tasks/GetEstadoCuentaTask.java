@@ -13,7 +13,13 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.auth.UsernamePasswordCredentials;
+import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.auth.BasicScheme;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.protocol.HTTP;
 
@@ -50,20 +56,29 @@ public class GetEstadoCuentaTask extends AsyncTask<Void, Void, EstadoCuenta> {
 
     final String GetExecution() {
         try {
-            String server = context.getString(R.string.server);
-            BufferedReader inStream = new BufferedReader(new InputStreamReader(new DefaultHttpClient().execute(new HttpGet(server + "/mobile/cuenta/estado/" + this.idUsuario)).getEntity().getContent(), HTTP.UTF_8));
-            BufferedReader bufferedReader;
-            try {
-                this.result = inStream.readLine();
-                bufferedReader = inStream;
-                return this.result;
+//            String server = context.getString(R.string.server);
+//            BufferedReader inStream = new BufferedReader(new InputStreamReader(new DefaultHttpClient().execute(new HttpGet(server + "/mobile/cuenta/estado/" + this.idUsuario)).getEntity().getContent(), HTTP.UTF_8));
+//            BufferedReader bufferedReader;
+//            try {
+//                this.result = inStream.readLine();
+//                bufferedReader = inStream;
+//                return this.result;
+            HttpClient httpClient = new DefaultHttpClient();
+            String url = context.getString(R.string.server);
+            HttpGet httpGet = new HttpGet(url + "/mobile/cuenta/estado/" + this.idUsuario);
+            httpGet.addHeader(BasicScheme.authenticate(new UsernamePasswordCredentials("1-1", "password"), "UTF-8", false));
+            HttpResponse httpResponse = httpClient.execute(httpGet);
+            HttpEntity responseEntity = httpResponse.getEntity();
+            BufferedReader inStream = new BufferedReader(new InputStreamReader(responseEntity.getContent(), "UTF-8"));
+            result = inStream.readLine();
+            return this.result;
             } catch (Exception e) {
-                bufferedReader = inStream;
+//                bufferedReader = inStream;
                 return null;
             }
-        } catch (Exception e2) {
-            return null;
-        }
+//        } catch (Exception e2) {
+//            return null;
+//        }
     }
 
     protected EstadoCuenta doInBackground(Void... params) {

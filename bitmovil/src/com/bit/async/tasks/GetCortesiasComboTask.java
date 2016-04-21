@@ -9,7 +9,12 @@ import com.bit.entities.Cortesia;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.auth.UsernamePasswordCredentials;
+import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.auth.BasicScheme;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.protocol.HTTP;
 
@@ -50,21 +55,29 @@ public class GetCortesiasComboTask extends AsyncTask<Void, Void, ArrayList<Corte
 	}
 
 	final String GetReports() {
-		BufferedReader bufferedReader;
-		try {
+//		BufferedReader bufferedReader;
+//		try {
 			String url = context.getString(R.string.server) + context.getString(R.string.getCortesiaCombo);
-			BufferedReader inStream = new BufferedReader(new InputStreamReader(new DefaultHttpClient().execute(new HttpGet(url + this.idUsuario)).getEntity().getContent(), HTTP.UTF_8));
+//			BufferedReader inStream = new BufferedReader(new InputStreamReader(new DefaultHttpClient().execute(new HttpGet(url + this.idUsuario)).getEntity().getContent(), HTTP.UTF_8));
 			try {
-				this.result = inStream.readLine();
-				bufferedReader = inStream;
+//				this.result = inStream.readLine();
+//				bufferedReader = inStream;
+//				return this.result;
+				HttpClient httpClient = new DefaultHttpClient();
+				HttpGet httpGet = new HttpGet(url + this.idUsuario);
+				httpGet.addHeader(BasicScheme.authenticate(new UsernamePasswordCredentials("1-1", "password"), "UTF-8", false));
+				HttpResponse httpResponse = httpClient.execute(httpGet);
+				HttpEntity responseEntity = httpResponse.getEntity();
+				BufferedReader inStream = new BufferedReader(new InputStreamReader(responseEntity.getContent(), "UTF-8"));
+				result = inStream.readLine();
 				return this.result;
 			} catch (Exception e) {
-				bufferedReader = inStream;
+//				bufferedReader = inStream;
 				return null;
 			}
-		} catch (Exception e2) {
-			return null;
-		}
+//		} catch (Exception e2) {
+//			return null;
+//		}
 	}
 
 	protected ArrayList<Cortesia> doInBackground(Void... params) {
