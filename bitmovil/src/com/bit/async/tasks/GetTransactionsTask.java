@@ -55,14 +55,7 @@ public class GetTransactionsTask extends AsyncTask<Void, Void, ArrayList<Transac
     }
 
     final String GetReports() {
-//        BufferedReader bufferedReader;
-//        try {
-//            String url = context.getString(R.string.server);
-//            BufferedReader inStream = new BufferedReader(new InputStreamReader(new DefaultHttpClient().execute(new HttpGet(url + "/mobile/transacciones/usuario/" + this.idUsuario)).getEntity().getContent(), HTTP.UTF_8));
             try {
-//                this.result = inStream.readLine();
-//                bufferedReader = inStream;
-//                return this.result;
                 HttpClient httpClient = new DefaultHttpClient();
                 String url = context.getString(R.string.server);
                 HttpGet httpGet = new HttpGet(url + "/mobile/transacciones/usuario/" + this.idUsuario);
@@ -73,12 +66,8 @@ public class GetTransactionsTask extends AsyncTask<Void, Void, ArrayList<Transac
                 result = inStream.readLine();
                 return this.result;
             } catch (Exception e) {
-//                bufferedReader = inStream;
                 return null;
             }
-//        } catch (Exception e2) {
-//            return null;
-//        }
     }
 
     protected ArrayList<Transaccion> doInBackground(Void... params) {

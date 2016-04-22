@@ -54,14 +54,7 @@ public class GetAvataresTask extends AsyncTask<Void, Void, ArrayList<Avatar>> {
     }
 
     final String GetExecution() {
-//        BufferedReader bufferedReader;
-//        try {
-//            String server = context.getString(R.string.server);
-//            BufferedReader inStream = new BufferedReader(new InputStreamReader(new HttpClient().execute(new HttpGet(server + "/mobile/avatares/" + this.idUsuario)).getEntity().getContent(), HTTP.UTF_8));
             try {
-//                this.result = inStream.readLine();
-//                bufferedReader = inStream;
-//                return this.result;
                 HttpClient httpClient = new DefaultHttpClient();
                 String url = context.getString(R.string.server);
                 HttpGet httpGet = new HttpGet(url + "/mobile/avatares/" + this.idUsuario);
@@ -72,12 +65,8 @@ public class GetAvataresTask extends AsyncTask<Void, Void, ArrayList<Avatar>> {
                 result = inStream.readLine();
                 return this.result;
             } catch (Exception e) {
-//                bufferedReader = inStream;
                 return null;
             }
-//        } catch (Exception e2) {
-//            return null;
-//        }
     }
 
     protected ArrayList<Avatar> doInBackground(Void... params) {

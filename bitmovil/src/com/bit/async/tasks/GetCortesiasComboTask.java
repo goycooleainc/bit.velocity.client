@@ -55,14 +55,8 @@ public class GetCortesiasComboTask extends AsyncTask<Void, Void, ArrayList<Corte
 	}
 
 	final String GetReports() {
-//		BufferedReader bufferedReader;
-//		try {
 			String url = context.getString(R.string.server) + context.getString(R.string.getCortesiaCombo);
-//			BufferedReader inStream = new BufferedReader(new InputStreamReader(new DefaultHttpClient().execute(new HttpGet(url + this.idUsuario)).getEntity().getContent(), HTTP.UTF_8));
 			try {
-//				this.result = inStream.readLine();
-//				bufferedReader = inStream;
-//				return this.result;
 				HttpClient httpClient = new DefaultHttpClient();
 				HttpGet httpGet = new HttpGet(url + this.idUsuario);
 				httpGet.addHeader(BasicScheme.authenticate(new UsernamePasswordCredentials("1-1", "password"), "UTF-8", false));
@@ -72,12 +66,8 @@ public class GetCortesiasComboTask extends AsyncTask<Void, Void, ArrayList<Corte
 				result = inStream.readLine();
 				return this.result;
 			} catch (Exception e) {
-//				bufferedReader = inStream;
 				return null;
 			}
-//		} catch (Exception e2) {
-//			return null;
-//		}
 	}
 
 	protected ArrayList<Cortesia> doInBackground(Void... params) {

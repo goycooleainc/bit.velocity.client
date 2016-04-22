@@ -46,26 +46,16 @@ public class GetEventosTask extends AsyncTask<Void, Void, ArrayList<Eventos>> {
 
     final String GetExecution() {
         try {
-//            String url = context.getString(R.string.server);
-//            BufferedReader inStream = new BufferedReader(new InputStreamReader(new DefaultHttpClient().execute(new HttpGet(url + "/mobile/open/eventos")).getEntity().getContent(), HTTP.UTF_8));
-//            BufferedReader bufferedReader;
-            try {
-//                this.result = inStream.readLine();
-//                bufferedReader = inStream;
-                HttpClient httpClient = new DefaultHttpClient();
-                String url = context.getString(R.string.server);
-                HttpGet httpGet = new HttpGet(url + "/mobile/open/eventos");
-                httpGet.addHeader(BasicScheme.authenticate(new UsernamePasswordCredentials("1-1", "password"), "UTF-8", false));
-                HttpResponse httpResponse = httpClient.execute(httpGet);
-                HttpEntity responseEntity = httpResponse.getEntity();
-                BufferedReader inStream = new BufferedReader(new InputStreamReader(responseEntity.getContent(), "UTF-8"));
-                result = inStream.readLine();
-                return this.result;
-            } catch (Exception e) {
-//                bufferedReader = inStream;
-                return null;
-            }
-        } catch (Exception e2) {
+            HttpClient httpClient = new DefaultHttpClient();
+            String url = context.getString(R.string.server);
+            HttpGet httpGet = new HttpGet(url + "/mobile/open/eventos");
+            httpGet.addHeader(BasicScheme.authenticate(new UsernamePasswordCredentials("1-1", "password"), "UTF-8", false));
+            HttpResponse httpResponse = httpClient.execute(httpGet);
+            HttpEntity responseEntity = httpResponse.getEntity();
+            BufferedReader inStream = new BufferedReader(new InputStreamReader(responseEntity.getContent(), "UTF-8"));
+            result = inStream.readLine();
+            return this.result;
+        } catch (Exception e) {
             return null;
         }
     }

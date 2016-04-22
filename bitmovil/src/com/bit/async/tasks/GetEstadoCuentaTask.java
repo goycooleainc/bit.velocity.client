@@ -56,13 +56,6 @@ public class GetEstadoCuentaTask extends AsyncTask<Void, Void, EstadoCuenta> {
 
     final String GetExecution() {
         try {
-//            String server = context.getString(R.string.server);
-//            BufferedReader inStream = new BufferedReader(new InputStreamReader(new DefaultHttpClient().execute(new HttpGet(server + "/mobile/cuenta/estado/" + this.idUsuario)).getEntity().getContent(), HTTP.UTF_8));
-//            BufferedReader bufferedReader;
-//            try {
-//                this.result = inStream.readLine();
-//                bufferedReader = inStream;
-//                return this.result;
             HttpClient httpClient = new DefaultHttpClient();
             String url = context.getString(R.string.server);
             HttpGet httpGet = new HttpGet(url + "/mobile/cuenta/estado/" + this.idUsuario);
@@ -72,13 +65,9 @@ public class GetEstadoCuentaTask extends AsyncTask<Void, Void, EstadoCuenta> {
             BufferedReader inStream = new BufferedReader(new InputStreamReader(responseEntity.getContent(), "UTF-8"));
             result = inStream.readLine();
             return this.result;
-            } catch (Exception e) {
-//                bufferedReader = inStream;
-                return null;
-            }
-//        } catch (Exception e2) {
-//            return null;
-//        }
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     protected EstadoCuenta doInBackground(Void... params) {
