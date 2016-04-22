@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:orientation="vertical"
-            android:layout_width="305dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/White"
             android:alpha="0.8"
@@ -10,7 +10,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="@style/texto_subtitulo"
-            android:text="Selecciona productos a retirar."
+            android:text="Retira tus productos pasando por tu expendedor mas cercano."
             android:id="@+id/textView6"
             android:layout_gravity="center_horizontal"
             android:gravity="center"
@@ -40,14 +40,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/cancel_style_buttons"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="27dp" />
+            android:layout_gravity="center_horizontal" />
 
-        <Button
-            android:id="@+id/dialogButtonOK"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ok_style_buttons" />
+        <!--<Button-->
+            <!--android:id="@+id/dialogButtonOK"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@drawable/ok_style_buttons" />-->
 
     </LinearLayout>
 </LinearLayout>

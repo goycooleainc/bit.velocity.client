@@ -21,11 +21,11 @@
             android:textAppearance="@style/texto_normal_label"
             android:textSize="15sp" />
 
-        <CheckBox
-            android:id="@+id/checkbox"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="right" />
+        <!--<CheckBox-->
+            <!--android:id="@+id/checkbox"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_gravity="right" />-->
 
     </LinearLayout>
 

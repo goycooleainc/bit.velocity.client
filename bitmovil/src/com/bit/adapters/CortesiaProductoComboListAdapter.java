@@ -49,14 +49,14 @@ public class CortesiaProductoComboListAdapter extends BaseAdapter
             holder = new ViewHolder();
 
             holder.nombreProducto = (TextView) convertView.findViewById(R.id.nombreProducto);
-            holder.checkbox = (CheckBox) convertView.findViewById(R.id.checkbox);
+//            holder.checkbox = (CheckBox) convertView.findViewById(R.id.checkbox);
 
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
         holder.idAda = position;
-        holder.checkbox.setId(position);
+//        holder.checkbox.setId(position);
         holder.nombreProducto.setText(this.listData.get(position));
 
         return convertView;
@@ -65,7 +65,7 @@ public class CortesiaProductoComboListAdapter extends BaseAdapter
     static class ViewHolder {
         int idAda;
         TextView nombreProducto;
-        CheckBox checkbox;
+//        CheckBox checkbox;
     }
 
 }

@@ -69,7 +69,7 @@ public class MisCortesiasComboFragment extends Fragment implements SwipeRefreshL
             dialog.setContentView(R.layout.modal_producto_detalle_combo_method);
 
             btn_close = (Button) dialog.findViewById(R.id.dialogButtonCancel);
-            btn_ok = (Button) dialog.findViewById(R.id.dialogButtonOK);
+//            btn_ok = (Button) dialog.findViewById(R.id.dialogButtonOK);
 
             lv2 = (ListView) dialog.findViewById(R.id.producto_list);
             obj = (Cortesia) this.final_list.get(position);
