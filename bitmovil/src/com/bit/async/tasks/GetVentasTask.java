@@ -13,7 +13,13 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.auth.UsernamePasswordCredentials;
+import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.auth.BasicScheme;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.protocol.HTTP;
 
@@ -49,19 +55,17 @@ public class GetVentasTask extends AsyncTask<Void, Void, ArrayList<Venta>> {
 	}
 
 	final String GetReports() {
-		BufferedReader bufferedReader;
 		try {
+			HttpClient httpClient = new DefaultHttpClient();
 			String url = context.getString(R.string.server);
-			BufferedReader inStream = new BufferedReader(new InputStreamReader(new DefaultHttpClient().execute(new HttpGet(url + "/mobile/ventas/usuario/" + this.idUsuario)).getEntity().getContent(), HTTP.UTF_8));
-			try {
-				this.result = inStream.readLine();
-				bufferedReader = inStream;
-				return this.result;
-			} catch (Exception e) {
-				bufferedReader = inStream;
-				return null;
-			}
-		} catch (Exception e2) {
+			HttpGet httpGet = new HttpGet(url + "/mobile/ventas/usuario/" + this.idUsuario);
+			httpGet.addHeader(BasicScheme.authenticate(new UsernamePasswordCredentials("1-1", "password"), "UTF-8", false));
+			HttpResponse httpResponse = httpClient.execute(httpGet);
+			HttpEntity responseEntity = httpResponse.getEntity();
+			BufferedReader inStream = new BufferedReader(new InputStreamReader(responseEntity.getContent(), "UTF-8"));
+			result = inStream.readLine();
+			return this.result;
+		} catch (Exception e) {
 			return null;
 		}
 	}

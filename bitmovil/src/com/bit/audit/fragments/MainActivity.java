@@ -65,16 +65,14 @@ public class MainActivity extends Activity {
 
 		navDrawerItems = new ArrayList<NavDrawerItem>();
 
-		// adding nav drawer items to array
-		// Home
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
-		// Find People
+
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
-		// Photos
+
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
-		// Communities, Will add a counter here
+
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));
-		// Pages
+
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
 
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1)));
@@ -156,9 +154,6 @@ public class MainActivity extends Activity {
 		}
 	}
 
-	/* *
-	 * Called when invalidateOptionsMenu() is triggered
-	 */
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
 		// if nav drawer is opened, hide the action items
@@ -167,9 +162,6 @@ public class MainActivity extends Activity {
 		return super.onPrepareOptionsMenu(menu);
 	}
 
-	/**
-	 * Diplaying fragment view for selected nav drawer list item
-	 * */
 	private void displayView(int position) {
 		// update the main content by replacing fragments
 		Fragment fragment = null;

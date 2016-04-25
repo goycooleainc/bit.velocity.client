@@ -28,33 +28,12 @@ public class HomeFragment extends Fragment {
     TextView txBalance;
     ImageButton btnVending;
 
-    /* renamed from: com.bit.audit.fragments.VendingMachineActivity.MenuFragment.1 */
-    class C01001 implements View.OnClickListener {
-        C01001() {
-        }
+    public HomeFragment(){}
 
-        public void onClick(View v) {
-//            mViewPager.setCurrentItem(1, true);
-        }
-    }
-
-    /* renamed from: com.bit.audit.fragments.VendingMachineActivity.MenuFragment.2 */
-    class C01012 implements View.OnClickListener {
-        C01012() {
-        }
-
-        public void onClick(View v) {
-//            mViewPager.setCurrentItem(2, true);
-        }
-    }
-
-	public HomeFragment(){}
-	
 	@Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
         Intent intent = getActivity().getIntent();
-
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
         ((TextView) rootView.findViewById(R.id.tx_nombre)).setText(intent.getStringExtra("nombre") != null ? intent.getStringExtra("nombre").toString() : "");
         txBalance = (TextView) rootView.findViewById(R.id.txBalance);

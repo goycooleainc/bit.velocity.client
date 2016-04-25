@@ -27,7 +27,6 @@ import com.bit.adapters.VentasDetalleItemListAdapter;
 import com.bit.async.tasks.GetEventosTask;
 import com.bit.async.tasks.GetImageTask;
 import com.bit.async.tasks.GetVentaDetalleTask;
-import com.bit.async.tasks.GetVentasTask;
 import com.bit.async.tasks.PostAsynkTasks;
 import com.bit.client.R;
 import com.bit.entities.Eventos;
@@ -121,7 +120,7 @@ public class EventoFragment extends Fragment implements SwipeRefreshLayout.OnRef
     }
     /* renamed from: com.bit.audit.fragments.EventosFragment.1 */
     class C00991 implements AdapterView.OnItemClickListener {
-        final /* synthetic */ List val$final_list;
+        final List val$final_list;
 
         /* renamed from: com.bit.audit.fragments.EventosFragment.1.1 */
         class C00981 implements View.OnClickListener {
@@ -321,7 +320,7 @@ public class EventoFragment extends Fragment implements SwipeRefreshLayout.OnRef
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+//        super.onCreate(savedInstanceState);
         rootView = inflater.inflate(R.layout.fragment_events_list, container, false);
         ((TextView) rootView.findViewById(R.id.tx_nombre)).setText(nombre_usuario != null ? nombre_usuario.toString() : "");
         lv2 = (ListView) rootView.findViewById(R.id.product_list);

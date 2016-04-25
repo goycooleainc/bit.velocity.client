@@ -44,6 +44,8 @@ public class MisVentasFragment extends Fragment {
     private Activity activity;
     private String avatar;
 
+    public MisVentasFragment(){}
+
     class ShowListVenta implements AdapterView.OnItemClickListener {
         final List final_list;
 
@@ -146,6 +148,7 @@ public class MisVentasFragment extends Fragment {
     }
 
     public void onRefresh() {
+
         List<VentaDetalle> final_list;
         GetVentaDetalleTask task_3 = new GetVentaDetalleTask(getActivity().getBaseContext());
         task_3.setIdUsuario(TransactionHashmapCollectionSingleton.getInstance().user.getIdUsuario());
@@ -171,7 +174,7 @@ public class MisVentasFragment extends Fragment {
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
+        super.onCreate(savedInstanceState);
         rootView = inflater.inflate(R.layout.fragment_ventas_list, container, false);
         Intent intent = getActivity().getIntent();
         activity = getActivity();

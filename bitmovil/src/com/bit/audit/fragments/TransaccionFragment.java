@@ -35,7 +35,8 @@ public class TransaccionFragment extends Fragment implements SwipeRefreshLayout.
     static ImageButton btn_save;
     static ListView lv3;
     static String nombre_usuario;
-	public TransaccionFragment(){}
+
+    public TransaccionFragment(){}
 
     @Override
     public void onRefresh() {
@@ -112,6 +113,7 @@ public class TransaccionFragment extends Fragment implements SwipeRefreshLayout.
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
         View rootView = inflater.inflate(R.layout.fragment_transactions_list, container, false);
         ((TextView) rootView.findViewById(R.id.tx_nombre)).setText(nombre_usuario != null ? nombre_usuario.toString() : "");
         lv3 = (ListView) rootView.findViewById(R.id.product_list);

@@ -8,6 +8,7 @@ import com.bit.client.R;
 import org.apache.http.HttpHeaders;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
+import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.entity.StringEntity;
@@ -45,7 +46,7 @@ public class UpdateAvatarTask extends AsyncTask<String, Void, String> {
         String server = context.getString(R.string.server);
         String url = server + "/mobile/avatares/request/update";
         try {
-            DefaultHttpClient httpclient = new DefaultHttpClient();
+            HttpClient httpclient = new DefaultHttpClient();
             HttpPost httpRequest = new HttpPost(url);
             httpRequest.setHeader(HttpHeaders.ACCEPT, "application/json");
             httpRequest.setHeader(FieldName.CONTENT_TYPE, "application/json");

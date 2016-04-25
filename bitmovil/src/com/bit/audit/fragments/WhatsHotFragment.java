@@ -13,10 +13,9 @@ import com.bit.client.R;
 import com.bit.vending.StartActivity;
 
 public class WhatsHotFragment extends Fragment {
-	
-	public WhatsHotFragment(){}
-	
-	
+
+    public WhatsHotFragment(){}
+
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {

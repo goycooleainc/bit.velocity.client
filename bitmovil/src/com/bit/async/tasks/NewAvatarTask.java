@@ -5,12 +5,17 @@ import android.os.AsyncTask;
 
 import com.bit.client.R;
 
+import org.apache.http.HttpEntity;
 import org.apache.http.HttpHeaders;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
+import org.apache.http.auth.UsernamePasswordCredentials;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.auth.BasicScheme;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.protocol.HTTP;
 import org.apache.james.mime4j.field.FieldName;
@@ -45,12 +50,12 @@ public class NewAvatarTask extends AsyncTask<String, Void, String> {
         String server = context.getString(R.string.server);
         String url = server + "/mobile/avatares/new/create";
         try {
-            DefaultHttpClient httpclient = new DefaultHttpClient();
+            HttpClient httpClient = new DefaultHttpClient();
             HttpPost httpRequest = new HttpPost(url);
             httpRequest.setHeader(HttpHeaders.ACCEPT, "application/json");
             httpRequest.setHeader(FieldName.CONTENT_TYPE, "application/json");
             httpRequest.setEntity(new StringEntity(this.DATA, HTTP.UTF_8));
-            HttpResponse response = httpclient.execute((HttpUriRequest) httpRequest);
+            HttpResponse response = httpClient.execute((HttpUriRequest) httpRequest);
             switch (response.getStatusLine().getStatusCode()) {
                 case HttpStatus.SC_OK /*200*/:
                     return new BufferedReader(new InputStreamReader(response.getEntity().getContent(), HTTP.UTF_8)).readLine();

@@ -53,8 +53,6 @@ public class SettingsActivity extends Activity implements LoyaltyCardReader.Acco
     Button btn_close;
     public static String nombre_usuario;
 
-    public void SettingsActivity(){}
-
     /* renamed from: com.bit.vending.SettingsActivity.1 */
     class C01171 implements OnClickListener {
         final /* synthetic */ Dialog val$dialog;
@@ -113,7 +111,6 @@ public class SettingsActivity extends Activity implements LoyaltyCardReader.Acco
         btn_close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 finish();
                 startActivity(intent);

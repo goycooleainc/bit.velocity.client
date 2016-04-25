@@ -136,7 +136,7 @@ public class StartActivity extends Activity implements LoaderManager.LoaderCallb
 			} catch (ExecutionException e2) {
 				e2.printStackTrace();
 			}
-			Intent intent = new Intent(this, MainActivity.class);
+			Intent intent = new Intent(getApplicationContext(), MainActivity.class);
 			intent.putExtra("nombre", user.getNombre());
 			intent.putExtra("rol", user.getNombreRol());
 			intent.putExtra("id_rol", user.getIdRol());
@@ -147,6 +147,7 @@ public class StartActivity extends Activity implements LoaderManager.LoaderCallb
 			intent.putExtra("usuario", this.usuario);
 			intent.putExtra("password", this.password);
 			intent.putExtra("ip", this.ip);
+            finish();
 			startActivity(intent);
 		} else {
 			bloqueado();

@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,12 +21,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bit.adapters.AvataresItemListAdapter;
-import com.bit.adapters.CortesiasEventoItemListAdapter;
-import com.bit.async.tasks.GetCortesiasEventoTask;
 import com.bit.async.tasks.UpdateAvatarTask;
 import com.bit.client.R;
 import com.bit.entities.Avatar;
-import com.bit.entities.Cortesia;
 import com.bit.singletons.TransactionHashmapCollectionSingleton;
 import com.bit.vending.SettingsActivity;
 import com.google.gson.Gson;
@@ -37,10 +33,8 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.oned.Code39Writer;
 import com.google.zxing.qrcode.QRCodeWriter;
 
-import java.security.cert.Certificate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 public class AvatarFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener{
 
@@ -50,9 +44,9 @@ public class AvatarFragment extends Fragment implements SwipeRefreshLayout.OnRef
     static Button btn_close, btn_close2;
     static ListView lv3;
     static String nombre_usuario;
+    public View rootView;
 
 	public AvatarFragment(){}
-
 
     /* renamed from: com.bit.audit.fragments.VendingMachineActivity.AvatarFragment.1 */
     class C00961 implements AdapterView.OnItemClickListener {
@@ -123,21 +117,21 @@ public class AvatarFragment extends Fragment implements SwipeRefreshLayout.OnRef
         }
     }
 
-    public void onResume() {
-        List<Avatar> final_list;
-        super.onResume();
-        lv3 = (ListView) getActivity().findViewById(R.id.current_purchase_list);
-        TransactionHashmapCollectionSingleton.getInstance();
-        if (TransactionHashmapCollectionSingleton.avatares != null) {
-            TransactionHashmapCollectionSingleton.getInstance();
-            final_list = TransactionHashmapCollectionSingleton.avatares;
-        } else {
-            final_list = new ArrayList();
-        }
-        this.adapter = new AvataresItemListAdapter(getActivity().getBaseContext(), final_list);
-        lv3.setAdapter(this.adapter);
-        this.adapter.notifyDataSetChanged();
-    }
+//    public void onResume() {
+//        List<Avatar> final_list;
+//        super.onResume();
+//        lv3 = (ListView) getActivity().findViewById(R.id.current_purchase_list);
+//        TransactionHashmapCollectionSingleton.getInstance();
+//        if (TransactionHashmapCollectionSingleton.avatares != null) {
+//            TransactionHashmapCollectionSingleton.getInstance();
+//            final_list = TransactionHashmapCollectionSingleton.avatares;
+//        } else {
+//            final_list = new ArrayList();
+//        }
+//        this.adapter = new AvataresItemListAdapter(getActivity().getBaseContext(), final_list);
+//        lv3.setAdapter(this.adapter);
+//        this.adapter.notifyDataSetChanged();
+//    }
 
     public void onRefresh() {
         List<Avatar> final_list;
@@ -159,10 +153,10 @@ public class AvatarFragment extends Fragment implements SwipeRefreshLayout.OnRef
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
+//        super.onCreate(savedInstanceState);
         Intent intent = getActivity().getIntent();
-        View rootView = inflater.inflate(R.layout.fragment_avatar_list, container, false);
-        ((TextView) rootView.findViewById(R.id.tx_nombre)).setText(intent.getStringExtra("nombre") != null ? intent.getStringExtra("nombre").toString() : "");
+        rootView = inflater.inflate(R.layout.fragment_avatar_list, container, false);
+        ((TextView) rootView.findViewById(R.id.tx_nombre)).setText(nombre_usuario != null ? nombre_usuario.toString() : "");
         lv3 = (ListView) rootView.findViewById(R.id.current_purchase_list);
 
         onNew = (ImageButton) rootView.findViewById(R.id.onNew);
@@ -223,8 +217,6 @@ public class AvatarFragment extends Fragment implements SwipeRefreshLayout.OnRef
             if (TransactionHashmapCollectionSingleton.avatares != null) {
                 TransactionHashmapCollectionSingleton.getInstance();
                 final_list = TransactionHashmapCollectionSingleton.avatares;
-//                TransactionHashmapCollectionSingleton.getInstance();
-//                TransactionHashmapCollectionSingleton.avatar = (Avatar) final_list.get(0);
             } else {
                 final_list = new ArrayList();
             }
