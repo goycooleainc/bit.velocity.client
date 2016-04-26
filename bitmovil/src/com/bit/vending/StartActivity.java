@@ -26,6 +26,7 @@ import com.bit.async.tasks.GetProductosFromServerTask;
 import com.bit.async.tasks.GetTransactionsTask;
 import com.bit.async.tasks.GetVentaDetalleTask;
 import com.bit.async.tasks.GetVentasTask;
+import com.bit.async.tasks.PostAsynkTasks;
 import com.bit.audit.fragments.MainActivity;
 import com.bit.client.R;
 import com.bit.entities.Avatar;
@@ -36,6 +37,7 @@ import com.bit.singletons.UsersHashmapCollection;
 import com.bit.singletons.VentaHashmapCollectionSingleton;
 import com.bit.utils.CheckEmail;
 import com.bit.utils.OfflineUserManager;
+import com.google.gson.Gson;
 
 import java.util.Date;
 import java.util.List;
@@ -147,8 +149,8 @@ public class StartActivity extends Activity implements LoaderManager.LoaderCallb
 			intent.putExtra("usuario", this.usuario);
 			intent.putExtra("password", this.password);
 			intent.putExtra("ip", this.ip);
-            finish();
 			startActivity(intent);
+            finish();
 		} else {
 			bloqueado();
 		}
@@ -190,15 +192,10 @@ public class StartActivity extends Activity implements LoaderManager.LoaderCallb
                     user.setPassword(password.getText().toString());
                     user.setEmail(email.getText().toString());
 
-					String remoteURL = activity.getApplicationContext().getString(R.string.newUser);
-					AsyncTask<String, Void, String> task = new GetAsynkTasks(v, activity, remoteURL).execute("1-1", "password", "78.41.206.33");
-					try {
-						String dailyTests = task.get();
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					} catch (ExecutionException e) {
-						e.printStackTrace();
-					}
+                    String remoteURL = activity.getApplicationContext().getString(R.string.newUser);
+                    PostAsynkTasks task = new PostAsynkTasks(v, activity, bld, remoteURL);
+                    task.setDATA(new Gson().toJson(user));
+                    task.execute();
 
                 } else {
                     bld.setMessage("Todos los campos son requeridos o e-mail tiene un formato incorrecto!!");

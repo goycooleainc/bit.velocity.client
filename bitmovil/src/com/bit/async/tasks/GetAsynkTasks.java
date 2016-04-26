@@ -53,12 +53,16 @@ public class GetAsynkTasks extends AsyncTask<String, Void, String> {
 
     @Override
     protected void onPreExecute() {
-        linlaHeaderProgress.setVisibility(View.VISIBLE);
+        if(linlaHeaderProgress != null){
+            linlaHeaderProgress.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
     protected void onPostExecute(String result) {
-        linlaHeaderProgress.setVisibility(View.GONE);
+        if(linlaHeaderProgress != null) {
+            linlaHeaderProgress.setVisibility(View.GONE);
+        }
     }
 
     @Override
