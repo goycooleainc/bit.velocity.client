@@ -5,9 +5,11 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.LoaderManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Loader;
+import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -21,9 +23,11 @@ import com.bit.async.tasks.GetAvataresTask;
 import com.bit.async.tasks.GetCortesiasComboTask;
 import com.bit.async.tasks.GetCortesiasEventoTask;
 import com.bit.async.tasks.GetEstadoCuentaTask;
+import com.bit.async.tasks.GetEventosTask;
 import com.bit.async.tasks.GetProductoTask;
 import com.bit.async.tasks.GetProductosFromServerTask;
 import com.bit.async.tasks.GetTransactionsTask;
+import com.bit.async.tasks.GetUsersFromServerTask;
 import com.bit.async.tasks.GetVentaDetalleTask;
 import com.bit.async.tasks.GetVentasTask;
 import com.bit.async.tasks.PostAsynkTasks;
@@ -31,7 +35,9 @@ import com.bit.audit.fragments.MainActivity;
 import com.bit.client.R;
 import com.bit.entities.Avatar;
 import com.bit.entities.EstadoCuenta;
+import com.bit.entities.Eventos;
 import com.bit.entities.User;
+import com.bit.singletons.CacheCollectionSingleton;
 import com.bit.singletons.TransactionHashmapCollectionSingleton;
 import com.bit.singletons.UsersHashmapCollection;
 import com.bit.singletons.VentaHashmapCollectionSingleton;
@@ -204,16 +210,35 @@ public class StartActivity extends Activity implements LoaderManager.LoaderCallb
                 }
 
                 dialog.dismiss();
-
+                refreshUsers();
             }
         });
 
         dialog.setTitle("EVENTO - BITMOVIL");
         dialog.show();
     }
-	/***
-	 *
-	 */
+
+    public List<User> refreshUsers(){
+        ConnectivityManager connectivityManager = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        android.net.NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        if (activeNetworkInfo == null || !activeNetworkInfo.isConnected()) {
+            return null;
+        }
+        GetUsersFromServerTask users_mediator = new GetUsersFromServerTask(getApplicationContext());
+        List<User> list = null;
+        try {
+            list = (List) users_mediator.execute(new Void[0]).get();
+            CacheCollectionSingleton.getInstance(getApplicationContext()).setInMemmoryUsers(new Gson().toJson((Object) list));
+            return list;
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            return list;
+        } catch (ExecutionException e2) {
+            e2.printStackTrace();
+            return list;
+        }
+    }
+
     public void error()
     {
     	AlertDialog ad = new AlertDialog.Builder(this).create();

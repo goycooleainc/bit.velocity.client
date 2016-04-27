@@ -235,48 +235,53 @@ public class EventoFragment extends Fragment implements SwipeRefreshLayout.OnRef
 
                     DecimalFormat df = new DecimalFormat("#,##0.00");
                     df.setDecimalFormatSymbols(new DecimalFormatSymbols(Locale.ITALY));
-                    df.format(new BigDecimal(TransactionHashmapCollectionSingleton.estadoCuenta.getSaldo()));
 
-                    Double total = Double.valueOf(String.valueOf(precio.getText())) * numberPicker.getValue();
-                    Double resto = Double.valueOf(TransactionHashmapCollectionSingleton.estadoCuenta.getSaldo()) - total;
+                    if(TransactionHashmapCollectionSingleton.estadoCuenta != null) {
+                        df.format(new BigDecimal(TransactionHashmapCollectionSingleton.estadoCuenta.getSaldo()));
 
-                    Transaccion tx = new Transaccion();
-                    TransactionHashmapCollectionSingleton.getInstance();
-                    String avatar;
-                    if (TransactionHashmapCollectionSingleton.avatar != null) {
-                        avatar = TransactionHashmapCollectionSingleton.avatar.getCodigo();
-                    } else {
-                        avatar = TransactionHashmapCollectionSingleton.avatares.get(0).getCodigo();
-                    }
-                    tx.setAvatar(avatar);
-                    tx.setCantidad(String.valueOf(numberPicker.getValue()));
-                    tx.setFecha("");
-                    tx.setGps("0.0,0.0");
-                    tx.setIdProducto(obj.getId());
-                    tx.setIdProductora(obj.getIdProductora());
-                    tx.setMetodoPago(0);
-                    tx.setMoneda(0);
-                    tx.setPublicKey("");
-                    tx.setTotal(String.valueOf(total));
-                    tx.setIdEvento(obj.getId());
-                    tx.setSector((String) s.getSelectedItem());
+                        Double total = Double.valueOf(String.valueOf(precio.getText())) * numberPicker.getValue();
+                        Double resto = Double.valueOf(TransactionHashmapCollectionSingleton.estadoCuenta.getSaldo()) - total;
 
-                    String remoteURL = getActivity().getApplicationContext().getString(R.string.sendTransaction);
-                    PostAsynkTasks task = new PostAsynkTasks(rootView, activity, bld, remoteURL);
-                    task.setDATA(new Gson().toJson(tx));
-                    task.execute();
+                        Transaccion tx = new Transaccion();
+                        TransactionHashmapCollectionSingleton.getInstance();
+                        String avatar;
+                        if (TransactionHashmapCollectionSingleton.avatar != null) {
+                            avatar = TransactionHashmapCollectionSingleton.avatar.getCodigo();
+                        } else {
+                            avatar = TransactionHashmapCollectionSingleton.avatares.get(0).getCodigo();
+                        }
+                        tx.setAvatar(avatar);
+                        tx.setCantidad(String.valueOf(numberPicker.getValue()));
+                        tx.setFecha("");
+                        tx.setGps("0.0,0.0");
+                        tx.setIdProducto(obj.getId());
+                        tx.setIdProductora(obj.getIdProductora());
+                        tx.setMetodoPago(0);
+                        tx.setMoneda(0);
+                        tx.setPublicKey("");
+                        tx.setTotal(String.valueOf(total));
+                        tx.setIdEvento(obj.getId());
+                        tx.setSector((String) s.getSelectedItem());
 
-                    //Refrescar fragment principal para actualizar salgo
-                    if (resto >= 0) {
-                        TransactionHashmapCollectionSingleton.estadoCuenta.setSaldo(String.valueOf(resto).toString());
+                        String remoteURL = getActivity().getApplicationContext().getString(R.string.sendTransaction);
+                        PostAsynkTasks task = new PostAsynkTasks(rootView, activity, bld, remoteURL);
+                        task.setDATA(new Gson().toJson(tx));
+                        task.execute();
 
-                        //refresh list
-                        refreshVenta();
-                    } else {
+                        //Refrescar fragment principal para actualizar salgo
+                        if (resto >= 0) {
+                            TransactionHashmapCollectionSingleton.estadoCuenta.setSaldo(String.valueOf(resto).toString());
+
+                            //refresh list
+                            refreshVenta();
+                        } else {
+                            bld.setMessage("Saldo insuficiente !!");
+                            bld.create().show();
+                        }
+                    }else{
                         bld.setMessage("Saldo insuficiente !!");
                         bld.create().show();
                     }
-
                     dialog.dismiss();
                 }
             });
