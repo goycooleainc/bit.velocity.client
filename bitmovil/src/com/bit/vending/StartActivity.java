@@ -9,38 +9,35 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Loader;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.bit.async.tasks.GetAsynkTasks;
 import com.bit.async.tasks.GetAvataresTask;
 import com.bit.async.tasks.GetCortesiasComboTask;
 import com.bit.async.tasks.GetCortesiasEventoTask;
 import com.bit.async.tasks.GetEstadoCuentaTask;
-import com.bit.async.tasks.GetEventosTask;
 import com.bit.async.tasks.GetProductoTask;
 import com.bit.async.tasks.GetProductosFromServerTask;
 import com.bit.async.tasks.GetTransactionsTask;
 import com.bit.async.tasks.GetUsersFromServerTask;
 import com.bit.async.tasks.GetVentaDetalleTask;
-import com.bit.async.tasks.GetVentasTask;
 import com.bit.async.tasks.PostAsynkTasks;
 import com.bit.audit.fragments.MainActivity;
 import com.bit.client.R;
 import com.bit.entities.Avatar;
 import com.bit.entities.EstadoCuenta;
-import com.bit.entities.Eventos;
 import com.bit.entities.User;
 import com.bit.singletons.CacheCollectionSingleton;
 import com.bit.singletons.TransactionHashmapCollectionSingleton;
 import com.bit.singletons.UsersHashmapCollection;
-import com.bit.singletons.VentaHashmapCollectionSingleton;
 import com.bit.utils.CheckEmail;
 import com.bit.utils.OfflineUserManager;
 import com.google.gson.Gson;
@@ -51,8 +48,10 @@ import java.util.concurrent.ExecutionException;
 
 public class StartActivity extends Activity implements LoaderManager.LoaderCallbacks<List<User>>{
 
+	private AutoCompleteTextView customItemName;
     String usuario,password,ip,privateInternalID;
-    private TextView tx_user, tx_password;
+    private AutoCompleteTextView tx_user;
+	private TextView tx_password;
 	private ProgressBar progressbar;
 	private LinearLayout login;
 	int myProgress;
@@ -91,7 +90,7 @@ public class StartActivity extends Activity implements LoaderManager.LoaderCallb
     public void start_app_clicked(View view)
     {
 		UsersHashmapCollection.getInstance();
-		this.tx_user = (TextView) findViewById(R.id.tx_user);
+		tx_user = (AutoCompleteTextView) findViewById(R.id.tx_user);
 		this.tx_password = (TextView) findViewById(R.id.tx_password);
 		String rut = this.tx_user.getText().toString();
 		User user = new OfflineUserManager(getBaseContext()).authenticate(rut, this.tx_password.getText().toString());
@@ -155,6 +154,12 @@ public class StartActivity extends Activity implements LoaderManager.LoaderCallb
 			intent.putExtra("usuario", this.usuario);
 			intent.putExtra("password", this.password);
 			intent.putExtra("ip", this.ip);
+
+			customItemName = tx_user;
+			SharedPreferences.Editor editor = getPreferences(MODE_PRIVATE).edit();
+			editor.putString("customitemname", customItemName.getText().toString());
+			editor.commit();
+
 			startActivity(intent);
             finish();
 		} else {
@@ -300,6 +305,54 @@ public class StartActivity extends Activity implements LoaderManager.LoaderCallb
 	public void onLoaderReset(Loader<List<User>> loader) {
 		login.setVisibility(View.VISIBLE);
 		progressbar.setVisibility(View.GONE);
+	}
+
+	@Override
+	protected void onStart() {
+		super.onStart();
+
+		setContentView(R.layout.activity_start);
+		customItemName = (AutoCompleteTextView) findViewById(R.id.tx_user);
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.select_dialog_item, updatedropdown(5));
+		customItemName.setAdapter(adapter);
+	}
+
+	public String[] updatedropdown(int listlength){
+		boolean itemalreadyinlist=false;
+		SharedPreferences.Editor editor = getPreferences(MODE_PRIVATE).edit();
+
+		for(int i = 0; i < listlength; i++){
+			if (getPreferences(MODE_PRIVATE).getString("customitemname","").equals(getPreferences(MODE_PRIVATE).getString("recentlistitem"+String.valueOf(i),""))){
+				itemalreadyinlist=true;
+				for(int j = i; j>0; j--){
+					editor.putString("recentlistitem"+String.valueOf(j),getPreferences(MODE_PRIVATE).getString("recentlistitem"+String.valueOf(j-1),""));
+				}
+				editor.putString("recentlistitem0",getPreferences(MODE_PRIVATE).getString("customitemname",""));
+				editor.commit();
+				break;
+			}
+		}
+
+		if( !itemalreadyinlist){
+			for(int i = listlength-1; i>0; i--){
+				editor.putString("recentlistitem"+String.valueOf(i),getPreferences(MODE_PRIVATE).getString("recentlistitem"+String.valueOf(i-1),""));
+			}
+			editor.putString("recentlistitem0", getPreferences(MODE_PRIVATE).getString("customitemname", ""));
+			editor.commit();
+		}
+
+
+		int count = 0;
+		for(int i=0 ; i < listlength; i++){
+			if(!getPreferences(MODE_PRIVATE).getString("recentlistitem" + String.valueOf(i), "").isEmpty()) {
+				count += 1;
+			}
+		}
+		String[] recentlist = new String[count];
+		for(int i=0 ; i < count; i++) {
+			recentlist[i] = getPreferences(MODE_PRIVATE).getString("recentlistitem" + String.valueOf(i), "");
+		}
+		return recentlist;
 	}
 }
 
