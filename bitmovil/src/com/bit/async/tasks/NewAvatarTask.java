@@ -29,6 +29,7 @@ public class NewAvatarTask extends AsyncTask<String, Void, String> {
     String password;
     String usuario;
     private Context context;
+    private String status = null;
 
     public NewAvatarTask(Context context) {
         this.ip = "78.41.206.33";
@@ -45,7 +46,12 @@ public class NewAvatarTask extends AsyncTask<String, Void, String> {
         this.DATA = DATA;
     }
 
+    public String checkStatus(){
+        return status;
+    }
+
     protected String doInBackground(String... params) {
+        BufferedReader inStream = null;
         String result = "NACK";
         String server = context.getString(R.string.server);
         String url = server + "/mobile/avatares/new/create";
@@ -56,6 +62,16 @@ public class NewAvatarTask extends AsyncTask<String, Void, String> {
             httpRequest.setHeader(FieldName.CONTENT_TYPE, "application/json");
             httpRequest.setEntity(new StringEntity(this.DATA, HTTP.UTF_8));
             HttpResponse response = httpClient.execute((HttpUriRequest) httpRequest);
+
+            HttpEntity responseEntity = response.getEntity();
+            inStream = new BufferedReader(new InputStreamReader(responseEntity.getContent(), "UTF-8"));
+            result = inStream.readLine();
+
+            if(result == null){
+                return status = "Error, Avatar duplicado";
+            }
+            status = "Exito";
+
             switch (response.getStatusLine().getStatusCode()) {
                 case HttpStatus.SC_OK /*200*/:
                     return new BufferedReader(new InputStreamReader(response.getEntity().getContent(), HTTP.UTF_8)).readLine();

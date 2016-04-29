@@ -4,8 +4,7 @@
     android:layout_height="fill_parent"
     android:background="@drawable/ic_start"
     android:gravity="center_vertical|center_horizontal"
-
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <ProgressBar
         android:id="@+id/pbHeaderProgress"

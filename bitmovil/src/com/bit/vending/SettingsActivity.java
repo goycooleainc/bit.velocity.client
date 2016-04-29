@@ -2,10 +2,12 @@ package com.bit.vending;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -13,6 +15,8 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.bit.async.tasks.GetAvataresTask;
 import com.bit.async.tasks.NewAvatarTask;
 import com.bit.audit.fragments.MainActivity;
 import com.bit.client.R;
@@ -23,6 +27,7 @@ import com.bit.utils.LoyaltyCardReader;
 import com.google.gson.Gson;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class SettingsActivity extends Activity implements LoyaltyCardReader.AccountCallback {
@@ -228,10 +233,10 @@ public class SettingsActivity extends Activity implements LoyaltyCardReader.Acco
             new_avatar.setDescripcion("AGREGADO POR MOBILE");
             new_avatar.setEstado(1);
             new_avatar.setIdUser(Integer.parseInt(user.getIdUsuario()));
-            if (avatar == null) {
+            if(code == null){
                 return;
             }
-            if (code.equals(avatar.getCodigo())) {
+            if (avatar != null && code.equals(avatar.getCodigo())) {
                 Toast.makeText(getBaseContext(), "Avatar Duplicado o Erroneo............. [ERROR]", Toast.LENGTH_LONG).show();
                 //this.tx_nuevo_avatar.setText("[Listening]");
                 return;
@@ -239,8 +244,35 @@ public class SettingsActivity extends Activity implements LoyaltyCardReader.Acco
                 NewAvatarTask task = new NewAvatarTask(getApplicationContext());
                 task.setDATA(new Gson().toJson(new_avatar));
                 task.execute(new String[0]);
-                Toast.makeText(getBaseContext(), "Avatar Guardado ............. [OK]", Toast.LENGTH_LONG).show();
                 this.tx_avatar.setText(code);
+
+                //Wait for 2 seconds
+                Handler handler = new Handler();
+
+                while(task.checkStatus() == null){
+                    handler.postDelayed(new Runnable() {
+                        public void run() {
+
+                        }
+                    }, 2000);
+                }
+
+                if(task.checkStatus().equals("Exito")) {
+                    Toast.makeText(getBaseContext(), "Avatar Guardado ............. [OK]", Toast.LENGTH_LONG).show();
+                    GetAvataresTask task_2 = new GetAvataresTask(getApplicationContext());
+                    task_2.setIdUsuario(user.getIdUsuario());
+                    TransactionHashmapCollectionSingleton.getInstance().avatares = (List) task_2.execute(new Void[0]).get();
+                    for(Avatar a :TransactionHashmapCollectionSingleton.getInstance().avatares){
+                        if(a.getEstado() == 1){
+                            TransactionHashmapCollectionSingleton.getInstance().avatar = a;
+                            break;
+                        }
+                    }
+                }else{
+                    AlertDialog.Builder bld = new AlertDialog.Builder(view.getContext());
+                    bld.setMessage("Error, AVATAR duplicado");
+                    bld.create().show();
+                }
             }
         } catch (Exception ex) {
             ex.getMessage();

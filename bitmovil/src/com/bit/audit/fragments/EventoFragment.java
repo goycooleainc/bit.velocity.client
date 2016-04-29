@@ -244,38 +244,41 @@ public class EventoFragment extends Fragment implements SwipeRefreshLayout.OnRef
 
                         Transaccion tx = new Transaccion();
                         TransactionHashmapCollectionSingleton.getInstance();
-                        String avatar;
+                        String avatar = null;
                         if (TransactionHashmapCollectionSingleton.avatar != null) {
                             avatar = TransactionHashmapCollectionSingleton.avatar.getCodigo();
-                        } else {
-                            avatar = TransactionHashmapCollectionSingleton.avatares.get(0).getCodigo();
                         }
-                        tx.setAvatar(avatar);
-                        tx.setCantidad(String.valueOf(numberPicker.getValue()));
-                        tx.setFecha("");
-                        tx.setGps("0.0,0.0");
-                        tx.setIdProducto(obj.getId());
-                        tx.setIdProductora(obj.getIdProductora());
-                        tx.setMetodoPago(0);
-                        tx.setMoneda(0);
-                        tx.setPublicKey("");
-                        tx.setTotal(String.valueOf(total));
-                        tx.setIdEvento(obj.getId());
-                        tx.setSector((String) s.getSelectedItem());
+                        if(avatar != null){
+                            tx.setAvatar(avatar);
+                            tx.setCantidad(String.valueOf(numberPicker.getValue()));
+                            tx.setFecha("");
+                            tx.setGps("0.0,0.0");
+                            tx.setIdProducto(0);
+                            tx.setIdProductora(obj.getIdProductora());
+                            tx.setMetodoPago(0);
+                            tx.setMoneda(0);
+                            tx.setPublicKey("");
+                            tx.setTotal(String.valueOf(total));
+                            tx.setIdEvento(obj.getId());
+                            tx.setSector((String) s.getSelectedItem());
 
-                        String remoteURL = getActivity().getApplicationContext().getString(R.string.sendTransaction);
-                        PostAsynkTasks task = new PostAsynkTasks(rootView, activity, bld, remoteURL);
-                        task.setDATA(new Gson().toJson(tx));
-                        task.execute();
+                            String remoteURL = getActivity().getApplicationContext().getString(R.string.sendTransaction);
+                            PostAsynkTasks task = new PostAsynkTasks(rootView, activity, bld, remoteURL);
+                            task.setDATA(new Gson().toJson(tx));
+                            task.execute();
 
-                        //Refrescar fragment principal para actualizar salgo
-                        if (resto >= 0) {
-                            TransactionHashmapCollectionSingleton.estadoCuenta.setSaldo(String.valueOf(resto).toString());
+                            //Refrescar fragment principal para actualizar salgo
+                            if (resto >= 0) {
+                                TransactionHashmapCollectionSingleton.estadoCuenta.setSaldo(String.valueOf(resto).toString());
 
-                            //refresh list
-                            refreshVenta();
-                        } else {
-                            bld.setMessage("Saldo insuficiente !!");
+                                //refresh list
+                                refreshVenta();
+                            } else {
+                                bld.setMessage("Saldo insuficiente !!");
+                                bld.create().show();
+                            }
+                        }else{
+                            bld.setMessage("Debes activar un avatar para realizar la transacción");
                             bld.create().show();
                         }
                     }else{
