@@ -161,7 +161,7 @@ public class EventoFragment extends Fragment implements SwipeRefreshLayout.OnRef
             String remoteURL = getActivity().getApplicationContext().getString(R.string.server);
             GetImageTask it = new GetImageTask();
             try {
-                it.setUrl(remoteURL + "dmz/multimedia/" + obj.getId() + "/type/1/" + obj.getId() + "-0");
+                it.setUrl(remoteURL + "/dmz/multimedia/" + obj.getId() + "/type/1/" + obj.getId() + "-0");
                 imagen.setImageDrawable((Drawable) it.execute(new Void[0]).get());
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -327,7 +327,7 @@ public class EventoFragment extends Fragment implements SwipeRefreshLayout.OnRef
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 //        super.onCreate(savedInstanceState);
         rootView = inflater.inflate(R.layout.fragment_events_list, container, false);
-        ((TextView) rootView.findViewById(R.id.tx_nombre)).setText(nombre_usuario != null ? nombre_usuario.toString() : "");
+        /*((TextView) rootView.findViewById(R.id.tx_nombre)).setText(nombre_usuario != null ? nombre_usuario.toString() : "");*/
         lv2 = (ListView) rootView.findViewById(R.id.product_list);
         activity = getActivity();
         View rootView2 = inflater.inflate(R.layout.fragment_ventas_list, container, false);

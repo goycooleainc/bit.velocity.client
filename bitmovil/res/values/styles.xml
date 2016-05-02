@@ -4,6 +4,7 @@
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
+    <!--<style name="AppBaseTheme" parent="android:Theme.Light.NoTitleBar.Fullscreen">-->
     <style name="AppBaseTheme" parent="android:Theme.Light.NoTitleBar.Fullscreen">
         <!--
             Theme customizations available in newer API levels can go in
@@ -18,6 +19,11 @@
     </style>
 
     <!-- **Theme Default** -->
+    <style name="texto_seccion">
+        <item name="android:textColor">@color/GrayLight</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
     <style name="texto_titulo_principal">
         <item name="android:textColor">#ffffff</item>
         <item name="android:textSize">24dp</item>

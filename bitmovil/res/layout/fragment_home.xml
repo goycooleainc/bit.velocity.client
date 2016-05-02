@@ -4,37 +4,38 @@
     android:layout_height="match_parent">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="fill_parent"
-                  android:layout_height="fill_parent" android:background="@drawable/bkg"
-                  android:gravity="center_vertical|center_horizontal" android:orientation="vertical">
-        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="60dp"
-                      android:gravity="center_vertical">
-        </LinearLayout>
+                  android:layout_height="fill_parent" android:background="@drawable/bkg_new"
+        android:orientation="vertical">
+
         <ProgressBar style="@android:style/Widget.Holo.ProgressBar.Horizontal" android:id="@+id/progressBar"
                      android:layout_width="fill_parent" android:layout_height="wrap_content"
                      android:indeterminate="true" android:visibility="gone"/>
-        <TextView android:id="@+id/tx_nombre" android:layout_width="fill_parent" android:layout_height="wrap_content"
+       <!-- <TextView android:id="@+id/tx_nombre" android:layout_width="fill_parent" android:layout_height="wrap_content"
                   android:text="JOHN DOE" android:textAppearance="@style/texto_subtitulo"
                   android:textColor="@color/Black" android:textStyle="bold"
-                  android:gravity="center|center_vertical|center_horizontal" android:layout_marginTop="5dp"/>
-        <LinearLayout android:layout_width="match_parent" android:layout_height="fill_parent"
-                      android:gravity="center_horizontal" android:orientation="vertical" android:id="@+id/linearLayout">
+                  android:gravity="center|center_vertical|center_horizontal" android:layout_marginTop="5dp"/>-->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@color/White"
+            android:padding="15dp">
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="TOKENS DISPONIBLES:"
+                      android:id="@+id/etiq_saldo"
+                android:textColor="@color/GrayLight"
+                android:textSize="16dp" />
+
             <TextView android:layout_width="fill_parent" android:layout_height="wrap_content"
-                      android:textAppearance="@style/texto_titulo_principal" android:text="INSTRUCCIONES"
-                      android:id="@+id/textView11" android:gravity="center_vertical|center"
-                      android:textColor="@color/Gray"/>
-            <TextView android:layout_width="fill_parent" android:layout_height="wrap_content"
-                      android:textAppearance="?android:attr/textAppearanceMedium"
-                      android:text="Bienvenido, abajo esta tu saldo disponible para compras de todo tipo. Recuerda que para usarlo debes asignarle un Avatar. El primero boton te da acceso rapido a estos, El segundo a la tienda y el tercero a tus compras y transacciones."
-                      android:id="@+id/textView11" android:layout_margin="3dp" android:textColor="@color/Gray"/>
-            <TextView android:layout_width="fill_parent" android:layout_height="wrap_content"
-                      android:textAppearance="@style/texto_titulo_principal" android:text="SALDO DISPONIBLE"
-                      android:id="@+id/textView12" android:gravity="center_vertical|center"
-                      android:layout_marginTop="10dp"/>
-            <TextView android:layout_width="fill_parent" android:layout_height="fill_parent"
-                      android:textAppearance="@style/texto_titulo_principal" android:text="$0"
-                      android:id="@+id/txBalance" android:gravity="center_vertical|center|center_horizontal"
-                      android:textSize="60dp"/>
-        </LinearLayout>
+                      android:textAppearance="@style/texto_titulo_principal" android:text="471.242,00"
+                      android:id="@+id/txBalance"
+                android:textSize="40dp"
+                android:textIsSelectable="false"
+                android:textColor="@color/Orange"
+                android:layout_below="@+id/etiq_saldo"
+                android:gravity="right" />
+        </RelativeLayout>
     </LinearLayout>
 
 

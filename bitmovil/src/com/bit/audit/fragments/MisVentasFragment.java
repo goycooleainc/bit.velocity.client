@@ -180,7 +180,7 @@ public class MisVentasFragment extends Fragment {
         activity = getActivity();
         linlaHeaderProgress = (LinearLayout) rootView.findViewById(R.id.linlaHeaderProgress);
 
-        ((TextView) rootView.findViewById(R.id.venta_nombre)).setText(intent.getStringExtra("nombre") != null ? intent.getStringExtra("nombre").toString() : "");
+        /*((TextView) rootView.findViewById(R.id.venta_nombre)).setText(intent.getStringExtra("nombre") != null ? intent.getStringExtra("nombre").toString() : "");*/
         lv1 = (ListView) rootView.findViewById(R.id.venta_list);
         try {
             List<VentaDetalle> final_list;

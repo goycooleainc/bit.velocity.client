@@ -35,7 +35,7 @@ public class HomeFragment extends Fragment {
 //        super.onCreate(savedInstanceState);
         Intent intent = getActivity().getIntent();
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
-        ((TextView) rootView.findViewById(R.id.tx_nombre)).setText(intent.getStringExtra("nombre") != null ? intent.getStringExtra("nombre").toString() : "");
+        /*((TextView) rootView.findViewById(R.id.tx_nombre)).setText(intent.getStringExtra("nombre") != null ? intent.getStringExtra("nombre").toString() : "");*/
         txBalance = (TextView) rootView.findViewById(R.id.txBalance);
         DecimalFormat df = new DecimalFormat("#,##0.00");
         df.setDecimalFormatSymbols(new DecimalFormatSymbols(Locale.ITALY));
@@ -43,7 +43,8 @@ public class HomeFragment extends Fragment {
         if(TransactionHashmapCollectionSingleton.estadoCuenta == null) {
             txBalance.setText("$ 0");
         }else{
-            txBalance.setText("$" + df.format(new BigDecimal(TransactionHashmapCollectionSingleton.estadoCuenta.getSaldo().toString())));
+            /*txBalance.setText("$" + df.format(new BigDecimal(TransactionHashmapCollectionSingleton.estadoCuenta.getSaldo().toString())));*/
+            txBalance.setText(df.format(new BigDecimal(TransactionHashmapCollectionSingleton.estadoCuenta.getSaldo().toString())));
         }
         btnVending = (ImageButton) rootView.findViewById(R.id.btnVendingMachine);
         try {
