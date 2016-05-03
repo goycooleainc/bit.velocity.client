@@ -10,12 +10,16 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Loader;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
+import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -51,7 +55,7 @@ public class StartActivity extends Activity implements LoaderManager.LoaderCallb
 	private AutoCompleteTextView customItemName;
     String usuario,password,ip,privateInternalID;
     private AutoCompleteTextView tx_user;
-	private TextView tx_password;
+	private EditText tx_password;
 	private ProgressBar progressbar;
 	private LinearLayout login;
 	int myProgress;
@@ -65,7 +69,7 @@ public class StartActivity extends Activity implements LoaderManager.LoaderCallb
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-		////
+
         setContentView(R.layout.activity_start);
 		progressbar= (ProgressBar)findViewById(R.id.pbHeaderProgress);
 		login = (LinearLayout)findViewById(R.id.login_view);
@@ -80,7 +84,7 @@ public class StartActivity extends Activity implements LoaderManager.LoaderCallb
 
 		final ActionBar localActionBar = getActionBar();
 		localActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-		localActionBar.setDisplayOptions(0, ActionBar.DISPLAY_SHOW_TITLE);
+		/*localActionBar.setDisplayOptions(0, ActionBar.DISPLAY_SHOW_TITLE);*/
 		localActionBar.hide();
 
 		getLoaderManager().initLoader(0, null, this).forceLoad();
@@ -91,7 +95,7 @@ public class StartActivity extends Activity implements LoaderManager.LoaderCallb
     {
 		UsersHashmapCollection.getInstance();
 		tx_user = (AutoCompleteTextView) findViewById(R.id.tx_user);
-		this.tx_password = (TextView) findViewById(R.id.tx_password);
+		this.tx_password = (EditText) findViewById(R.id.tx_password);
 		String rut = this.tx_user.getText().toString();
 		User user = new OfflineUserManager(getBaseContext()).authenticate(rut, this.tx_password.getText().toString());
 		if (user == null) {
@@ -172,6 +176,7 @@ public class StartActivity extends Activity implements LoaderManager.LoaderCallb
 		UsersHashmapCollection.getInstance();
 
         final Dialog dialog = new Dialog(view.getContext());
+		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.modal_nuevo_usuario_method);
 
         btn_close = (Button) dialog.findViewById(R.id.dialogButtonCancel);
@@ -181,45 +186,45 @@ public class StartActivity extends Activity implements LoaderManager.LoaderCallb
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
+			}
+		});
+
+		btn_ok.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				AlertDialog.Builder bld = new AlertDialog.Builder(activity);
+
+				TextView rut = (TextView) dialog.findViewById(R.id.rutText);
+				TextView password = (TextView) dialog.findViewById(R.id.passwordText);
+				TextView email = (TextView) dialog.findViewById(R.id.emailText);
+
+				if (!email.getText().toString().matches("") && CheckEmail.isEmailValid(email.getText().toString()) &&
+						!rut.getText().toString().matches("") &&
+						!password.getText().toString().matches("")) {
+
+					User user = new User();
+					user.setRut(rut.getText().toString());
+					user.setPassword(password.getText().toString());
+					user.setEmail(email.getText().toString());
+
+					String remoteURL = activity.getApplicationContext().getString(R.string.newUser);
+					PostAsynkTasks task = new PostAsynkTasks(v, activity, bld, remoteURL);
+					task.setDATA(new Gson().toJson(user));
+					task.execute();
+
+				} else {
+					bld.setMessage("Todos los campos son requeridos o e-mail tiene un formato incorrecto!!");
+					bld.setNeutralButton("OK", null);
+					bld.create().show();
+				}
+
+				dialog.dismiss();
+				refreshUsers();
             }
         });
 
-        btn_ok.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder bld = new AlertDialog.Builder(activity);
-
-                TextView rut = (TextView) dialog.findViewById(R.id.rutText);
-                TextView password = (TextView) dialog.findViewById(R.id.passwordText);
-                TextView email = (TextView) dialog.findViewById(R.id.emailText);
-
-                if (!email.getText().toString().matches("") && CheckEmail.isEmailValid(email.getText().toString()) &&
-                        !rut.getText().toString().matches("") &&
-                        !password.getText().toString().matches("")) {
-
-                    User user = new User();
-                    user.setRut(rut.getText().toString());
-                    user.setPassword(password.getText().toString());
-                    user.setEmail(email.getText().toString());
-
-                    String remoteURL = activity.getApplicationContext().getString(R.string.newUser);
-                    PostAsynkTasks task = new PostAsynkTasks(v, activity, bld, remoteURL);
-                    task.setDATA(new Gson().toJson(user));
-                    task.execute();
-
-                } else {
-                    bld.setMessage("Todos los campos son requeridos o e-mail tiene un formato incorrecto!!");
-                    bld.setNeutralButton("OK", null);
-                    bld.create().show();
-                }
-
-                dialog.dismiss();
-                refreshUsers();
-            }
-        });
-
-        dialog.setTitle("EVENTO - BITMOVIL");
+        /*dialog.setTitle("REGISTRO");*/
         dialog.show();
     }
 
@@ -313,6 +318,11 @@ public class StartActivity extends Activity implements LoaderManager.LoaderCallb
 
 		setContentView(R.layout.activity_start);
 		customItemName = (AutoCompleteTextView) findViewById(R.id.tx_user);
+
+		EditText password = (EditText) findViewById(R.id.tx_password);
+		password.setTypeface(Typeface.DEFAULT);
+		password.setTransformationMethod(new PasswordTransformationMethod());
+
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.select_dialog_item, updatedropdown(5));
 		customItemName.setAdapter(adapter);
 	}

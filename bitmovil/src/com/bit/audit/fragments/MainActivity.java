@@ -94,20 +94,24 @@ public class MainActivity extends Activity {
 		// enabling action bar app icon and behaving it as toggle button
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		getActionBar().setHomeButtonEnabled(true);
+		getActionBar().setBackgroundDrawable(getResources().getDrawable(R.color.Orange));
+		/*getActionBar().setLogo(R.drawable.icon_bar);*/
+		getActionBar().setIcon(R.drawable.icon_bar);
+
 
 		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
-				R.drawable.ic_drawer, //nav menu toggle icon
+				R.drawable.ic_drawer1, //nav menu toggle icon
 				R.string.app_name, // nav drawer open - description for accessibility
 				R.string.app_name // nav drawer close - description for accessibility
 		) {
 			public void onDrawerClosed(View view) {
-				getActionBar().setTitle(mTitle);
+				/*getActionBar().setTitle(mTitle);*/
 				// calling onPrepareOptionsMenu() to show action bar icons
 				invalidateOptionsMenu();
 			}
 
 			public void onDrawerOpened(View drawerView) {
-				getActionBar().setTitle(mDrawerTitle);
+				/*getActionBar().setTitle(mDrawerTitle);*/
 				// calling onPrepareOptionsMenu() to hide action bar icons
 				invalidateOptionsMenu();
 			}
@@ -126,8 +130,7 @@ public class MainActivity extends Activity {
 	private class SlideMenuClickListener implements
 			ListView.OnItemClickListener {
 		@Override
-		public void onItemClick(AdapterView<?> parent, View view, int position,
-				long id) {
+		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 			// display view for selected nav drawer item
 			displayView(position);
 		}
@@ -147,10 +150,10 @@ public class MainActivity extends Activity {
 		}
 		// Handle action bar actions click
 		switch (item.getItemId()) {
-		case R.id.action_settings:
-			return true;
-		default:
-			return super.onOptionsItemSelected(item);
+			case R.id.action_settings:
+				return true;
+			default:
+				return super.onOptionsItemSelected(item);
 		}
 	}
 
@@ -166,32 +169,32 @@ public class MainActivity extends Activity {
 		// update the main content by replacing fragments
 		Fragment fragment = null;
 		switch (position) {
-		case 0:
-			fragment = new HomeFragment();
-			break;
-		case 1:
-			fragment = new AvatarFragment();
-			break;
-		case 2:
-			fragment = new EventoFragment();
-			break;
-		case 3:
-			fragment = new TransaccionFragment();
-			break;
-		case 4:
-			fragment = new TiendaVirtualFragment();
-			break;
-		case 5:
-			fragment = new MisCortesiasFragment();
-			break;
-		case 6:
-			fragment = new MisVentasFragment();
-			break;
-		case 7:
-			fragment = new WhatsHotFragment();
-			break;
-		default:
-			break;
+			case 0:
+				fragment = new MisVentasFragment();
+				break;
+			case 1:
+				fragment = new EventoFragment();
+				break;
+			case 2:
+				fragment = new HomeFragment();
+				break;
+			case 3:
+				fragment = new AvatarFragment();
+				break;
+			case 4:
+				fragment = new TransaccionFragment();
+				break;
+			case 5:
+				fragment = new TiendaVirtualFragment();
+				break;
+			case 6:
+				fragment = new MisCortesiasFragment();
+				break;
+			case 7:
+				fragment = new WhatsHotFragment();
+				break;
+			default:
+				break;
 		}
 
 		if (fragment != null) {
@@ -203,7 +206,7 @@ public class MainActivity extends Activity {
 			mDrawerList.setItemChecked(position, true);
 			mDrawerList.setSelection(position);
 			setTitle(navMenuTitles[position]);
-            mDrawerLayout.closeDrawer(mDrawerList);
+			mDrawerLayout.closeDrawer(mDrawerList);
 		} else {
 			// error in creating fragment
 			Log.e("MainActivity", "Error in creating fragment");
@@ -213,7 +216,7 @@ public class MainActivity extends Activity {
 	@Override
 	public void setTitle(CharSequence title) {
 		mTitle = title;
-        getActionBar().setTitle(mTitle);
+        /*getActionBar().setTitle(mTitle);*/
 	}
 
 	/**
@@ -223,9 +226,9 @@ public class MainActivity extends Activity {
 
 	@Override
 	protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
+		super.onPostCreate(savedInstanceState);
 		// Sync the toggle state after onRestoreInstanceState has occurred.
-        mDrawerToggle.syncState();
+		mDrawerToggle.syncState();
 	}
 
 	@Override
@@ -235,17 +238,17 @@ public class MainActivity extends Activity {
 		mDrawerToggle.onConfigurationChanged(newConfig);
 	}
 
-    public void onLogout(View paramView) {
-        final Dialog dialog = new Dialog(paramView.getContext());
-        dialog.setContentView(R.layout.dialog_new_action);
-        dialog.setTitle("BITMOVIL : MOBILE PAYMENTS");
+	public void onLogout(View paramView) {
+		final Dialog dialog = new Dialog(paramView.getContext());
+		dialog.setContentView(R.layout.dialog_new_action);
+		dialog.setTitle("BITMOVIL : MOBILE PAYMENTS");
 
-        TextView texto = (TextView) dialog.findViewById(R.id.dialogText);
-        texto.setText("Esta seguro de Salir y cerrar Sesion?");
+		TextView texto = (TextView) dialog.findViewById(R.id.dialogText);
+		texto.setText("Esta seguro de Salir y cerrar Sesion?");
 
-        Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
-        // if button is clicked, close the custom dialog
-        dialogButton.setOnClickListener(new View.OnClickListener() {
+		Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
+		// if button is clicked, close the custom dialog
+		dialogButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				try {
@@ -262,16 +265,16 @@ public class MainActivity extends Activity {
 			}
 		});
 
-        Button dialogCancelButton = (Button) dialog.findViewById(R.id.dialogButtonCancel);
-        // if button is clicked, close the custom dialog
-        dialogCancelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-                //Al no aceptar ...
-            }
-        });
+		Button dialogCancelButton = (Button) dialog.findViewById(R.id.dialogButtonCancel);
+		// if button is clicked, close the custom dialog
+		dialogCancelButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				dialog.dismiss();
+				//Al no aceptar ...
+			}
+		});
 
-        dialog.show();
-    }
+		dialog.show();
+	}
 }

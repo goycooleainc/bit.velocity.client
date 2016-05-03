@@ -23,6 +23,8 @@
     <color name="Black">#000000</color>
     <color name="White">#ffffff</color>
     <color name="Gray">#515151</color>
+    <color name="Orange">#e35100</color>
+    <color name="GrayLight">#808080</color>
     
 
     <string name="todo">TODO</string>
@@ -31,6 +33,8 @@
     <string name="title_activity_audit">Bit World</string>
     <string name="control_de_rodado">CONTROL DE RODADO</string>
     <string name="b">B</string>
+    <string name="hint_log_user"><i>Ingresa tu rut aquí</i></string>
+    <string name="hint_log_pass"><i>Ingresa tu clave aquí</i></string>
 
     <string name="ptr_pull_to_refresh">Pull to refresh</string>
     <string name="ptr_release_to_refresh">Release to refresh</string>
@@ -41,26 +45,26 @@
 
     <!-- Nav Drawer Menu Items -->
     <string-array name="nav_drawer_items">
-        <item >Bit</item>
+        <item >Mi Espacio</item>    <!--Mis Ventas-->
+        <item >Comprar Evento</item>
+        <item >Mi Monedero</item>   <!--Bit-->
         <item >Avatares</item>
-        <item >Eventos</item>
         <item >Cartola</item>
         <item >Tienda</item>
         <item >Cortesias</item>
-        <item >Mis Ventas</item>
         <item >Cerrar Session</item>
     </string-array>
 
     <!-- Nav Drawer List Item Icons -->
     <!-- Keep them in order as the titles are in -->
     <array name="nav_drawer_icons">
-        <item>@drawable/ic_home</item>
+        <!--<item>@drawable/ic_home</item>
         <item>@drawable/ic_people</item>
         <item>@drawable/ic_send_action</item>
         <item>@drawable/ic_memmo</item>
         <item>@drawable/ic_support_new</item>
         <item>@drawable/ic_compromisos</item>
-        <item>@drawable/ic_fleet</item>
+        <item>@drawable/ic_fleet</item>-->
     </array>
 
     <!-- Content Description -->

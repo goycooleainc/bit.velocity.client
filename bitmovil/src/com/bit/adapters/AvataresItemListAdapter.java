@@ -50,7 +50,7 @@ public class AvataresItemListAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
         if (convertView == null) {
-            convertView = this.layoutInflater.inflate(R.layout.audit_report_item, null);
+            convertView = this.layoutInflater.inflate(R.layout.audit_report_avatares, null);
             holder = new ViewHolder();
             holder.txtLinea = (TextView) convertView.findViewById(R.id.txLinea);
             holder.txtFecha = (TextView) convertView.findViewById(R.id.txFecha);

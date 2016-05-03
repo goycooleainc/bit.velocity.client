@@ -80,7 +80,7 @@
         <activity
                 android:name="com.bit.audit.fragments.MainActivity"
                 android:screenOrientation="portrait"
-                android:label="@string/title_activity_audit">
+                android:label="">
         </activity>
 
         <activity
