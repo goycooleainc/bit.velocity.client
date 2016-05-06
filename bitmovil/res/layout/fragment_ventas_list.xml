@@ -11,52 +11,6 @@
             android:layout_height="match_parent"
             android:orientation="vertical" >
 
-        <!--<LinearLayout
-            android:id="@+id/linlaHeaderProgress"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:visibility="gone" >
-
-            <ProgressBar
-                android:id="@+id/pbHeaderProgress"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>-->
-
-        <!--<LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginTop="50dp">
-
-            <TextView
-            android:id="@+id/tv_titulo_paso_uno"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:gravity="center"
-            android:text="MIS EVENTOS COMPRADOS"
-            android:textAppearance="@style/texto_titulo_principal"
-            android:textColor="@color/White"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/venta_nombre"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
-            android:text="VENTA 1"
-            android:textAppearance="@style/texto_subtitulo"
-            android:textColor="@color/Gray"
-            android:textStyle="bold" android:gravity="center"/>
-
-        </LinearLayout>-->
-
-
-    <!--<ImageView android:id="@+id/imageView4" android:layout_width="wrap_content" android:layout_height="wrap_content"
-               android:src="@drawable/ic_back_title_splitter" android:paddingTop="6dp"/>-->
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"

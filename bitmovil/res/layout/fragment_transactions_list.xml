@@ -51,21 +51,8 @@
             android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp" />
 
-        <!--<TextView
-            android:id="@+id/tx_nombre"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
-            android:text="JOHN DOE"
-            android:textAppearance="@style/texto_subtitulo"
-            android:textColor="@color/Gray"
-            android:textStyle="bold" android:gravity="center"/>-->
-
     </LinearLayout>
 
-
-    <!--<ImageView android:id="@+id/imageView4" android:layout_width="wrap_content" android:layout_height="wrap_content"
-               android:src="@drawable/ic_back_title_splitter" android:paddingTop="6dp"/>-->
     <ListView
         android:id="@+id/product_list"
         android:layout_width="fill_parent"

@@ -209,7 +209,6 @@ public class AvatarFragment extends Fragment implements SwipeRefreshLayout.OnRef
                     }
                 });
 
-                dialog.setTitle("AVATAR - BITMOVIL");
                 dialog.show();
             }
         });

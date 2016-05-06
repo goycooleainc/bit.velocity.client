@@ -26,36 +26,6 @@
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
-        <!--<ImageView
-            android:id="@+id/imageView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_back_title_splitter" />
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="50dp">
-
-        </LinearLayout>
-
-
-        <ImageView android:id="@+id/imageView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_back_title_splitter"
-            android:paddingTop="6dp"/>-->
-
-        <!--<TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/editText2"
-            android:text="CORTESIAS"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="0.10"
-            android:gravity="center_vertical|center_horizontal" />-->
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"

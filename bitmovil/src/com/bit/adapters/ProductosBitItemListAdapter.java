@@ -18,7 +18,6 @@ public class ProductosBitItemListAdapter extends BaseAdapter {
 
     static class ViewHolder {
         TextView txtFecha;
-        /*TextView txtLinea*/;
 
         ViewHolder() {
         }
@@ -57,7 +56,6 @@ public class ProductosBitItemListAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        /*holder.txtLinea.setText(((Productos) this.listData.get(position)).getNombre());*/
         holder.txtFecha.setText("TOKEN " + ((Productos) this.listData.get(position)).getPrecio());
         return convertView;
     }

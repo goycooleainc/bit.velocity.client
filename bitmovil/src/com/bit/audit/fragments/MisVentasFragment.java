@@ -144,7 +144,6 @@ public class MisVentasFragment extends Fragment {
                 }
             });
 
-            /*dialog.setTitle("EVENTO - BITMOVIL");*/
             dialog.show();
         }
     }

@@ -52,11 +52,5 @@
             android:background="@drawable/btn_ok"
             android:layout_gravity="center_horizontal" />
 
-        <!--<Button-->
-            <!--android:id="@+id/dialogButtonOK"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:background="@drawable/ok_style_buttons" />-->
-
     </LinearLayout>
 </LinearLayout>

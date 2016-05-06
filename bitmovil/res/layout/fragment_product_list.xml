@@ -18,36 +18,6 @@
 
 
         ]]>
-    <!--<LinearLayout
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginTop="50dp">
-
-    <TextView
-    android:id="@+id/tv_titulo_paso_uno"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="5dp"
-    android:gravity="center"
-    android:text="TIENDA VIRTUAL"
-    android:textAppearance="@style/texto_titulo_principal"
-    android:textColor="@color/White"
-    android:textSize="18sp" />
-
-    <TextView
-    android:id="@+id/tx_nombre"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginRight="5dp"
-    android:text="JOHN DOE"
-    android:textAppearance="@style/texto_subtitulo"
-    android:textColor="@color/Gray"
-    android:textStyle="bold" android:gravity="center"/>
-
-    </LinearLayout>
-
-
-    <ImageView android:id="@+id/imageView4" android:layout_width="wrap_content" android:layout_height="wrap_content"
-    android:src="@drawable/ic_back_title_splitter" android:paddingTop="6dp"/>-->
 
     <RelativeLayout
         android:layout_width="match_parent"

@@ -21,16 +21,6 @@
         android:paddingRight="20dp"
         android:gravity="left|center">
 
-        <!--<TextView
-            android:id="@+id/txLinea"
-            android:layout_width="0dp"
-            android:layout_weight=".25"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:lines="2"
-            android:textAppearance="@style/texto_normal_label"
-            android:textSize="16sp" android:textStyle="bold" android:textColor="#ffffffff"/>-->
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -48,7 +38,5 @@
             android:text="TOKEN 10000" />
 
     </LinearLayout>
-
-    <!-- SEPARADOR -->
 
 </LinearLayout>

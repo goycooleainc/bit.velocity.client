@@ -94,7 +94,6 @@ public class MainActivity extends Activity {
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		getActionBar().setHomeButtonEnabled(true);
 		getActionBar().setBackgroundDrawable(getResources().getDrawable(R.color.Orange));
-		/*getActionBar().setLogo(R.drawable.icon_bar);*/
 		getActionBar().setIcon(R.drawable.icon_bar);
 
 
