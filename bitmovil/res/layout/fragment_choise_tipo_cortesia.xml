@@ -2,7 +2,7 @@
 <android.support.v4.widget.SwipeRefreshLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/swipe_container"
-        android:background="@drawable/bkg"
+        android:background="@drawable/bkg_new"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
 
@@ -26,11 +26,11 @@
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_back_title_splitter" />
+        <!--<ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_back_title_splitter" />
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -41,51 +41,86 @@
         </LinearLayout>
 
 
-    <ImageView android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_back_title_splitter"
-        android:paddingTop="6dp"/>
+        <ImageView android:id="@+id/imageView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_back_title_splitter"
+            android:paddingTop="6dp"/>-->
 
-        <TextView
+        <!--<TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/editText2"
             android:text="CORTESIAS"
             android:layout_gravity="center_horizontal"
             android:layout_weight="0.10"
-            android:gravity="center_vertical|center_horizontal" />
+            android:gravity="center_vertical|center_horizontal" />-->
 
-        <TextView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/editText"
-            android:text="¿Qué Cortesias desea USAR?"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="0.11"
-            android:gravity="center_vertical|center_horizontal" />
+            android:layout_height="50dp"
+            android:background="@android:color/white"
+            android:gravity="center_vertical|center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/headline"
+                android:background="@android:color/white"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="Cortesias"
+                android:phoneNumber="true"
+                android:textAppearance="@style/texto_seccion" />
+        </RelativeLayout>
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
-            android:layout_marginTop="50dp">
+            android:layout_weight="1">
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="EVENTOS"
-                android:id="@+id/buttonEventos"
-                android:layout_gravity="center_horizontal" />
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_vertical">
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="COMBOS"
-                android:id="@+id/buttonCombos"
-                android:layout_gravity="center_horizontal" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editText"
+                    android:text="¿Qué Cortesias desea USAR?"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="40dp"
+                    android:gravity="center"
+                    android:textColor="@color/GrayLight" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="EVENTOS"
+                    android:id="@+id/buttonEventos"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@color/Orange"
+                    android:textColor="@color/White"
+                    android:layout_marginBottom="20dp"
+                    android:layout_below="@+id/editText"
+                    android:layout_centerHorizontal="true" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="COMBOS"
+                    android:id="@+id/buttonCombos"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/White"
+                    android:background="@color/Orange"
+                    android:layout_below="@+id/buttonEventos"
+                    android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+
         </LinearLayout>
 
     </LinearLayout>

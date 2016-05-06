@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 import com.bit.client.R;
@@ -21,11 +22,12 @@ public class WhatsHotFragment extends Fragment {
             Bundle savedInstanceState) {
 
         final Dialog dialog = new Dialog(getActivity());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_new_action);
-        dialog.setTitle("BITMOVIL : MOBILE PAYMENTS");
+        /*dialog.setTitle("BITMOVIL : MOBILE PAYMENTS");*/
 
         TextView texto = (TextView) dialog.findViewById(R.id.dialogText);
-        texto.setText("Esta seguro de Salir y cerrar Sesion?");
+        texto.setText("¿Está seguro de Salir y cerrar Sesión?");
 
         Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
         // if button is clicked, close the custom dialog

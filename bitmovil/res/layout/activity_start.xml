@@ -169,12 +169,12 @@
                 android:id="@+id/imageView"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
                 android:onClick="start_app_clicked"
-                android:src="@drawable/btn_entrar" android:contentDescription="enter the app"
+                android:src="@drawable/entrar_style_buttons" android:contentDescription="enter the app"
                 android:scaleType="centerCrop"
                 android:layout_marginTop="10dp"
-                android:layout_gravity="center_horizontal" />
+                android:layout_gravity="center_horizontal"
+                android:focusableInTouchMode="true" />
 
         </LinearLayout>
 

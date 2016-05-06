@@ -2,21 +2,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="560dp" android:background="@color/White" android:alpha="0.8"
-    android:weightSum="1">
+              android:layout_height="wrap_content" android:background="@color/White" android:alpha="0.8"
+    android:weightSum="1"
+    android:padding="10dp">
 
     <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textAppearance="@style/texto_subtitulo"
-            android:text="El detalle del evento se encuentra listado abajo."
-            android:id="@+id/textView6" android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp" android:layout_marginLeft="5dp" android:layout_marginRight="5dp"/>
-    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
-                  android:gravity="center_horizontal">
+            android:text="Comprar Evento"
+            android:id="@+id/textView6"
+        android:gravity="center" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/GrayLight"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="0dp"
+                  android:gravity="center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:layout_weight="1">
         <ImageView
                 android:layout_width="fill_parent"
-                android:layout_height="200dp"
+                android:layout_height="wrap_content"
                 android:id="@+id/imageViewEvent"/>
     </LinearLayout>
     <LinearLayout
@@ -25,61 +34,64 @@
             android:layout_height="wrap_content"
             android:id="@+id/linearLayoutSector"
             android:visibility="gone"
-            android:weightSum="1">
+            android:weightSum="1"
+        android:gravity="center_vertical"
+        android:touchscreenBlocksFocus="false">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Seleccione Sector:"
+            android:text="Sector:"
             android:id="@+id/sectorText"
-            android:textColor="@color/Gray"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:autoText="true" />
+            android:textColor="@color/GrayLight"
+            android:autoText="true"
+            android:layout_marginRight="10dp"
+            android:textSize="16sp" />
 
         <Spinner
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/sectores"
-            android:layout_weight="1"
             android:focusable="false"
             android:spinnerMode="dialog"
-            android:theme="@style/AppBaseTheme"/>
+            android:theme="@style/AppBaseTheme" />
     </LinearLayout>
 
     <LinearLayout android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="122dp"
-                    android:weightSum="1">
+                    android:layout_height="wrap_content"
+                    android:weightSum="1"
+        android:layout_weight="0.31">
 
         <LinearLayout android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:weightSum="1"
-            android:layout_weight="0.29">
+            android:layout_weight="1"
+            android:paddingRight="10dp">
 
             <LinearLayout android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="37dp"
-                android:weightSum="1">
+                android:weightSum="1"
+                android:gravity="center_vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Precio:"
                     android:id="@+id/precioText"
-                    android:textColor="@color/Gray"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="10dp"
-                    android:autoText="true" />
+                    android:textColor="@color/GrayLight"
+                    android:autoText="true"
+                    android:layout_marginRight="10dp"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/precioEvento"
-                    android:textColor="@color/Gray"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="10dp"
-                    android:autoText="true" />
+                    android:textColor="@color/GrayLight"
+                    android:autoText="true"
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
@@ -88,23 +100,21 @@
                     android:layout_height="wrap_content"
                     android:text="Detalle del evento:"
                     android:id="@+id/txDetalleEvento"
-                    android:textColor="@color/Gray"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="10dp"
-                    android:autoText="true" />
+                    android:textColor="@color/GrayLight"
+                android:autoText="true"
+                android:textSize="16sp" />
 
         </LinearLayout>
 
         <NumberPicker
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="89dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:id="@+id/numberPicker"
-            android:background="#ffab91"
-            android:layout_marginLeft="50dp"
             android:layout_marginTop="5dp"
-            android:solidColor="@color/Black" />
+            android:solidColor="@color/Black"
+            android:background="@android:color/darker_gray" />
     </LinearLayout>
     <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
                   android:orientation="horizontal" android:gravity="center" android:layout_marginTop="20dp"

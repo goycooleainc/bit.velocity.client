@@ -10,6 +10,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -143,6 +144,7 @@ public class EventoFragment extends Fragment implements SwipeRefreshLayout.OnRef
             AlertDialog.Builder bld = new AlertDialog.Builder(v.getContext());
 
             final Dialog dialog = new Dialog(v.getContext());
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
             dialog.setContentView(R.layout.modal_eventos_method);
 
             final NumberPicker numberPicker = (NumberPicker) dialog.findViewById(R.id.numberPicker);

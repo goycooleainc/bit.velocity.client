@@ -2,21 +2,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:background="@color/White"
-            android:alpha="0.8">
+            android:alpha="0.8"
+    android:padding="10dp">
 
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="@style/texto_subtitulo"
-            android:text="Codigo a mostrar."
+            android:text="Código a mostrar"
             android:id="@+id/textView6"
             android:layout_gravity="center_horizontal"
             android:gravity="center"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"/>
+            android:layout_marginRight="5dp"
+        android:textColor="@color/GrayLight" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/GrayLight"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp" />
 
     <LinearLayout android:orientation="horizontal"
             android:layout_width="wrap_content"
@@ -37,11 +46,12 @@
             android:orientation="horizontal"
             android:gravity="center"
         android:layout_below="@+id/spinner_state"
-            android:layout_alignParentLeft="true">
+            android:layout_alignParentLeft="true"
+        android:layout_marginBottom="15dp">
         <Button android:id="@+id/dialogButtonCancel"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:background="@drawable/cancel_style_buttons"/>
+            android:background="@drawable/btn_entendido"/>
     </LinearLayout>
 </LinearLayout>

@@ -5,9 +5,10 @@
             android:layout_height="wrap_content"
             android:background="@color/White"
             android:alpha="0.8"
-            android:weightSum="1">
+            android:weightSum="1"
+    android:padding="10dp">
     <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="@style/texto_subtitulo"
             android:text="Retira tus productos pasando por tu expendedor mas cercano."
@@ -16,13 +17,21 @@
             android:gravity="center"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"/>
+            android:layout_marginRight="5dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/GrayLight"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp" />
 
     <ListView
         android:id="@+id/producto_list"
         android:layout_width="wrap_content"
-        android:layout_height="306dp"
-        android:layout_marginTop="10dp">
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1">
 
     </ListView>
     <LinearLayout
@@ -30,16 +39,17 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center"
-            android:layout_marginTop="21dp"
+            android:layout_marginTop="15dp"
             android:layout_below="@+id/spinner_state"
             android:layout_alignParentLeft="true"
-        android:weightSum="1">
+        android:weightSum="1"
+        android:layout_marginBottom="10dp">
 
         <Button
             android:id="@+id/dialogButtonCancel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/cancel_style_buttons"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/btn_ok"
             android:layout_gravity="center_horizontal" />
 
         <!--<Button-->

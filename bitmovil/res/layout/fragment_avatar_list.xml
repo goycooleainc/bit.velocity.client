@@ -3,7 +3,7 @@
 <android.support.v4.widget.SwipeRefreshLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/swipe_container"
-    android:background="@drawable/bkg"
+    android:background="@drawable/bkg_new"
 
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -16,44 +16,78 @@
     android:focusableInTouchMode="true"
     android:orientation="vertical" >
 
-    <ProgressBar
+    <!--<ProgressBar
         android:id="@+id/pBar"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:visibility="invisible" />
+        android:visibility="invisible" />-->
 
-    <ImageButton
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:id="@+id/onNew"
-            android:src="@drawable/ic_add_circle"
-            android:scaleType="fitCenter"
-            android:background="@android:color/transparent"
-            android:layout_marginLeft="15dp"/>
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center"
-        android:layout_marginTop="80dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@android:color/white"
+        android:gravity="center_vertical|center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/headline"
+            android:background="@android:color/white"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="Avatares"
+            android:phoneNumber="true"
+            android:textAppearance="@style/texto_seccion"
+            android:singleLine="false" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="fill_horizontal|center_vertical"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="5dp">
 
         <TextView
             android:id="@+id/tv_titulo_paso_uno"
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:text="MIS AVATARES Y MIMOS"
             android:textAppearance="@style/texto_titulo_principal"
-            android:textColor="@color/White"
-            android:textSize="18sp" />
+            android:textColor="@color/Gray"
+            android:textSize="18sp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true" />
 
-        <TextView
+        <ImageButton
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/onNew"
+            android:src="@drawable/ic_add_circle1"
+            android:scaleType="fitCenter"
+            android:background="@android:color/transparent"
+            android:layout_marginLeft="15dp"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp">
+
+        <!--<TextView
             android:id="@id/tx_nombre"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="JOHN DOE"
             android:textAppearance="@style/texto_subtitulo"
             android:textColor="@color/Black"
-            android:textStyle="bold" android:gravity="center"/>
+            android:textStyle="bold" android:gravity="center"/>-->
         <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -69,11 +103,14 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" android:layout_margin="3dp"/>
     </LinearLayout>
 
-    <ImageView
+
+    <!--<ImageView
         android:id="@+id/imageView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_back_title_splitter" android:paddingTop="6dp"/>
+        android:src="@drawable/ic_back_title_splitter" android:paddingTop="6dp"/>-->
+
+
 
     <ListView
         android:id="@+id/current_purchase_list"

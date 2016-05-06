@@ -30,7 +30,7 @@
         <item name="android:textStyle">bold</item>
     </style>
     <style name="texto_subtitulo">
-        <item name="android:textColor">#0099cc</item>
+        <item name="android:textColor">@color/GrayLight</item>
         <item name="android:textSize">20dp</item>
         <item name="android:textStyle">normal</item>
     </style>

@@ -7,6 +7,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -87,6 +88,7 @@ public class TransaccionFragment extends Fragment implements SwipeRefreshLayout.
 
         public void onItemClick(AdapterView<?> adapterView, View v, int position, long id) {
             Dialog dialog = new Dialog(v.getContext());
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
             dialog.setContentView(R.layout.modal_transaction_method);
             btn_close = (Button) dialog.findViewById(R.id.dialogButtonCancel);
             TextView total = (TextView) dialog.findViewById(R.id.txTotal);
@@ -107,7 +109,7 @@ public class TransaccionFragment extends Fragment implements SwipeRefreshLayout.
             mercante.setText("[" + evento + "]");
             fecha.setText("Fecha " + obj.getFecha().toString());
             btn_close.setOnClickListener(new C01021(dialog));
-            dialog.setTitle("TRANSACCION COMPRA");
+            /*dialog.setTitle("TRANSACCION COMPRA");*/
             dialog.show();
         }
     }
@@ -115,7 +117,7 @@ public class TransaccionFragment extends Fragment implements SwipeRefreshLayout.
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 //        super.onCreate(savedInstanceState);
         View rootView = inflater.inflate(R.layout.fragment_transactions_list, container, false);
-        ((TextView) rootView.findViewById(R.id.tx_nombre)).setText(nombre_usuario != null ? nombre_usuario.toString() : "");
+        /*((TextView) rootView.findViewById(R.id.tx_nombre)).setText(nombre_usuario != null ? nombre_usuario.toString() : "");*/
         lv3 = (ListView) rootView.findViewById(R.id.product_list);
         try {
             List<Transaccion> final_list;

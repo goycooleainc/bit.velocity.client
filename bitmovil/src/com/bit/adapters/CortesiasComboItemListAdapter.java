@@ -19,7 +19,7 @@ public class CortesiasComboItemListAdapter extends BaseAdapter {
 
     static class ViewHolder {
         TextView txtFecha;
-        TextView txtLinea;
+        /*TextView txtLinea;*/
         TextView txtNumeroSerie;
 
         ViewHolder() {
@@ -51,16 +51,16 @@ public class CortesiasComboItemListAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
         if (convertView == null) {
-            convertView = this.layoutInflater.inflate(R.layout.audit_report_item, null);
+            convertView = this.layoutInflater.inflate(R.layout.cortesia_combo_item, null);
             holder = new ViewHolder();
-            holder.txtLinea = (TextView) convertView.findViewById(R.id.txLinea);
+            /*holder.txtLinea = (TextView) convertView.findViewById(R.id.txLinea);*/
             holder.txtFecha = (TextView) convertView.findViewById(R.id.txFecha);
             holder.txtNumeroSerie = (TextView) convertView.findViewById(R.id.txNumeroSerie);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.txtLinea.setText("Combo - Evento:");
+        /*holder.txtLinea.setText("Combo - Evento:");*/
         holder.txtFecha.setText(((Cortesia) this.listData.get(position)).getNombreCombo() != null ? ((Cortesia) this.listData.get(position)).getNombreCombo() : "");
         holder.txtNumeroSerie.setText(((Cortesia) this.listData.get(position)).getNombreEvento() != null ? ((Cortesia) this.listData.get(position)).getNombreEvento() : "");
         return convertView;

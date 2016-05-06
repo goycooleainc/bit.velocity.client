@@ -62,7 +62,7 @@ public class EventosItemListAdapter extends BaseAdapter {
             /*holder.txtLinea = (TextView) convertView.findViewById(R.id.txLinea);*/
             holder.txtFecha = (TextView) convertView.findViewById(R.id.txFecha);
             holder.txtNumeroSerie = (TextView) convertView.findViewById(R.id.txNumeroSerie);
-            holder.imgEvento = (ImageView) convertView.findViewById(R.id.imgEventoPpal);
+            holder.imgEvento = (ImageView) convertView.findViewById(R.id.imgEvento);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();

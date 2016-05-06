@@ -6,10 +6,15 @@
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="80dp"
-        android:layout_marginTop="10dp" >
+        android:layout_height="fill_parent"
+        android:background="@drawable/bk_item"
+        android:orientation="horizontal"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="3dp"
+        android:layout_marginTop="3dp">
 
-        <TextView
+        <!--<TextView
             android:id="@+id/txLinea"
             android:layout_width="0dp"
             android:layout_weight=".25"
@@ -17,9 +22,50 @@
             android:gravity="center"
             android:lines="2"
             android:textAppearance="@style/texto_normal_label"
-            android:textSize="16sp" android:textStyle="bold" android:textColor="#ffffffff"/>
+            android:textSize="16sp" android:textStyle="bold" android:textColor="#ffffffff"
+            android:background="#cb5252" />-->
 
-        <TextView
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:id="@+id/imgEventoPpal"
+            android:layout_weight="0.3"
+            android:layout_margin="15dp" />
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.7"
+            android:paddingRight="50dp">
+
+            <TextView
+                android:id="@+id/txNumeroSerie"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/texto_normal_label"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:gravity="left"
+                android:layout_marginTop="15dp" />
+
+            <TextView
+                android:id="@+id/txFecha"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/texto_normal_label"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:layout_alignBottom="@+id/txNumeroSerie"
+                android:gravity="left" />
+
+        </LinearLayout>
+
+
+
+
+        <!--<TextView
             android:id="@+id/txNumeroSerie"
             android:layout_width="0dp"
             android:layout_weight=".25"
@@ -40,7 +86,7 @@
             android:gravity="center"
             android:lines="2"
             android:textAppearance="@style/texto_normal_label"
-            android:textSize="16sp"  android:textStyle="bold" android:textColor="#ffffffff" />
+            android:textSize="16sp"  android:textStyle="bold" android:textColor="#ffffffff" />-->
 
     </LinearLayout>
 

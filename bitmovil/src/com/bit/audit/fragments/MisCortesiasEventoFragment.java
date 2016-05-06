@@ -195,7 +195,7 @@ public class MisCortesiasEventoFragment extends Fragment implements SwipeRefresh
         activity = getActivity();
         linlaHeaderProgress = (LinearLayout) rootView.findViewById(R.id.linlaHeaderProgress);
 
-        ((TextView) rootView.findViewById(R.id.user_nombre)).setText(intent.getStringExtra("nombre") != null ? intent.getStringExtra("nombre").toString() : "");
+        /*((TextView) rootView.findViewById(R.id.user_nombre)).setText(intent.getStringExtra("nombre") != null ? intent.getStringExtra("nombre").toString() : "");*/
         lv1 = (ListView) rootView.findViewById(R.id.cortesia_evento_list);
         try {
             List<Cortesia> final_list;
