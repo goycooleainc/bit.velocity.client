@@ -10,6 +10,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -71,6 +72,7 @@ public class AvatarFragment extends Fragment implements SwipeRefreshLayout.OnRef
 
         public void onItemClick(AdapterView<?> adapterView, View v, int position, long id) {
             final Dialog dialog = new Dialog(v.getContext());
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
             dialog.setContentView(R.layout.modal_avatar_method);
 
             btn_close = (Button) dialog.findViewById(R.id.dialogButtonCancel);
@@ -156,7 +158,7 @@ public class AvatarFragment extends Fragment implements SwipeRefreshLayout.OnRef
 //        super.onCreate(savedInstanceState);
         Intent intent = getActivity().getIntent();
         rootView = inflater.inflate(R.layout.fragment_avatar_list, container, false);
-        ((TextView) rootView.findViewById(R.id.tx_nombre)).setText(nombre_usuario != null ? nombre_usuario.toString() : "");
+        /*((TextView) rootView.findViewById(R.id.tx_nombre)).setText(nombre_usuario != null ? nombre_usuario.toString() : "");*/
         lv3 = (ListView) rootView.findViewById(R.id.current_purchase_list);
 
         onNew = (ImageButton) rootView.findViewById(R.id.onNew);
@@ -165,6 +167,7 @@ public class AvatarFragment extends Fragment implements SwipeRefreshLayout.OnRef
             public void onClick(View v) {
 
                 final Dialog dialog = new Dialog(v.getContext());
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 dialog.setContentView(R.layout.modal_avatar_method_select_type);
 
                 btn_close = (Button) dialog.findViewById(R.id.dialogButtonCancel);
@@ -206,7 +209,6 @@ public class AvatarFragment extends Fragment implements SwipeRefreshLayout.OnRef
                     }
                 });
 
-                dialog.setTitle("AVATAR - BITMOVIL");
                 dialog.show();
             }
         });
@@ -232,6 +234,7 @@ public class AvatarFragment extends Fragment implements SwipeRefreshLayout.OnRef
 
     public void generateCode(BarcodeFormat format, View v2, boolean isQR){
         final Dialog dialog2 = new Dialog(v2.getContext());
+        dialog2.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog2.setContentView(R.layout.modal_avatar_by_qr);
 
         btn_close2 = (Button) dialog2.findViewById(R.id.dialogButtonCancel);

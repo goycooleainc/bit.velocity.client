@@ -19,7 +19,5 @@
             android:layout_gravity="center_vertical|center_horizontal"
             android:layout_marginTop="450dp"
             android:indeterminate="true" />
-
     </LinearLayout>
-
 </LinearLayout>

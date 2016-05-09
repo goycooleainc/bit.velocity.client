@@ -25,7 +25,8 @@
     <color name="Gray">#515151</color>
     <color name="Orange">#e35100</color>
     <color name="GrayLight">#808080</color>
-    
+
+    <drawable name="img_inexistente">@drawable/sin_imagen</drawable>
 
     <string name="todo">TODO</string>
     <string name="title_activity_main_auxiliary">MainAuxiliaryActivity</string>
@@ -50,7 +51,6 @@
         <item >Mi Monedero</item>   <!--Bit-->
         <item >Avatares</item>
         <item >Cartola</item>
-        <item >Tienda</item>
         <item >Cortesias</item>
         <item >Cerrar Session</item>
     </string-array>

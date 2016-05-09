@@ -2,7 +2,7 @@
 <android.support.v4.widget.SwipeRefreshLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/swipe_container"
-        android:background="@drawable/bkg"
+        android:background="@drawable/bkg_new"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
     <LinearLayout
@@ -18,49 +18,81 @@
 
 
         ]]>
-        <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginTop="50dp">
 
-            <TextView
-            android:id="@+id/tv_titulo_paso_uno"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:gravity="center"
-            android:text="TIENDA VIRTUAL"
-            android:textAppearance="@style/texto_titulo_principal"
-            android:textColor="@color/White"
-            android:textSize="18sp" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@android:color/white"
+        android:gravity="center_vertical|center_horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
 
         <TextView
-            android:id="@+id/tx_nombre"
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
-            android:text="JOHN DOE"
-            android:textAppearance="@style/texto_subtitulo"
-            android:textColor="@color/Gray"
-            android:textStyle="bold" android:gravity="center"/>
+            android:id="@+id/headline"
+            android:background="@android:color/white"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="Mi Monedero"
+            android:phoneNumber="true"
+            android:textAppearance="@style/texto_seccion"
+            android:layout_centerHorizontal="true" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/GrayLight"
+            android:layout_marginBottom="10dp"
+            android:layout_below="@+id/headline" />
+    </RelativeLayout>
 
-        </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="95dp"
+        android:background="@color/White"
+        android:layout_marginBottom="10dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="15dp"
+        android:paddingTop="10dp">
 
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="TOKENS DISPONIBLES:"
+            android:id="@+id/etiq_saldo"
+            android:textColor="@color/GrayLight"
+            android:textSize="16dp" />
 
-    <ImageView android:id="@+id/imageView4" android:layout_width="wrap_content" android:layout_height="wrap_content"
-               android:src="@drawable/ic_back_title_splitter" android:paddingTop="6dp"/>
+        <TextView android:layout_width="fill_parent" android:layout_height="wrap_content"
+            android:textAppearance="@style/texto_titulo_principal" android:text="00.00"
+            android:id="@+id/txBalance"
+            android:textSize="40dp"
+            android:textIsSelectable="false"
+            android:textColor="@color/Orange"
+            android:layout_below="@+id/etiq_saldo"
+            android:gravity="right" />
+    </RelativeLayout>
+
     <ListView
         android:id="@+id/product_list"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginTop="3dp"
-            >
+        android:layout_weight="1">
     </ListView>
-        <ImageButton android:layout_width="50dp" android:layout_height="50dp"
-                     android:id="@+id/btnClose" android:src="@drawable/btn_ok"
-                     android:background="@android:color/transparent" android:adjustViewBounds="false"
-                     android:cropToPadding="false" android:scaleType="fitCenter"
-                     android:layout_gravity="center_horizontal" android:layout_marginBottom="60dp"
-                     android:layout_marginTop="5dp"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <ImageButton
+                android:layout_width="50dp" android:layout_height="50dp"
+                 android:id="@+id/btnClose" android:src="@drawable/btn_ok"
+                 android:background="@android:color/transparent" android:adjustViewBounds="false"
+                 android:cropToPadding="false" android:scaleType="fitCenter"
+                android:layout_margin="10dp" />
+        </LinearLayout>
 
     </LinearLayout>
 </android.support.v4.widget.SwipeRefreshLayout>

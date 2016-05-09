@@ -2,38 +2,41 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="60dp"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <!-- DATOS -->
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="80dp"
-        android:layout_marginTop="10dp" >
+        android:layout_height="fill_parent"
+        android:layout_marginTop="2.5dp"
+        android:background="@drawable/bk_token"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="2.5dp"
+        android:layout_marginRight="10dp"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingRight="20dp"
+        android:gravity="left|center">
 
         <TextView
-            android:id="@+id/txLinea"
-            android:layout_width="0dp"
-            android:layout_weight=".25"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:lines="2"
-            android:textAppearance="@style/texto_normal_label"
-            android:textSize="16sp" android:textStyle="bold" android:textColor="#ffffffff"/>
+            android:text="Comprar crédito"
+            android:id="@+id/textView11"
+            android:textColor="@color/GrayLight"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/txFecha"
-            android:layout_width="0dp"
-            android:layout_weight=".25"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="2dp"
-            android:gravity="center"
-            android:lines="2"
             android:textAppearance="@style/texto_normal_label"
-            android:textSize="16sp"  android:textStyle="bold" android:textColor="#ffffffff" />
+            android:textSize="26sp"  android:textStyle="bold" android:textColor="@color/GrayLight"
+            android:text="TOKEN 10000" />
 
     </LinearLayout>
-
-    <!-- SEPARADOR -->
 
 </LinearLayout>

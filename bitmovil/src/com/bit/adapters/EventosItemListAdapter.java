@@ -25,7 +25,6 @@ public class EventosItemListAdapter extends BaseAdapter {
 
     static class ViewHolder {
         TextView txtFecha;
-        /*TextView txtLinea;*/
         TextView txtNumeroSerie;
         ImageView imgEvento;
         ViewHolder() {
@@ -59,19 +58,14 @@ public class EventosItemListAdapter extends BaseAdapter {
         if (convertView == null) {
             convertView = this.layoutInflater.inflate(R.layout.audit_report_item, null);
             holder = new ViewHolder();
-            /*holder.txtLinea = (TextView) convertView.findViewById(R.id.txLinea);*/
             holder.txtFecha = (TextView) convertView.findViewById(R.id.txFecha);
             holder.txtNumeroSerie = (TextView) convertView.findViewById(R.id.txNumeroSerie);
-            holder.imgEvento = (ImageView) convertView.findViewById(R.id.imgEventoPpal);
+            holder.imgEvento = (ImageView) convertView.findViewById(R.id.imgEvento);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        /*if(((Eventos) this.listData.get(position)).getPrecio1() != null) {
-            holder.txtLinea.setText("$" + ((Eventos) this.listData.get(position)).getPrecio1());
-        }else{
-            holder.txtLinea.setText("-");
-        }*/
+
         holder.txtFecha.setText(((Eventos) this.listData.get(position)).getNombre());
         holder.txtNumeroSerie.setText(((Eventos) this.listData.get(position)).getFechaInicio() != null ? ((Eventos) this.listData.get(position)).getFechaInicio() : "");
 

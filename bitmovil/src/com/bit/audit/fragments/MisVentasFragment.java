@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -67,6 +68,7 @@ public class MisVentasFragment extends Fragment {
 
         public void onItemClick(AdapterView<?> adapterView, View v, int position, long id) {
             final Dialog dialog = new Dialog(v.getContext());
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
             dialog.setContentView(R.layout.modal_compartir_evento_method);
 
             btn_close = (Button) dialog.findViewById(R.id.dialogButtonCancel);
@@ -142,7 +144,6 @@ public class MisVentasFragment extends Fragment {
                 }
             });
 
-            dialog.setTitle("EVENTO - BITMOVIL");
             dialog.show();
         }
     }

@@ -14,39 +14,6 @@
         android:layout_marginBottom="3dp"
         android:layout_marginTop="3dp">
 
-        <!--<TextView
-            android:id="@+id/txLinea"
-            android:layout_width="0dp"
-            android:layout_weight=".25"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:lines="2"
-            android:textAppearance="@style/texto_normal_label"
-            android:textSize="16sp" android:textStyle="bold" android:textColor="#50505A"/>
-
-        <TextView
-            android:id="@+id/txFecha"
-            android:layout_width="0dp"
-            android:layout_weight=".25"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="2dp"
-            android:gravity="center"
-            android:lines="2"
-            android:textAppearance="@style/texto_normal_label"
-            android:textSize="16sp"  android:textStyle="bold" android:textColor="#50505A" />
-
-        <TextView
-            android:id="@+id/txNumeroSerie"
-            android:layout_width="0dp"
-            android:layout_weight=".25"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:gravity="center"
-            android:lines="2"
-            android:textAppearance="@style/texto_normal_label"
-            android:textSize="16sp"
-            android:textStyle="bold" android:textColor="#000000"/>-->
-
         <ImageView
             android:layout_width="0dp"
             android:layout_height="fill_parent"
@@ -79,15 +46,6 @@
                 android:textColor="@color/GrayLight"
                 android:layout_alignBottom="@+id/txNumeroSerie"
                 android:gravity="left" />
-
-            <!--<TextView
-                android:id="@+id/txNumeroSerie"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="@style/texto_normal_label"
-                android:textSize="16sp"
-                android:textColor="#161bbf"
-                android:gravity="left" />-->
 
             <TextView
                 android:layout_width="wrap_content"

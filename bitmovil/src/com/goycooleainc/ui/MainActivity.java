@@ -7,8 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bit.adapters.ProductosBitItemListAdapter;
@@ -24,10 +26,14 @@ import com.goycooleainc.ui.base.BlundellActivity;
 import com.goycooleainc.ui.utils.Navigator;
 import com.goycooleainc.ui.xml.MainMenu;
 
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * This activity holds the button to purchase a passport
@@ -43,6 +49,13 @@ public class MainActivity extends BlundellActivity implements MainMenu {
     private static final String TAG = "BITCHELIN";
     public View view;
     View rootView;
+
+    static int _position;
+    private ArrayAdapter<String> adapter_items;
+    private int id;
+    TextView txBalance;
+    ImageButton btnVending;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +88,16 @@ public class MainActivity extends BlundellActivity implements MainMenu {
 
         } catch (Exception ex) {
             ex.toString();
+        }
+
+        txBalance = (TextView) findViewById(R.id.txBalance);
+        DecimalFormat df = new DecimalFormat("#,##0.00");
+        df.setDecimalFormatSymbols(new DecimalFormatSymbols(Locale.ITALY));
+        TransactionHashmapCollectionSingleton.getInstance();
+        if(TransactionHashmapCollectionSingleton.estadoCuenta == null) {
+            txBalance.setText("0");
+        }else{
+            txBalance.setText(df.format(new BigDecimal(TransactionHashmapCollectionSingleton.estadoCuenta.getSaldo().toString())));
         }
 
         //navigate().toPurchasePassportActivityForResult();

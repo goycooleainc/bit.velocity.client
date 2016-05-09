@@ -18,7 +18,6 @@ public class ProductosBitItemListAdapter extends BaseAdapter {
 
     static class ViewHolder {
         TextView txtFecha;
-        TextView txtLinea;
 
         ViewHolder() {
         }
@@ -51,14 +50,13 @@ public class ProductosBitItemListAdapter extends BaseAdapter {
         if (convertView == null) {
             convertView = this.layoutInflater.inflate(R.layout.recharge_item, null);
             holder = new ViewHolder();
-            holder.txtLinea = (TextView) convertView.findViewById(R.id.txLinea);
+            /*holder.txtLinea = (TextView) convertView.findViewById(R.id.txLinea);*/
             holder.txtFecha = (TextView) convertView.findViewById(R.id.txFecha);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.txtLinea.setText(((Productos) this.listData.get(position)).getNombre());
-        holder.txtFecha.setText(((Productos) this.listData.get(position)).getPrecio());
+        holder.txtFecha.setText("TOKEN " + ((Productos) this.listData.get(position)).getPrecio());
         return convertView;
     }
 }

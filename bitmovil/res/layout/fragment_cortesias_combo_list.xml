@@ -2,7 +2,7 @@
 <android.support.v4.widget.SwipeRefreshLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/swipe_container"
-        android:background="@drawable/bkg"
+        android:background="@drawable/bkg_new"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
     <LinearLayout
@@ -25,41 +25,29 @@
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
-        <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginTop="100dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@android:color/white"
+        android:gravity="center_vertical|center_horizontal">
 
         <TextView
-            android:id="@+id/tv_titulo_paso_uno"
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Cortesias"
-            android:textAppearance="@style/texto_titulo_principal"
-            android:textColor="@color/White"
-            android:textSize="18sp" />
+            android:id="@+id/headline"
+            android:background="@android:color/white"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="Combos de Cortesias"
+            android:phoneNumber="true"
+            android:textAppearance="@style/texto_seccion" />
+    </RelativeLayout>
 
-            <TextView
-                android:id="@+id/user_nombre"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
-                android:text="VENTA 1"
-                android:textAppearance="@style/texto_subtitulo"
-                android:textColor="@color/Gray"
-                android:textStyle="bold" android:gravity="center"/>
-
-    </LinearLayout>
-
-
-    <ImageView android:id="@+id/imageView4" android:layout_width="wrap_content" android:layout_height="wrap_content"
-               android:src="@drawable/ic_back_title_splitter" android:paddingTop="6dp"/>
     <ListView
         android:id="@+id/cortesia_combo_list"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_marginTop="3dp"
-            >
+        android:layout_marginTop="3dp">
     </ListView>
 
 </LinearLayout>

@@ -14,29 +14,15 @@
         android:layout_marginBottom="3dp"
         android:layout_marginTop="3dp">
 
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="fill_parent"
-            android:id="@+id/imgEventoPpal"
-            android:layout_weight="0.3"
-            android:layout_margin="15dp" />
-
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.7"
-            android:paddingRight="50dp">
-
-            <TextView
-                android:id="@+id/txNumeroSerie"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="@style/texto_normal_label"
-                android:textSize="16sp"
-                android:textColor="@android:color/black"
-                android:gravity="left"
-                android:layout_marginTop="15dp" />
+            android:paddingRight="50dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp">
 
             <TextView
                 android:id="@+id/txFecha"
@@ -47,6 +33,18 @@
                 android:textColor="@android:color/black"
                 android:layout_alignBottom="@+id/txNumeroSerie"
                 android:gravity="left" />
+
+            <TextView
+                android:id="@+id/txNumeroSerie"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/texto_normal_label"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:gravity="left" />
+
         </LinearLayout>
+
     </LinearLayout>
+
 </LinearLayout>

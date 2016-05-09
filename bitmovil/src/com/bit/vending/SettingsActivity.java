@@ -11,6 +11,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -281,9 +282,10 @@ public class SettingsActivity extends Activity implements LoyaltyCardReader.Acco
 
     public void onExit(View v) {
         Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_new_action);
-        dialog.setTitle("BITMOVIL - PAGOS MOVILES");
-        ((TextView) dialog.findViewById(R.id.dialogText)).setText("Esta seguro de Salir y cerrar Sesion?");
+        /*dialog.setTitle("BITMOVIL - PAGOS MOVILES");*/
+        ((TextView) dialog.findViewById(R.id.dialogText)).setText("¿Está seguro de Salir y cerrar Sesión?");
         ((Button) dialog.findViewById(R.id.dialogButtonOK)).setOnClickListener(new C01171(dialog));
         ((Button) dialog.findViewById(R.id.dialogButtonCancel)).setOnClickListener(new C01182(dialog));
         dialog.show();

@@ -11,6 +11,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -66,6 +67,7 @@ public class MisCortesiasComboFragment extends Fragment implements SwipeRefreshL
 
         public void onItemClick(AdapterView<?> adapterView, final View v, int position, long id) {
             final Dialog dialog = new Dialog(v.getContext());
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
             dialog.setContentView(R.layout.modal_producto_detalle_combo_method);
 
             btn_close = (Button) dialog.findViewById(R.id.dialogButtonCancel);
@@ -164,7 +166,7 @@ public class MisCortesiasComboFragment extends Fragment implements SwipeRefreshL
 //                }
 //            });
 
-            dialog.setTitle("CORTESIAS - BITMOVIL");
+            /*dialog.setTitle("CORTESIAS - BITMOVIL");*/
             dialog.show();
         }
     }
@@ -248,7 +250,7 @@ public class MisCortesiasComboFragment extends Fragment implements SwipeRefreshL
         activity = getActivity();
         linlaHeaderProgress = (LinearLayout) rootView.findViewById(R.id.linlaHeaderProgress);
 
-        ((TextView) rootView.findViewById(R.id.user_nombre)).setText(intent.getStringExtra("nombre") != null ? intent.getStringExtra("nombre").toString() : "");
+        /*((TextView) rootView.findViewById(R.id.user_nombre)).setText(intent.getStringExtra("nombre") != null ? intent.getStringExtra("nombre").toString() : "");*/
         lv1 = (ListView) rootView.findViewById(R.id.cortesia_combo_list);
         try {
             List<Cortesia> final_list;

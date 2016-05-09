@@ -14,43 +14,10 @@
         android:layout_marginBottom="3dp"
         android:layout_marginTop="3dp">
 
-        <!--<TextView
-            android:id="@+id/txLinea"
-            android:layout_width="0dp"
-            android:layout_weight=".25"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:lines="2"
-            android:textAppearance="@style/texto_normal_label"
-            android:textSize="16sp" android:textStyle="bold" android:textColor="#ffffffff"/>
-
-        <TextView
-            android:id="@+id/txFecha"
-            android:layout_width="0dp"
-            android:layout_weight=".25"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="2dp"
-            android:gravity="center"
-            android:lines="2"
-            android:textAppearance="@style/texto_normal_label"
-            android:textSize="16sp"  android:textStyle="bold" android:textColor="#ffffffff" />
-
-        <TextView
-            android:id="@+id/txNumeroSerie"
-            android:layout_width="0dp"
-            android:layout_weight=".25"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:gravity="center"
-            android:lines="2"
-            android:textAppearance="@style/texto_normal_label"
-            android:textSize="16sp"
-            android:textStyle="bold" android:textColor="#ffffffff"/>-->
-
         <ImageView
             android:layout_width="0dp"
             android:layout_height="fill_parent"
-            android:id="@+id/imgEventoPpal"
+            android:id="@+id/imgEvento"
             android:layout_weight="0.3"
             android:layout_margin="15dp" />
 

@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
@@ -79,8 +80,6 @@ public class MainActivity extends Activity {
 
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[6], navMenuIcons.getResourceId(6, -1)));
 
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[7], navMenuIcons.getResourceId(7, -1)));
-
 		// Recycle the typed array
 		navMenuIcons.recycle();
 
@@ -95,7 +94,6 @@ public class MainActivity extends Activity {
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		getActionBar().setHomeButtonEnabled(true);
 		getActionBar().setBackgroundDrawable(getResources().getDrawable(R.color.Orange));
-		/*getActionBar().setLogo(R.drawable.icon_bar);*/
 		getActionBar().setIcon(R.drawable.icon_bar);
 
 
@@ -176,7 +174,7 @@ public class MainActivity extends Activity {
 				fragment = new EventoFragment();
 				break;
 			case 2:
-				fragment = new HomeFragment();
+				fragment = new TiendaVirtualFragment();
 				break;
 			case 3:
 				fragment = new AvatarFragment();
@@ -185,12 +183,9 @@ public class MainActivity extends Activity {
 				fragment = new TransaccionFragment();
 				break;
 			case 5:
-				fragment = new TiendaVirtualFragment();
-				break;
-			case 6:
 				fragment = new MisCortesiasFragment();
 				break;
-			case 7:
+			case 6:
 				fragment = new WhatsHotFragment();
 				break;
 			default:
@@ -240,11 +235,12 @@ public class MainActivity extends Activity {
 
 	public void onLogout(View paramView) {
 		final Dialog dialog = new Dialog(paramView.getContext());
+		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		dialog.setContentView(R.layout.dialog_new_action);
-		dialog.setTitle("BITMOVIL : MOBILE PAYMENTS");
+		/*dialog.setTitle("BITMOVIL : MOBILE PAYMENTS");*/
 
 		TextView texto = (TextView) dialog.findViewById(R.id.dialogText);
-		texto.setText("Esta seguro de Salir y cerrar Sesion?");
+		texto.setText("¿Está seguro de Salir y cerrar Sesión?");
 
 		Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
 		// if button is clicked, close the custom dialog
