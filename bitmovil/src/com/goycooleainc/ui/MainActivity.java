@@ -4,24 +4,27 @@ import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 import android.view.Window;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bit.adapters.ProductosBitItemListAdapter;
+import com.bit.async.tasks.GetEstadoCuentaTask;
 import com.bit.async.tasks.PostAsynkTasks;
 import com.bit.client.R;
+import com.bit.entities.EstadoCuenta;
 import com.bit.entities.Productos;
 import com.bit.entities.Transaccion;
 import com.bit.singletons.TransactionHashmapCollectionSingleton;
 import com.bit.singletons.VendingSingleton;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.goycooleainc.ui.base.BlundellActivity;
 import com.goycooleainc.ui.utils.Navigator;
 import com.goycooleainc.ui.xml.MainMenu;
@@ -30,32 +33,17 @@ import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-/**
- * This activity holds the button to purchase a passport
- * when the result is received if the passport was successfully purchase it shows the picture
- * 
- * @author Blundell
- * 
- */
-public class MainActivity extends BlundellActivity implements MainMenu {
+public class MainActivity extends BlundellActivity implements MainMenu, SwipeRefreshLayout.OnRefreshListener {
 
     static ListView lv2;
     static ImageButton btnClose;
-    private static final String TAG = "BITCHELIN";
     public View view;
-    View rootView;
-
-    static int _position;
-    private ArrayAdapter<String> adapter_items;
-    private int id;
     TextView txBalance;
-    ImageButton btnVending;
-
+    private SwipeRefreshLayout swipeLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +57,12 @@ public class MainActivity extends BlundellActivity implements MainMenu {
         localActionBar.hide();
 
         setContentView(R.layout.fragment_product_list);
+
+        //refresh
+        swipeLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_container);
+        swipeLayout.setOnRefreshListener(this);
+        swipeLayout.setColorScheme(17170459, 17170452, 17170456, 17170454);
+
         //passportImage = (ImageView) findViewById(R.id.main_passport_image);
         lv2 = (ListView) findViewById(R.id.product_list);
 
@@ -101,11 +95,32 @@ public class MainActivity extends BlundellActivity implements MainMenu {
         }
 
         //navigate().toPurchasePassportActivityForResult();
+
+        //Parar refresh a menos q esta al tope la lista
+        lv2.setOnScrollListener(new AbsListView.OnScrollListener() {
+
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                boolean enable = false;
+                if(lv2 != null && lv2.getChildCount() > 0){
+                    // check if the first item of the list is visible
+                    boolean firstItemVisible = lv2.getFirstVisiblePosition() == 0;
+                    // check if the top of the first item is visible
+                    boolean topOfFirstItemVisible = lv2.getChildAt(0).getTop() == 0;
+                    // enabling or disabling the refresh layout
+                    enable = firstItemVisible && topOfFirstItemVisible;
+                }
+                swipeLayout.setEnabled(enable);
+            }
+        });
     }
 
-    /* renamed from: com.bit.audit.fragments.VendingMachineActivity.VendingFragment.2 */
     class C01042 implements AdapterView.OnItemClickListener {
-        final /* synthetic */ List val$list;
+        final List val$list;
 
         C01042(List list) {
             this.val$list = list;
@@ -127,10 +142,34 @@ public class MainActivity extends BlundellActivity implements MainMenu {
         }
     }
 
-    /* renamed from: com.bit.audit.fragments.VendingMachineActivity.VendingFragment.1 */
-    class C01781 extends TypeToken<ArrayList<Productos>> {
-        C01781() {
+    class runneable implements Runnable {
+        runneable() {
         }
+
+        public void run() {
+            swipeLayout.setRefreshing(false);
+            try {
+                GetEstadoCuentaTask task_1 = new GetEstadoCuentaTask(getApplicationContext());
+                task_1.setIdUsuario(TransactionHashmapCollectionSingleton.getInstance().user.getIdUsuario());
+                TransactionHashmapCollectionSingleton.getInstance().estadoCuenta = (EstadoCuenta) task_1.execute(new Void[0]).get();
+
+                DecimalFormat df = new DecimalFormat("#,##0.00");
+                df.setDecimalFormatSymbols(new DecimalFormatSymbols(Locale.ITALY));
+                TransactionHashmapCollectionSingleton.getInstance();
+                if(TransactionHashmapCollectionSingleton.estadoCuenta == null) {
+                    txBalance.setText("0");
+                }else{
+                    txBalance.setText(df.format(new BigDecimal(TransactionHashmapCollectionSingleton.estadoCuenta.getSaldo().toString())));
+                }
+
+            } catch (Exception e) {
+
+            }
+        }
+    }
+
+    public void onRefresh() {
+        new Handler().postDelayed(new runneable(), 5000);
     }
 
     @Override
@@ -151,9 +190,7 @@ public class MainActivity extends BlundellActivity implements MainMenu {
             }
         }
     }
-    /**
-     *
-     */
+
     private void dealWithSuccessfulPurchase() {
         try {
             AlertDialog.Builder bld = new AlertDialog.Builder(view.getContext());
@@ -188,11 +225,8 @@ public class MainActivity extends BlundellActivity implements MainMenu {
         }catch (Exception ex){
 
         }
-
     }
-    /**
-     *
-     */
+
     private void dealWithFailedPurchase() {
         try {
             AlertDialog.Builder bld = new AlertDialog.Builder(view.getContext());

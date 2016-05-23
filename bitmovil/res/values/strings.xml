@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--<string name="server">http://192.168.4.103:8080</string>-->
+    <!--<string name="server">http://192.168.4.102:8080</string>-->
     <string name="server">http://bitmovil.cl</string>
 
     <!--URL GENERICAS PARA PODER REUTILIZAR-->
     <string name="newUser">/mobile/new/user</string>
+    <string name="recuperarUser">/mobile/recuperar/change</string>
     <string name="getCortesiaCombo">/mobile/get/cortesia/combo/</string>
     <string name="getCortesiaEvento">/mobile/get/cortesia/evento/</string>
     <string name="getProductos">/mobile/get/productos/</string>
@@ -14,6 +15,7 @@
     <string name="sendEventoQuemado">/mobile/cargar/evento/usado</string>
     <string name="sendEmailAfterTransaction">/mobile/transaction/send/email</string>
     <string name="asignarAvatarVenta">/mobile/asignar/avatar/venta</string>
+    <string name="getMobileBoker">/mobile/get/broker/</string>
 
     <string name="app_name">Bitmovil</string>
     <string name="action_settings">Settings</string>
@@ -52,7 +54,7 @@
         <item >Avatares</item>
         <item >Cartola</item>
         <item >Cortesias</item>
-        <item >Cerrar Session</item>
+        <item >Cerrar Sesión</item>
     </string-array>
 
     <!-- Nav Drawer List Item Icons -->

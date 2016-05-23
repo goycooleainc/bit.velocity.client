@@ -1,58 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="270dp"
-            android:background="@color/White"
-            android:alpha="0.8">
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/White"
+    android:alpha="0.8"
+    android:weightSum="1"
+    android:padding="10dp">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/texto_subtitulo"
+        android:text="Quema tus eventos pasando por boleteria."
+        android:id="@+id/textView6"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp" />
 
     <LinearLayout
-        android:id="@+id/linlaHeaderProgress"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:gravity="center"
-        android:orientation="vertical"
-        android:visibility="gone" >
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/spinner_state"
+        android:layout_alignParentLeft="true"
+        android:weightSum="1"
+        android:layout_marginBottom="10dp">
 
-        <ProgressBar
-            android:id="@+id/pbHeaderProgress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
-
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="@style/texto_subtitulo"
-            android:text="¿Seguro deseas quemar el evento?"
-            android:id="@+id/textView6"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"/>
-
-    <LinearLayout android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_marginTop="21dp"
-            android:layout_below="@+id/spinner_state"
-            android:layout_alignParentLeft="true">
-
-        <Button android:id="@+id/dialogButtonCancel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/cancel_style_buttons"/>
-
-        <Button android:id="@+id/dialogButtonOK"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/ok_style_buttons"
-            android:layout_marginLeft="30dp"/>
+        <Button
+            android:id="@+id/dialogButtonCancel"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/btn_ok"
+            android:layout_gravity="center_horizontal" />
 
     </LinearLayout>
 </LinearLayout>

@@ -6,11 +6,13 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -22,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bit.adapters.AvataresItemListAdapter;
+import com.bit.async.tasks.GetAvataresTask;
 import com.bit.async.tasks.UpdateAvatarTask;
 import com.bit.client.R;
 import com.bit.entities.Avatar;
@@ -44,120 +47,21 @@ public class AvatarFragment extends Fragment implements SwipeRefreshLayout.OnRef
     static Button btn_ok;
     static Button btn_close, btn_close2;
     static ListView lv3;
-    static String nombre_usuario;
     public View rootView;
+    private SwipeRefreshLayout swipeLayout;
 
 	public AvatarFragment(){}
 
-    /* renamed from: com.bit.audit.fragments.VendingMachineActivity.AvatarFragment.1 */
-    class C00961 implements AdapterView.OnItemClickListener {
-        final List val$final_list;
-
-        /* renamed from: com.bit.audit.fragments.VendingMachineActivity.AvatarFragment.1.1 */
-        class C00951 implements View.OnClickListener {
-            final Dialog val$dialog;
-
-            C00951(Dialog dialog) {
-                this.val$dialog = dialog;
-            }
-
-            public void onClick(View v) {
-                this.val$dialog.dismiss();
-            }
-        }
-
-        C00961(List list) {
-            this.val$final_list = list;
-        }
-
-        public void onItemClick(AdapterView<?> adapterView, View v, int position, long id) {
-            final Dialog dialog = new Dialog(v.getContext());
-            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-            dialog.setContentView(R.layout.modal_avatar_method);
-
-            btn_close = (Button) dialog.findViewById(R.id.dialogButtonCancel);
-            btn_ok = (Button) dialog.findViewById(R.id.dialogButtonOK);
-
-            final TextView descr = (TextView) dialog.findViewById(R.id.txDescr);
-            final TextView coder = (TextView) dialog.findViewById(R.id.txCode);
-
-            final Avatar obj = (Avatar) this.val$final_list.get(position);
-
-            coder.setText(obj.getCodigo().toString());
-            descr.setText(obj.getDescripcion().toString());
-
-            final Spinner s = (Spinner) dialog.findViewById(R.id.spinner_state);
-            s.setAdapter(new ArrayAdapter(dialog.getContext(), R.layout.spinner_item, new String[]{"ACTIVO", "INACTIVO"}));
-            s.setSelection(obj.getEstado());
-
-            btn_close.setOnClickListener(new C00951(dialog));
-
-            btn_ok.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    obj.setCodigo(coder.getText().toString());
-                    obj.setDescripcion(descr.getText().toString());
-                    obj.setEstado(s.getSelectedItemPosition());
-                    obj.setIdUser(Integer.parseInt(TransactionHashmapCollectionSingleton.getInstance().user.getIdUsuario()));
-
-                    TransactionHashmapCollectionSingleton.getInstance().avatar = obj;
-
-                    UpdateAvatarTask task = new UpdateAvatarTask(getActivity());
-                    task.setDATA(new Gson().toJson(obj));
-                    task.execute();
-
-                    Toast.makeText(getActivity().getBaseContext(), "Avatar Actualizado............. [IN PROGRESS]", Toast.LENGTH_LONG).show();
-
-                    onRefresh();
-
-                    dialog.dismiss();
-                }
-            });
-
-            dialog.setTitle("AVATAR - BITMOVIL");
-            dialog.show();
-        }
-    }
-
-//    public void onResume() {
-//        List<Avatar> final_list;
-//        super.onResume();
-//        lv3 = (ListView) getActivity().findViewById(R.id.current_purchase_list);
-//        TransactionHashmapCollectionSingleton.getInstance();
-//        if (TransactionHashmapCollectionSingleton.avatares != null) {
-//            TransactionHashmapCollectionSingleton.getInstance();
-//            final_list = TransactionHashmapCollectionSingleton.avatares;
-//        } else {
-//            final_list = new ArrayList();
-//        }
-//        this.adapter = new AvataresItemListAdapter(getActivity().getBaseContext(), final_list);
-//        lv3.setAdapter(this.adapter);
-//        this.adapter.notifyDataSetChanged();
-//    }
-
-    public void onRefresh() {
-        List<Avatar> final_list;
-        try {
-            TransactionHashmapCollectionSingleton.getInstance();
-            if (TransactionHashmapCollectionSingleton.avatares != null) {
-                TransactionHashmapCollectionSingleton.getInstance();
-                final_list = TransactionHashmapCollectionSingleton.avatares;
-            } else {
-                final_list = new ArrayList();
-            }
-            this.adapter = new AvataresItemListAdapter(getActivity().getBaseContext(), final_list);
-            lv3.setAdapter(this.adapter);
-            this.adapter.notifyDataSetChanged();
-            lv3.setOnItemClickListener(new C00961(final_list));
-        } catch (Exception ex) {
-            ex.toString();
-        }
-    }
-
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 //        super.onCreate(savedInstanceState);
-        Intent intent = getActivity().getIntent();
+
         rootView = inflater.inflate(R.layout.fragment_avatar_list, container, false);
+
+        //refresh
+        this.swipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_container);
+        this.swipeLayout.setOnRefreshListener(this);
+        this.swipeLayout.setColorScheme(17170459, 17170452, 17170456, 17170454);
+
         /*((TextView) rootView.findViewById(R.id.tx_nombre)).setText(nombre_usuario != null ? nombre_usuario.toString() : "");*/
         lv3 = (ListView) rootView.findViewById(R.id.current_purchase_list);
 
@@ -229,7 +133,125 @@ public class AvatarFragment extends Fragment implements SwipeRefreshLayout.OnRef
         } catch (Exception ex) {
             ex.toString();
         }
+
+        //Parar refresh a menos q esta al tope la lista
+        lv3.setOnScrollListener(new AbsListView.OnScrollListener() {
+
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem,
+                                 int visibleItemCount, int totalItemCount) {
+                boolean enable = false;
+                if(lv3 != null && lv3.getChildCount() > 0){
+                    // check if the first item of the list is visible
+                    boolean firstItemVisible = lv3.getFirstVisiblePosition() == 0;
+                    // check if the top of the first item is visible
+                    boolean topOfFirstItemVisible = lv3.getChildAt(0).getTop() == 0;
+                    // enabling or disabling the refresh layout
+                    enable = firstItemVisible && topOfFirstItemVisible;
+                }
+                swipeLayout.setEnabled(enable);
+            }
+        });
+
         return rootView;
+    }
+
+    /* renamed from: com.bit.audit.fragments.VendingMachineActivity.AvatarFragment.1 */
+    class C00961 implements AdapterView.OnItemClickListener {
+        final List val$final_list;
+
+        /* renamed from: com.bit.audit.fragments.VendingMachineActivity.AvatarFragment.1.1 */
+        class C00951 implements View.OnClickListener {
+            final Dialog val$dialog;
+
+            C00951(Dialog dialog) {
+                this.val$dialog = dialog;
+            }
+
+            public void onClick(View v) {
+                this.val$dialog.dismiss();
+            }
+        }
+
+        C00961(List list) {
+            this.val$final_list = list;
+        }
+
+        public void onItemClick(AdapterView<?> adapterView, View v, int position, long id) {
+            final Dialog dialog = new Dialog(v.getContext());
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog.setContentView(R.layout.modal_avatar_method);
+
+            btn_close = (Button) dialog.findViewById(R.id.dialogButtonCancel);
+            btn_ok = (Button) dialog.findViewById(R.id.dialogButtonOK);
+
+            final TextView descr = (TextView) dialog.findViewById(R.id.txDescr);
+            final TextView coder = (TextView) dialog.findViewById(R.id.txCode);
+
+            final Avatar obj = (Avatar) this.val$final_list.get(position);
+
+            coder.setText(obj.getCodigo().toString());
+            descr.setText(obj.getDescripcion().toString());
+
+            final Spinner s = (Spinner) dialog.findViewById(R.id.spinner_state);
+            s.setAdapter(new ArrayAdapter(dialog.getContext(), R.layout.spinner_item, new String[]{"INACTIVO", "ACTIVO"}));
+            s.setSelection(obj.getEstado());
+
+            btn_close.setOnClickListener(new C00951(dialog));
+
+            btn_ok.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    obj.setCodigo(coder.getText().toString());
+                    obj.setDescripcion(descr.getText().toString());
+                    obj.setEstado(s.getSelectedItemPosition());
+                    obj.setIdUser(Integer.parseInt(TransactionHashmapCollectionSingleton.getInstance().user.getIdUsuario()));
+
+                    TransactionHashmapCollectionSingleton.getInstance().avatar = obj;
+
+                    UpdateAvatarTask task = new UpdateAvatarTask(getActivity());
+                    task.setDATA(new Gson().toJson(obj));
+                    task.execute();
+
+                    Toast.makeText(getActivity().getBaseContext(), "Avatar Actualizado............. [IN PROGRESS]", Toast.LENGTH_LONG).show();
+
+                    onRefresh();
+
+                    dialog.dismiss();
+                }
+            });
+
+            dialog.setTitle("AVATAR - BITMOVIL");
+            dialog.show();
+        }
+    }
+
+    class runneable implements Runnable {
+        runneable() {
+        }
+
+        public void run() {
+            swipeLayout.setRefreshing(false);
+            try {
+                List<Avatar> final_list;
+
+                GetAvataresTask task_2 = new GetAvataresTask(getActivity());
+                task_2.setIdUsuario(TransactionHashmapCollectionSingleton.getInstance().user.getIdUsuario());
+                final_list = TransactionHashmapCollectionSingleton.getInstance().avatares = (List) task_2.execute(new Void[0]).get();
+
+                lv3.setAdapter(new AvataresItemListAdapter(getActivity().getBaseContext(), final_list));
+                ((AvataresItemListAdapter) lv3.getAdapter()).notifyDataSetChanged();
+            } catch (Exception e) {
+            }
+        }
+    }
+
+    public void onRefresh() {
+        new Handler().postDelayed(new runneable(), 5000);
     }
 
     public void generateCode(BarcodeFormat format, View v2, boolean isQR){
@@ -278,4 +300,6 @@ public class AvatarFragment extends Fragment implements SwipeRefreshLayout.OnRef
         }
         dialog2.show();
     }
+
+
 }

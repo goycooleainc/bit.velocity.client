@@ -232,7 +232,7 @@ public class SettingsActivity extends Activity implements LoyaltyCardReader.Acco
             Avatar new_avatar = new Avatar();
             new_avatar.setCodigo(code);
             new_avatar.setDescripcion("AGREGADO POR MOBILE");
-            new_avatar.setEstado(1);
+//            new_avatar.setEstado(1);La idea es q cree un avatar y tenga que si o si activarlo para empezar a usarlo
             new_avatar.setIdUser(Integer.parseInt(user.getIdUsuario()));
             if(code == null){
                 return;

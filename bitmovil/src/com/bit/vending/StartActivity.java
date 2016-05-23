@@ -24,20 +24,14 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.bit.async.tasks.GetAvataresTask;
-import com.bit.async.tasks.GetCortesiasComboTask;
-import com.bit.async.tasks.GetCortesiasEventoTask;
-import com.bit.async.tasks.GetEstadoCuentaTask;
-import com.bit.async.tasks.GetProductoTask;
-import com.bit.async.tasks.GetProductosFromServerTask;
-import com.bit.async.tasks.GetTransactionsTask;
+import com.bit.async.tasks.GetMobileBokerTask;
 import com.bit.async.tasks.GetUsersFromServerTask;
-import com.bit.async.tasks.GetVentaDetalleTask;
 import com.bit.async.tasks.PostAsynkTasks;
 import com.bit.audit.fragments.MainActivity;
 import com.bit.client.R;
 import com.bit.entities.Avatar;
 import com.bit.entities.EstadoCuenta;
+import com.bit.entities.MobileBoker;
 import com.bit.entities.User;
 import com.bit.singletons.CacheCollectionSingleton;
 import com.bit.singletons.TransactionHashmapCollectionSingleton;
@@ -91,8 +85,7 @@ public class StartActivity extends Activity implements LoaderManager.LoaderCallb
 	}
 
 
-    public void start_app_clicked(View view)
-    {
+    public void start_app_clicked(View view) {
 		UsersHashmapCollection.getInstance();
 		tx_user = (AutoCompleteTextView) findViewById(R.id.tx_user);
 		this.tx_password = (EditText) findViewById(R.id.tx_password);
@@ -104,43 +97,30 @@ public class StartActivity extends Activity implements LoaderManager.LoaderCallb
 
 			TransactionHashmapCollectionSingleton.getInstance().user = user;
 
-			GetEstadoCuentaTask task_1 = new GetEstadoCuentaTask(getApplicationContext());
-			GetAvataresTask task_2 = new GetAvataresTask(getApplicationContext());
-			GetTransactionsTask task_3 = new GetTransactionsTask(getApplicationContext());
-			GetProductosFromServerTask task_4 = new GetProductosFromServerTask(getApplicationContext());
-//			GetVentasTask task_5 = new GetVentasTask(getApplicationContext());
-			GetCortesiasComboTask task_6 = new GetCortesiasComboTask(getApplicationContext());
-			GetProductoTask task_7 = new GetProductoTask(getApplicationContext());
-            GetCortesiasEventoTask task_8 = new GetCortesiasEventoTask(getApplicationContext());
-            GetVentaDetalleTask task_9 = new GetVentaDetalleTask(getApplicationContext());
+			GetMobileBokerTask task = new GetMobileBokerTask(getApplicationContext());
 
-			task_1.setIdUsuario(user.getIdUsuario());
-			task_2.setIdUsuario(user.getIdUsuario());
-			task_3.setIdUsuario(user.getIdUsuario());
-//			task_5.setIdUsuario(user.getIdUsuario());
-			task_6.setIdUsuario(user.getIdUsuario());
-			task_7.setIdUsuario(user.getIdUsuario());
-			task_8.setIdUsuario(user.getIdUsuario());
-			task_9.setIdUsuario(user.getIdUsuario());
+			task.setIdUsuario(user.getIdUsuario());
 
 			try {
-				TransactionHashmapCollectionSingleton.getInstance().estadoCuenta = (EstadoCuenta) task_1.execute(new Void[0]).get();
-				TransactionHashmapCollectionSingleton.getInstance().avatares = (List) task_2.execute(new Void[0]).get();
+
+				MobileBoker mobileBoker = (MobileBoker) task.execute(new Void[0]).get();
+
+				TransactionHashmapCollectionSingleton.getInstance().estadoCuenta = (EstadoCuenta) mobileBoker.getEstadoCuenta();
+				TransactionHashmapCollectionSingleton.getInstance().avatares = (List) mobileBoker.getAvatares();
 				for(Avatar a :TransactionHashmapCollectionSingleton.getInstance().avatares){
 					if(a.getEstado() == 1){
 						TransactionHashmapCollectionSingleton.getInstance().avatar = a;
 						break;
 					}
 				}
-				TransactionHashmapCollectionSingleton.getInstance().transacciones = (List) task_3.execute(new Void[0]).get();
-				TransactionHashmapCollectionSingleton.getInstance().productos = (List) task_4.execute(new Void[0]).get();
-				TransactionHashmapCollectionSingleton.getInstance().cortesiaCombos = (List) task_6.execute(new Void[0]).get();
-				TransactionHashmapCollectionSingleton.getInstance().cortesiaEvento = (List) task_8.execute(new Void[0]).get();
-				TransactionHashmapCollectionSingleton.getInstance().ventaDetalle = (List) task_9.execute(new Void[0]).get();
+				TransactionHashmapCollectionSingleton.getInstance().transacciones = (List) mobileBoker.getTransacciones();
+				TransactionHashmapCollectionSingleton.getInstance().productos = (List) mobileBoker.getProductosBit();
+				TransactionHashmapCollectionSingleton.getInstance().cortesiaCombos = (List) mobileBoker.getCortesiaCombo();
+				TransactionHashmapCollectionSingleton.getInstance().cortesiaEvento = (List) mobileBoker.getCortesiaEvento();
+				TransactionHashmapCollectionSingleton.getInstance().ventaDetalle = (List) mobileBoker.getVentasDetalle();
                 //Son los prodcutos fisicos a vender
-				TransactionHashmapCollectionSingleton.getInstance().producto = (List) task_7.execute(new Void[0]).get();
+				TransactionHashmapCollectionSingleton.getInstance().producto = (List) mobileBoker.getProductos();
 				TransactionHashmapCollectionSingleton.getInstance().mainActivity = this;
-//				VentaHashmapCollectionSingleton.getInstance().ventas = (List) task_5.execute(new Void[0]).get();
 
 			} catch (InterruptedException e) {
 				e.printStackTrace();
@@ -227,6 +207,55 @@ public class StartActivity extends Activity implements LoaderManager.LoaderCallb
         /*dialog.setTitle("REGISTRO");*/
         dialog.show();
     }
+
+	public void olvide_pass(View view)
+	{
+		UsersHashmapCollection.getInstance();
+
+		final Dialog dialog = new Dialog(view.getContext());
+		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		dialog.setContentView(R.layout.modal_olvide_pass_method);
+
+		btn_close = (Button) dialog.findViewById(R.id.dialogButtonCancel);
+		btn_ok = (Button) dialog.findViewById(R.id.dialogButtonOK);
+
+		btn_close.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				dialog.dismiss();
+			}
+		});
+
+		btn_ok.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				AlertDialog.Builder bld = new AlertDialog.Builder(activity);
+
+				TextView rut = (TextView) dialog.findViewById(R.id.rutText);
+
+				if (!rut.getText().toString().matches("")) {
+
+					User user = new User();
+					user.setRut(rut.getText().toString());
+
+					String remoteURL = activity.getApplicationContext().getString(R.string.recuperarUser);
+					PostAsynkTasks task = new PostAsynkTasks(v, activity, bld, remoteURL);
+					task.setDATA(new Gson().toJson(user));
+					task.execute();
+
+				} else {
+					bld.setMessage("RUT es un campo requerido!!");
+					bld.setNeutralButton("OK", null);
+					bld.create().show();
+				}
+
+				dialog.dismiss();
+			}
+		});
+
+		dialog.show();
+	}
 
     public List<User> refreshUsers(){
         ConnectivityManager connectivityManager = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);

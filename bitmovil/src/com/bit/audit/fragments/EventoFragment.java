@@ -6,15 +6,16 @@ import android.app.Dialog;
 import android.app.Fragment;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -22,14 +23,16 @@ import android.widget.NumberPicker;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.bit.adapters.AvataresItemListAdapter;
 import com.bit.adapters.EventosItemListAdapter;
-import com.bit.adapters.TransactionsItemListAdapter;
 import com.bit.adapters.VentasDetalleItemListAdapter;
+import com.bit.async.tasks.GetAvataresTask;
 import com.bit.async.tasks.GetEventosTask;
 import com.bit.async.tasks.GetImageTask;
 import com.bit.async.tasks.GetVentaDetalleTask;
 import com.bit.async.tasks.PostAsynkTasks;
 import com.bit.client.R;
+import com.bit.entities.Avatar;
 import com.bit.entities.Eventos;
 import com.bit.entities.Transaccion;
 import com.bit.entities.User;
@@ -51,26 +54,72 @@ import java.util.concurrent.ExecutionException;
 public class EventoFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
     private static Button btn_ok;
-    static ImageButton btnOk;
     static Button btn_close;
-    static ImageButton btn_discard, btnNew;
-    static ImageButton btn_save;
     static ListView lv2;
     static ListView lv3;
-    static String nombre_usuario;
-    private TransactionsItemListAdapter transaction_adapter;
-    static int _position;
     private EventosItemListAdapter adapter;
-    private int id;
     private Activity activity;
     private View rootView;
     private Spinner s;
+    private SwipeRefreshLayout swipeLayout;
 
     public EventoFragment(){}
 
-    @Override
-    public void onRefresh() {
-        refreshEvents();
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+        rootView = inflater.inflate(R.layout.fragment_events_list, container, false);
+
+        //refresh
+        this.swipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_container);
+        this.swipeLayout.setOnRefreshListener(this);
+        this.swipeLayout.setColorScheme(17170459, 17170452, 17170456, 17170454);
+
+        lv2 = (ListView) rootView.findViewById(R.id.product_list);
+        activity = getActivity();
+        View rootView2 = inflater.inflate(R.layout.fragment_ventas_list, container, false);
+        lv3 = (ListView) rootView2.findViewById(R.id.venta_list);
+
+        try {
+            List<Eventos> final_list;
+            TransactionHashmapCollectionSingleton.getInstance();
+            if (TransactionHashmapCollectionSingleton.eventos != null) {
+                TransactionHashmapCollectionSingleton.getInstance();
+                final_list = TransactionHashmapCollectionSingleton.eventos;
+            } else {
+                final_list = new ArrayList();
+            }
+            this.adapter = new EventosItemListAdapter(getActivity().getBaseContext(), final_list);
+            lv2.setAdapter(this.adapter);
+            this.adapter.notifyDataSetChanged();
+            lv2.setOnItemClickListener(new C00991(final_list));
+        } catch (Exception ex) {
+            ex.toString();
+        }
+
+        //Parar refresh a menos q esta al tope la lista
+        lv2.setOnScrollListener(new AbsListView.OnScrollListener() {
+
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem,
+                                 int visibleItemCount, int totalItemCount) {
+                boolean enable = false;
+                if(lv2 != null && lv2.getChildCount() > 0){
+                    // check if the first item of the list is visible
+                    boolean firstItemVisible = lv2.getFirstVisiblePosition() == 0;
+                    // check if the top of the first item is visible
+                    boolean topOfFirstItemVisible = lv2.getChildAt(0).getTop() == 0;
+                    // enabling or disabling the refresh layout
+                    enable = firstItemVisible && topOfFirstItemVisible;
+                }
+                swipeLayout.setEnabled(enable);
+            }
+        });
+
+        return rootView;
     }
 
     public void  refreshVenta(){
@@ -329,31 +378,28 @@ public class EventoFragment extends Fragment implements SwipeRefreshLayout.OnRef
         return sectores;
     }
 
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-        rootView = inflater.inflate(R.layout.fragment_events_list, container, false);
-        /*((TextView) rootView.findViewById(R.id.tx_nombre)).setText(nombre_usuario != null ? nombre_usuario.toString() : "");*/
-        lv2 = (ListView) rootView.findViewById(R.id.product_list);
-        activity = getActivity();
-        View rootView2 = inflater.inflate(R.layout.fragment_ventas_list, container, false);
-        lv3 = (ListView) rootView2.findViewById(R.id.venta_list);
-
-        try {
-            List<Eventos> final_list;
-            TransactionHashmapCollectionSingleton.getInstance();
-            if (TransactionHashmapCollectionSingleton.eventos != null) {
-                TransactionHashmapCollectionSingleton.getInstance();
-                final_list = TransactionHashmapCollectionSingleton.eventos;
-            } else {
-                final_list = new ArrayList();
-            }
-            this.adapter = new EventosItemListAdapter(getActivity().getBaseContext(), final_list);
-            lv2.setAdapter(this.adapter);
-            this.adapter.notifyDataSetChanged();
-            lv2.setOnItemClickListener(new C00991(final_list));
-        } catch (Exception ex) {
-            ex.toString();
+    class runneable implements Runnable {
+        runneable() {
         }
-        return rootView;
+
+        public void run() {
+            swipeLayout.setRefreshing(false);
+            try {
+                refreshEvents();
+//                List<Eventos> final_list;
+//
+//                GetEventosTask task_2 = new GetEventosTask(getActivity());
+//                final_list = TransactionHashmapCollectionSingleton.getInstance().eventos = (List) task_2.execute(new Void[0]).get();
+//
+//                lv3.setAdapter(new EventosItemListAdapter(getActivity().getBaseContext(), final_list));
+//                ((EventosItemListAdapter) lv3.getAdapter()).notifyDataSetChanged();
+            } catch (Exception e) {
+            }
+        }
     }
+
+    public void onRefresh() {
+        new Handler().postDelayed(new runneable(), 5000);
+    }
+
 }
