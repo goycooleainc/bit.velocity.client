@@ -17,6 +17,15 @@ public class Transaccion {
     public int idEvento;
     public int idTransaccion;
     public String sector;
+    public String tipo;
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
 
     public String getSector() {
         return sector;

@@ -312,6 +312,7 @@ public class EventoFragment extends Fragment implements SwipeRefreshLayout.OnRef
                             tx.setTotal(String.valueOf(total));
                             tx.setIdEvento(obj.getId());
                             tx.setSector((String) s.getSelectedItem());
+                            tx.setTipo("1");//(1 = Evento)
 
                             String remoteURL = getActivity().getApplicationContext().getString(R.string.sendTransaction);
                             PostAsynkTasks task = new PostAsynkTasks(rootView, activity, bld, remoteURL);

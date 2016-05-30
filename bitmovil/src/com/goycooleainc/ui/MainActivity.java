@@ -202,14 +202,12 @@ public class MainActivity extends BlundellActivity implements MainMenu, SwipeRef
             tx.setFecha(currentDateandTime);
             tx.setAvatar(TransactionHashmapCollectionSingleton.getInstance().avatar.getCodigo());
             tx.setCantidad("1");
-            tx.setGps("");
             tx.setIdProducto(0);
             tx.setId(0);
-            tx.setIdProductora(422);
             tx.setMetodoPago(1);
             tx.setTotal(VendingSingleton.getInstance().producto.getPrecio());
             tx.setMoneda(1);
-            tx.setPublicKey("");
+            tx.setTipo("6");
 
             String remoteURL = this.getApplicationContext().getString(R.string.sendTransaction);
             PostAsynkTasks task = new PostAsynkTasks(view, this, bld, remoteURL);
@@ -232,8 +230,8 @@ public class MainActivity extends BlundellActivity implements MainMenu, SwipeRef
             AlertDialog.Builder bld = new AlertDialog.Builder(view.getContext());
 
             Transaccion tx = new Transaccion();
-            tx.setAvatar(TransactionHashmapCollectionSingleton.getInstance().avatares.get(0).getCodigo());
-//            tx.setAvatar(TransactionHashmapCollectionSingleton.getInstance().avatar.getCodigo());
+//            tx.setAvatar(TransactionHashmapCollectionSingleton.getInstance().avatares.get(0).getCodigo());
+            tx.setAvatar(TransactionHashmapCollectionSingleton.getInstance().avatar.getCodigo());
             tx.setTotal(VendingSingleton.getInstance().producto.getPrecio());
             tx.setMetodoPago(-1);
 

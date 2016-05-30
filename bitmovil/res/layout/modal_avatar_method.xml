@@ -30,10 +30,12 @@
     </LinearLayout>
     <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent"
                   android:layout_height="50dp" android:gravity="center_vertical|center_horizontal">
-        <EditText
+        <TextView
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/txCode" android:hint="CODIGO AVATAR" android:textColor="@color/GrayLight"/>
+                android:layout_height="match_parent"
+                android:id="@+id/txCode" android:hint="CODIGO AVATAR" android:textColor="@color/GrayLight"
+            android:textSize="18dp"
+            android:gravity="center_vertical" />
     </LinearLayout>
     <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="50dp"
                   android:gravity="center_vertical|center_horizontal">
