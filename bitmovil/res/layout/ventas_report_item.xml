@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="60dp"
-    android:orientation="vertical" >
+    xmlns:codictados="http://schemas.android.com/apk/res/com.bit.client"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -28,31 +29,35 @@
             android:layout_weight="0.7"
             android:paddingRight="50dp">
 
-            <TextView
+            <com.bit.utils.TextViewPersonalizado
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:id="@+id/txLinea"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="@style/texto_normal_label"
-                android:textSize="16sp" android:textStyle="bold" android:textColor="@color/GrayLight"
-                android:layout_marginTop="15dp"
-                android:gravity="left" />
+                android:text="Activar Entrada"
+                android:textStyle="normal"
+                codictados:fuente="fonts/opensans_regular.ttf"
+                android:textAppearance="@style/texto_titulo_pequeno"
+                android:gravity="left"
+                android:layout_marginTop="15dp" />
 
-            <TextView
-                android:id="@+id/txFecha"
-                android:layout_width="fill_parent"
+            <com.bit.utils.TextViewPersonalizado
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/texto_normal_label"
-                android:textSize="16sp"
-                android:textColor="@color/GrayLight"
+                android:id="@+id/txFecha"
+                android:textStyle="normal"
+                codictados:fuente="fonts/opensans_light.ttf"
+                android:textAppearance="@style/texto_titulo_pequeno"
                 android:layout_alignBottom="@+id/txNumeroSerie"
                 android:gravity="left" />
 
-            <TextView
+            <com.bit.utils.TextViewPersonalizado
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/Orange"
                 android:text="Activar Entrada"
-                android:textSize="16dp"
+                android:textStyle="normal"
+                codictados:fuente="fonts/opensans_light.ttf"
+                android:textAppearance="@style/texto_titulo_pequeno"
+                android:textColor="@color/Orange"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="15dp" />
 

@@ -1,25 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
+    xmlns:codictados="http://schemas.android.com/apk/res/com.bit.client"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:padding="10dp"
     android:background="@color/White">
 
-    <TextView
-        android:layout_width="fill_parent"
+    <com.bit.utils.TextViewPersonalizado
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="@style/texto_subtitulo"
-        android:text="Cerrar Sesión"
         android:id="@+id/textView6"
+        android:text="Cerrar Sesión"
+        android:textStyle="normal"
+        codictados:fuente="fonts/opensans_regular.ttf"
+        android:textAppearance="@style/texto_titulo_dialog"
         android:layout_gravity="center_horizontal"
         android:gravity="center"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:textColor="@color/GrayLight"
         android:layout_marginBottom="10dp" />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -34,13 +37,16 @@
             android:layout_margin="5dp"
             android:id="@+id/linear_estado_update" >
 
-        <TextView
-                android:id="@+id/dialogText"
-                android:layout_margin="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/GrayLight"
-                android:textAppearance="@style/texto_subtitulo" />
+        <com.bit.utils.TextViewPersonalizado
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:id="@+id/dialogText"
+            android:textStyle="normal"
+            codictados:fuente="fonts/opensans_regular.ttf"
+            android:textAppearance="@style/texto_titulo_dialog"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center" />
 
         <LinearLayout
                 android:layout_width="fill_parent"
@@ -58,7 +64,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="5dp"
                     android:layout_marginBottom="10dp"
-                    android:background="@drawable/btn1_aceptar"/>
+                    android:background="@drawable/ok_style_buttons"/>
 
             <Button
                     android:id="@+id/dialogButtonCancel"
@@ -66,9 +72,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="5dp"
-                    android:layout_marginLeft="40dp"
+                    android:layout_marginLeft="30dp"
                     android:layout_marginBottom="10dp"
-                    android:background="@drawable/btn1_cancelar"/>
+                    android:background="@drawable/cancel_style_buttons"/>
 
         </LinearLayout>
     </LinearLayout>

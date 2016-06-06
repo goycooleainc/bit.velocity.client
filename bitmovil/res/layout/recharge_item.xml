@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="60dp"
+    xmlns:codictados="http://schemas.android.com/apk/res/com.bit.client"
     android:orientation="vertical">
 
     <!-- DATOS -->
@@ -21,21 +22,25 @@
         android:paddingRight="20dp"
         android:gravity="left|center">
 
-        <TextView
+        <com.bit.utils.TextViewPersonalizado
+            android:id="@+id/textView11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textStyle="normal"
+            codictados:fuente="fonts/opensans_light.ttf"
             android:text="Comprar crédito"
-            android:id="@+id/textView11"
-            android:textColor="@color/GrayLight"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:textColor="@color/GrayLight" />
 
-        <TextView
+        <com.bit.utils.TextViewPersonalizado
             android:id="@+id/txFecha"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/texto_normal_label"
-            android:textSize="26sp"  android:textStyle="bold" android:textColor="@color/GrayLight"
-            android:text="TOKEN 10000" />
+            android:textStyle="normal"
+            codictados:fuente="fonts/coolvetica_rg.ttf"
+            android:text="TOKEN 10000"
+            android:textSize="26sp"
+            android:textColor="@color/GrayLight" />
 
     </LinearLayout>
 

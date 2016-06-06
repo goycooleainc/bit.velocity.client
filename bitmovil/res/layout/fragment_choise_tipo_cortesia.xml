@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/swipe_container"
-        android:background="@drawable/bkg_new"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical" >
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:codictados="http://schemas.android.com/apk/res/com.bit.client"
+    android:id="@+id/swipe_container"
+    android:background="@drawable/bkg_new"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/linlaHeaderProgress"
@@ -29,7 +29,7 @@
             android:background="@android:color/white"
             android:gravity="center_vertical|center_horizontal">
 
-            <TextView
+            <com.bit.utils.TextViewPersonalizado
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/headline"
@@ -37,8 +37,11 @@
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
                 android:text="Cortesias"
-                android:phoneNumber="true"
-                android:textAppearance="@style/texto_seccion" />
+                android:textStyle="normal"
+                codictados:fuente="fonts/opensans_regular.ttf"
+                android:textSize="@dimen/observ"
+                android:textColor="@color/GrayLight"
+                android:layout_gravity="center_horizontal" />
         </RelativeLayout>
 
         <LinearLayout
@@ -53,39 +56,37 @@
                 android:layout_gravity="center_horizontal"
                 android:gravity="center_vertical">
 
-                <TextView
+                <com.bit.utils.TextViewPersonalizado
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/editText"
                     android:text="¿Qué Cortesias desea USAR?"
-                    android:layout_gravity="center_horizontal"
+                    android:textStyle="normal"
+                    codictados:fuente="fonts/opensans_regular.ttf"
                     android:textSize="18sp"
+                    android:textColor="@color/GrayLight"
                     android:layout_marginBottom="40dp"
                     android:gravity="center"
-                    android:textColor="@color/GrayLight" />
+                    android:layout_gravity="center_horizontal" />
 
                 <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="EVENTOS"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:id="@+id/buttonEventos"
                     android:layout_gravity="center_horizontal"
-                    android:background="@color/Orange"
-                    android:textColor="@color/White"
                     android:layout_marginBottom="20dp"
                     android:layout_below="@+id/editText"
-                    android:layout_centerHorizontal="true" />
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/cortesia_evento_buttons" />
 
                 <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="COMBOS"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:id="@+id/buttonCombos"
                     android:layout_gravity="center_horizontal"
-                    android:textColor="@color/White"
-                    android:background="@color/Orange"
                     android:layout_below="@+id/buttonEventos"
-                    android:layout_centerHorizontal="true" />
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/cortesia_combo_buttons" />
             </RelativeLayout>
 
         </LinearLayout>

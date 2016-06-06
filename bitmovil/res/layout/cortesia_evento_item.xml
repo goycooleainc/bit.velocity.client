@@ -1,25 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="60dp"
-    android:orientation="vertical" >
+    android:layout_height="wrap_content"
+    xmlns:codictados="http://schemas.android.com/apk/res/com.bit.client"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="match_parent"
         android:background="@drawable/bk_item"
         android:orientation="horizontal"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="3dp"
-        android:layout_marginTop="3dp">
+        android:layout_marginTop="3dp"
+        android:padding="10dp">
 
         <ImageView
             android:layout_width="0dp"
-            android:layout_height="fill_parent"
+            android:layout_height="match_parent"
             android:id="@+id/imgEventoPpal"
             android:layout_weight="0.3"
-            android:layout_margin="15dp" />
+            android:layout_marginRight="15dp" />
 
         <LinearLayout
             android:orientation="vertical"
@@ -28,25 +30,26 @@
             android:layout_weight="0.7"
             android:paddingRight="50dp">
 
-            <TextView
+            <com.bit.utils.TextViewPersonalizado
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
                 android:id="@+id/txNumeroSerie"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="@style/texto_normal_label"
-                android:textSize="16sp"
-                android:textColor="@android:color/black"
-                android:gravity="left"
-                android:layout_marginTop="15dp" />
+                android:text="Soja"
+                android:textStyle="normal"
+                codictados:fuente="fonts/opensans_regular.ttf"
+                android:textAppearance="@style/texto_titulo_pequeno" />
 
-            <TextView
-                android:id="@+id/txFecha"
+            <com.bit.utils.TextViewPersonalizado
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/texto_normal_label"
-                android:textSize="16sp"
-                android:textColor="@android:color/black"
+                android:id="@+id/txFecha"
+                android:text="13.05.2016 07:00 PM"
+                android:textStyle="normal"
+                codictados:fuente="fonts/opensans_light.ttf"
+                android:textAppearance="@style/texto_titulo_pequeno"
                 android:layout_alignBottom="@+id/txNumeroSerie"
                 android:gravity="left" />
+
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

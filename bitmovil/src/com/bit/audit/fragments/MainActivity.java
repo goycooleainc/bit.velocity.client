@@ -94,7 +94,10 @@ public class MainActivity extends Activity {
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		getActionBar().setHomeButtonEnabled(true);
 		getActionBar().setBackgroundDrawable(getResources().getDrawable(R.color.Orange));
-		getActionBar().setIcon(R.drawable.icon_bar);
+		getActionBar().setLogo(R.drawable.icon_bar);
+		getActionBar().setDisplayUseLogoEnabled(true);
+		getActionBar().setDisplayShowHomeEnabled(true);
+
 
 
 		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,

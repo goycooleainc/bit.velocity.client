@@ -9,6 +9,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -57,6 +58,7 @@ public class MisCortesiasEventoFragment extends Fragment implements SwipeRefresh
 
         public void onItemClick(AdapterView<?> adapterView, final View v, int position, long id) {
             final Dialog dialog = new Dialog(v.getContext());
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
             dialog.setContentView(R.layout.modal_evento_method_aceptar);
 
             btn_close = (Button) dialog.findViewById(R.id.dialogButtonCancel);
