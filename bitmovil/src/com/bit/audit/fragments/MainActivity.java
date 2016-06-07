@@ -4,20 +4,28 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
+import android.graphics.Point;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.bit.adapters.NavDrawerListAdapter;
@@ -45,6 +53,14 @@ public class MainActivity extends Activity {
 
 	private ArrayList<NavDrawerItem> navDrawerItems;
 	private NavDrawerListAdapter adapter;
+
+	Point p;
+	static Boolean miEspacio_popup = Boolean.TRUE;
+	static Boolean comprarEvento_popup = Boolean.TRUE;
+	static Boolean miMonedero_popup = Boolean.TRUE;
+	static Boolean avatares_popup = Boolean.TRUE;
+	static Boolean cartola_popup = Boolean.TRUE;
+	static Boolean cortesias_popup = Boolean.TRUE;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -121,7 +137,24 @@ public class MainActivity extends Activity {
 
 		if (savedInstanceState == null) {
 			// on first time display view for first nav item
-			displayView(0);
+			/*displayView(0);*/
+			Fragment home = null;
+			home = new MisVentasFragment();
+
+			if (home != null) {
+
+				FragmentManager fragmentManager = getFragmentManager();
+				fragmentManager.beginTransaction().replace(R.id.frame_container, home).commit();
+
+				// update selected item and title, then close the drawer
+				mDrawerList.setItemChecked(0, true);
+				mDrawerList.setSelection(0);
+				setTitle(navMenuTitles[0]);
+				mDrawerLayout.closeDrawer(mDrawerList);
+			} else {
+				// error in creating fragment
+				Log.e("MainActivity", "Error in creating fragment");
+			}
 		}
 	}
 
@@ -169,24 +202,79 @@ public class MainActivity extends Activity {
 	private void displayView(int position) {
 		// update the main content by replacing fragments
 		Fragment fragment = null;
+		int desplazamiento_x = 10;
 		switch (position) {
 			case 0:
-				fragment = new MisVentasFragment();
+				if(miEspacio_popup){
+					miEspacio_popup = Boolean.FALSE;
+					String info_nav = getString(R.string.navItem1_popup);
+					int desplazamiento_y = 30;
+					if (p != null){
+						showPopup(MainActivity.this, p, desplazamiento_x, desplazamiento_y, info_nav);
+					}
+				}else{
+					fragment = new MisVentasFragment();
+				}
 				break;
 			case 1:
-				fragment = new EventoFragment();
+				if(comprarEvento_popup){
+					comprarEvento_popup = Boolean.FALSE;
+					String info_nav = getString(R.string.navItem2_popup);
+					int desplazamiento_y = 80;
+					if (p != null){
+						showPopup(MainActivity.this, p, desplazamiento_x, desplazamiento_y, info_nav);
+					}
+				}else{
+					fragment = new EventoFragment();
+				}
 				break;
 			case 2:
-				fragment = new TiendaVirtualFragment();
+				if(miMonedero_popup){
+					miMonedero_popup = Boolean.FALSE;
+					String info_nav = getString(R.string.navItem3_popup);
+					int desplazamiento_y = 130;
+					if (p != null){
+						showPopup(MainActivity.this, p, desplazamiento_x, desplazamiento_y, info_nav);
+					}
+				}else{
+					fragment = new TiendaVirtualFragment();
+				}
 				break;
 			case 3:
-				fragment = new AvatarFragment();
+				if(avatares_popup){
+					avatares_popup = Boolean.FALSE;
+					String info_nav = getString(R.string.navItem4_popup);
+					int desplazamiento_y = 180;
+					if (p != null){
+						showPopup(MainActivity.this, p, desplazamiento_x, desplazamiento_y, info_nav);
+					}
+				}else{
+					fragment = new AvatarFragment();
+				}
 				break;
 			case 4:
-				fragment = new TransaccionFragment();
+				if(cartola_popup){
+					cartola_popup = Boolean.FALSE;
+					String info_nav = getString(R.string.navItem5_popup);
+					int desplazamiento_y = 225;
+					if (p != null){
+						showPopup(MainActivity.this, p, desplazamiento_x, desplazamiento_y, info_nav);
+					}
+				}else{
+					fragment = new TransaccionFragment();
+				}
 				break;
 			case 5:
-				fragment = new MisCortesiasFragment();
+				if(cortesias_popup){
+					cortesias_popup = Boolean.FALSE;
+					String info_nav = getString(R.string.navItem6_popup);
+					int desplazamiento_y = 275;
+					if (p != null){
+						showPopup(MainActivity.this, p, desplazamiento_x, desplazamiento_y, info_nav);
+					}
+				}else{
+					fragment = new MisCortesiasFragment();
+				}
 				break;
 			case 6:
 				fragment = new WhatsHotFragment();
@@ -276,4 +364,54 @@ public class MainActivity extends Activity {
 
 		dialog.show();
 	}
+
+	@Override
+	public void onWindowFocusChanged(boolean hasFocus) {
+
+		int[] location = new int[2];
+		ListView items_menu = (ListView) findViewById(R.id.list_slidermenu);
+
+		// Get the x, y location and store it in the location[] array
+		// location[0] = x, location[1] = y.
+		items_menu.getLocationOnScreen(location);
+
+		//Initialize the Point with x, and y positions
+		p = new Point();
+		p.x = location[0];
+		p.y = location[1];
+
+	}
+
+	// The method that displays the popup.
+	private void showPopup(final Activity context, Point p, int desplazamiento_x, int desplazamiento_y, String info_item) {
+		float d = context.getResources().getDisplayMetrics().density;
+
+		int popupHeight = (int)(210 * d);
+
+		// Inflate the popup_layout.xml
+		LinearLayout viewGroup = (LinearLayout) context.findViewById(R.id.popup_nav);
+		LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		View layout = layoutInflater.inflate(R.layout.popup_info_nav, viewGroup);
+
+		TextView info_nav = (TextView) layout.findViewById(R.id.nav_info_popup);
+		info_nav.setText(info_item);
+
+		// Creating the PopupWindow
+		final PopupWindow popup = new PopupWindow(layout, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
+		popup.setContentView(layout);
+		popup.setHeight(popupHeight);
+		popup.setFocusable(true);
+
+		// Some offset to align the popup a bit to the right, and a bit down, relative to button's position.
+		int OFFSET_X = (int)(desplazamiento_x * d);
+		int OFFSET_Y = (int)(desplazamiento_y * d);
+
+		// Clear the default translucent background
+		popup.setBackgroundDrawable(new BitmapDrawable());
+
+		// Displaying the popup at the specified location, + offsets.
+		popup.showAtLocation(layout, Gravity.NO_GRAVITY, p.x + OFFSET_X, p.y + OFFSET_Y);
+
+	}
+
 }

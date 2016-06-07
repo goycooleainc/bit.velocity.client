@@ -57,6 +57,13 @@
         <item >Cerrar Sesión</item>
     </string-array>
 
+    <string name="navItem1_popup">¡Hola! Te presento tu espacio. Aquí se encuentran todos tus eventos ya comprados y beneficios asociados.</string>
+    <string name="navItem2_popup">En esta sección podrás comprar los eventos disponibles en Bitmovil.</string>
+    <string name="navItem3_popup">Este es tu monedero, aquí encontrarás tu saldo disponible y además podrás comprar tus tokens.</string>
+    <string name="navItem4_popup">En esta sección podrás encontrar todos tus avatares.</string>
+    <string name="navItem5_popup">Aquí encontraras todas las transacciones que has realizado, con sus respectivos detalles.</string>
+    <string name="navItem6_popup">En esta sección podrás encontrar todas las cortesias que tienes disponibles.</string>
+
     <!-- Nav Drawer List Item Icons -->
     <!-- Keep them in order as the titles are in -->
     <array name="nav_drawer_icons">

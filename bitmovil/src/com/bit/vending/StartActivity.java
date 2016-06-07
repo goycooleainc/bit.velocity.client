@@ -10,17 +10,26 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Loader;
 import android.content.SharedPreferences;
+import android.graphics.Point;
 import android.graphics.Typeface;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.InputType;
 import android.text.method.PasswordTransformationMethod;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -58,6 +67,8 @@ public class StartActivity extends Activity implements LoaderManager.LoaderCallb
     public Activity activity;
     Intent intent;
 	private View view;
+	Point p;
+	static Boolean bandera_popup_login = Boolean.TRUE;
 
 	@Override
     protected void onCreate(Bundle savedInstanceState)
@@ -83,7 +94,6 @@ public class StartActivity extends Activity implements LoaderManager.LoaderCallb
 
 		getLoaderManager().initLoader(0, null, this).forceLoad();
 	}
-
 
     public void start_app_clicked(View view) {
 		UsersHashmapCollection.getInstance();
@@ -354,6 +364,22 @@ public class StartActivity extends Activity implements LoaderManager.LoaderCallb
 
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.select_dialog_item, updatedropdown(5));
 		customItemName.setAdapter(adapter);
+
+		customItemName.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+
+				//Open popup window
+				if(bandera_popup_login) {
+					bandera_popup_login = Boolean.FALSE;
+					if (p != null) {
+						InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+						imm.hideSoftInputFromWindow(customItemName.getWindowToken(), 0);
+						showPopup(StartActivity.this, p);
+					}
+				}
+			}
+		});
 	}
 
 	public String[] updatedropdown(int listlength){
@@ -393,5 +419,56 @@ public class StartActivity extends Activity implements LoaderManager.LoaderCallb
 		}
 		return recentlist;
 	}
+
+	public void onWindowFocusChanged(boolean hasFocus) {
+
+		int[] location = new int[2];
+
+		tx_user = (AutoCompleteTextView)findViewById(R.id.tx_user);
+
+		// Get the x, y location and store it in the location[] array
+		// location[0] = x, location[1] = y.
+		/*tx_user.getLocationOnScreen(location);*/
+		tx_user.getLocationInWindow(location);
+
+		//Initialize the Point with x, and y positions
+		p = new Point();
+		p.x = location[0];
+		p.y = location[1];
+
+	}
+
+	private void showPopup(final Activity context, Point p) {
+		float d = context.getResources().getDisplayMetrics().density;
+		/*int popupWidth = 900;*/
+		int popupHeight = (int)(280 * d);
+
+		// Inflate the popup_layout.xml
+		LinearLayout viewGroup = (LinearLayout) context.findViewById(R.id.popup_login);
+		LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		View layout = layoutInflater.inflate(R.layout.popup_info_login, viewGroup);
+
+		TextView info_nav = (TextView) layout.findViewById(R.id.text_info_login);
+		String formattedText = "Por favor ingresa tu rut o el ingresado a la hora de comprar un evento en <font color='#fd4f00'>bitmovil.cl</font>";
+		info_nav.setText(Html.fromHtml(formattedText));
+
+		// Creating the PopupWindow
+		/*final PopupWindow popup = new PopupWindow(context);*/
+		final PopupWindow popup = new PopupWindow(layout, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
+		popup.setContentView(layout);
+		popup.setHeight(popupHeight);
+		popup.setFocusable(true);
+
+		// Some offset to align the popup a bit to the right, and a bit down, relative to button's position.
+		int OFFSET_X = (int)(-60 * d);
+		int OFFSET_Y = (int)(-270 * d);
+
+		// Clear the default translucent background
+		popup.setBackgroundDrawable(new BitmapDrawable());
+
+		// Displaying the popup at the specified location, + offsets.
+		popup.showAtLocation(layout, Gravity.NO_GRAVITY, p.x + OFFSET_X, p.y + OFFSET_Y);
+	}
+
 }
 
