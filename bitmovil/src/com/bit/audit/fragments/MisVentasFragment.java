@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.Fragment;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -22,12 +21,9 @@ import android.widget.TextView;
 
 import com.bit.adapters.AvataresItemListAdapter;
 import com.bit.adapters.VentasDetalleItemListAdapter;
-import com.bit.async.tasks.GetAvataresTask;
 import com.bit.async.tasks.GetVentaDetalleTask;
-import com.bit.async.tasks.GetVentasTask;
 import com.bit.async.tasks.PostAsynkTasks;
 import com.bit.client.R;
-import com.bit.entities.Avatar;
 import com.bit.entities.Email;
 import com.bit.entities.VentaDetalle;
 import com.bit.singletons.TransactionHashmapCollectionSingleton;
@@ -36,7 +32,6 @@ import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 /**
  * Created by gfurlano on 2/29/16.
