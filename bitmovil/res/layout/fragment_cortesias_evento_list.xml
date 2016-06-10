@@ -14,7 +14,6 @@
             android:id="@+id/linlaHeaderProgress"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical"
             android:visibility="gone" >
@@ -52,8 +51,23 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_marginTop="3dp"
-            >
+        android:layout_weight="1">
     </ListView>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:layout_marginBottom="10dp">
+
+            <Button
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_atras"
+                android:background="@drawable/atras_style_buttons" />
+        </LinearLayout>
 
 </LinearLayout>
 </android.support.v4.widget.SwipeRefreshLayout>

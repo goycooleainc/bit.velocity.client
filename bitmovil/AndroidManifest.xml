@@ -81,6 +81,10 @@
                 android:name="com.bit.audit.fragments.MainActivity"
                 android:screenOrientation="portrait"
                 android:label="">
+                <intent-filter>
+                    <action android:name="android.intent.action.MainActivity" />
+                    <category android:name="android.intent.category.DEFAULT" />
+                </intent-filter>
         </activity>
 
         <activity

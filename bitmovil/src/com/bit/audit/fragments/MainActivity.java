@@ -62,6 +62,9 @@ public class MainActivity extends Activity {
 	static Boolean cartola_popup = Boolean.TRUE;
 	static Boolean cortesias_popup = Boolean.TRUE;
 
+	static Boolean abrir_avatar = Boolean.FALSE;
+	static Boolean abrir_cortesias = Boolean.FALSE;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -135,11 +138,30 @@ public class MainActivity extends Activity {
 		};
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
 
+		Bundle bundle = getIntent().getExtras();
+		abrir_avatar = Boolean.valueOf(bundle.getString("openAvatares"));
+
+		Bundle bundle1 = getIntent().getExtras();
+		abrir_cortesias = Boolean.valueOf(bundle1.getString("openCortesias"));
+
 		if (savedInstanceState == null) {
 			// on first time display view for first nav item
 			/*displayView(0);*/
-			Fragment home = null;
-			home = new MisVentasFragment();
+			int sel_item = 0;
+			Fragment home;
+			if(abrir_avatar){
+				abrir_avatar = Boolean.FALSE;
+				sel_item = 3;
+				home = new AvatarFragment();
+			}
+			else if(abrir_cortesias){
+				abrir_cortesias = Boolean.FALSE;
+				sel_item = 5;
+				home = new MisCortesiasFragment();
+			}
+			else{
+				home = new MisVentasFragment();
+			}
 
 			if (home != null) {
 
@@ -147,9 +169,9 @@ public class MainActivity extends Activity {
 				fragmentManager.beginTransaction().replace(R.id.frame_container, home).commit();
 
 				// update selected item and title, then close the drawer
-				mDrawerList.setItemChecked(0, true);
-				mDrawerList.setSelection(0);
-				setTitle(navMenuTitles[0]);
+				mDrawerList.setItemChecked(sel_item, true);
+				mDrawerList.setSelection(sel_item);
+				setTitle(navMenuTitles[sel_item]);
 				mDrawerLayout.closeDrawer(mDrawerList);
 			} else {
 				// error in creating fragment

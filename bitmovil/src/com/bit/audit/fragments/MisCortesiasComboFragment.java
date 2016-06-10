@@ -3,6 +3,7 @@ package com.bit.audit.fragments;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -34,7 +35,7 @@ public class MisCortesiasComboFragment extends Fragment implements SwipeRefreshL
 
     private CortesiasComboItemListAdapter adapter;
     private Cortesia obj;
-    static Button btn_close;
+    static Button btn_close, btn_atras;
     static ListView lv1;
     static ListView lv2;
     private LinearLayout linlaHeaderProgress;
@@ -178,6 +179,16 @@ public class MisCortesiasComboFragment extends Fragment implements SwipeRefreshL
 
         activity = getActivity();
         linlaHeaderProgress = (LinearLayout) rootView.findViewById(R.id.linlaHeaderProgress);
+
+        btn_atras = (Button) rootView.findViewById(R.id.btn_atras);
+        btn_atras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent("android.intent.action.MainActivity");
+                intent.putExtra("openCortesias", "true");
+                activity.startActivity(intent);
+            }
+        });
 
         /*((TextView) rootView.findViewById(R.id.user_nombre)).setText(intent.getStringExtra("nombre") != null ? intent.getStringExtra("nombre").toString() : "");*/
         lv1 = (ListView) rootView.findViewById(R.id.cortesia_combo_list);
