@@ -235,38 +235,9 @@ public class EventoFragment extends Fragment implements SwipeRefreshLayout.OnRef
                 @Override
                 public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                     precio.setText("");
-                    switch (position){
-                        case 0:
-                            precio.setText(obj.getPrecio1());
-                            break;
-                        case 1:
-                           precio.setText(obj.getPrecio2());
-                            break;
-                        case 2:
-                            precio.setText(obj.getPrecio3());
-                            break;
-                        case 3:
-                            precio.setText(obj.getPrecio4());
-                            break;
-                        case 4:
-                            precio.setText(obj.getPrecio5());
-                            break;
-                        case 5:
-                            precio.setText(obj.getPrecio6());
-                            break;
-                        case 6:
-                            precio.setText(obj.getPrecio7());
-                            break;
-                        case 7:
-                            precio.setText(obj.getPrecio8());
-                            break;
-                        case 8:
-                            precio.setText(obj.getPrecio9());
-                            break;
-                        case 9:
-                            precio.setText(obj.getPrecio10());
-                            break;
-                    }
+                    int cant_personas = numberPicker.getValue();
+                    double valor_venta = calculoSectorEntradas(position, cant_personas, obj);
+                    precio.setText('$' + String.valueOf(valor_venta));
                 }
 
                 @Override
@@ -274,6 +245,15 @@ public class EventoFragment extends Fragment implements SwipeRefreshLayout.OnRef
                     // your code here
                 }
 
+            });
+
+            numberPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+                @Override
+                public void onValueChange(NumberPicker picker, int oldVal, int newVal){
+                    int posicion_sector = s.getSelectedItemPosition();
+                    double valor_venta = calculoSectorEntradas(posicion_sector, newVal, obj);
+                    precio.setText('$' + String.valueOf(valor_venta));
+                }
             });
 
             btn_close.setOnClickListener(new C00981(dialog));
@@ -290,7 +270,8 @@ public class EventoFragment extends Fragment implements SwipeRefreshLayout.OnRef
                     if(TransactionHashmapCollectionSingleton.estadoCuenta != null) {
                         df.format(new BigDecimal(TransactionHashmapCollectionSingleton.estadoCuenta.getSaldo()));
 
-                        Double total = Double.valueOf(String.valueOf(precio.getText())) * numberPicker.getValue();
+                        String reformateoPrecio = (String.valueOf(precio.getText())).replace('$',' ');
+                        Double total = Double.valueOf(reformateoPrecio);
                         Double resto = Double.valueOf(TransactionHashmapCollectionSingleton.estadoCuenta.getSaldo()) - total;
 
                         Transaccion tx = new Transaccion();
@@ -346,6 +327,46 @@ public class EventoFragment extends Fragment implements SwipeRefreshLayout.OnRef
             bld.setMessage("Para comprar en diferentes sectores debera realizar una transacción diferente");
             bld.create().show();
         }
+    }
+
+    public double calculoSectorEntradas(int posicionSector, int cant_entradas, Eventos obj) {
+        double valor_sector = 0;
+        double valor_venta;
+
+        switch (posicionSector){
+            case 0:
+                valor_sector = Double.parseDouble(obj.getPrecio1());
+            break;
+            case 1:
+                valor_sector = Double.parseDouble(obj.getPrecio2());
+            break;
+            case 2:
+                valor_sector = Double.parseDouble(obj.getPrecio3());
+            break;
+            case 3:
+                valor_sector = Double.parseDouble(obj.getPrecio4());
+            break;
+            case 4:
+                valor_sector = Double.parseDouble(obj.getPrecio5());
+            break;
+            case 5:
+                valor_sector = Double.parseDouble(obj.getPrecio6());
+            break;
+            case 6:
+                valor_sector = Double.parseDouble(obj.getPrecio7());
+            break;
+            case 7:
+                valor_sector = Double.parseDouble(obj.getPrecio8());
+            break;
+            case 8:
+                valor_sector = Double.parseDouble(obj.getPrecio9());
+            break;
+            case 9:
+                valor_sector = Double.parseDouble(obj.getPrecio10());
+            break;
+        }
+        valor_venta = valor_sector * cant_entradas;
+        return valor_venta;
     }
 
     public List<String> checkSector(Eventos obj, List<String> sectores){

@@ -1,21 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent" android:background="@color/White" android:alpha="0.8"
+    xmlns:codictados="http://schemas.android.com/apk/res/com.bit.client"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/White"
+    android:alpha="0.8"
     android:paddingLeft="15dp"
     android:paddingRight="15dp">
 
-    <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="@style/texto_subtitulo"
-            android:text="Detalle de transacción"
-            android:id="@+id/textView6"
-        android:layout_marginTop="10dp" android:layout_marginLeft="5dp" android:layout_marginRight="5dp"
-        android:textColor="@color/GrayLight"
-        android:paddingBottom="10dp"
-        android:gravity="center_horizontal" />
+    <com.bit.utils.TextViewPersonalizado
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView6"
+        android:text="Detalle de transacción"
+        android:textStyle="normal"
+        codictados:fuente="fonts/opensans_regular.ttf"
+        android:textAppearance="@style/texto_titulo_dialog"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="10dp" />
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"

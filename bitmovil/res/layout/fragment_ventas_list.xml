@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.SwipeRefreshLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/swipe_container"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:background="@drawable/bkg_new">
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:codictados="http://schemas.android.com/apk/res/com.bit.client"
+    android:id="@+id/swipe_container"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/bkg_new">
 
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+        android:paddingBottom="10dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -17,7 +18,7 @@
         android:background="@android:color/white"
         android:gravity="center_vertical|center_horizontal">
 
-        <TextView
+        <com.bit.utils.TextViewPersonalizado
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/headline"
@@ -25,16 +26,18 @@
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
             android:text="Mi Espacio"
-            android:phoneNumber="true"
-            android:textAppearance="@style/texto_seccion" />
+            android:textStyle="normal"
+            codictados:fuente="fonts/opensans_regular.ttf"
+            android:textSize="@dimen/observ"
+            android:textColor="@color/GrayLight"
+            android:layout_gravity="center_horizontal" />
     </RelativeLayout>
 
     <ListView
         android:id="@+id/venta_list"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
-            >
+        android:layout_marginTop="3dp">
     </ListView>
 
     </LinearLayout>

@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="60dp"
-    android:orientation="vertical" >
+    xmlns:codictados="http://schemas.android.com/apk/res/com.bit.client"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -24,7 +25,7 @@
             android:paddingTop="15dp"
             android:paddingBottom="15dp">
 
-            <TextView
+            <!--<TextView
                 android:id="@+id/txFecha"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -32,13 +33,34 @@
                 android:textSize="16sp"
                 android:textColor="@android:color/black"
                 android:layout_alignBottom="@+id/txNumeroSerie"
+                android:gravity="left" />-->
+
+            <com.bit.utils.TextViewPersonalizado
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txFecha"
+                android:textStyle="normal"
+                codictados:fuente="fonts/opensans_light.ttf"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:layout_alignBottom="@+id/txNumeroSerie"
                 android:gravity="left" />
 
-            <TextView
+            <!--<TextView
                 android:id="@+id/txNumeroSerie"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/texto_normal_label"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:gravity="left" />
+-->
+            <com.bit.utils.TextViewPersonalizado
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txNumeroSerie"
+                android:textStyle="normal"
+                codictados:fuente="fonts/opensans_light.ttf"
                 android:textSize="16sp"
                 android:textColor="@android:color/black"
                 android:gravity="left" />

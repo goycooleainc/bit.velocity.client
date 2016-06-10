@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/White"
-            android:alpha="0.8"
+    xmlns:codictados="http://schemas.android.com/apk/res/com.bit.client"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/White"
+    android:alpha="0.8"
     android:padding="10dp">
 
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="@style/texto_subtitulo"
-            android:text="Código a mostrar"
-            android:id="@+id/textView6"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-        android:textColor="@color/GrayLight" />
+    <com.bit.utils.TextViewPersonalizado
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView6"
+        android:text="Código a mostrar"
+        android:textStyle="normal"
+        codictados:fuente="fonts/opensans_regular.ttf"
+        android:textAppearance="@style/texto_titulo_dialog"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp" />
 
     <View
         android:layout_width="match_parent"
@@ -52,6 +53,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:background="@drawable/btn_entendido"/>
+            android:background="@drawable/entendido_style_buttons"/>
     </LinearLayout>
 </LinearLayout>

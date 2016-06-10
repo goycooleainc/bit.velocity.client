@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="100dp"
-    android:orientation="vertical" >
+    xmlns:codictados="http://schemas.android.com/apk/res/com.bit.client"
+    android:orientation="vertical">
 
     <!-- DATOS -->
 
@@ -15,38 +16,43 @@
         android:layout_marginTop="5dp"
         android:layout_marginRight="10dp">
 
-        <TextView
+        <com.bit.utils.TextViewPersonalizado
             android:id="@+id/txLinea"
             android:layout_width="0dp"
             android:layout_weight=".25"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:lines="2"
-            android:textAppearance="@style/texto_normal_label"
-            android:textSize="16sp" android:textStyle="bold" android:textColor="@color/GrayLight"/>
+            android:gravity="center"
+            android:textStyle="normal"
+            codictados:fuente="fonts/opensans_light.ttf"
+            android:textAppearance="@style/texto_titulo_pequeno"
+            android:text="Texto de PRUEBA" />
 
-        <TextView
+        <com.bit.utils.TextViewPersonalizado
             android:id="@+id/txFecha"
             android:layout_width="0dp"
             android:layout_weight=".25"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="2dp"
-            android:gravity="center"
             android:lines="2"
-            android:textAppearance="@style/texto_normal_label"
-            android:textSize="16sp"  android:textStyle="bold" android:textColor="@color/GrayLight" />
+            android:gravity="center"
+            android:textStyle="normal"
+            codictados:fuente="fonts/opensans_light.ttf"
+            android:textAppearance="@style/texto_titulo_pequeno"
+            android:layout_marginLeft="2dp"
+            android:text="Texto de PRUEBA" />
 
-        <TextView
+        <com.bit.utils.TextViewPersonalizado
             android:id="@+id/txNumeroSerie"
             android:layout_width="0dp"
             android:layout_weight=".25"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:gravity="center"
             android:lines="2"
-            android:textAppearance="@style/texto_normal_label"
-            android:textSize="16sp"
-            android:textStyle="bold" android:textColor="@color/GrayLight"/>
+            android:gravity="center"
+            android:textStyle="normal"
+            codictados:fuente="fonts/opensans_light.ttf"
+            android:textAppearance="@style/texto_titulo_pequeno"
+            android:layout_marginLeft="10dp"
+            android:text="Texto de PRUEBA" />
 
     </LinearLayout>
 

@@ -1,47 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:background="@android:color/white"
-            android:alpha="0.8"
-            android:weightSum="1"
+    xmlns:codictados="http://schemas.android.com/apk/res/com.bit.client"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:alpha="0.8"
+    android:weightSum="1"
     android:paddingLeft="10dp"
     android:paddingRight="10dp">
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="@style/texto_subtitulo"
-            android:text="Ingresa tus datos para Registrarte"
-            android:id="@+id/textView6"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-        android:textColor="@color/GrayLight"
+
+    <com.bit.utils.TextViewPersonalizado
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView6"
+        android:text="Ingresa tus datos para Registrarte"
+        android:textStyle="normal"
+        codictados:fuente="fonts/opensans_regular.ttf"
+        android:textAppearance="@style/texto_titulo_dialog"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         android:layout_marginBottom="10dp" />
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/GrayLight"/>
+        android:background="@color/GrayLight"
+        android:layout_marginBottom="10dp" />
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:gravity="center_vertical|center_horizontal">
         <EditText
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/rutText"
             android:hint="RUT"
-            android:textColor="@color/Black"
+            android:textColor="@color/GrayLight"
             android:textColorHint="@color/GrayLight" />
     </LinearLayout>
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:gravity="center_vertical|center_horizontal">
       <EditText
             android:layout_width="fill_parent"
@@ -55,7 +59,7 @@
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:gravity="center_vertical|center_horizontal">
       <EditText
             android:layout_width="fill_parent"
@@ -75,20 +79,21 @@
             android:layout_marginTop="21dp"
             android:layout_below="@+id/spinner_state"
             android:layout_alignParentLeft="true"
-        android:layout_weight="0.68">
+        android:layout_weight="0.68"
+        android:layout_marginBottom="10dp">
         <Button
             android:id="@+id/dialogButtonCancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:background="@drawable/btn1_cancelar"
+            android:background="@drawable/cancel_style_buttons"
             android:layout_gravity="center_horizontal" />
         <Button
             android:id="@+id/dialogButtonOK"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:background="@drawable/btn1_aceptar"
+            android:background="@drawable/ok_style_buttons"
             android:layout_marginLeft="30dp"
             android:layout_gravity="center_horizontal" />
     </LinearLayout>

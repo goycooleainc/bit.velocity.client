@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    xmlns:codictados="http://schemas.android.com/apk/res/com.bit.client"
     android:background="@drawable/bkg_new"
     android:gravity="center_vertical|center_horizontal"
     android:orientation="vertical">
@@ -25,7 +26,7 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.5"
+            android:layout_weight="1"
             android:layout_gravity="center_vertical"
             android:gravity="center_vertical|center_horizontal">
 
@@ -39,17 +40,21 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.4">
+            android:layout_height="210dp"
+            android:gravity="center_vertical"
+            android:minHeight="220dp">
 
-            <TextView
+            <com.bit.utils.TextViewPersonalizado
+                android:id="@+id/textView13"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textStyle="normal"
+                codictados:fuente="fonts/opensans_semibold.ttf"
                 android:text="Ingresa tu rut sin puntos ni guión"
-                android:id="@+id/textView13"
+                android:textSize="18sp"
+                android:textColor="@color/GrayLight"
                 android:layout_gravity="center_horizontal"
-                android:textSize="@dimen/observ"
-                android:textColor="@color/GrayLight" />
+                android:gravity="center" />
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -142,7 +147,7 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="150dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="start_app_clicked"
                 android:src="@drawable/entrar_style_buttons" android:contentDescription="enter the app"
@@ -159,7 +164,7 @@
             android:layout_height="30dp"
             android:layout_gravity="bottom"
             android:layout_marginBottom="15dp"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="15dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"

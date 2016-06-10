@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    xmlns:codictados="http://schemas.android.com/apk/res/com.bit.client"
+    android:id="@+id/popup_login"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/popup_login_info"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:paddingBottom="20dp"
+    android:paddingTop="40dp">
+
+    <com.bit.utils.TextViewPersonalizado
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="¡Bienvenido a Bitmovil!"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/GrayLight"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:textStyle="normal"
+        codictados:fuente="fonts/opensans_regular.ttf"
+        android:layout_gravity="center_horizontal" />
+
+    <com.bit.utils.TextViewPersonalizado
+        android:id="@+id/text_info_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Por favor ingresa tu rut o el ingresado a la hora de comprar un evento en bitmovil.cl"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/GrayLight"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:textStyle="normal"
+        codictados:fuente="fonts/opensans_regular.ttf"
+        android:layout_gravity="center_horizontal" />
+
+    <com.bit.utils.TextViewPersonalizado
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tu clave fue enviada a la dirección de correo seleccionada con el comprobante de tu compra."
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/GrayLight"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:textStyle="normal"
+        codictados:fuente="fonts/opensans_regular.ttf"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp" />
+
+</LinearLayout>

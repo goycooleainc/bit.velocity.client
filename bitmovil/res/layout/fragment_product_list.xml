@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.SwipeRefreshLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/swipe_container"
-        android:background="@drawable/bkg_new"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:codictados="http://schemas.android.com/apk/res/com.bit.client"
+    android:id="@+id/swipe_container"
+    android:background="@drawable/bkg_new"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
     <LinearLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
@@ -28,7 +28,7 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp">
 
-        <TextView
+        <com.bit.utils.TextViewPersonalizado
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/headline"
@@ -36,8 +36,10 @@
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
             android:text="Mi Monedero"
-            android:phoneNumber="true"
-            android:textAppearance="@style/texto_seccion"
+            android:textStyle="normal"
+            codictados:fuente="fonts/opensans_regular.ttf"
+            android:textSize="@dimen/observ"
+            android:textColor="@color/GrayLight"
             android:layout_centerHorizontal="true" />
         <View
             android:layout_width="match_parent"
@@ -57,20 +59,28 @@
         android:paddingBottom="15dp"
         android:paddingTop="10dp">
 
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="TOKENS DISPONIBLES:"
+        <com.bit.utils.TextViewPersonalizado
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:id="@+id/etiq_saldo"
+            android:text="TOKENS DISPONIBLES:"
+            codictados:fuente="fonts/opensans_regular.ttf"
+            android:textSize="16dp"
             android:textColor="@color/GrayLight"
-            android:textSize="16dp" />
+            android:textStyle="normal" />
 
-        <TextView android:layout_width="fill_parent" android:layout_height="wrap_content"
-            android:textAppearance="@style/texto_titulo_principal" android:text="00.00"
+        <com.bit.utils.TextViewPersonalizado
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/txBalance"
+            android:text="00.00"
+            codictados:fuente="fonts/coolvetica_rg.ttf"
             android:textSize="40dp"
-            android:textIsSelectable="false"
             android:textColor="@color/Orange"
             android:layout_below="@+id/etiq_saldo"
-            android:gravity="right" />
+            android:gravity="right"
+            android:textStyle="normal" />
+
     </RelativeLayout>
 
     <ListView
