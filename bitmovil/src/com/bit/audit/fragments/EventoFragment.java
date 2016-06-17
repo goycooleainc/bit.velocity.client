@@ -270,7 +270,7 @@ public class EventoFragment extends Fragment implements SwipeRefreshLayout.OnRef
                     if(TransactionHashmapCollectionSingleton.estadoCuenta != null) {
                         df.format(new BigDecimal(TransactionHashmapCollectionSingleton.estadoCuenta.getSaldo()));
 
-                        String reformateoPrecio = (String.valueOf(precio.getText())).replace('$',' ');
+                        String reformateoPrecio = (String.valueOf(precio.getText())).replace("$","");
                         int total = Integer.parseInt(reformateoPrecio);
                         int resto = Integer.parseInt(TransactionHashmapCollectionSingleton.estadoCuenta.getSaldo()) - total;
 
