@@ -236,7 +236,7 @@ public class EventoFragment extends Fragment implements SwipeRefreshLayout.OnRef
                 public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                     precio.setText("");
                     int cant_personas = numberPicker.getValue();
-                    double valor_venta = calculoSectorEntradas(position, cant_personas, obj);
+                    int valor_venta = calculoSectorEntradas(position, cant_personas, obj);
                     precio.setText('$' + String.valueOf(valor_venta));
                 }
 
@@ -251,7 +251,7 @@ public class EventoFragment extends Fragment implements SwipeRefreshLayout.OnRef
                 @Override
                 public void onValueChange(NumberPicker picker, int oldVal, int newVal){
                     int posicion_sector = s.getSelectedItemPosition();
-                    double valor_venta = calculoSectorEntradas(posicion_sector, newVal, obj);
+                    int valor_venta = calculoSectorEntradas(posicion_sector, newVal, obj);
                     precio.setText('$' + String.valueOf(valor_venta));
                 }
             });
@@ -271,8 +271,8 @@ public class EventoFragment extends Fragment implements SwipeRefreshLayout.OnRef
                         df.format(new BigDecimal(TransactionHashmapCollectionSingleton.estadoCuenta.getSaldo()));
 
                         String reformateoPrecio = (String.valueOf(precio.getText())).replace('$',' ');
-                        Double total = Double.valueOf(reformateoPrecio);
-                        Double resto = Double.valueOf(TransactionHashmapCollectionSingleton.estadoCuenta.getSaldo()) - total;
+                        int total = Integer.parseInt(reformateoPrecio);
+                        int resto = Integer.parseInt(TransactionHashmapCollectionSingleton.estadoCuenta.getSaldo()) - total;
 
                         Transaccion tx = new Transaccion();
                         TransactionHashmapCollectionSingleton.getInstance();
@@ -329,40 +329,40 @@ public class EventoFragment extends Fragment implements SwipeRefreshLayout.OnRef
         }
     }
 
-    public double calculoSectorEntradas(int posicionSector, int cant_entradas, Eventos obj) {
-        double valor_sector = 0;
-        double valor_venta;
+    public int calculoSectorEntradas(int posicionSector, int cant_entradas, Eventos obj) {
+        int valor_sector = 0;
+        int valor_venta;
 
         switch (posicionSector){
             case 0:
-                valor_sector = Double.parseDouble(obj.getPrecio1());
+                valor_sector = Integer.parseInt(obj.getPrecio1());
             break;
             case 1:
-                valor_sector = Double.parseDouble(obj.getPrecio2());
+                valor_sector = Integer.parseInt(obj.getPrecio2());
             break;
             case 2:
-                valor_sector = Double.parseDouble(obj.getPrecio3());
+                valor_sector = Integer.parseInt(obj.getPrecio3());
             break;
             case 3:
-                valor_sector = Double.parseDouble(obj.getPrecio4());
+                valor_sector = Integer.parseInt(obj.getPrecio4());
             break;
             case 4:
-                valor_sector = Double.parseDouble(obj.getPrecio5());
+                valor_sector = Integer.parseInt(obj.getPrecio5());
             break;
             case 5:
-                valor_sector = Double.parseDouble(obj.getPrecio6());
+                valor_sector = Integer.parseInt(obj.getPrecio6());
             break;
             case 6:
-                valor_sector = Double.parseDouble(obj.getPrecio7());
+                valor_sector = Integer.parseInt(obj.getPrecio7());
             break;
             case 7:
-                valor_sector = Double.parseDouble(obj.getPrecio8());
+                valor_sector = Integer.parseInt(obj.getPrecio8());
             break;
             case 8:
-                valor_sector = Double.parseDouble(obj.getPrecio9());
+                valor_sector = Integer.parseInt(obj.getPrecio9());
             break;
             case 9:
-                valor_sector = Double.parseDouble(obj.getPrecio10());
+                valor_sector = Integer.parseInt(obj.getPrecio10());
             break;
         }
         valor_venta = valor_sector * cant_entradas;
